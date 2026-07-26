@@ -115,7 +115,9 @@
     field("cancelDialogBtn").addEventListener("click", closeManual);
     field("manualForm").addEventListener("submit", (event) => {
       event.preventDefault();
+      const existing = bets.find((bet) => bet.id === field("editingId").value);
       const item = {
+        ...(existing || {}),
         id: field("editingId").value || uid(),
         event: field("eventField").value.trim(),
         league: field("leagueField").value.trim(),
@@ -125,7 +127,8 @@
         status: field("statusField").value,
         eventDate: field("dateField").value,
         result: field("resultField").value.trim(),
-        notes: field("notesField").value.trim()
+        notes: field("notesField").value.trim(),
+        _localEditedAt: new Date().toISOString()
       };
       const index = bets.findIndex((bet) => bet.id === item.id);
       if (index >= 0) bets[index] = item;
