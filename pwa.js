@@ -12,6 +12,12 @@
   appleCapable.content = "yes";
   document.head.append(appleCapable);
 
+  if (!document.querySelector('script[src^="import-review-fix.js"]')) {
+    const importFix = document.createElement("script");
+    importFix.src = "import-review-fix.js?v=20260727-1";
+    document.body.append(importFix);
+  }
+
   const style = document.createElement("style");
   style.textContent = `
     .pwa-status{display:inline-flex;align-items:center;gap:7px;min-height:34px;padding:7px 10px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--muted);font-size:.74rem;font-weight:760;white-space:nowrap}.pwa-status::before{content:"";width:7px;height:7px;border-radius:999px;background:var(--green)}.pwa-status[data-state="offline"]::before{background:var(--amber)}.pwa-install{display:none}.pwa-install.is-visible{display:inline-flex}@media(max-width:720px){.pwa-status{display:none}}
