@@ -1,11 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" role="img" aria-labelledby="title desc">
-<title id="title">EdgeLog horizontal logo</title><desc id="desc">EdgeLog symbol, wordmark, and tagline.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 190" role="img" aria-labelledby="title desc">
+<title id="title">EdgeLog horizontal logo</title>
+<desc id="desc">EdgeLog arrow mark, wordmark, and tagline.</desc>
 <defs>
-  <linearGradient id="brand" x1="24" y1="150" x2="150" y2="22" gradientUnits="userSpaceOnUse"><stop stop-color="#7C3AED"/><stop offset=".48" stop-color="#2563FF"/><stop offset="1" stop-color="#00D4FF"/></linearGradient>
-  <linearGradient id="word" x1="350" y1="50" x2="640" y2="120" gradientUnits="userSpaceOnUse"><stop stop-color="#2563FF"/><stop offset="1" stop-color="#00D4FF"/></linearGradient>
+  <linearGradient id="g" x1="18" y1="160" x2="158" y2="22" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#7C3AED"/>
+    <stop offset=".48" stop-color="#2563FF"/>
+    <stop offset="1" stop-color="#00D4FF"/>
+  </linearGradient>
+  <linearGradient id="word" x1="420" y1="60" x2="660" y2="105" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#2563FF"/>
+    <stop offset="1" stop-color="#00D4FF"/>
+  </linearGradient>
 </defs>
-<g transform="translate(18 18) scale(1.5)"><path fill="url(#brand)" fill-rule="evenodd" d="M17 24 29 12h52L69 24H34l-5 5v13l9-9h28L54 45H41l-12 12v15l22-22h10l9 7 13-13v13L70 70l-9-7-5 5v16H44V76l-8 8H17V24Zm12 32 11-11H29v11Zm28 28V69l5-5 7 5v15H57Zm16 0V66l10-10v28H73Z"/></g>
-<text x="180" y="102" font-family="Inter,Arial,sans-serif" font-size="74" font-weight="800" letter-spacing="2" fill="#FFFFFF">EDGE</text>
-<text x="380" y="102" font-family="Inter,Arial,sans-serif" font-size="74" font-weight="800" letter-spacing="2" fill="url(#word)">LOG</text>
-<text x="183" y="142" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="600" letter-spacing=".5" fill="#94A3B8">Log Bets. Gain Edge.</text>
+<g transform="translate(20 18) scale(1.5)">
+  <path fill="url(#g)" fill-rule="evenodd" d="M14 18h55L59 30H28v13h26L42 55H28v15h34v13H14V18Zm29 39 14-14h11l9-9-7-7 21-6-6 21-7-7-10 10v11L58 66H47l-9 9H24l19-18Z"/>
+</g>
+<text x="185" y="105" font-family="Inter,Arial,sans-serif" font-size="76" font-weight="800" letter-spacing="1.5" fill="#FFFFFF">EDGE</text>
+<text x="408" y="105" font-family="Inter,Arial,sans-serif" font-size="76" font-weight="800" letter-spacing="1.5" fill="url(#word)">LOG</text>
+<text x="188" y="147" font-family="Inter,Arial,sans-serif" font-size="25" font-weight="600" fill="#94A3B8">Log Bets. Gain Edge.</text>
 </svg>
