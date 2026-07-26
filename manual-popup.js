@@ -113,35 +113,37 @@
   if (createdHere) {
     field("closeDialogBtn").addEventListener("click", closeManual);
     field("cancelDialogBtn").addEventListener("click", closeManual);
-    field("manualForm").addEventListener("submit", (event) => {
-      event.preventDefault();
-      const existing = bets.find((bet) => bet.id === field("editingId").value);
-      const item = {
-        ...(existing || {}),
-        id: field("editingId").value || uid(),
-        event: field("eventField").value.trim(),
-        league: field("leagueField").value.trim(),
-        bet: field("betField").value.trim(),
-        odds: Number(field("oddsField").value),
-        stakeVnd: Number(field("stakeField").value),
-        status: field("statusField").value,
-        eventDate: field("dateField").value,
-        result: field("resultField").value.trim(),
-        notes: field("notesField").value.trim(),
-        _localEditedAt: new Date().toISOString()
-      };
-      const index = bets.findIndex((bet) => bet.id === item.id);
-      if (index >= 0) bets[index] = item;
-      else bets.unshift(item);
-      persist();
-      render();
-      closeManual();
-      toast(index >= 0 ? "Bet updated" : "Bet added");
-    });
     dialog.addEventListener("click", (event) => {
       if (event.target === dialog) closeManual();
     });
   }
+
+  field("manualForm").addEventListener("submit", (event) => {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const existing = bets.find((bet) => bet.id === field("editingId").value);
+    const item = {
+      ...(existing || {}),
+      id: field("editingId").value || uid(),
+      event: field("eventField").value.trim(),
+      league: field("leagueField").value.trim(),
+      bet: field("betField").value.trim(),
+      odds: Number(field("oddsField").value),
+      stakeVnd: Number(field("stakeField").value),
+      status: field("statusField").value,
+      eventDate: field("dateField").value,
+      result: field("resultField").value.trim(),
+      notes: field("notesField").value.trim(),
+      _localEditedAt: new Date().toISOString()
+    };
+    const index = bets.findIndex((bet) => bet.id === item.id);
+    if (index >= 0) bets[index] = item;
+    else bets.unshift(item);
+    persist();
+    render();
+    closeManual();
+    toast(index >= 0 ? "Bet updated" : "Bet added");
+  }, true);
 
   document.addEventListener("click", (event) => {
     const trigger = event.target.closest("[data-open-manual], a[href='bets.html?add=1'], a[href$='/bets.html?add=1']");
