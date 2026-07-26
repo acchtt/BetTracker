@@ -1,4 +1,6 @@
 (() => {
+  document.querySelectorAll(".sidebar-nav a[href='parser.html']").forEach((link) => link.remove());
+
   const style = document.createElement("style");
   style.textContent = `
     #parserDialog {
