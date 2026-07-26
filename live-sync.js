@@ -106,7 +106,7 @@
 
     remoteBets.forEach((remote) => {
       if (!remote?.syncId || !remote.event || !remote.bet) return;
-      const remoteUpdatedAt = remote.updatedAt || feed.version || new Date(0).toISOString();
+      const remoteUpdatedAt = feed.version || remote.updatedAt || new Date(0).toISOString();
       let existing = bets.find((bet) => bet._syncId === remote.syncId);
 
       if (!existing) {
@@ -129,10 +129,11 @@
         return;
       }
 
+      const previousSyncTime = timestamp(existing._syncUpdatedAt);
       const localEditTime = timestamp(existing._localEditedAt);
       const remoteEditTime = timestamp(remoteUpdatedAt);
-      if (localEditTime && localEditTime > remoteEditTime) return;
-      if (remoteEditTime && remoteEditTime <= timestamp(existing._syncUpdatedAt)) return;
+      if (localEditTime && localEditTime > previousSyncTime) return;
+      if (remoteEditTime && remoteEditTime <= previousSyncTime) return;
 
       const before = comparableSnapshot(existing);
       const preserved = {
