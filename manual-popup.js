@@ -3,7 +3,27 @@
   document.documentElement.dataset.manualPopupReady = "true";
 
   document.querySelectorAll(".sidebar-nav a[href='parser.html'], .avatar-pill").forEach((element) => element.remove());
-  document.querySelectorAll(".sidebar-brand__mark").forEach((image) => { image.src = "assets/edgelog-mark.svg?v=4"; });
+
+  const horizontalBrandStyle = document.createElement("style");
+  horizontalBrandStyle.textContent = `
+    .sidebar-brand.sidebar-brand--horizontal {
+      display: block;
+      padding: 0 4px 20px;
+    }
+    .sidebar-brand__horizontal {
+      display: block;
+      width: min(100%, 190px);
+      height: auto;
+      margin: 0 auto;
+    }
+  `;
+  document.head.append(horizontalBrandStyle);
+
+  document.querySelectorAll(".sidebar-brand").forEach((brand) => {
+    brand.classList.add("sidebar-brand--horizontal");
+    brand.innerHTML = `<img class="sidebar-brand__horizontal" src="assets/edgelog-horizontal-dark.svg?v=1" alt="EdgeLog — Log Bets. Gain Edge.">`;
+  });
+
   const favicon = document.querySelector("link[rel~='icon']");
   if (favicon) {
     favicon.href = "assets/edgelog-app-icon.svg?v=4";
