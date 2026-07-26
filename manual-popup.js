@@ -85,7 +85,22 @@
     [...fragment.children].forEach((node) => grid.insertBefore(node, notesLabel || null));
   }
 
+  function ensureClvFields() {
+    if (field("openingOddsField")) return;
+    const grid = dialog.querySelector(".form-grid");
+    const notesLabel = field("notesField")?.closest("label");
+    if (!grid) return;
+    const fragment = document.createElement("div");
+    fragment.style.display = "contents";
+    fragment.innerHTML = `
+      <label>Opening odds<input id="openingOddsField" type="number" min="1.001" step="0.001" placeholder="Optional"></label>
+      <label>Closing odds<input id="closingOddsField" type="number" min="1.001" step="0.001" placeholder="Optional"></label>
+      <p class="clv-form-help">The main Odds field is your entry price. Add the market's opening and closing prices to calculate closing-line value automatically.</p>`;
+    [...fragment.children].forEach((node) => grid.insertBefore(node, notesLabel || null));
+  }
+
   ensureMetadataFields();
+  ensureClvFields();
 
   function metadataFor(bet = {}) {
     if (globalThis.EdgeLogMetadata?.metadataFor) return globalThis.EdgeLogMetadata.metadataFor(bet);
@@ -97,8 +112,15 @@
     };
   }
 
+  function optionalOdds(value) {
+    if (globalThis.EdgeLogCLV?.optionalOdds) return globalThis.EdgeLogCLV.optionalOdds(value);
+    const parsed = Number(value || 0);
+    return Number.isFinite(parsed) && parsed > 1 ? parsed : null;
+  }
+
   function fillDialog(bet = null) {
     ensureMetadataFields();
+    ensureClvFields();
     const meta = metadataFor(bet || {});
     field("dialogTitle").textContent = bet ? "Edit bet" : "Add bet";
     field("editingId").value = bet?.id || "";
@@ -114,6 +136,8 @@
     field("marketTypeField").value = meta.marketType === "Other" && !bet?.marketType ? "" : meta.marketType;
     field("timingField").value = meta.timing;
     field("tagsField").value = meta.tags.join(", ");
+    field("openingOddsField").value = optionalOdds(bet?.openingOdds) || "";
+    field("closingOddsField").value = optionalOdds(bet?.closingOdds) || "";
     field("notesField").value = bet?.notes || "";
   }
 
@@ -157,6 +181,8 @@
       league: field("leagueField").value.trim(),
       bet: field("betField").value.trim(),
       odds: Number(field("oddsField").value),
+      openingOdds: optionalOdds(field("openingOddsField").value),
+      closingOdds: optionalOdds(field("closingOddsField").value),
       stakeVnd: Number(field("stakeField").value),
       status: field("statusField").value,
       eventDate: field("dateField").value,
