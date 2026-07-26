@@ -177,6 +177,7 @@
     "backup-v2.js?v=20260727-1",
     "csv-export-v2.js?v=20260727-3",
     "risk-guardrails.js?v=20260727-1",
+    "duplicate-check.js?v=20260727-1",
     "sport-detection-patch.js?v=20260727-1",
     "live-sync.js?v=20260727-5",
     "manual-popup.js?v=20260727-7",
