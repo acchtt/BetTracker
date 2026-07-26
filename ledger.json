@@ -1,22 +1,23 @@
 {
-  "version": "2026-07-27T03:10:01Z",
+  "version": "2026-07-27T03:20:00Z",
   "bets": [
     {
       "syncId": "eval-20260727-g2-kc-g2-kc-plus-12-5",
-      "updatedAt": "2026-07-27T03:10:01Z",
+      "updatedAt": "2026-07-27T03:20:00Z",
       "event": "G2 Esports vs Karmine Corp — Game 2",
       "league": "LEC 2026 Summer",
       "bet": "Karmine Corp +12.5 kills",
       "odds": 1.778,
       "stakeVnd": 250000,
       "payoutVnd": 444500,
-      "status": "pending",
-      "result": "Pending",
+      "status": "win",
+      "result": "Win",
       "eventDate": "2026-07-27",
+      "settledAt": "2026-07-27T03:20:00Z",
       "marketType": "Handicap",
       "timing": "live",
       "tags": ["evaluation", "live-read"],
-      "notes": "Evaluation bet #6 — live entry around 19:45 with G2 leading 10–4; sportsbook slip #1146484842"
+      "notes": "Evaluation bet #6 — live entry around 19:45 with G2 leading 10–4; sportsbook slip #1146484842 — settled as win"
     },
     {
       "syncId": "eval-20260727-wisla-gks-gks-plus-0-25",
@@ -37,20 +38,21 @@
     },
     {
       "syncId": "eval-20260726-g2-kc-over-2-5",
-      "updatedAt": "2026-07-27T01:10:00Z",
+      "updatedAt": "2026-07-27T03:20:00Z",
       "event": "G2 vs Karmine Corp — Series",
       "league": "LEC",
       "bet": "Over 2.5 maps",
       "odds": 1.745,
       "stakeVnd": 250000,
       "payoutVnd": 436250,
-      "status": "pending",
-      "result": "Pending",
+      "status": "win",
+      "result": "Win",
       "eventDate": "2026-07-26",
+      "settledAt": "2026-07-27T03:20:00Z",
       "marketType": "Maps",
       "timing": "prematch",
       "tags": ["evaluation", "series-total"],
-      "notes": "Evaluation bet #4 — prematch series total"
+      "notes": "Evaluation bet #4 — prematch series total — settled as win"
     },
     {
       "syncId": "eval-20260726-sandefjord-bodo-under-2-25",
