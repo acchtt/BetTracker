@@ -168,6 +168,10 @@
   ledgerSyncScript.src = "ledger-sync.js?v=20260726-2";
   document.body.append(ledgerSyncScript);
 
+  const manualPopupScript = document.createElement("script");
+  manualPopupScript.src = "manual-popup.js?v=20260726-1";
+  document.body.append(manualPopupScript);
+
   const imageOcrScript = document.createElement("script");
   imageOcrScript.src = "parser-image-ocr.js";
   document.body.append(imageOcrScript);
