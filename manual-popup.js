@@ -21,6 +21,7 @@
     favicon.href = "assets/edgelog-app-icon.svg?v=4";
     favicon.type = "image/svg+xml";
   }
+
   document.querySelectorAll("a[href='bets.html?add=1'], a[href$='/bets.html?add=1']").forEach((link) => {
     link.dataset.openManual = "";
     link.href = "#";
@@ -85,69 +86,7 @@
     [...fragment.children].forEach((node) => grid.insertBefore(node, notesLabel || null));
   }
 
-  function ensureClvFields() {
-    if (field("openingOddsField")) return;
-    const grid = dialog.querySelector(".form-grid");
-    const notesLabel = field("notesField")?.closest("label");
-    if (!grid) return;
-    const fragment = document.createElement("div");
-    fragment.style.display = "contents";
-    fragment.innerHTML = `
-      <label>Opening odds<input id="openingOddsField" type="number" min="1.001" step="0.001" placeholder="Optional"></label>
-      <label>Closing odds<input id="closingOddsField" type="number" min="1.001" step="0.001" placeholder="Optional"></label>
-      <p class="clv-form-help">The main Odds field is your entry price. Add the market's opening and closing prices to calculate closing-line value automatically.</p>`;
-    [...fragment.children].forEach((node) => grid.insertBefore(node, notesLabel || null));
-  }
-
-  function ensureReviewFields() {
-    if (field("confidenceField")) return;
-    const grid = dialog.querySelector(".form-grid");
-    const notesLabel = field("notesField")?.closest("label");
-    if (!grid) return;
-    const fragment = document.createElement("div");
-    fragment.style.display = "contents";
-    fragment.innerHTML = `
-      <label>Confidence
-        <select id="confidenceField">
-          <option value="">Unscored</option>
-          <option value="1">1 / 5 — Low</option>
-          <option value="2">2 / 5</option>
-          <option value="3">3 / 5 — Medium</option>
-          <option value="4">4 / 5</option>
-          <option value="5">5 / 5 — High</option>
-        </select>
-      </label>
-      <label>Decision quality
-        <select id="processGradeField">
-          <option value="">Not reviewed</option>
-          <option value="good">Good decision</option>
-          <option value="mixed">Mixed decision</option>
-          <option value="poor">Poor decision</option>
-        </select>
-      </label>
-      <label>Mistake type
-        <select id="mistakeTypeField">
-          <option value="">Not reviewed</option>
-          <option value="none">No mistake</option>
-          <option value="bad-read">Bad read</option>
-          <option value="bad-price">Bad price</option>
-          <option value="late-entry">Late entry</option>
-          <option value="overstake">Overstaked</option>
-          <option value="chasing">Chasing</option>
-          <option value="tilt">Tilt</option>
-          <option value="execution">Execution error</option>
-          <option value="other">Other mistake</option>
-        </select>
-      </label>
-      <label class="full-width">Pre-bet thesis<textarea id="thesisField" rows="2" placeholder="Why is this bet worth taking? What edge do you expect?"></textarea></label>
-      <label class="full-width">Post-bet review<textarea id="postReviewField" rows="3" placeholder="Was the decision sound regardless of the result? What should change next time?"></textarea></label>
-      <p class="review-form-help">Confidence and thesis are most useful before the bet. Decision quality, mistakes, and the review are intended for after settlement.</p>`;
-    [...fragment.children].forEach((node) => grid.insertBefore(node, notesLabel || null));
-  }
-
   ensureMetadataFields();
-  ensureClvFields();
-  ensureReviewFields();
 
   function metadataFor(bet = {}) {
     if (globalThis.EdgeLogMetadata?.metadataFor) return globalThis.EdgeLogMetadata.metadataFor(bet);
@@ -159,22 +98,8 @@
     };
   }
 
-  function optionalOdds(value) {
-    if (globalThis.EdgeLogCLV?.optionalOdds) return globalThis.EdgeLogCLV.optionalOdds(value);
-    const parsed = Number(value || 0);
-    return Number.isFinite(parsed) && parsed > 1 ? parsed : null;
-  }
-
-  function confidenceValue(value) {
-    if (globalThis.EdgeLogReview?.confidenceValue) return globalThis.EdgeLogReview.confidenceValue(value);
-    const parsed = Number(value || 0);
-    return Number.isInteger(parsed) && parsed >= 1 && parsed <= 5 ? parsed : null;
-  }
-
   function fillDialog(bet = null) {
     ensureMetadataFields();
-    ensureClvFields();
-    ensureReviewFields();
     const meta = metadataFor(bet || {});
     field("dialogTitle").textContent = bet ? "Edit bet" : "Add bet";
     field("editingId").value = bet?.id || "";
@@ -190,13 +115,6 @@
     field("marketTypeField").value = meta.marketType === "Other" && !bet?.marketType ? "" : meta.marketType;
     field("timingField").value = meta.timing;
     field("tagsField").value = meta.tags.join(", ");
-    field("openingOddsField").value = optionalOdds(bet?.openingOdds) || "";
-    field("closingOddsField").value = optionalOdds(bet?.closingOdds) || "";
-    field("confidenceField").value = confidenceValue(bet?.confidence) || "";
-    field("processGradeField").value = bet?.processGrade || "";
-    field("mistakeTypeField").value = bet?.mistakeType || "";
-    field("thesisField").value = bet?.thesis || "";
-    field("postReviewField").value = bet?.postReview || "";
     field("notesField").value = bet?.notes || "";
   }
 
@@ -242,8 +160,6 @@
       league: field("leagueField").value.trim(),
       bet: field("betField").value.trim(),
       odds: Number(field("oddsField").value),
-      openingOdds: optionalOdds(field("openingOddsField").value),
-      closingOdds: optionalOdds(field("closingOddsField").value),
       stakeVnd: Number(field("stakeField").value),
       status,
       eventDate: field("dateField").value,
@@ -252,11 +168,6 @@
       marketType: inferredMarket,
       timing: field("timingField").value,
       tags,
-      confidence: confidenceValue(field("confidenceField").value),
-      thesis: field("thesisField").value.trim(),
-      processGrade: field("processGradeField").value,
-      mistakeType: field("mistakeTypeField").value,
-      postReview: field("postReviewField").value.trim(),
       notes: field("notesField").value.trim(),
       settledAt: status === "pending" ? existing?.settledAt : (existing?.settledAt || now),
       _localEditedAt: now
