@@ -44,8 +44,10 @@
 
   const rerender = () => queueMicrotask(() => typeof renderTables === "function" && renderTables());
   document.querySelector("#searchInput")?.addEventListener("input", rerender);
-  document.querySelector("#statusFilter")?.addEventListener("change", rerender);
-  document.querySelector("#sportFilter")?.addEventListener("change", rerender);
+  ["statusFilter", "sportFilter", "bookmakerFilter", "marketFilter", "timingFilter", "tagFilter"].forEach((id) => {
+    document.getElementById(id)?.addEventListener("change", rerender);
+  });
+  document.querySelector("#resetFilters")?.addEventListener("click", rerender);
 
   if (changed && typeof render === "function") render();
 })();
