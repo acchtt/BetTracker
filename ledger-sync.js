@@ -1,6 +1,6 @@
 (() => {
   const SYNC_KEY = "edgelog-canonical-ledger-version";
-  const SYNC_VERSION = "2026-07-26-mkoi-vit-game-1-over-31-pending";
+  const SYNC_VERSION = "2026-07-26-mkoi-vit-game-1-over-31-loss";
 
   if (localStorage.getItem(SYNC_KEY) === SYNC_VERSION) return;
 
@@ -11,10 +11,10 @@
       bet: "Over 31 minutes",
       odds: 1.815,
       stakeVnd: 250000,
-      status: "pending",
-      result: "Pending",
+      status: "loss",
+      result: "Loss",
       eventDate: "2026-07-26",
-      notes: "Evaluation bet #2 — live entry after the line moved from Over 32 at 2.131; placed at Over 31"
+      notes: "Evaluation bet #2 — live entry after the line moved from Over 32 at 2.131; placed at Over 31 — settled as loss"
     },
     {
       event: "BLG vs AL — Game 2",
