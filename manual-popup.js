@@ -6,16 +6,8 @@
 
   const horizontalBrandStyle = document.createElement("style");
   horizontalBrandStyle.textContent = `
-    .sidebar-brand.sidebar-brand--horizontal {
-      display: block;
-      padding: 0 4px 20px;
-    }
-    .sidebar-brand__horizontal {
-      display: block;
-      width: min(100%, 190px);
-      height: auto;
-      margin: 0 auto;
-    }
+    .sidebar-brand.sidebar-brand--horizontal { display: block; padding: 0 4px 20px; }
+    .sidebar-brand__horizontal { display: block; width: min(100%, 190px); height: auto; margin: 0 auto; }
   `;
   document.head.append(horizontalBrandStyle);
 
@@ -43,10 +35,7 @@
     dialog.innerHTML = `
       <form id="manualForm" method="dialog">
         <div class="dialog-heading">
-          <div>
-            <p class="panel-kicker">MANUAL ENTRY</p>
-            <h2 id="dialogTitle">Add bet</h2>
-          </div>
+          <div><p class="panel-kicker">MANUAL ENTRY</p><h2 id="dialogTitle">Add bet</h2></div>
           <button id="closeDialogBtn" class="icon-button" type="button" aria-label="Close">×</button>
         </div>
         <input id="editingId" type="hidden">
@@ -58,12 +47,8 @@
           <label>Stake (VND)<input id="stakeField" type="number" min="0" step="1000" required></label>
           <label>Status
             <select id="statusField">
-              <option value="pending">Pending</option>
-              <option value="win">Win</option>
-              <option value="half-win">Half win</option>
-              <option value="loss">Loss</option>
-              <option value="half-loss">Half loss</option>
-              <option value="void">Void</option>
+              <option value="pending">Pending</option><option value="win">Win</option><option value="half-win">Half win</option>
+              <option value="loss">Loss</option><option value="half-loss">Half loss</option><option value="void">Void</option>
             </select>
           </label>
           <label>Event date<input id="dateField" type="datetime-local"></label>
@@ -82,7 +67,39 @@
     return dialog.querySelector(`#${id}`);
   }
 
+  function ensureMetadataFields() {
+    if (field("bookmakerField")) return;
+    const grid = dialog.querySelector(".form-grid");
+    const notesLabel = field("notesField")?.closest("label");
+    if (!grid) return;
+    const fragment = document.createElement("div");
+    fragment.style.display = "contents";
+    const marketOptions = (globalThis.EdgeLogMetadata?.MARKET_OPTIONS || ["Totals", "Handicap", "Moneyline", "Kills", "Duration", "Maps", "Player prop", "Corners", "Cards", "Both teams to score", "Correct score", "Other"])
+      .map((value) => `<option value="${value}">${value}</option>`).join("");
+    fragment.innerHTML = `
+      <label>Bookmaker<input id="bookmakerField" type="text" placeholder="e.g. Pinnacle"></label>
+      <label>Market type<select id="marketTypeField"><option value="">Auto-detect</option>${marketOptions}</select></label>
+      <label>Bet timing<select id="timingField"><option value="">Unspecified</option><option value="prematch">Pre-match</option><option value="live">Live</option></select></label>
+      <label>Strategy tags<input id="tagsField" type="text" placeholder="value, live-read, evaluation"></label>
+      <p class="metadata-form-help">Tags are comma-separated and can be used to filter your betting history later.</p>`;
+    [...fragment.children].forEach((node) => grid.insertBefore(node, notesLabel || null));
+  }
+
+  ensureMetadataFields();
+
+  function metadataFor(bet = {}) {
+    if (globalThis.EdgeLogMetadata?.metadataFor) return globalThis.EdgeLogMetadata.metadataFor(bet);
+    return {
+      bookmaker: bet.bookmaker || "",
+      marketType: bet.marketType || "",
+      timing: bet.timing || "",
+      tags: Array.isArray(bet.tags) ? bet.tags : String(bet.tags || "").split(",").map((tag) => tag.trim()).filter(Boolean)
+    };
+  }
+
   function fillDialog(bet = null) {
+    ensureMetadataFields();
+    const meta = metadataFor(bet || {});
     field("dialogTitle").textContent = bet ? "Edit bet" : "Add bet";
     field("editingId").value = bet?.id || "";
     field("eventField").value = bet?.event || "";
@@ -93,6 +110,10 @@
     field("statusField").value = bet?.status || "pending";
     field("dateField").value = bet?.eventDate || "";
     field("resultField").value = bet?.result || "";
+    field("bookmakerField").value = meta.bookmaker;
+    field("marketTypeField").value = meta.marketType === "Other" && !bet?.marketType ? "" : meta.marketType;
+    field("timingField").value = meta.timing;
+    field("tagsField").value = meta.tags.join(", ");
     field("notesField").value = bet?.notes || "";
   }
 
@@ -109,19 +130,26 @@
   }
 
   window.openEdgeLogManualBet = openManual;
+  if (typeof openDialog === "function") openDialog = openManual;
 
   if (createdHere) {
     field("closeDialogBtn").addEventListener("click", closeManual);
     field("cancelDialogBtn").addEventListener("click", closeManual);
-    dialog.addEventListener("click", (event) => {
-      if (event.target === dialog) closeManual();
-    });
+    dialog.addEventListener("click", (event) => { if (event.target === dialog) closeManual(); });
   }
 
   field("manualForm").addEventListener("submit", (event) => {
     event.preventDefault();
     event.stopImmediatePropagation();
     const existing = bets.find((bet) => bet.id === field("editingId").value);
+    const rawTags = field("tagsField").value;
+    const tags = globalThis.EdgeLogMetadata?.normalizeTags
+      ? globalThis.EdgeLogMetadata.normalizeTags(rawTags)
+      : [...new Set(rawTags.split(/[,;#]/).map((tag) => tag.trim()).filter(Boolean))];
+    const selectedMarket = field("marketTypeField").value;
+    const inferredMarket = globalThis.EdgeLogMetadata?.canonicalMarket
+      ? globalThis.EdgeLogMetadata.canonicalMarket(selectedMarket, field("betField").value)
+      : selectedMarket;
     const item = {
       ...(existing || {}),
       id: field("editingId").value || uid(),
@@ -133,6 +161,10 @@
       status: field("statusField").value,
       eventDate: field("dateField").value,
       result: field("resultField").value.trim(),
+      bookmaker: field("bookmakerField").value.trim(),
+      marketType: inferredMarket,
+      timing: field("timingField").value,
+      tags,
       notes: field("notesField").value.trim(),
       _localEditedAt: new Date().toISOString()
     };
