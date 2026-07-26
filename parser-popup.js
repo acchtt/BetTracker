@@ -180,6 +180,7 @@
     "sport-detection-patch.js?v=20260727-1",
     "live-sync.js?v=20260727-5",
     "manual-popup.js?v=20260727-7",
+    "logo-home-link.js?v=20260727-1",
     "bet-review.js?v=20260727-1",
     "quick-settlement.js?v=20260727-2",
     "mobile-history.js?v=20260727-1",
