@@ -146,7 +146,13 @@
   dialog.querySelector("#cancelParserDialogBtn").addEventListener("click", closeParser);
   dialog.querySelector("#addDetectedBtn").addEventListener("click", () => {
     if (!detectedBet) return;
-    bets.unshift({ ...detectedBet, id: uid(), _localEditedAt: new Date().toISOString() });
+    const now = new Date().toISOString();
+    bets.unshift({
+      ...detectedBet,
+      id: uid(),
+      settledAt: detectedBet.status && detectedBet.status !== "pending" ? (detectedBet.settledAt || now) : detectedBet.settledAt,
+      _localEditedAt: now
+    });
     persist();
     render();
     toast("Detected bet added");
@@ -170,9 +176,10 @@
     "clv-tracking.js?v=20260727-1",
     "backup-v2.js?v=20260727-1",
     "csv-export-v2.js?v=20260727-2",
+    "risk-guardrails.js?v=20260727-1",
     "sport-detection-patch.js?v=20260727-1",
     "live-sync.js?v=20260727-4",
-    "manual-popup.js?v=20260727-5",
+    "manual-popup.js?v=20260727-6",
     "quick-settlement.js?v=20260727-2",
     "mobile-history.js?v=20260727-1",
     "parser-image-ocr.js"
