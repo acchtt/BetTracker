@@ -168,6 +168,10 @@
   sportDetectionScript.src = "sport-detection-patch.js?v=20260727-1";
   document.body.append(sportDetectionScript);
 
+  const quickSettlementScript = document.createElement("script");
+  quickSettlementScript.src = "quick-settlement.js?v=20260727-1";
+  document.body.append(quickSettlementScript);
+
   const ledgerSyncScript = document.createElement("script");
   ledgerSyncScript.src = "ledger-sync.js?v=20260726-4";
   document.body.append(ledgerSyncScript);
