@@ -167,11 +167,12 @@
   [
     "bet-metadata.js?v=20260727-1",
     "bet-metadata-fixes.js?v=20260727-1",
+    "clv-tracking.js?v=20260727-1",
     "backup-v2.js?v=20260727-1",
-    "csv-export-v2.js?v=20260727-1",
+    "csv-export-v2.js?v=20260727-2",
     "sport-detection-patch.js?v=20260727-1",
-    "live-sync.js?v=20260727-3",
-    "manual-popup.js?v=20260727-4",
+    "live-sync.js?v=20260727-4",
+    "manual-popup.js?v=20260727-5",
     "quick-settlement.js?v=20260727-2",
     "mobile-history.js?v=20260727-1",
     "parser-image-ocr.js"
