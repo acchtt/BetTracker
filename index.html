@@ -3,19 +3,25 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0b1020" />
+  <meta name="theme-color" content="#0c1220" />
   <title>Bet Tracker</title>
   <meta name="description" content="Local-first betting tracker with automatic betslip text detection." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="topbar">
-    <div>
+  <div class="page-bg"></div>
+
+  <header class="hero">
+    <div class="hero-copy">
       <p class="eyebrow">LOCAL-FIRST BETTING JOURNAL</p>
       <h1>Bet Tracker</h1>
-      <p class="subtitle">Paste a Vietnamese or English betslip. The tracker detects its fields, converts VND to units, and updates profit/loss automatically.</p>
+      <p class="subtitle">
+        Track bets, paste Vietnamese or English betslips, convert VND into units,
+        and keep your running profit/loss in one organized dashboard.
+      </p>
     </div>
-    <div class="top-actions">
+
+    <div class="hero-actions">
       <button id="exportJsonBtn" class="button secondary" type="button">Export JSON</button>
       <button id="exportCsvBtn" class="button secondary" type="button">Export CSV</button>
       <label class="button secondary file-button">
@@ -25,42 +31,46 @@
     </div>
   </header>
 
-  <main class="page-shell">
+  <main class="app-shell">
     <section class="summary-grid" aria-label="Betting summary">
-      <article class="summary-card">
-        <span>Total Win/Loss</span>
+      <article class="summary-card summary-card--primary">
+        <div class="summary-label">Total Win/Loss</div>
         <strong id="netUnits">0.000u</strong>
         <small id="netVnd">0 VND</small>
       </article>
-      <article class="summary-card" hidden aria-hidden="true">
-        <span>Total Winnings</span>
-        <strong id="winningsUnits">0.000u</strong>
-        <small id="winningsVnd">0 VND</small>
-      </article>
-      <article class="summary-card" hidden aria-hidden="true">
-        <span>Total Losses</span>
-        <strong id="lossesUnits">0.000u</strong>
-        <small id="lossesVnd">0 VND</small>
-      </article>
-      <article class="summary-card">
-        <span>Pending Exposure</span>
+
+      <article class="summary-card summary-card--secondary">
+        <div class="summary-label">Pending Exposure</div>
         <strong id="pendingUnits">0.000u</strong>
         <small id="pendingVnd">0 VND</small>
       </article>
+
+      <article class="summary-card summary-card--compact">
+        <div class="summary-label">Bets Recorded</div>
+        <strong id="totalBetsCount">0</strong>
+        <small id="betCountMeta">0 settled · 0 pending</small>
+      </article>
+
+      <article class="summary-card summary-card--compact">
+        <div class="summary-label">Unit Size</div>
+        <strong id="unitSummaryValue">500,000</strong>
+        <small>VND per unit</small>
+      </article>
     </section>
 
-    <section class="workspace-grid">
+    <section class="dashboard-grid">
       <article class="panel parser-panel">
-        <div class="panel-heading">
+        <div class="panel-header">
           <div>
             <p class="eyebrow">AUTO DETECT</p>
             <h2>Paste betslip</h2>
+            <p class="panel-copy">Drop the raw text from your sportsbook slip. The tracker will detect the event, market, odds, stake, and result fields automatically.</p>
           </div>
           <span id="parserStatus" class="status-chip neutral">Waiting for input</span>
         </div>
 
         <label for="slipInput" class="field-label">Betslip text</label>
-        <textarea id="slipInput" rows="13" placeholder="Paste the full betslip here…"></textarea>
+        <textarea id="slipInput" rows="12" placeholder="Paste the full betslip here…"></textarea>
 
         <div class="option-row">
           <label class="switch-row">
@@ -71,63 +81,93 @@
         </div>
 
         <div class="detected-card">
-          <div class="detected-heading">
-            <h3>Detected fields</h3>
+          <div class="detected-header">
+            <div>
+              <h3>Detected fields</h3>
+              <p>Review before saving to the tracker.</p>
+            </div>
             <span id="confidenceLabel">0% confidence</span>
           </div>
           <dl id="detectedFields" class="detected-grid"></dl>
         </div>
 
-        <div class="button-row">
+        <div class="button-row button-row--spread">
           <button id="addDetectedBtn" class="button primary" type="button" disabled>Add detected bet</button>
           <button id="openManualBtn" class="button secondary" type="button">Manual entry</button>
         </div>
       </article>
 
-      <aside class="panel settings-panel">
-        <div class="panel-heading">
-          <div>
-            <p class="eyebrow">SETTINGS</p>
-            <h2>Tracker rules</h2>
+      <aside class="sidebar-stack">
+        <section class="panel settings-panel">
+          <div class="panel-header panel-header--stacked">
+            <div>
+              <p class="eyebrow">SETTINGS</p>
+              <h2>Tracker rules</h2>
+              <p class="panel-copy">Adjust your unit value once and every unit-based figure updates automatically.</p>
+            </div>
           </div>
-        </div>
 
-        <label class="field-label" for="unitValue">1 unit equals</label>
-        <div class="money-input-wrap">
-          <input id="unitValue" type="number" min="1" step="1000" value="500000" />
-          <span>VND</span>
-        </div>
-        <p class="helper-text">Changing this updates every displayed unit value without altering VND amounts.</p>
+          <label class="field-label" for="unitValue">1 unit equals</label>
+          <div class="money-input-wrap">
+            <input id="unitValue" type="number" min="1" step="1000" value="500000" />
+            <span>VND</span>
+          </div>
+          <p class="helper-text">Changing this updates displayed units only. Stored VND amounts remain unchanged.</p>
 
-        <div class="rule-list">
-          <div><span>Win</span><strong>Stake × (odds − 1)</strong></div>
-          <div><span>Half win</span><strong>½ winning profit</strong></div>
-          <div><span>Loss</span><strong>− full stake</strong></div>
-          <div><span>Half loss</span><strong>− ½ stake</strong></div>
-          <div><span>Void</span><strong>0</strong></div>
-        </div>
+          <div class="rule-list">
+            <div><span>Win</span><strong>Stake × (odds − 1)</strong></div>
+            <div><span>Half win</span><strong>½ winning profit</strong></div>
+            <div><span>Loss</span><strong>− full stake</strong></div>
+            <div><span>Half loss</span><strong>− ½ stake</strong></div>
+            <div><span>Void</span><strong>0</strong></div>
+          </div>
 
-        <button id="resetDataBtn" class="button danger" type="button">Reset all tracker data</button>
+          <button id="resetDataBtn" class="button danger" type="button">Reset all tracker data</button>
+        </section>
+
+        <section class="panel help-panel">
+          <div class="panel-header panel-header--stacked">
+            <div>
+              <p class="eyebrow">WORKFLOW</p>
+              <h2>Recommended flow</h2>
+            </div>
+          </div>
+          <ol class="workflow-list">
+            <li>Paste a betslip or add a manual entry.</li>
+            <li>Confirm odds, stake, and status.</li>
+            <li>Use search and status filters to review history.</li>
+            <li>Export JSON regularly as a backup.</li>
+          </ol>
+        </section>
       </aside>
     </section>
 
     <section class="panel table-panel">
-      <div class="panel-heading table-heading">
+      <div class="table-toolbar">
         <div>
           <p class="eyebrow">HISTORY</p>
           <h2>Current betting table</h2>
+          <p class="panel-copy">Search by event, league, market, or result, then filter by status.</p>
         </div>
+
         <div class="filters">
-          <input id="searchInput" type="search" placeholder="Search match, league, bet…" />
-          <select id="statusFilter" aria-label="Filter by status">
-            <option value="all">All statuses</option>
-            <option value="pending">Pending</option>
-            <option value="win">Win</option>
-            <option value="half-win">Half win</option>
-            <option value="loss">Loss</option>
-            <option value="half-loss">Half loss</option>
-            <option value="void">Void</option>
-          </select>
+          <label class="search-field">
+            <span class="visually-hidden">Search bets</span>
+            <input id="searchInput" type="search" placeholder="Search match, league, or bet…" />
+          </label>
+
+          <label class="filter-field">
+            <span class="visually-hidden">Filter by status</span>
+            <select id="statusFilter" aria-label="Filter by status">
+              <option value="all">All statuses</option>
+              <option value="pending">Pending</option>
+              <option value="win">Win</option>
+              <option value="half-win">Half win</option>
+              <option value="loss">Loss</option>
+              <option value="half-loss">Half loss</option>
+              <option value="void">Void</option>
+            </select>
+          </label>
         </div>
       </div>
 
