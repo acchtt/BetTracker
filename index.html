@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1020" />
+  <title>Bet Tracker</title>
+  <meta name="description" content="Local-first betting tracker with automatic betslip text detection." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">LOCAL-FIRST BETTING JOURNAL</p>
+      <h1>Bet Tracker</h1>
+      <p class="subtitle">Paste a Vietnamese or English betslip. The tracker detects its fields, converts VND to units, and updates profit/loss automatically.</p>
+    </div>
+    <div class="top-actions">
+      <button id="exportJsonBtn" class="button secondary" type="button">Export JSON</button>
+      <button id="exportCsvBtn" class="button secondary" type="button">Export CSV</button>
+      <label class="button secondary file-button">
+        Import JSON
+        <input id="importJsonInput" type="file" accept="application/json,.json" />
+      </label>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="summary-grid" aria-label="Betting summary">
+      <article class="summary-card">
+        <span>Total Win/Loss</span>
+        <strong id="netUnits">0.000u</strong>
+        <small id="netVnd">0 VND</small>
+      </article>
+      <article class="summary-card">
+        <span>Total Winnings</span>
+        <strong id="winningsUnits">0.000u</strong>
+        <small id="winningsVnd">0 VND</small>
+      </article>
+      <article class="summary-card">
+        <span>Total Losses</span>
+        <strong id="lossesUnits">0.000u</strong>
+        <small id="lossesVnd">0 VND</small>
+      </article>
+      <article class="summary-card">
+        <span>Pending Exposure</span>
+        <strong id="pendingUnits">0.000u</strong>
+        <small id="pendingVnd">0 VND</small>
+      </article>
+    </section>
+
+    <section class="workspace-grid">
+      <article class="panel parser-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">AUTO DETECT</p>
+            <h2>Paste betslip</h2>
+          </div>
+          <span id="parserStatus" class="status-chip neutral">Waiting for input</span>
+        </div>
+
+        <label for="slipInput" class="field-label">Betslip text</label>
+        <textarea id="slipInput" rows="13" placeholder="Paste the full betslip here…"></textarea>
+
+        <div class="option-row">
+          <label class="switch-row">
+            <input id="thousandsMode" type="checkbox" checked />
+            <span>Slip money values are shown in thousands of VND</span>
+          </label>
+          <button id="clearSlipBtn" class="text-button" type="button">Clear</button>
+        </div>
+
+        <div class="detected-card">
+          <div class="detected-heading">
+            <h3>Detected fields</h3>
+            <span id="confidenceLabel">0% confidence</span>
+          </div>
+          <dl id="detectedFields" class="detected-grid"></dl>
+        </div>
+
+        <div class="button-row">
+          <button id="addDetectedBtn" class="button primary" type="button" disabled>Add detected bet</button>
+          <button id="openManualBtn" class="button secondary" type="button">Manual entry</button>
+        </div>
+      </article>
+
+      <aside class="panel settings-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">SETTINGS</p>
+            <h2>Tracker rules</h2>
+          </div>
+        </div>
+
+        <label class="field-label" for="unitValue">1 unit equals</label>
+        <div class="money-input-wrap">
+          <input id="unitValue" type="number" min="1" step="1000" value="500000" />
+          <span>VND</span>
+        </div>
+        <p class="helper-text">Changing this updates every displayed unit value without altering VND amounts.</p>
+
+        <div class="rule-list">
+          <div><span>Win</span><strong>Stake × (odds − 1)</strong></div>
+          <div><span>Half win</span><strong>½ winning profit</strong></div>
+          <div><span>Loss</span><strong>− full stake</strong></div>
+          <div><span>Half loss</span><strong>− ½ stake</strong></div>
+          <div><span>Void</span><strong>0</strong></div>
+        </div>
+
+        <button id="resetDataBtn" class="button danger" type="button">Reset all tracker data</button>
+      </aside>
+    </section>
+
+    <section class="panel table-panel">
+      <div class="panel-heading table-heading">
+        <div>
+          <p class="eyebrow">HISTORY</p>
+          <h2>Current betting table</h2>
+        </div>
+        <div class="filters">
+          <input id="searchInput" type="search" placeholder="Search match, league, bet…" />
+          <select id="statusFilter" aria-label="Filter by status">
+            <option value="all">All statuses</option>
+            <option value="pending">Pending</option>
+            <option value="win">Win</option>
+            <option value="half-win">Half win</option>
+            <option value="loss">Loss</option>
+            <option value="half-loss">Half loss</option>
+            <option value="void">Void</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Event</th>
+              <th>Bet</th>
+              <th>Odds</th>
+              <th>Stake</th>
+              <th>Status</th>
+              <th>Result</th>
+              <th>P/L</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="betsTableBody"></tbody>
+        </table>
+      </div>
+      <p id="emptyState" class="empty-state" hidden>No bets match the current filters.</p>
+    </section>
+  </main>
+
+  <dialog id="manualDialog">
+    <form id="manualForm" method="dialog">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">MANUAL ENTRY</p>
+          <h2 id="dialogTitle">Add bet</h2>
+        </div>
+        <button id="closeDialogBtn" class="icon-button" type="button" aria-label="Close">×</button>
+      </div>
+
+      <input id="editingId" type="hidden" />
+      <div class="form-grid">
+        <label>Event<input id="eventField" required /></label>
+        <label>League<input id="leagueField" /></label>
+        <label>Bet<input id="betField" required /></label>
+        <label>Odds<input id="oddsField" type="number" min="1" step="0.001" required /></label>
+        <label>Stake (VND)<input id="stakeField" type="number" min="0" step="1000" required /></label>
+        <label>Status
+          <select id="statusField">
+            <option value="pending">Pending</option>
+            <option value="win">Win</option>
+            <option value="half-win">Half win</option>
+            <option value="loss">Loss</option>
+            <option value="half-loss">Half loss</option>
+            <option value="void">Void</option>
+          </select>
+        </label>
+        <label>Event date<input id="dateField" type="datetime-local" /></label>
+        <label>Result / score<input id="resultField" /></label>
+        <label class="full-width">Notes<textarea id="notesField" rows="3"></textarea></label>
+      </div>
+
+      <div class="button-row dialog-actions">
+        <button id="cancelDialogBtn" class="button secondary" type="button">Cancel</button>
+        <button class="button primary" type="submit">Save bet</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
