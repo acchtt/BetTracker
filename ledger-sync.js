@@ -1,6 +1,6 @@
 (() => {
   const SYNC_KEY = "edgelog-canonical-ledger-version";
-  const SYNC_VERSION = "2026-07-26-sandefjord-bodo-under-2-25-pending";
+  const SYNC_VERSION = "2026-07-26-sandefjord-bodo-under-2-25-loss";
 
   if (localStorage.getItem(SYNC_KEY) === SYNC_VERSION) return;
 
@@ -12,10 +12,10 @@
       odds: 1.75,
       stakeVnd: 250000,
       payoutVnd: 437500,
-      status: "pending",
-      result: "Pending",
+      status: "loss",
+      result: "0–3",
       eventDate: "2026-07-26",
-      notes: "Evaluation bet #3 — live entry at 58:34 with Bodo/Glimt leading 1–0"
+      notes: "Evaluation bet #3 — live entry at 58:34 with Bodo/Glimt leading 1–0 — settled as loss after two added-time goals"
     },
     {
       event: "MKOI vs VIT — Game 1",
