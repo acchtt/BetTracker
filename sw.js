@@ -1,4 +1,4 @@
-const CACHE_NAME = "edgelog-shell-20260727-2";
+const CACHE_NAME = "edgelog-shell-20260727-3";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -33,6 +33,7 @@ const APP_SHELL = [
   "./bankroll-goals.js?v=20260727-1",
   "./bets-workspace.js?v=20260727-1",
   "./pwa.js?v=20260727-1",
+  "./import-review-fix.js?v=20260727-1",
   "./parser-image-ocr.js",
   "./bankroll-v2.js",
   "./analytics-v2.js",
