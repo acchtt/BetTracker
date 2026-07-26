@@ -1,10 +1,22 @@
 (() => {
   const SYNC_KEY = "edgelog-canonical-ledger-version";
-  const SYNC_VERSION = "2026-07-26-sandefjord-bodo-under-2-25-loss";
+  const SYNC_VERSION = "2026-07-26-g2-kc-over-2-5-pending";
 
   if (localStorage.getItem(SYNC_KEY) === SYNC_VERSION) return;
 
   const canonicalBets = [
+    {
+      event: "G2 vs Karmine Corp — Series",
+      league: "LEC",
+      bet: "Over 2.5 maps",
+      odds: 1.745,
+      stakeVnd: 250000,
+      payoutVnd: 436250,
+      status: "pending",
+      result: "Pending",
+      eventDate: "2026-07-26",
+      notes: "Evaluation bet #4 — prematch series total"
+    },
     {
       event: "Sandefjord vs Bodo/Glimt",
       league: "Norwegian Eliteserien",
@@ -120,6 +132,7 @@
 
   const oldBets = Array.isArray(bets) ? bets : [];
   const aliases = new Map([
+    ["G2 vs Karmine Corp — Series|Over 2.5 maps", ["G2 vs Karmine Corp — Series", "G2 vs KC", "G2 Esports vs Karmine Corp"]],
     ["Sandefjord vs Bodo/Glimt|Under 2.25 total goals", ["Sandefjord vs Bodo/Glimt", "Sandefjord Fb vs Bodo/Glimt"]],
     ["MKOI vs VIT — Game 1|Over 31 minutes", ["MKOI vs VIT — Game 1", "MKOI vs VIT Game 1"]],
     ["BLG vs AL — Game 2|Under 28.5 kills", ["BLG vs AL — Game 2", "BLG vs AL Game 2"]],
