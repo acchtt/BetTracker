@@ -5,10 +5,10 @@
     bet: "LNG +13.5 kills",
     odds: 2.199,
     stakeVnd: 250000,
-    status: "pending",
-    result: "",
+    status: "win",
+    result: "Win",
     eventDate: "",
-    notes: "Live bet taken at 13:21"
+    notes: "Live bet taken at 13:21 — settled as win"
   };
 
   const isSameBet = (bet) =>
@@ -17,14 +17,20 @@
     Number(bet.odds) === game2Bet.odds &&
     Number(bet.stakeVnd) === game2Bet.stakeVnd;
 
-  if (!DEFAULT_BETS.some(isSameBet)) {
+  const defaultBet = DEFAULT_BETS.find(isSameBet);
+  if (defaultBet) {
+    Object.assign(defaultBet, game2Bet);
+  } else {
     DEFAULT_BETS.push({ ...game2Bet, id: uid() });
   }
 
-  if (!bets.some(isSameBet)) {
+  const savedBet = bets.find(isSameBet);
+  if (savedBet) {
+    Object.assign(savedBet, game2Bet);
+  } else {
     bets.unshift({ ...game2Bet, id: uid() });
-    persist();
-    render();
-    toast("LNG +13.5 Game 2 bet added");
   }
+
+  persist();
+  render();
 })();
