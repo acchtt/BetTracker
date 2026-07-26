@@ -1,6 +1,23 @@
 {
-  "version": "2026-07-27T01:10:00Z",
+  "version": "2026-07-27T01:40:00Z",
   "bets": [
+    {
+      "syncId": "eval-20260727-wisla-gks-gks-plus-0-25",
+      "updatedAt": "2026-07-27T01:40:00Z",
+      "event": "Wisla Krakow vs GKS Katowice",
+      "league": "Poland Ekstraklasa",
+      "bet": "GKS Katowice +0.25",
+      "odds": 1.98,
+      "stakeVnd": 125000,
+      "payoutVnd": 247500,
+      "status": "pending",
+      "result": "Pending",
+      "eventDate": "2026-07-27",
+      "marketType": "Handicap",
+      "timing": "live",
+      "tags": ["evaluation", "live-read"],
+      "notes": "Evaluation bet #5 — live entry at 17:52 with score 0–0; sportsbook slip #869287480217182208"
+    },
     {
       "syncId": "eval-20260726-g2-kc-over-2-5",
       "updatedAt": "2026-07-27T01:10:00Z",
