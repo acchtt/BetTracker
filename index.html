@@ -3,22 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0c1220" />
-  <title>Bet Tracker</title>
-  <meta name="description" content="Local-first betting tracker with automatic betslip text detection." />
+  <meta name="theme-color" content="#081220" />
+  <title>EdgeLog — Log Bets. Gain Edge.</title>
+  <meta name="description" content="EdgeLog is a local-first betting journal for tracking units, exposure, and profit/loss." />
+  <link rel="icon" href="assets/edgelog-mark.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="branding.css" />
 </head>
 <body>
   <div class="page-bg"></div>
 
   <header class="hero">
     <div class="hero-copy">
-      <p class="eyebrow">LOCAL-FIRST BETTING JOURNAL</p>
-      <h1>Bet Tracker</h1>
-      <p class="subtitle">
-        Track bets, paste Vietnamese or English betslips, convert VND into units,
-        and keep your running profit/loss in one organized dashboard.
-      </p>
+      <img class="brand-mark" src="assets/edgelog-mark.svg" alt="EdgeLog" />
+      <div class="brand-content">
+        <p class="brand-kicker">DATA-DRIVEN BETTING JOURNAL</p>
+        <h1 class="brand-name"><span class="brand-name__edge">Edge</span><span class="brand-name__log">Log</span></h1>
+        <p class="brand-tagline"><strong>Log bets.</strong> Gain edge.</p>
+      </div>
     </div>
 
     <div class="hero-actions">
@@ -146,8 +148,8 @@
       <div class="table-toolbar">
         <div>
           <p class="eyebrow">HISTORY</p>
-          <h2>Current betting table</h2>
-          <p class="panel-copy">Search by event, league, market, or result, then filter by status.</p>
+          <h2>Bet log</h2>
+          <p class="panel-copy">Review every position by event, league, market, result, or status.</p>
         </div>
 
         <div class="filters">
@@ -192,6 +194,8 @@
       <p id="emptyState" class="empty-state" hidden>No bets match the current filters.</p>
     </section>
   </main>
+
+  <footer class="site-footer"><strong>EdgeLog</strong><span class="site-footer__dot"></span>Log bets. Gain edge.<span class="site-footer__dot"></span>Your data stays in this browser.</footer>
 
   <dialog id="manualDialog">
     <form id="manualForm" method="dialog">
