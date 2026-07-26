@@ -1,5 +1,6 @@
 (() => {
   document.querySelectorAll(".sidebar-nav a[href='parser.html']").forEach((link) => link.remove());
+  document.querySelectorAll(".avatar-pill").forEach((avatar) => avatar.remove());
 
   const style = document.createElement("style");
   style.textContent = `
