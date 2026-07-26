@@ -185,6 +185,7 @@
     "bet-review.js?v=20260727-1",
     "quick-settlement.js?v=20260727-2",
     "mobile-history.js?v=20260727-1",
+    "bets-workspace.js?v=20260727-1",
     "parser-image-ocr.js"
   ].forEach((src) => {
     const script = document.createElement("script");
