@@ -8,7 +8,7 @@
   const POLL_VISIBLE_MS = 10000;
   const POLL_HIDDEN_MS = 30000;
   const syncedFields = [
-    "event", "league", "bet", "odds", "stakeVnd", "payoutVnd",
+    "event", "league", "bet", "odds", "openingOdds", "closingOdds", "stakeVnd", "payoutVnd",
     "status", "result", "eventDate", "notes", "settledAt",
     "bookmaker", "marketType", "timing", "tags"
   ];
@@ -83,6 +83,13 @@
         ? globalThis.EdgeLogMetadata.normalizeTags(record.tags)
         : Array.isArray(record.tags) ? record.tags : [];
     }
+    ["openingOdds", "closingOdds"].forEach((field) => {
+      if (!Object.prototype.hasOwnProperty.call(record, field)) return;
+      const value = globalThis.EdgeLogCLV?.optionalOdds
+        ? globalThis.EdgeLogCLV.optionalOdds(record[field])
+        : Number(record[field]) > 1 ? Number(record[field]) : null;
+      record[field] = value;
+    });
     return record;
   }
 
