@@ -2,7 +2,7 @@
 
 **Log bets. Gain edge.**
 
-EdgeLog is a local-first betting journal designed for GitHub Pages. It helps track units, exposure, results, profit/loss, bankroll cash flow, and closing-line value while keeping manual browser entries local.
+EdgeLog is a local-first betting journal designed for GitHub Pages. It helps track units, exposure, results, profit/loss, bankroll cash flow, closing-line value, and configurable risk limits while keeping manual browser entries local.
 
 ## Features
 
@@ -13,8 +13,9 @@ EdgeLog is a local-first betting journal designed for GitHub Pages. It helps tra
 - Converts VND stakes to units using a configurable unit value (default: 500,000 VND).
 - Calculates win, half-win, loss, half-loss, void, pending exposure, and total net P/L.
 - Tracks starting bankroll, deposits, withdrawals, current balance, and available balance after exposure.
-- Displays cumulative profit and bankroll curves plus breakdowns by sport and odds range.
+- Displays cumulative profit and bankroll curves plus breakdowns by sport, odds range, market, timing, bookmaker, and strategy tag.
 - Displays average CLV, stake-weighted CLV, beat-close rate, and implied-probability edge.
+- Provides configurable warnings for maximum stake, pending exposure, and daily settled loss.
 - Automatically displays sport-category icons for esports, soccer, basketball, baseball, and other supported sports.
 - Saves data locally in the browser using `localStorage`.
 - Automatically checks `ledger.json` for new ChatGPT-tracked entries every 10 seconds while the page is open.
@@ -23,6 +24,18 @@ EdgeLog is a local-first betting journal designed for GitHub Pages. It helps tra
 - Manual add, edit, delete, and one-click settlement controls.
 - Search and filters for sport, status, bookmaker, market, timing, and tags.
 - Full JSON backup/restore and detailed CSV export.
+
+## Risk guardrails
+
+The Settings page includes warning limits for:
+
+- maximum stake per pending bet, measured in units
+- maximum total pending exposure as a percentage of current bankroll
+- maximum daily settled loss, measured in units
+
+Current bankroll is calculated from the starting bankroll, cash-ledger adjustments, and settled betting P/L. Daily P/L uses the settlement timestamp and falls back to the event date when a settlement timestamp is unavailable.
+
+The guardrails are warnings rather than automatic blocks. When a new pending bet exceeds an enabled limit, EdgeLog shows the reasons and asks for confirmation before saving. An individual limit can be disabled by setting it to `0`, or all pre-save warnings can be turned off from Settings.
 
 ## Closing-line value
 
@@ -39,7 +52,7 @@ For example, an entry at `2.10` and a closing price of `1.90` produces positive 
 The Settings page exports a versioned EdgeLog JSON backup containing:
 
 - all bets and bet metadata, including opening and closing odds
-- unit size and starting bankroll settings
+- unit size, starting bankroll, and risk-guardrail settings
 - bankroll deposits and withdrawals
 - theme preference
 - locally hidden synchronized bet IDs
@@ -69,7 +82,7 @@ The browser checks every 10 seconds while visible and every 30 seconds while hid
 
 ## Privacy behavior
 
-Manual entries, edits, settings, bankroll values, and cash-ledger entries remain in browser `localStorage` unless exported by the user.
+Manual entries, edits, settings, bankroll values, cash-ledger entries, and risk limits remain in browser `localStorage` unless exported by the user.
 
 Entries intentionally added through ChatGPT synchronization are stored in the public repository's `ledger.json` file so GitHub Pages can deliver them to the open website. Do not place private account details, personal identifiers, or sportsbook credentials in synchronized notes.
 
