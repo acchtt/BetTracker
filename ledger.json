@@ -1,6 +1,23 @@
 {
-  "version": "2026-07-27T01:40:00Z",
+  "version": "2026-07-27T03:10:01Z",
   "bets": [
+    {
+      "syncId": "eval-20260727-g2-kc-g2-kc-plus-12-5",
+      "updatedAt": "2026-07-27T03:10:01Z",
+      "event": "G2 Esports vs Karmine Corp — Game 2",
+      "league": "LEC 2026 Summer",
+      "bet": "Karmine Corp +12.5 kills",
+      "odds": 1.778,
+      "stakeVnd": 250000,
+      "payoutVnd": 444500,
+      "status": "pending",
+      "result": "Pending",
+      "eventDate": "2026-07-27",
+      "marketType": "Handicap",
+      "timing": "live",
+      "tags": ["evaluation", "live-read"],
+      "notes": "Evaluation bet #6 — live entry around 19:45 with G2 leading 10–4; sportsbook slip #1146484842"
+    },
     {
       "syncId": "eval-20260727-wisla-gks-gks-plus-0-25",
       "updatedAt": "2026-07-27T01:40:00Z",
