@@ -1,22 +1,23 @@
 {
-  "version": "2026-07-27T04:25:00Z",
+  "version": "2026-07-27T04:35:00Z",
   "bets": [
     {
       "syncId": "eval-20260727-g2-kc-g3-over-34-minutes",
-      "updatedAt": "2026-07-27T04:25:00Z",
+      "updatedAt": "2026-07-27T04:35:00Z",
       "event": "G2 Esports vs Karmine Corp — Game 3",
       "league": "LEC 2026 Summer",
       "bet": "Over 34 minutes",
       "odds": 1.643,
       "stakeVnd": 250000,
       "payoutVnd": 410750,
-      "status": "pending",
-      "result": "Pending",
+      "status": "win",
+      "result": "Win",
       "eventDate": "2026-07-27",
+      "settledAt": "2026-07-27T04:35:00Z",
       "marketType": "Duration",
       "timing": "live",
       "tags": ["evaluation", "live-read"],
-      "notes": "Evaluation bet #7 — live Game 3 duration bet; sportsbook slip #1146506438"
+      "notes": "Evaluation bet #7 — live Game 3 duration bet; sportsbook slip #1146506438 — game exceeded 36 minutes and settled as win"
     },
     {
       "syncId": "eval-20260727-g2-kc-g2-kc-plus-12-5",
@@ -38,20 +39,21 @@
     },
     {
       "syncId": "eval-20260727-wisla-gks-gks-plus-0-25",
-      "updatedAt": "2026-07-27T01:40:00Z",
+      "updatedAt": "2026-07-27T04:35:00Z",
       "event": "Wisla Krakow vs GKS Katowice",
       "league": "Poland Ekstraklasa",
       "bet": "GKS Katowice +0.25",
       "odds": 1.98,
       "stakeVnd": 125000,
       "payoutVnd": 247500,
-      "status": "pending",
-      "result": "Pending",
+      "status": "loss",
+      "result": "Loss",
       "eventDate": "2026-07-27",
+      "settledAt": "2026-07-27T04:35:00Z",
       "marketType": "Handicap",
       "timing": "live",
       "tags": ["evaluation", "live-read"],
-      "notes": "Evaluation bet #5 — live entry at 17:52 with score 0–0; sportsbook slip #869287480217182208"
+      "notes": "Evaluation bet #5 — live entry at 17:52 with score 0–0; sportsbook slip #869287480217182208 — settled as loss"
     },
     {
       "syncId": "eval-20260726-g2-kc-over-2-5",
