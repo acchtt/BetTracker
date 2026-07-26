@@ -1,4 +1,9 @@
 (() => {
+  const SYNC_KEY = "bet-tracker-chat-sync-version";
+  const SYNC_VERSION = "2026-07-26-tt-edg-game-1";
+
+  if (localStorage.getItem(SYNC_KEY) === SYNC_VERSION) return;
+
   const trackedBets = [
     {
       event: "Tigres UANL vs Atletico San Luis",
@@ -63,5 +68,6 @@
   });
 
   persist();
+  localStorage.setItem(SYNC_KEY, SYNC_VERSION);
   render();
 })();
