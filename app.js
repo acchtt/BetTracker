@@ -21,6 +21,11 @@ const DEFAULT_BETS = [
     id: uid(), event: "NIP vs LNG — Game 1", league: "LPL", bet: "LNG +9.5 kills",
     odds: 1.94, stakeVnd: 500000, status: "loss", result: "Loss",
     eventDate: "2026-07-26T14:00", notes: "Settled as loss"
+  },
+  {
+    id: uid(), event: "NIP vs LNG — Game 2", league: "LPL", bet: "LNG +13.5 kills",
+    odds: 2.199, stakeVnd: 250000, status: "pending", result: "",
+    eventDate: "", notes: "Live bet taken at 13:21"
   }
 ];
 
@@ -43,19 +48,7 @@ let bets = loadJson(STORAGE_KEY, DEFAULT_BETS);
 let unitVnd = Number(loadJson(SETTINGS_KEY, { unitVnd: 500000 }).unitVnd) || 500000;
 let detectedBet = null;
 
-const lngBet = bets.find((bet) =>
-  bet.event === "NIP vs LNG — Game 1" &&
-  bet.bet === "LNG +9.5 kills" &&
-  Number(bet.stakeVnd) === 500000 &&
-  Number(bet.odds) === 1.94
-);
-if (lngBet?.status === "pending") {
-  lngBet.status = "loss";
-  lngBet.result = lngBet.result || "Loss";
-  lngBet.notes = "Settled as loss";
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(bets));
-}
-
+migrateTrackedBets();
 els.unitValue.value = unitVnd;
 
 function loadJson(key, fallback) {
@@ -70,6 +63,38 @@ function loadJson(key, fallback) {
 function persist() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(bets));
   localStorage.setItem(SETTINGS_KEY, JSON.stringify({ unitVnd }));
+}
+
+function sameBet(bet, target) {
+  return bet.event === target.event &&
+    bet.bet === target.bet &&
+    Number(bet.odds) === Number(target.odds) &&
+    Number(bet.stakeVnd) === Number(target.stakeVnd);
+}
+
+function migrateTrackedBets() {
+  let changed = false;
+
+  const game1 = bets.find((bet) =>
+    bet.event === "NIP vs LNG — Game 1" &&
+    bet.bet === "LNG +9.5 kills" &&
+    Number(bet.stakeVnd) === 500000 &&
+    Number(bet.odds) === 1.94
+  );
+  if (game1?.status === "pending") {
+    game1.status = "loss";
+    game1.result = game1.result || "Loss";
+    game1.notes = "Settled as loss";
+    changed = true;
+  }
+
+  const game2 = DEFAULT_BETS.find((bet) => bet.event === "NIP vs LNG — Game 2");
+  if (game2 && !bets.some((bet) => sameBet(bet, game2))) {
+    bets.unshift({ ...game2, id: uid() });
+    changed = true;
+  }
+
+  if (changed) persist();
 }
 
 function normalize(value = "") {
@@ -272,17 +297,11 @@ function render() {
   els.emptyState.hidden = visible.length > 0;
 
   const settled = bets.filter((bet) => bet.status !== "pending").map(profitLoss);
-  const winnings = settled.filter((value) => value > 0).reduce((sum, value) => sum + value, 0);
-  const losses = settled.filter((value) => value < 0).reduce((sum, value) => sum + value, 0);
-  const net = winnings + losses;
+  const net = settled.reduce((sum, value) => sum + value, 0);
   const pending = bets.filter((bet) => bet.status === "pending").reduce((sum, bet) => sum + Number(bet.stakeVnd || 0), 0);
 
   $("#netUnits").textContent = formatUnits(net, true);
   $("#netVnd").textContent = formatVnd(net, true);
-  $("#winningsUnits").textContent = formatUnits(winnings, true);
-  $("#winningsVnd").textContent = formatVnd(winnings, true);
-  $("#lossesUnits").textContent = formatUnits(losses, true);
-  $("#lossesVnd").textContent = formatVnd(losses, true);
   $("#pendingUnits").textContent = formatUnits(pending);
   $("#pendingVnd").textContent = formatVnd(pending);
 }
@@ -361,7 +380,7 @@ els.unitValue.addEventListener("change", () => {
 els.searchInput.addEventListener("input", render);
 els.statusFilter.addEventListener("change", render);
 els.resetDataBtn.addEventListener("click", () => {
-  if (!confirm("Reset all tracker data to the four starter bets?")) return;
+  if (!confirm("Reset all tracker data to the five starter bets?")) return;
   bets = DEFAULT_BETS.map((bet) => ({ ...bet, id: uid() })); persist(); render(); toast("Tracker reset");
 });
 els.exportJsonBtn.addEventListener("click", () => download("bet-tracker-backup.json", JSON.stringify({ unitVnd, bets }, null, 2), "application/json"));
