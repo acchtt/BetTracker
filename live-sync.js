@@ -10,7 +10,8 @@
   const syncedFields = [
     "event", "league", "bet", "odds", "openingOdds", "closingOdds", "stakeVnd", "payoutVnd",
     "status", "result", "eventDate", "notes", "settledAt",
-    "bookmaker", "marketType", "timing", "tags"
+    "bookmaker", "marketType", "timing", "tags",
+    "confidence", "thesis", "processGrade", "mistakeType", "postReview"
   ];
 
   let timer = 0;
@@ -90,6 +91,22 @@
         : Number(record[field]) > 1 ? Number(record[field]) : null;
       record[field] = value;
     });
+    if (Object.prototype.hasOwnProperty.call(record, "confidence")) {
+      const confidence = globalThis.EdgeLogReview?.confidenceValue
+        ? globalThis.EdgeLogReview.confidenceValue(record.confidence)
+        : Number(record.confidence);
+      record.confidence = Number.isInteger(confidence) && confidence >= 1 && confidence <= 5 ? confidence : null;
+    }
+    if (Object.prototype.hasOwnProperty.call(record, "processGrade")) {
+      record.processGrade = globalThis.EdgeLogReview?.canonicalGrade
+        ? globalThis.EdgeLogReview.canonicalGrade(record.processGrade)
+        : ["good", "mixed", "poor"].includes(record.processGrade) ? record.processGrade : "";
+    }
+    if (Object.prototype.hasOwnProperty.call(record, "mistakeType")) {
+      record.mistakeType = globalThis.EdgeLogReview?.canonicalMistake
+        ? globalThis.EdgeLogReview.canonicalMistake(record.mistakeType)
+        : String(record.mistakeType || "");
+    }
     return record;
   }
 
