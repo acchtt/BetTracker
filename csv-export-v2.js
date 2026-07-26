@@ -13,7 +13,12 @@
     "Timing",
     "Strategy Tags",
     "Selection",
-    "Decimal Odds",
+    "Entry Odds",
+    "Opening Odds",
+    "Closing Odds",
+    "CLV %",
+    "Implied Probability Edge pp",
+    "Closing Line Verdict",
     "Stake VND",
     "Stake Units",
     "Potential Payout VND",
@@ -53,6 +58,35 @@
     return stake > 0 && odds > 1 ? Math.round(stake * odds) : 0;
   }
 
+  function optionalOdds(value) {
+    if (globalThis.EdgeLogCLV?.optionalOdds) return globalThis.EdgeLogCLV.optionalOdds(value);
+    const parsed = Number(value || 0);
+    return Number.isFinite(parsed) && parsed > 1 ? parsed : null;
+  }
+
+  function clvPercent(bet) {
+    if (globalThis.EdgeLogCLV?.clvPercent) return globalThis.EdgeLogCLV.clvPercent(bet);
+    const entry = optionalOdds(bet.odds);
+    const close = optionalOdds(bet.closingOdds);
+    return entry && close ? ((entry / close) - 1) * 100 : null;
+  }
+
+  function probabilityEdge(bet) {
+    if (globalThis.EdgeLogCLV?.impliedProbabilityEdge) return globalThis.EdgeLogCLV.impliedProbabilityEdge(bet);
+    const entry = optionalOdds(bet.odds);
+    const close = optionalOdds(bet.closingOdds);
+    return entry && close ? ((1 / close) - (1 / entry)) * 100 : null;
+  }
+
+  function closingVerdict(bet) {
+    if (globalThis.EdgeLogCLV?.verdict) return globalThis.EdgeLogCLV.verdict(bet).label;
+    const clv = clvPercent(bet);
+    if (clv === null) return "";
+    if (clv > 0.05) return "Beat close";
+    if (clv < -0.05) return "Missed close";
+    return "Matched close";
+  }
+
   function csvSafeText(value) {
     const text = String(value ?? "");
     return /^[=+\-@]/.test(text) ? `'${text}` : text;
@@ -70,6 +104,8 @@
     const unit = Math.max(1, Number(settings.unitVnd || 500000));
     const roi = stake > 0 && bet.status !== "pending" ? (pl / stake) * 100 : 0;
     const sport = typeof detectSport === "function" ? detectSport(bet).label : "";
+    const clv = clvPercent(bet);
+    const edge = probabilityEdge(bet);
 
     return [
       bet.id || "",
@@ -83,6 +119,11 @@
       meta.tags.join(" | "),
       bet.bet || "",
       Number(bet.odds || 0),
+      optionalOdds(bet.openingOdds) ?? "",
+      optionalOdds(bet.closingOdds) ?? "",
+      clv ?? "",
+      edge ?? "",
+      closingVerdict(bet),
       stake,
       stake / unit,
       payoutFor(bet),
@@ -115,7 +156,7 @@
   function decorateSettings() {
     document.querySelectorAll("[data-export-csv]").forEach((button) => {
       button.textContent = "Export detailed CSV";
-      button.title = "Includes bookmaker, market, timing, tags, payout, P/L, dates, and sync metadata.";
+      button.title = "Includes line prices, CLV, bookmaker, market, timing, tags, payout, P/L, dates, and sync metadata.";
     });
 
     const button = document.querySelector("[data-export-csv]");
@@ -123,7 +164,7 @@
     if (panel && !panel.querySelector(".csv-export-scope")) {
       const note = document.createElement("div");
       note.className = "backup-scope csv-export-scope";
-      note.innerHTML = "<strong>Detailed CSV includes:</strong> sport, bookmaker, market, live/pre-match timing, strategy tags, payout, units, ROI, event and settlement dates, notes, and synchronization identifiers.";
+      note.innerHTML = "<strong>Detailed CSV includes:</strong> entry, opening and closing odds, CLV, implied probability edge, sport, bookmaker, market, timing, strategy tags, payout, units, ROI, dates, notes, and synchronization identifiers.";
       panel.append(note);
     }
   }
