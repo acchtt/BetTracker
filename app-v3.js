@@ -2,6 +2,8 @@ const STORAGE_KEY = "bet-tracker-v2";
 const SETTINGS_KEY = "bet-tracker-settings-v2";
 const LEGACY_SETTINGS_KEY = "bet-tracker-settings-v1";
 const THEME_KEY = "edgelog-theme";
+const MIGRATION_KEY = "edgelog-v3-migration";
+const MIGRATION_VERSION = "2026-07-26-multipage";
 
 const uid = () => globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(16).slice(2)}`;
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -40,6 +42,7 @@ function sameBet(a, b) {
 }
 
 function migrateTrackedBets() {
+  if (localStorage.getItem(MIGRATION_KEY) === MIGRATION_VERSION) return;
   let changed = false;
   DEFAULT_BETS.forEach((tracked) => {
     const existing = bets.find((bet) => sameBet(bet, tracked) || (bet.event === tracked.event && bet.bet === tracked.bet));
@@ -54,6 +57,7 @@ function migrateTrackedBets() {
     changed = true;
   });
   if (changed) persist();
+  localStorage.setItem(MIGRATION_KEY, MIGRATION_VERSION);
 }
 
 function persist() {
