@@ -1,10 +1,21 @@
 (() => {
   const SYNC_KEY = "edgelog-canonical-ledger-version";
-  const SYNC_VERSION = "2026-07-26-blg-al-game-2-under-won";
+  const SYNC_VERSION = "2026-07-26-mkoi-vit-game-1-over-31-pending";
 
   if (localStorage.getItem(SYNC_KEY) === SYNC_VERSION) return;
 
   const canonicalBets = [
+    {
+      event: "MKOI vs VIT — Game 1",
+      league: "LEC",
+      bet: "Over 31 minutes",
+      odds: 1.815,
+      stakeVnd: 250000,
+      status: "pending",
+      result: "Pending",
+      eventDate: "2026-07-26",
+      notes: "Evaluation bet #2 — live entry after the line moved from Over 32 at 2.131; placed at Over 31"
+    },
     {
       event: "BLG vs AL — Game 2",
       league: "LPL",
@@ -97,6 +108,7 @@
 
   const oldBets = Array.isArray(bets) ? bets : [];
   const aliases = new Map([
+    ["MKOI vs VIT — Game 1|Over 31 minutes", ["MKOI vs VIT — Game 1", "MKOI vs VIT Game 1"]],
     ["BLG vs AL — Game 2|Under 28.5 kills", ["BLG vs AL — Game 2", "BLG vs AL Game 2"]],
     ["TT vs EDG — Game 2|Under 24.5 kills", ["TT vs EDG — Game 2", "TT vs EDG Game 2"]],
     ["TT vs EDG — Game 1|EDG +4.5 kills", ["TT vs EDG — Game 1", "TT vs EDG Game 1"]],
