@@ -164,6 +164,10 @@
     openParser();
   });
 
+  const sportDetectionScript = document.createElement("script");
+  sportDetectionScript.src = "sport-detection-patch.js?v=20260727-1";
+  document.body.append(sportDetectionScript);
+
   const ledgerSyncScript = document.createElement("script");
   ledgerSyncScript.src = "ledger-sync.js?v=20260726-3";
   document.body.append(ledgerSyncScript);
