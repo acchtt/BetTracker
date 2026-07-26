@@ -1,6 +1,6 @@
 (() => {
   const SYNC_KEY = "edgelog-canonical-ledger-version";
-  const SYNC_VERSION = "2026-07-26-canonical-ledger-8-bets";
+  const SYNC_VERSION = "2026-07-26-blg-al-game-2-under-won";
 
   if (localStorage.getItem(SYNC_KEY) === SYNC_VERSION) return;
 
@@ -11,10 +11,10 @@
       bet: "Under 28.5 kills",
       odds: 1.864,
       stakeVnd: 250000,
-      status: "pending",
-      result: "Pending",
+      status: "win",
+      result: "Win",
       eventDate: "2026-07-26",
-      notes: "Evaluation bet #1 — live entry at 13:27 with AL leading 3–1; actual odds were below the 1.95 model minimum"
+      notes: "Evaluation bet #1 — live entry at 13:27 with AL leading 3–1; settled as win"
     },
     {
       event: "TT vs EDG — Game 2",
