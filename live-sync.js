@@ -8,10 +8,9 @@
   const POLL_VISIBLE_MS = 10000;
   const POLL_HIDDEN_MS = 30000;
   const syncedFields = [
-    "event", "league", "bet", "odds", "openingOdds", "closingOdds", "stakeVnd", "payoutVnd",
+    "event", "league", "bet", "odds", "stakeVnd", "payoutVnd",
     "status", "result", "eventDate", "notes", "settledAt",
-    "bookmaker", "marketType", "timing", "tags",
-    "confidence", "thesis", "processGrade", "mistakeType", "postReview"
+    "bookmaker", "marketType", "timing", "tags"
   ];
 
   let timer = 0;
@@ -83,29 +82,6 @@
       record.tags = globalThis.EdgeLogMetadata?.normalizeTags
         ? globalThis.EdgeLogMetadata.normalizeTags(record.tags)
         : Array.isArray(record.tags) ? record.tags : [];
-    }
-    ["openingOdds", "closingOdds"].forEach((field) => {
-      if (!Object.prototype.hasOwnProperty.call(record, field)) return;
-      const value = globalThis.EdgeLogCLV?.optionalOdds
-        ? globalThis.EdgeLogCLV.optionalOdds(record[field])
-        : Number(record[field]) > 1 ? Number(record[field]) : null;
-      record[field] = value;
-    });
-    if (Object.prototype.hasOwnProperty.call(record, "confidence")) {
-      const confidence = globalThis.EdgeLogReview?.confidenceValue
-        ? globalThis.EdgeLogReview.confidenceValue(record.confidence)
-        : Number(record.confidence);
-      record.confidence = Number.isInteger(confidence) && confidence >= 1 && confidence <= 5 ? confidence : null;
-    }
-    if (Object.prototype.hasOwnProperty.call(record, "processGrade")) {
-      record.processGrade = globalThis.EdgeLogReview?.canonicalGrade
-        ? globalThis.EdgeLogReview.canonicalGrade(record.processGrade)
-        : ["good", "mixed", "poor"].includes(record.processGrade) ? record.processGrade : "";
-    }
-    if (Object.prototype.hasOwnProperty.call(record, "mistakeType")) {
-      record.mistakeType = globalThis.EdgeLogReview?.canonicalMistake
-        ? globalThis.EdgeLogReview.canonicalMistake(record.mistakeType)
-        : String(record.mistakeType || "");
     }
     return record;
   }
