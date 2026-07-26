@@ -2,30 +2,52 @@
 
 **Log bets. Gain edge.**
 
-EdgeLog is a static, local-first betting journal designed for GitHub Pages. It helps track units, exposure, results, and profit/loss without sending betting history to a server.
+EdgeLog is a local-first betting journal designed for GitHub Pages. It helps track units, exposure, results, and profit/loss while keeping manual browser entries local.
 
 ## Features
 
 - Automatically parses pasted Vietnamese and English betslip text.
+- Reads betslip screenshots with browser-based OCR.
 - Detects event, league, market, odds, stake, event date, status, result, and payout.
 - Converts VND stakes to units using a configurable unit value (default: 500,000 VND).
 - Calculates win, half-win, loss, half-loss, void, pending exposure, and total net P/L.
 - Automatically displays sport-category icons for esports, soccer, basketball, baseball, and other supported sports.
 - Saves data locally in the browser using `localStorage`.
-- Manual add, edit, and delete controls.
+- Automatically checks `ledger.json` for new ChatGPT-tracked entries every 10 seconds while the page is open.
+- Refreshes immediately when the tab regains focus or the connection comes back online.
+- Preserves locally edited bets instead of replacing them during remote synchronization.
+- Manual add, edit, delete, and one-click settlement controls.
 - Search and status filtering.
 - JSON backup/restore and CSV export.
+
+## Live ledger workflow
+
+`ledger.json` is the canonical feed for entries added or updated through ChatGPT.
+
+For each change:
+
+1. Add or update the bet using a stable `syncId`.
+2. Change the top-level `version` timestamp.
+3. Commit the file to `main`.
+4. After GitHub Pages deploys the commit, open EdgeLog tabs detect the new version automatically and update without a page refresh.
+
+The browser checks every 10 seconds while visible and every 30 seconds while hidden. GitHub Pages deployment time still applies before the new feed becomes publicly available.
 
 ## Brand
 
 - Product name: **EdgeLog**
 - Tagline: **Log bets. Gain edge.**
 - Primary colors: electric blue, cyan, and violet on a dark navy foundation.
-- Logo asset: `assets/edgelog-mark.svg`
+- Sidebar lockup: `assets/edgelog-horizontal-dark.svg`
+- App icon: `assets/edgelog-app-icon.svg`
 
-## Important privacy behavior
+## Privacy behavior
 
-All data stays inside the browser. GitHub Pages does not receive or store the bet history. Clearing browser site data will remove the tracker unless a JSON backup was exported.
+Manual entries, edits, settings, and bankroll values remain in browser `localStorage` unless exported by the user.
+
+Entries intentionally added through ChatGPT synchronization are stored in the public repository's `ledger.json` file so GitHub Pages can deliver them to the open website. Do not place private account details, personal identifiers, or sportsbook credentials in synchronized notes.
+
+Clearing browser site data removes local-only tracker data unless a JSON backup was exported.
 
 ## Publish with GitHub Pages
 
