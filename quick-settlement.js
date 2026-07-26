@@ -122,8 +122,10 @@
       if (!bet) return;
       const previous = { ...bet };
       const status = settleButton.dataset.settleStatus;
+      const now = new Date().toISOString();
       bet.status = status;
-      bet.settledAt = new Date().toISOString();
+      bet.settledAt = now;
+      bet._localEditedAt = now;
       if (!bet.result || normalize(bet.result).toLowerCase() === "pending") {
         bet.result = statusLabel(status);
       }
