@@ -1,9 +1,9 @@
 {
-  "version": "2026-07-27T00:30:00Z",
+  "version": "2026-07-27T01:10:00Z",
   "bets": [
     {
       "syncId": "eval-20260726-g2-kc-over-2-5",
-      "updatedAt": "2026-07-26T17:30:00Z",
+      "updatedAt": "2026-07-27T01:10:00Z",
       "event": "G2 vs Karmine Corp — Series",
       "league": "LEC",
       "bet": "Over 2.5 maps",
@@ -13,11 +13,14 @@
       "status": "pending",
       "result": "Pending",
       "eventDate": "2026-07-26",
+      "marketType": "Maps",
+      "timing": "prematch",
+      "tags": ["evaluation", "series-total"],
       "notes": "Evaluation bet #4 — prematch series total"
     },
     {
       "syncId": "eval-20260726-sandefjord-bodo-under-2-25",
-      "updatedAt": "2026-07-26T17:20:00Z",
+      "updatedAt": "2026-07-27T01:10:00Z",
       "event": "Sandefjord vs Bodo/Glimt",
       "league": "Norwegian Eliteserien",
       "bet": "Under 2.25 total goals",
@@ -27,11 +30,14 @@
       "status": "loss",
       "result": "0–3",
       "eventDate": "2026-07-26",
+      "marketType": "Totals",
+      "timing": "live",
+      "tags": ["evaluation", "live-read"],
       "notes": "Evaluation bet #3 — live entry at 58:34 with Bodo/Glimt leading 1–0 — settled as loss after two added-time goals"
     },
     {
       "syncId": "eval-20260726-mkoi-vit-over-31",
-      "updatedAt": "2026-07-26T17:10:00Z",
+      "updatedAt": "2026-07-27T01:10:00Z",
       "event": "MKOI vs VIT — Game 1",
       "league": "LEC",
       "bet": "Over 31 minutes",
@@ -40,11 +46,14 @@
       "status": "loss",
       "result": "Loss",
       "eventDate": "2026-07-26",
+      "marketType": "Duration",
+      "timing": "live",
+      "tags": ["evaluation", "line-move"],
       "notes": "Evaluation bet #2 — live entry after the line moved from Over 32 at 2.131; placed at Over 31 — settled as loss"
     },
     {
       "syncId": "eval-20260726-blg-al-under-28-5",
-      "updatedAt": "2026-07-26T17:00:00Z",
+      "updatedAt": "2026-07-27T01:10:00Z",
       "event": "BLG vs AL — Game 2",
       "league": "LPL",
       "bet": "Under 28.5 kills",
@@ -53,11 +62,14 @@
       "status": "win",
       "result": "Win",
       "eventDate": "2026-07-26",
+      "marketType": "Kills",
+      "timing": "live",
+      "tags": ["evaluation", "live-read"],
       "notes": "Evaluation bet #1 — live entry at 13:27 with AL leading 3–1; settled as win"
     },
     {
       "syncId": "20260726-tt-edg-g2-under-24-5",
-      "updatedAt": "2026-07-26T16:50:00Z",
+      "updatedAt": "2026-07-27T01:10:00Z",
       "event": "TT vs EDG — Game 2",
       "league": "LPL",
       "bet": "Under 24.5 kills",
@@ -66,11 +78,14 @@
       "status": "win",
       "result": "Win",
       "eventDate": "",
+      "marketType": "Kills",
+      "timing": "live",
+      "tags": ["live-read"],
       "notes": "Live entry at 18:00 with EDG leading 4–1 — settled as win"
     },
     {
       "syncId": "20260726-tt-edg-g1-edg-plus-4-5",
-      "updatedAt": "2026-07-26T16:40:00Z",
+      "updatedAt": "2026-07-27T01:10:00Z",
       "event": "TT vs EDG — Game 1",
       "league": "LPL",
       "bet": "EDG +4.5 kills",
@@ -79,11 +94,14 @@
       "status": "loss",
       "result": "TT won",
       "eventDate": "",
+      "marketType": "Handicap",
+      "timing": "prematch",
+      "tags": ["draft-read"],
       "notes": "Pre-game entry after finalized draft — settled as loss"
     },
     {
       "syncId": "20260726-nip-lng-g2-plus-13-5",
-      "updatedAt": "2026-07-26T16:30:00Z",
+      "updatedAt": "2026-07-27T01:10:00Z",
       "event": "NIP vs LNG — Game 2",
       "league": "LPL",
       "bet": "LNG +13.5 kills",
@@ -92,11 +110,14 @@
       "status": "win",
       "result": "Win",
       "eventDate": "",
+      "marketType": "Handicap",
+      "timing": "live",
+      "tags": ["live-read"],
       "notes": "Live bet taken at 13:21 — settled as win"
     },
     {
       "syncId": "20260726-nip-lng-g1-plus-9-5",
-      "updatedAt": "2026-07-26T16:20:00Z",
+      "updatedAt": "2026-07-27T01:10:00Z",
       "event": "NIP vs LNG — Game 1",
       "league": "LPL",
       "bet": "LNG +9.5 kills",
@@ -105,11 +126,14 @@
       "status": "loss",
       "result": "Loss",
       "eventDate": "2026-07-26T14:00",
+      "marketType": "Handicap",
+      "timing": "live",
+      "tags": ["live-read"],
       "notes": "Settled as loss"
     },
     {
       "syncId": "20260726-weston-melbourne-under-1-75",
-      "updatedAt": "2026-07-26T16:10:00Z",
+      "updatedAt": "2026-07-27T01:10:00Z",
       "event": "Weston Workers Bears vs Melbourne City FC",
       "league": "Australia Cup",
       "bet": "Under 1.75 (live at 0–1)",
@@ -118,11 +142,14 @@
       "status": "loss",
       "result": "0–3",
       "eventDate": "2026-07-26T11:00",
+      "marketType": "Totals",
+      "timing": "live",
+      "tags": ["imported-slip"],
       "notes": "Parsed from Vietnamese betslip"
     },
     {
       "syncId": "20260726-lafc-skc-under-4-25",
-      "updatedAt": "2026-07-26T16:00:00Z",
+      "updatedAt": "2026-07-27T01:10:00Z",
       "event": "LAFC vs Sporting Kansas City",
       "league": "Major League Soccer",
       "bet": "Under 4.25",
@@ -131,11 +158,14 @@
       "status": "half-win",
       "result": "Half win",
       "eventDate": "",
+      "marketType": "Totals",
+      "timing": "prematch",
+      "tags": ["official"],
       "notes": "Official tracked bet"
     },
     {
       "syncId": "20260726-tigres-san-luis-under-3-5",
-      "updatedAt": "2026-07-26T15:50:00Z",
+      "updatedAt": "2026-07-27T01:10:00Z",
       "event": "Tigres UANL vs Atletico San Luis",
       "league": "Mexico Liga MX",
       "bet": "Under 3.5",
@@ -144,6 +174,9 @@
       "status": "loss",
       "result": "2–2",
       "eventDate": "",
+      "marketType": "Totals",
+      "timing": "live",
+      "tags": ["live-read"],
       "notes": "Live entry at 47' with the score 1–1"
     }
   ]
