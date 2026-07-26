@@ -1,4 +1,4 @@
-const CACHE_NAME = "edgelog-shell-20260727-3";
+const CACHE_NAME = "edgelog-shell-20260727-4";
 const APP_SHELL = [
   "./",
   "./index.html",
