@@ -169,16 +169,20 @@
   document.body.append(sportDetectionScript);
 
   const liveSyncScript = document.createElement("script");
-  liveSyncScript.src = "live-sync.js?v=20260727-1";
+  liveSyncScript.src = "live-sync.js?v=20260727-2";
   document.body.append(liveSyncScript);
 
   const manualPopupScript = document.createElement("script");
-  manualPopupScript.src = "manual-popup.js?v=20260727-2";
+  manualPopupScript.src = "manual-popup.js?v=20260727-3";
   document.body.append(manualPopupScript);
 
   const quickSettlementScript = document.createElement("script");
   quickSettlementScript.src = "quick-settlement.js?v=20260727-2";
   document.body.append(quickSettlementScript);
+
+  const mobileHistoryScript = document.createElement("script");
+  mobileHistoryScript.src = "mobile-history.js?v=20260727-1";
+  document.body.append(mobileHistoryScript);
 
   const imageOcrScript = document.createElement("script");
   imageOcrScript.src = "parser-image-ocr.js";
