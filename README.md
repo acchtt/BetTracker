@@ -2,19 +2,25 @@
 
 **Log bets. Gain edge.**
 
-EdgeLog is a local-first betting journal designed for GitHub Pages. It helps track units, exposure, results, profit/loss, bankroll cash flow, betting metadata, and configurable risk limits while keeping manual browser entries local.
+EdgeLog is a local-first betting journal designed for GitHub Pages. It helps track units, exposure, results, profit/loss, bankroll cash flow, betting metadata, reports, and configurable risk limits while keeping manual browser entries local.
 
 ## Features
 
 - Automatically parses pasted Vietnamese and English betslip text.
 - Reads betslip screenshots with browser-based OCR.
+- Provides an editable import-review screen before a detected bet is saved.
 - Detects event, league, market, odds, stake, event date, status, result, payout, bookmaker, timing, and strategy tags.
 - Converts VND stakes to units using a configurable unit value (default: 500,000 VND).
 - Calculates win, half-win, loss, half-loss, void, pending exposure, and total net P/L.
-- Tracks starting bankroll, deposits, withdrawals, current balance, and available balance after exposure.
+- Tracks starting bankroll, deposits, withdrawals, current balance, available balance, and a configurable bankroll goal.
 - Displays cumulative profit and bankroll curves plus breakdowns by sport, odds range, market, timing, bookmaker, and strategy tag.
+- Provides weekly and monthly reports with P/L, ROI, stake, win rate, drawdown, strongest sport, and previous-period comparisons.
+- Includes a monthly calendar showing daily settled P/L with click-through to the matching bets.
+- Allows the Dashboard to switch between today, the last 7 days, the last 30 days, the current month, and all time.
 - Provides configurable warnings for maximum stake, pending exposure, and daily settled loss.
 - Detects possible duplicate entries before saving.
+- Supports a bet-detail drawer, batch settlement, bulk metadata editing, and bulk deletion.
+- Provides comfortable and compact table density plus configurable visible columns.
 - Automatically displays sport-category icons for esports, soccer, basketball, baseball, and other supported sports.
 - Saves data locally in the browser using `localStorage`.
 - Automatically checks `ledger.json` for new ChatGPT-tracked entries every 10 seconds while the page is open.
@@ -23,6 +29,43 @@ EdgeLog is a local-first betting journal designed for GitHub Pages. It helps tra
 - Manual add, edit, delete, and one-click settlement controls.
 - Search and filters for sport, status, bookmaker, market, timing, and tags.
 - Sorting, page-size controls, pagination, full JSON backup/restore, and detailed CSV export.
+- Installs as a Progressive Web App and caches the application shell for offline access.
+
+## Reports and calendar
+
+The Reports page groups dated settled bets by week or month. Each period includes:
+
+- settled-bet count and total stake
+- P/L and ROI
+- win rate
+- peak-to-trough drawdown
+- strongest sport by P/L
+
+The comparison panel contrasts the latest complete or current period with the previous equal period. The Calendar page groups results by day; selecting a day opens Bet History filtered to that date.
+
+## Bet-history productivity
+
+The Bets page supports:
+
+- clicking a row to open a read-only detail drawer
+- selecting multiple entries for settlement, metadata editing, or deletion
+- compact and comfortable row density
+- choosing which table columns are visible
+- possible-duplicate warnings and filtering
+
+Synchronized entries deleted through a bulk action are added to the local hidden-sync list so the live feed does not immediately restore them.
+
+## Bankroll goals
+
+The Bankroll page accepts an optional target balance. Progress uses:
+
+`starting bankroll + deposits - withdrawals + settled betting P/L`
+
+The goal panel shows the current balance, percentage completed, remaining amount, or the amount by which the target has been exceeded. Setting the target to `0` clears it.
+
+## Progressive Web App and offline behavior
+
+EdgeLog registers a service worker and provides an installation prompt when supported by the browser. The application shell, core scripts, styles, and primary pages are cached for offline use. Manual browser data remains available because it is stored locally. Live ledger synchronization resumes when the connection returns.
 
 ## Risk guardrails
 
@@ -41,7 +84,7 @@ The guardrails are warnings rather than automatic blocks. When a new pending bet
 The Settings page exports a versioned EdgeLog JSON backup containing:
 
 - all bets and bet metadata
-- unit size, starting bankroll, and risk-guardrail settings
+- unit size, starting bankroll, bankroll goal, and risk-guardrail settings
 - bankroll deposits and withdrawals
 - theme preference
 - locally hidden synchronized bet IDs
@@ -73,7 +116,7 @@ The browser checks every 10 seconds while visible and every 30 seconds while hid
 
 ## Privacy behavior
 
-Manual entries, edits, settings, bankroll values, cash-ledger entries, and risk limits remain in browser `localStorage` unless exported by the user.
+Manual entries, edits, settings, bankroll values, cash-ledger entries, table preferences, and risk limits remain in browser `localStorage` unless exported by the user.
 
 Entries intentionally added through ChatGPT synchronization are stored in the public repository's `ledger.json` file so GitHub Pages can deliver them to the open website. Do not place private account details, personal identifiers, or sportsbook credentials in synchronized notes.
 
