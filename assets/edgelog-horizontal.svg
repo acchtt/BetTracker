@@ -1,29 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 190" role="img" aria-labelledby="title desc">
 <title id="title">EdgeLog horizontal logo</title>
-<desc id="desc">The agreed EdgeLog symbol, wordmark, and tagline.</desc>
+<desc id="desc">Bordered E mark, EdgeLog wordmark, and tagline.</desc>
 <defs>
-  <linearGradient id="top" x1="20" y1="25" x2="145" y2="85" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#2563FF"/>
-    <stop offset="1" stop-color="#1A8CFF"/>
-  </linearGradient>
-  <linearGradient id="arrow" x1="20" y1="130" x2="160" y2="55" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#2563FF"/>
-    <stop offset=".5" stop-color="#00BFFF"/>
+  <linearGradient id="brand" x1="22" y1="160" x2="156" y2="22" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#7C3AED"/>
+    <stop offset=".48" stop-color="#2563FF"/>
     <stop offset="1" stop-color="#00D4FF"/>
   </linearGradient>
-  <linearGradient id="bottom" x1="20" y1="128" x2="120" y2="160" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#7C3AED"/>
-    <stop offset="1" stop-color="#6426FF"/>
-  </linearGradient>
-  <linearGradient id="word" x1="408" y1="55" x2="660" y2="108" gradientUnits="userSpaceOnUse">
+  <linearGradient id="word" x1="410" y1="55" x2="665" y2="108" gradientUnits="userSpaceOnUse">
     <stop stop-color="#2563FF"/>
     <stop offset="1" stop-color="#00D4FF"/>
   </linearGradient>
 </defs>
-<g transform="translate(18 16) scale(1.52)">
-  <path fill="url(#top)" d="M14 18h63L64 31H29v14h31L48 58H14V18Z"/>
-  <path fill="url(#arrow)" d="M14 62h36l22-22-7-7 24-5-5 24-7-7-22 22H14V62Z"/>
-  <path fill="url(#bottom)" d="M14 75h52v13H14V75Z"/>
+<g transform="translate(18 18) scale(1.5)">
+  <rect x="7.5" y="7.5" width="85" height="85" rx="18" fill="none" stroke="url(#brand)" stroke-width="5"/>
+  <path fill="url(#brand)" d="M23 24h54l-7 13H38v7h28l-7 13H38v7h35l-7 13H23V24Z"/>
 </g>
 <text x="185" y="105" font-family="Inter,Arial,sans-serif" font-size="76" font-weight="800" letter-spacing="1.5" fill="#FFFFFF">EDGE</text>
 <text x="408" y="105" font-family="Inter,Arial,sans-serif" font-size="76" font-weight="800" letter-spacing="1.5" fill="url(#word)">LOG</text>
