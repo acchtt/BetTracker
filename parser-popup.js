@@ -166,6 +166,7 @@
 
   [
     "bet-metadata.js?v=20260727-1",
+    "bet-metadata-fixes.js?v=20260727-1",
     "sport-detection-patch.js?v=20260727-1",
     "live-sync.js?v=20260727-3",
     "manual-popup.js?v=20260727-4",
