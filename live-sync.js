@@ -4,6 +4,7 @@
 
   const FEED_URL = "ledger.json";
   const VERSION_KEY = "edgelog-live-ledger-version";
+  const HIDDEN_SYNC_KEY = "edgelog-hidden-sync-ids";
   const POLL_VISIBLE_MS = 10000;
   const POLL_HIDDEN_MS = 30000;
   const syncedFields = [
@@ -86,6 +87,15 @@
     return Number.isFinite(parsed) ? parsed : 0;
   }
 
+  function hiddenSyncIds() {
+    try {
+      const parsed = JSON.parse(localStorage.getItem(HIDDEN_SYNC_KEY));
+      return new Set(Array.isArray(parsed) ? parsed : []);
+    } catch {
+      return new Set();
+    }
+  }
+
   function comparableSnapshot(bet) {
     return JSON.stringify(syncedFields.map((field) => bet?.[field] ?? null));
   }
@@ -100,12 +110,13 @@
 
   function mergeFeed(feed) {
     const remoteBets = Array.isArray(feed?.bets) ? feed.bets : [];
+    const hiddenIds = hiddenSyncIds();
     const additions = [];
     let updated = 0;
     let metadataAttached = 0;
 
     remoteBets.forEach((remote) => {
-      if (!remote?.syncId || !remote.event || !remote.bet) return;
+      if (!remote?.syncId || !remote.event || !remote.bet || hiddenIds.has(remote.syncId)) return;
       const remoteUpdatedAt = feed.version || remote.updatedAt || new Date(0).toISOString();
       let existing = bets.find((bet) => bet._syncId === remote.syncId);
 
