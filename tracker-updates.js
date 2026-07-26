@@ -110,7 +110,7 @@
     },
     {
       key: "football",
-      label: "Football",
+      label: "Soccer",
       tests: [
         "football", "soccer", "australia cup", "ffa cup", "premier league", "epl",
         "champions league", "uefa champions", "ucl", "liga mx", "major league soccer",
