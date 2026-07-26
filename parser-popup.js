@@ -164,6 +164,10 @@
     openParser();
   });
 
+  const imageOcrScript = document.createElement("script");
+  imageOcrScript.src = "parser-image-ocr.js";
+  document.body.append(imageOcrScript);
+
   const params = new URLSearchParams(location.search);
   if (params.get("parser") === "1") {
     openParser();
