@@ -9,7 +9,8 @@
   const POLL_HIDDEN_MS = 30000;
   const syncedFields = [
     "event", "league", "bet", "odds", "stakeVnd", "payoutVnd",
-    "status", "result", "eventDate", "notes", "settledAt"
+    "status", "result", "eventDate", "notes", "settledAt",
+    "bookmaker", "marketType", "timing", "tags"
   ];
 
   let timer = 0;
@@ -19,40 +20,12 @@
 
   const style = document.createElement("style");
   style.textContent = `
-    .live-sync-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      min-height: 34px;
-      padding: 7px 10px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: var(--panel);
-      color: var(--muted);
-      font-size: .75rem;
-      font-weight: 750;
-      white-space: nowrap;
-    }
-    .live-sync-status::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--green);
-      box-shadow: 0 0 0 4px color-mix(in srgb, var(--green) 14%, transparent);
-    }
-    .live-sync-status[data-state="syncing"]::before {
-      background: var(--blue);
-      box-shadow: 0 0 0 4px color-mix(in srgb, var(--blue) 14%, transparent);
-      animation: edgelog-sync-pulse 1s ease-in-out infinite;
-    }
-    .live-sync-status[data-state="offline"]::before,
-    .live-sync-status[data-state="error"]::before {
-      background: var(--amber);
-      box-shadow: 0 0 0 4px color-mix(in srgb, var(--amber) 14%, transparent);
-    }
-    @keyframes edgelog-sync-pulse { 50% { opacity: .35; transform: scale(.75); } }
-    @media (max-width: 720px) { .live-sync-status { display: none; } }
+    .live-sync-status{display:inline-flex;align-items:center;gap:7px;min-height:34px;padding:7px 10px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--muted);font-size:.75rem;font-weight:750;white-space:nowrap}
+    .live-sync-status::before{content:"";width:7px;height:7px;border-radius:999px;background:var(--green);box-shadow:0 0 0 4px color-mix(in srgb,var(--green) 14%,transparent)}
+    .live-sync-status[data-state="syncing"]::before{background:var(--blue);box-shadow:0 0 0 4px color-mix(in srgb,var(--blue) 14%,transparent);animation:edgelog-sync-pulse 1s ease-in-out infinite}
+    .live-sync-status[data-state="offline"]::before,.live-sync-status[data-state="error"]::before{background:var(--amber);box-shadow:0 0 0 4px color-mix(in srgb,var(--amber) 14%,transparent)}
+    @keyframes edgelog-sync-pulse{50%{opacity:.35;transform:scale(.75)}}
+    @media(max-width:720px){.live-sync-status{display:none}}
   `;
   document.head.append(style);
 
@@ -78,13 +51,13 @@
     element.textContent = text;
   }
 
-  function fingerprint(bet) {
-    return normalize(`${bet?.event || ""}|${bet?.bet || ""}`).toLowerCase();
-  }
-
   function timestamp(value) {
     const parsed = Date.parse(value || "");
     return Number.isFinite(parsed) ? parsed : 0;
+  }
+
+  function fingerprint(bet) {
+    return normalize(`${bet?.event || ""}|${bet?.bet || ""}`).toLowerCase();
   }
 
   function hiddenSyncIds() {
@@ -105,17 +78,21 @@
     syncedFields.forEach((field) => {
       if (Object.prototype.hasOwnProperty.call(remote, field)) record[field] = remote[field];
     });
+    if (Object.prototype.hasOwnProperty.call(record, "tags")) {
+      record.tags = globalThis.EdgeLogMetadata?.normalizeTags
+        ? globalThis.EdgeLogMetadata.normalizeTags(record.tags)
+        : Array.isArray(record.tags) ? record.tags : [];
+    }
     return record;
   }
 
   function mergeFeed(feed) {
-    const remoteBets = Array.isArray(feed?.bets) ? feed.bets : [];
     const hiddenIds = hiddenSyncIds();
     const additions = [];
     let updated = 0;
     let metadataAttached = 0;
 
-    remoteBets.forEach((remote) => {
+    (Array.isArray(feed?.bets) ? feed.bets : []).forEach((remote) => {
       if (!remote?.syncId || !remote.event || !remote.bet || hiddenIds.has(remote.syncId)) return;
       const remoteUpdatedAt = feed.version || remote.updatedAt || new Date(0).toISOString();
       let existing = bets.find((bet) => bet._syncId === remote.syncId);
@@ -131,12 +108,7 @@
       }
 
       if (!existing) {
-        additions.push({
-          ...remoteRecord(remote),
-          id: uid(),
-          _syncId: remote.syncId,
-          _syncUpdatedAt: remoteUpdatedAt
-        });
+        additions.push({ ...remoteRecord(remote), id: uid(), _syncId: remote.syncId, _syncUpdatedAt: remoteUpdatedAt });
         return;
       }
 
@@ -147,14 +119,8 @@
       if (remoteEditTime && remoteEditTime <= previousSyncTime) return;
 
       const before = comparableSnapshot(existing);
-      const preserved = {
-        id: existing.id,
-        _localEditedAt: existing._localEditedAt
-      };
-      Object.assign(existing, remoteRecord(remote), preserved, {
-        _syncId: remote.syncId,
-        _syncUpdatedAt: remoteUpdatedAt
-      });
+      const preserved = { id: existing.id, _localEditedAt: existing._localEditedAt };
+      Object.assign(existing, remoteRecord(remote), preserved, { _syncId: remote.syncId, _syncUpdatedAt: remoteUpdatedAt });
       if (comparableSnapshot(existing) !== before) updated += 1;
     });
 
@@ -164,8 +130,7 @@
 
   function scheduleNext() {
     clearTimeout(timer);
-    if (stopped) return;
-    timer = setTimeout(() => syncNow(), document.hidden ? POLL_HIDDEN_MS : POLL_VISIBLE_MS);
+    if (!stopped) timer = setTimeout(syncNow, document.hidden ? POLL_HIDDEN_MS : POLL_VISIBLE_MS);
   }
 
   async function syncNow(options = {}) {
@@ -179,11 +144,7 @@
     syncing = true;
     setStatus("syncing", "Syncing…");
     try {
-      const separator = FEED_URL.includes("?") ? "&" : "?";
-      const response = await fetch(`${FEED_URL}${separator}_=${Date.now()}`, {
-        cache: "no-store",
-        headers: { Accept: "application/json" }
-      });
+      const response = await fetch(`${FEED_URL}?_=${Date.now()}`, { cache: "no-store", headers: { Accept: "application/json" } });
       if (!response.ok) throw new Error(`Ledger request failed: ${response.status}`);
       const feed = await response.json();
       if (!feed?.version || !Array.isArray(feed.bets)) throw new Error("Invalid ledger feed");
@@ -196,18 +157,13 @@
           render();
         }
         localStorage.setItem(VERSION_KEY, feed.version);
-
         if (changes.added || changes.updated) {
           const parts = [];
           if (changes.added) parts.push(`${changes.added} new bet${changes.added === 1 ? "" : "s"}`);
           if (changes.updated) parts.push(`${changes.updated} updated`);
           toast(`${parts.join(" · ")} synced from ChatGPT`);
-        } else if (options.manual) {
-          toast("EdgeLog is up to date");
-        }
-      } else if (options.manual) {
-        toast("EdgeLog is up to date");
-      }
+        } else if (options.manual) toast("EdgeLog is up to date");
+      } else if (options.manual) toast("EdgeLog is up to date");
       setStatus("live", "Live sync");
     } catch (error) {
       console.warn("EdgeLog live sync:", error);
@@ -219,20 +175,18 @@
     }
   }
 
-  addEventListener("online", () => syncNow());
+  addEventListener("online", syncNow);
   addEventListener("offline", () => setStatus("offline", "Offline"));
-  addEventListener("focus", () => syncNow());
-  document.addEventListener("visibilitychange", () => {
-    if (!document.hidden) syncNow();
-    else scheduleNext();
-  });
+  addEventListener("focus", syncNow);
+  document.addEventListener("visibilitychange", () => document.hidden ? scheduleNext() : syncNow());
   addEventListener("storage", (event) => {
     if (event.key !== STORAGE_KEY || !event.newValue) return;
     try {
       const incoming = JSON.parse(event.newValue);
-      if (!Array.isArray(incoming)) return;
-      bets = incoming;
-      render();
+      if (Array.isArray(incoming)) {
+        bets = incoming;
+        render();
+      }
     } catch {
       // Ignore malformed data from another tab.
     }
