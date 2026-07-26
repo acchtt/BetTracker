@@ -164,29 +164,20 @@
     openParser();
   });
 
-  const sportDetectionScript = document.createElement("script");
-  sportDetectionScript.src = "sport-detection-patch.js?v=20260727-1";
-  document.body.append(sportDetectionScript);
-
-  const liveSyncScript = document.createElement("script");
-  liveSyncScript.src = "live-sync.js?v=20260727-2";
-  document.body.append(liveSyncScript);
-
-  const manualPopupScript = document.createElement("script");
-  manualPopupScript.src = "manual-popup.js?v=20260727-3";
-  document.body.append(manualPopupScript);
-
-  const quickSettlementScript = document.createElement("script");
-  quickSettlementScript.src = "quick-settlement.js?v=20260727-2";
-  document.body.append(quickSettlementScript);
-
-  const mobileHistoryScript = document.createElement("script");
-  mobileHistoryScript.src = "mobile-history.js?v=20260727-1";
-  document.body.append(mobileHistoryScript);
-
-  const imageOcrScript = document.createElement("script");
-  imageOcrScript.src = "parser-image-ocr.js";
-  document.body.append(imageOcrScript);
+  [
+    "bet-metadata.js?v=20260727-1",
+    "sport-detection-patch.js?v=20260727-1",
+    "live-sync.js?v=20260727-3",
+    "manual-popup.js?v=20260727-4",
+    "quick-settlement.js?v=20260727-2",
+    "mobile-history.js?v=20260727-1",
+    "parser-image-ocr.js"
+  ].forEach((src) => {
+    const script = document.createElement("script");
+    script.src = src;
+    script.async = false;
+    document.body.append(script);
+  });
 
   const params = new URLSearchParams(location.search);
   if (params.get("parser") === "1") {
