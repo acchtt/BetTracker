@@ -164,6 +164,10 @@
     openParser();
   });
 
+  const ledgerSyncScript = document.createElement("script");
+  ledgerSyncScript.src = "ledger-sync.js?v=20260726-1";
+  document.body.append(ledgerSyncScript);
+
   const imageOcrScript = document.createElement("script");
   imageOcrScript.src = "parser-image-ocr.js";
   document.body.append(imageOcrScript);
