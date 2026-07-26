@@ -1,22 +1,23 @@
 {
-  "version": "2026-07-27T04:40:00Z",
+  "version": "2026-07-27T04:45:00Z",
   "bets": [
     {
       "syncId": "eval-20260727-tl-c9-g1-c9-plus-10-5-kills",
-      "updatedAt": "2026-07-27T04:40:00Z",
+      "updatedAt": "2026-07-27T04:45:00Z",
       "event": "Team Liquid Alienware vs Cloud9 Kia — Game 1",
       "league": "LCS 2026 Summer",
       "bet": "Cloud9 +10.5 kills",
       "odds": 2.32,
       "stakeVnd": 250000,
       "payoutVnd": 580000,
-      "status": "pending",
-      "result": "Pending",
+      "status": "win",
+      "result": "Win",
       "eventDate": "2026-07-27",
+      "settledAt": "2026-07-27T04:45:00Z",
       "marketType": "Handicap",
       "timing": "live",
       "tags": ["evaluation", "live-read"],
-      "notes": "Evaluation bet #8 — live Game 1 kill handicap; sportsbook slip #1146517028"
+      "notes": "Evaluation bet #8 — live Game 1 kill handicap; sportsbook slip #1146517028 — settled as win"
     },
     {
       "syncId": "eval-20260727-g2-kc-g3-over-34-minutes",
