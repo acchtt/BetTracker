@@ -3,10 +3,10 @@
   document.documentElement.dataset.manualPopupReady = "true";
 
   document.querySelectorAll(".sidebar-nav a[href='parser.html'], .avatar-pill").forEach((element) => element.remove());
-  document.querySelectorAll(".sidebar-brand__mark").forEach((image) => { image.src = "assets/edgelog-mark.svg?v=3"; });
+  document.querySelectorAll(".sidebar-brand__mark").forEach((image) => { image.src = "assets/edgelog-mark.svg?v=4"; });
   const favicon = document.querySelector("link[rel~='icon']");
   if (favicon) {
-    favicon.href = "assets/edgelog-app-icon.svg?v=3";
+    favicon.href = "assets/edgelog-app-icon.svg?v=4";
     favicon.type = "image/svg+xml";
   }
   document.querySelectorAll("a[href='bets.html?add=1'], a[href$='/bets.html?add=1']").forEach((link) => {
