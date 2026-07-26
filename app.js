@@ -19,8 +19,8 @@ const DEFAULT_BETS = [
   },
   {
     id: uid(), event: "NIP vs LNG — Game 1", league: "LPL", bet: "LNG +9.5 kills",
-    odds: 1.94, stakeVnd: 500000, status: "pending", result: "",
-    eventDate: "2026-07-26T14:00", notes: "Pending"
+    odds: 1.94, stakeVnd: 500000, status: "loss", result: "Loss",
+    eventDate: "2026-07-26T14:00", notes: "Settled as loss"
   }
 ];
 
@@ -42,6 +42,20 @@ const els = {
 let bets = loadJson(STORAGE_KEY, DEFAULT_BETS);
 let unitVnd = Number(loadJson(SETTINGS_KEY, { unitVnd: 500000 }).unitVnd) || 500000;
 let detectedBet = null;
+
+const lngBet = bets.find((bet) =>
+  bet.event === "NIP vs LNG — Game 1" &&
+  bet.bet === "LNG +9.5 kills" &&
+  Number(bet.stakeVnd) === 500000 &&
+  Number(bet.odds) === 1.94
+);
+if (lngBet?.status === "pending") {
+  lngBet.status = "loss";
+  lngBet.result = lngBet.result || "Loss";
+  lngBet.notes = "Settled as loss";
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(bets));
+}
+
 els.unitValue.value = unitVnd;
 
 function loadJson(key, fallback) {
