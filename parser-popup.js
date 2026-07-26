@@ -169,7 +169,7 @@
   document.body.append(sportDetectionScript);
 
   const ledgerSyncScript = document.createElement("script");
-  ledgerSyncScript.src = "ledger-sync.js?v=20260726-3";
+  ledgerSyncScript.src = "ledger-sync.js?v=20260726-4";
   document.body.append(ledgerSyncScript);
 
   const manualPopupScript = document.createElement("script");
