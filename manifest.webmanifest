@@ -1,0 +1,19 @@
+{
+  "name": "EdgeLog — Betting Tracker",
+  "short_name": "EdgeLog",
+  "description": "A local-first betting journal for tracking bets, bankroll, reports, and performance.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07101f",
+  "theme_color": "#2563eb",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "assets/edgelog-app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
