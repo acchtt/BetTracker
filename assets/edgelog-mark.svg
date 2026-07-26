@@ -1,32 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
-  <title id="title">EdgeLog logo</title>
-  <desc id="desc">A geometric E combined with a rising performance chart.</desc>
+  <title id="title">EdgeLog symbol</title>
+  <desc id="desc">A geometric E merged with an ascending analytics line and bars.</desc>
   <defs>
-    <linearGradient id="bg" x1="12" y1="8" x2="84" y2="88" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#101c36"/>
-      <stop offset="1" stop-color="#07101f"/>
+    <linearGradient id="brand" x1="16" y1="82" x2="82" y2="14" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C3AED"/>
+      <stop offset=".48" stop-color="#2563FF"/>
+      <stop offset="1" stop-color="#00D4FF"/>
     </linearGradient>
-    <linearGradient id="brand" x1="20" y1="18" x2="78" y2="78" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#2563ff"/>
-      <stop offset="0.52" stop-color="#00d4ff"/>
-      <stop offset="1" stop-color="#7c3aed"/>
-    </linearGradient>
-    <linearGradient id="brandAlt" x1="30" y1="68" x2="76" y2="42" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#7c3aed"/>
-      <stop offset="1" stop-color="#00d4ff"/>
-    </linearGradient>
-    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
-      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.12 0 0 0 0 0.52 0 0 0 0 1 0 0 0 .45 0"/>
-      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
   </defs>
-  <rect x="3" y="3" width="90" height="90" rx="22" fill="url(#bg)" stroke="#5b77ad" stroke-opacity=".28"/>
-  <g filter="url(#glow)">
-    <path fill="url(#brand)" d="M22 19h55L66 31H37v11h27L53 54H37v11h17L43 77H22V19Z"/>
-    <path fill="url(#brandAlt)" d="M48 77 59 66l7 5 12-17 7 5-18 24-8-6-4 4H48v-4Z"/>
-    <rect x="57" y="70" width="6" height="11" rx="2" fill="#356dff"/>
-    <rect x="67" y="63" width="6" height="18" rx="2" fill="#08c7f2"/>
-    <rect x="77" y="52" width="6" height="29" rx="2" fill="#00d4ff"/>
-  </g>
+  <path fill="url(#brand)" fill-rule="evenodd" d="M17 24 29 12h52L69 24H34l-5 5v13l9-9h28L54 45H41l-12 12v15l22-22h10l9 7 13-13v13L70 70l-9-7-5 5v16H44V76l-8 8H17V24Zm12 32 11-11H29v11Zm28 28V69l5-5 7 5v15H57Zm16 0V66l10-10v28H73Z"/>
 </svg>
