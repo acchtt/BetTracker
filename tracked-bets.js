@@ -1,6 +1,6 @@
 (() => {
   const SYNC_KEY = "bet-tracker-chat-sync-version";
-  const SYNC_VERSION = "2026-07-26-tt-edg-game-1-settled";
+  const SYNC_VERSION = "2026-07-26-tt-edg-game-2-under-24-5";
 
   if (localStorage.getItem(SYNC_KEY) === SYNC_VERSION) return;
 
@@ -40,6 +40,18 @@
       eventDate: "",
       notes: "Pre-game entry after finalized draft — settled as loss",
       aliases: ["TT vs EDG — Game 1", "TT vs EDG Game 1"]
+    },
+    {
+      event: "TT vs EDG — Game 2",
+      league: "LPL",
+      bet: "Under 24.5 kills",
+      odds: 2.028,
+      stakeVnd: 250000,
+      status: "pending",
+      result: "",
+      eventDate: "",
+      notes: "Live entry at 18:00 with EDG leading 4–1",
+      aliases: ["TT vs EDG — Game 2", "TT vs EDG Game 2"]
     }
   ];
 
