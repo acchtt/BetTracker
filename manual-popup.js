@@ -174,6 +174,8 @@
     const inferredMarket = globalThis.EdgeLogMetadata?.canonicalMarket
       ? globalThis.EdgeLogMetadata.canonicalMarket(selectedMarket, field("betField").value)
       : selectedMarket;
+    const status = field("statusField").value;
+    const now = new Date().toISOString();
     const item = {
       ...(existing || {}),
       id: field("editingId").value || uid(),
@@ -184,7 +186,7 @@
       openingOdds: optionalOdds(field("openingOddsField").value),
       closingOdds: optionalOdds(field("closingOddsField").value),
       stakeVnd: Number(field("stakeField").value),
-      status: field("statusField").value,
+      status,
       eventDate: field("dateField").value,
       result: field("resultField").value.trim(),
       bookmaker: field("bookmakerField").value.trim(),
@@ -192,7 +194,8 @@
       timing: field("timingField").value,
       tags,
       notes: field("notesField").value.trim(),
-      _localEditedAt: new Date().toISOString()
+      settledAt: status === "pending" ? existing?.settledAt : (existing?.settledAt || now),
+      _localEditedAt: now
     };
     const index = bets.findIndex((bet) => bet.id === item.id);
     if (index >= 0) bets[index] = item;
