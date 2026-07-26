@@ -1,22 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title desc">
-<title id="title">EdgeLog mark</title>
-<desc id="desc">A three-part geometric E with an upward arrow through the center.</desc>
+<title id="title">EdgeLog bordered E mark</title>
+<desc id="desc">A simple geometric E inside a rounded-square border.</desc>
 <defs>
-  <linearGradient id="top" x1="14" y1="18" x2="77" y2="48" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#2563FF"/>
-    <stop offset="1" stop-color="#1A8CFF"/>
-  </linearGradient>
-  <linearGradient id="arrow" x1="14" y1="72" x2="89" y2="28" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#2563FF"/>
-    <stop offset=".5" stop-color="#00BFFF"/>
+  <linearGradient id="brand" x1="18" y1="84" x2="84" y2="16" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#7C3AED"/>
+    <stop offset=".48" stop-color="#2563FF"/>
     <stop offset="1" stop-color="#00D4FF"/>
   </linearGradient>
-  <linearGradient id="bottom" x1="14" y1="75" x2="66" y2="88" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#7C3AED"/>
-    <stop offset="1" stop-color="#6426FF"/>
-  </linearGradient>
 </defs>
-<path fill="url(#top)" d="M14 18h63L64 31H29v14h31L48 58H14V18Z"/>
-<path fill="url(#arrow)" d="M14 62h36l22-22-7-7 24-5-5 24-7-7-22 22H14V62Z"/>
-<path fill="url(#bottom)" d="M14 75h52v13H14V75Z"/>
+<rect x="7.5" y="7.5" width="85" height="85" rx="18" fill="none" stroke="url(#brand)" stroke-width="5"/>
+<path fill="url(#brand)" d="M23 24h54l-7 13H38v7h28l-7 13H38v7h35l-7 13H23V24Z"/>
 </svg>
