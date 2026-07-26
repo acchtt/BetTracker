@@ -165,7 +165,7 @@
   });
 
   const ledgerSyncScript = document.createElement("script");
-  ledgerSyncScript.src = "ledger-sync.js?v=20260726-1";
+  ledgerSyncScript.src = "ledger-sync.js?v=20260726-2";
   document.body.append(ledgerSyncScript);
 
   const imageOcrScript = document.createElement("script");
