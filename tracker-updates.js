@@ -52,16 +52,16 @@
     { key: "pubg", label: "PUBG", mark: "P", tests: ["pubg", "pubg global", "pcl", "pgs"] },
 
     { key: "australia-cup", label: "Australia Cup", mark: "AUC", tests: ["australia cup", "ffa cup"] },
-    { key: "premier-league", label: "Premier League", mark: "PL", tests: ["premier league", "english premier", " epl"] },
-    { key: "champions-league", label: "Champions League", mark: "UCL", tests: ["champions league", "uefa champions", " ucl"] },
+    { key: "premier-league", label: "Premier League", mark: "PL", tests: ["premier league", "english premier", "epl"] },
+    { key: "champions-league", label: "Champions League", mark: "UCL", tests: ["champions league", "uefa champions", "ucl"] },
     { key: "liga-mx", label: "Liga MX", mark: "LMX", tests: ["liga mx", "tigres", "monterrey", "toluca", "club america", "pachuca", "cruz azul", "chivas"] },
-    { key: "mls", label: "MLS", mark: "MLS", tests: ["major league soccer", " mls", "lafc", "la fc", "sporting kansas", "inter miami", "la galaxy", "portland timbers", "seattle sounders"] },
+    { key: "mls", label: "MLS", mark: "MLS", tests: ["major league soccer", "mls", "lafc", "la fc", "sporting kansas", "inter miami", "la galaxy", "portland timbers", "seattle sounders"] },
     { key: "laliga", label: "LaLiga", mark: "LL", tests: ["laliga", "la liga", "primera division spain"] },
     { key: "serie-a", label: "Serie A", mark: "SA", tests: ["serie a", "italy serie a"] },
     { key: "bundesliga", label: "Bundesliga", mark: "BL", tests: ["bundesliga", "germany bundesliga"] },
     { key: "libertadores", label: "Libertadores", mark: "LIB", tests: ["copa libertadores", "libertadores"] },
 
-    { key: "nba", label: "NBA", mark: "NBA", tests: [" nba", "national basketball association"] },
+    { key: "nba", label: "NBA", mark: "NBA", tests: ["nba", "national basketball association"] },
     { key: "wnba", label: "WNBA", mark: "WNBA", tests: ["wnba", "women's national basketball"] },
     { key: "euroleague", label: "EuroLeague", mark: "EL", tests: ["euroleague", "euro league basketball"] },
     { key: "nfl", label: "NFL", mark: "NFL", tests: ["nfl", "national football league"] },
@@ -70,8 +70,8 @@
     { key: "atp", label: "ATP", mark: "ATP", tests: ["atp", "atp tour"] },
     { key: "wta", label: "WTA", mark: "WTA", tests: ["wta", "wta tour"] },
     { key: "ufc", label: "UFC", mark: "UFC", tests: ["ufc", "ultimate fighting championship"] },
-    { key: "f1", label: "Formula 1", mark: "F1", tests: ["formula 1", "formula one", " f1"] },
-    { key: "ipl", label: "IPL", mark: "IPL", tests: ["indian premier league", " ipl"] }
+    { key: "f1", label: "Formula 1", mark: "F1", tests: ["formula 1", "formula one", "f1"] },
+    { key: "ipl", label: "IPL", mark: "IPL", tests: ["indian premier league", "ipl"] }
   ];
 
   const sportFallbacks = [
