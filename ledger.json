@@ -1,6 +1,23 @@
 {
-  "version": "2026-07-27T04:45:00Z",
+  "version": "2026-07-27T04:50:00Z",
   "bets": [
+    {
+      "syncId": "eval-20260727-flamengo-sao-paulo-flamengo-minus-1",
+      "updatedAt": "2026-07-27T04:50:00Z",
+      "event": "Flamengo vs Sao Paulo SP",
+      "league": "Brazil Serie A",
+      "bet": "Flamengo -1",
+      "odds": 1.77,
+      "stakeVnd": 250000,
+      "payoutVnd": 442500,
+      "status": "pending",
+      "result": "Pending",
+      "eventDate": "2026-07-27",
+      "marketType": "Handicap",
+      "timing": "prematch",
+      "tags": ["evaluation", "lineup-read"],
+      "notes": "Evaluation bet #9 — full-time Asian handicap; sportsbook slip #869327678028341248"
+    },
     {
       "syncId": "eval-20260727-tl-c9-g1-c9-plus-10-5-kills",
       "updatedAt": "2026-07-27T04:45:00Z",
