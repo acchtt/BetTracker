@@ -20,7 +20,7 @@ EdgeLog is a local-first betting journal designed for GitHub Pages. It helps tra
 - Preserves locally edited bets instead of replacing them during remote synchronization.
 - Manual add, edit, delete, and one-click settlement controls.
 - Search and filters for sport, status, bookmaker, market, timing, and tags.
-- Full JSON backup/restore and CSV export.
+- Full JSON backup/restore and detailed CSV export.
 
 ## Full backup and restore
 
@@ -33,6 +33,12 @@ The Settings page exports a versioned EdgeLog JSON backup containing:
 - locally hidden synchronized bet IDs
 
 Import supports current full backups, older `{ settings, bets }` backups, and legacy backups containing only a bets array. Before an import or full tracker reset, EdgeLog stores a temporary safety snapshot and offers an Undo action for 12 seconds.
+
+## Detailed CSV export
+
+The Settings page also exports an Excel-compatible UTF-8 CSV containing one row per bet. Columns include sport, bookmaker, market, live/pre-match timing, strategy tags, decimal odds, VND and unit stakes, potential payout, result, profit/loss, ROI, event and settlement timestamps, notes, and synchronization identifiers.
+
+Text cells beginning with spreadsheet formula characters are escaped before export.
 
 ## Live ledger workflow
 
