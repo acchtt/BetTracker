@@ -2,17 +2,19 @@
 
 **Log bets. Gain edge.**
 
-EdgeLog is a local-first betting journal designed for GitHub Pages. It helps track units, exposure, results, profit/loss, and bankroll cash flow while keeping manual browser entries local.
+EdgeLog is a local-first betting journal designed for GitHub Pages. It helps track units, exposure, results, profit/loss, bankroll cash flow, and closing-line value while keeping manual browser entries local.
 
 ## Features
 
 - Automatically parses pasted Vietnamese and English betslip text.
 - Reads betslip screenshots with browser-based OCR.
 - Detects event, league, market, odds, stake, event date, status, result, payout, bookmaker, timing, and strategy tags.
+- Records entry, opening, and closing decimal odds and calculates closing-line value automatically.
 - Converts VND stakes to units using a configurable unit value (default: 500,000 VND).
 - Calculates win, half-win, loss, half-loss, void, pending exposure, and total net P/L.
 - Tracks starting bankroll, deposits, withdrawals, current balance, and available balance after exposure.
 - Displays cumulative profit and bankroll curves plus breakdowns by sport and odds range.
+- Displays average CLV, stake-weighted CLV, beat-close rate, and implied-probability edge.
 - Automatically displays sport-category icons for esports, soccer, basketball, baseball, and other supported sports.
 - Saves data locally in the browser using `localStorage`.
 - Automatically checks `ledger.json` for new ChatGPT-tracked entries every 10 seconds while the page is open.
@@ -22,23 +24,27 @@ EdgeLog is a local-first betting journal designed for GitHub Pages. It helps tra
 - Search and filters for sport, status, bookmaker, market, timing, and tags.
 - Full JSON backup/restore and detailed CSV export.
 
+## Closing-line value
+
+The main **Odds** field is the price taken when the bet was placed. Opening and closing odds are optional fields available in the Add/Edit Bet dialog.
+
+EdgeLog calculates decimal-odds CLV as:
+
+`(entry odds / closing odds - 1) * 100`
+
+For example, an entry at `2.10` and a closing price of `1.90` produces positive CLV because the entry secured a better payout than the final market price. The Analytics page also reports the implied-probability difference in percentage points.
+
 ## Full backup and restore
 
 The Settings page exports a versioned EdgeLog JSON backup containing:
 
-- all bets and bet metadata
+- all bets and bet metadata, including opening and closing odds
 - unit size and starting bankroll settings
 - bankroll deposits and withdrawals
 - theme preference
 - locally hidden synchronized bet IDs
 
 Import supports current full backups, older `{ settings, bets }` backups, and legacy backups containing only a bets array. Before an import or full tracker reset, EdgeLog stores a temporary safety snapshot and offers an Undo action for 12 seconds.
-
-## Detailed CSV export
-
-The Settings page also exports an Excel-compatible UTF-8 CSV containing one row per bet. Columns include sport, bookmaker, market, live/pre-match timing, strategy tags, decimal odds, VND and unit stakes, potential payout, result, profit/loss, ROI, event and settlement timestamps, notes, and synchronization identifiers.
-
-Text cells beginning with spreadsheet formula characters are escaped before export.
 
 ## Live ledger workflow
 
@@ -92,5 +98,7 @@ The parser recognizes common labels including:
 - `Tiền trả về`
 - `Trạng thái`
 - `Kết quả`
+- `Tỷ lệ mở cửa`
+- `Tỷ lệ đóng cửa`
 
 The **thousands of VND** switch is enabled by default, so a displayed stake of `773.00 VND` is interpreted as `773,000 VND`.
