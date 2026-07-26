@@ -146,7 +146,7 @@
   dialog.querySelector("#cancelParserDialogBtn").addEventListener("click", closeParser);
   dialog.querySelector("#addDetectedBtn").addEventListener("click", () => {
     if (!detectedBet) return;
-    bets.unshift({ ...detectedBet, id: uid() });
+    bets.unshift({ ...detectedBet, id: uid(), _localEditedAt: new Date().toISOString() });
     persist();
     render();
     toast("Detected bet added");
@@ -168,17 +168,17 @@
   sportDetectionScript.src = "sport-detection-patch.js?v=20260727-1";
   document.body.append(sportDetectionScript);
 
-  const quickSettlementScript = document.createElement("script");
-  quickSettlementScript.src = "quick-settlement.js?v=20260727-1";
-  document.body.append(quickSettlementScript);
-
-  const ledgerSyncScript = document.createElement("script");
-  ledgerSyncScript.src = "ledger-sync.js?v=20260726-4";
-  document.body.append(ledgerSyncScript);
+  const liveSyncScript = document.createElement("script");
+  liveSyncScript.src = "live-sync.js?v=20260727-1";
+  document.body.append(liveSyncScript);
 
   const manualPopupScript = document.createElement("script");
-  manualPopupScript.src = "manual-popup.js?v=20260726-1";
+  manualPopupScript.src = "manual-popup.js?v=20260727-2";
   document.body.append(manualPopupScript);
+
+  const quickSettlementScript = document.createElement("script");
+  quickSettlementScript.src = "quick-settlement.js?v=20260727-2";
+  document.body.append(quickSettlementScript);
 
   const imageOcrScript = document.createElement("script");
   imageOcrScript.src = "parser-image-ocr.js";
