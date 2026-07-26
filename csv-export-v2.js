@@ -12,18 +12,8 @@
     "Market Type",
     "Timing",
     "Strategy Tags",
-    "Confidence 1-5",
-    "Pre-bet Thesis",
-    "Decision Quality",
-    "Mistake Type",
-    "Post-bet Review",
     "Selection",
     "Entry Odds",
-    "Opening Odds",
-    "Closing Odds",
-    "CLV %",
-    "Implied Probability Edge pp",
-    "Closing Line Verdict",
     "Stake VND",
     "Stake Units",
     "Potential Payout VND",
@@ -49,36 +39,6 @@
     };
   }
 
-  function reviewFor(bet = {}) {
-    if (globalThis.EdgeLogReview?.reviewFor) return globalThis.EdgeLogReview.reviewFor(bet);
-    const confidence = Number(bet.confidence || 0);
-    return {
-      confidence: Number.isInteger(confidence) && confidence >= 1 && confidence <= 5 ? confidence : null,
-      thesis: String(bet.thesis || "").trim(),
-      processGrade: ["good", "mixed", "poor"].includes(bet.processGrade) ? bet.processGrade : "",
-      mistakeType: String(bet.mistakeType || "").trim(),
-      postReview: String(bet.postReview || "").trim()
-    };
-  }
-
-  function decisionLabel(value) {
-    return ({ good: "Good decision", mixed: "Mixed decision", poor: "Poor decision" })[value] || "";
-  }
-
-  function mistakeLabel(value) {
-    return ({
-      none: "No mistake",
-      "bad-read": "Bad read",
-      "bad-price": "Bad price",
-      "late-entry": "Late entry",
-      overstake: "Overstaked",
-      chasing: "Chasing",
-      tilt: "Tilt",
-      execution: "Execution error",
-      other: "Other mistake"
-    })[value] || value || "";
-  }
-
   function isoDate(value) {
     if (!value) return "";
     const date = new Date(value);
@@ -93,35 +53,6 @@
     return stake > 0 && odds > 1 ? Math.round(stake * odds) : 0;
   }
 
-  function optionalOdds(value) {
-    if (globalThis.EdgeLogCLV?.optionalOdds) return globalThis.EdgeLogCLV.optionalOdds(value);
-    const parsed = Number(value || 0);
-    return Number.isFinite(parsed) && parsed > 1 ? parsed : null;
-  }
-
-  function clvPercent(bet) {
-    if (globalThis.EdgeLogCLV?.clvPercent) return globalThis.EdgeLogCLV.clvPercent(bet);
-    const entry = optionalOdds(bet.odds);
-    const close = optionalOdds(bet.closingOdds);
-    return entry && close ? ((entry / close) - 1) * 100 : null;
-  }
-
-  function probabilityEdge(bet) {
-    if (globalThis.EdgeLogCLV?.impliedProbabilityEdge) return globalThis.EdgeLogCLV.impliedProbabilityEdge(bet);
-    const entry = optionalOdds(bet.odds);
-    const close = optionalOdds(bet.closingOdds);
-    return entry && close ? ((1 / close) - (1 / entry)) * 100 : null;
-  }
-
-  function closingVerdict(bet) {
-    if (globalThis.EdgeLogCLV?.verdict) return globalThis.EdgeLogCLV.verdict(bet).label;
-    const clv = clvPercent(bet);
-    if (clv === null) return "";
-    if (clv > 0.05) return "Beat close";
-    if (clv < -0.05) return "Missed close";
-    return "Matched close";
-  }
-
   function csvSafeText(value) {
     const text = String(value ?? "");
     return /^[=+\-@]/.test(text) ? `'${text}` : text;
@@ -134,14 +65,11 @@
 
   function rowFor(bet) {
     const meta = metadataFor(bet);
-    const review = reviewFor(bet);
     const stake = Number(bet.stakeVnd || 0);
     const pl = Number(profitLoss(bet) || 0);
     const unit = Math.max(1, Number(settings.unitVnd || 500000));
     const roi = stake > 0 && bet.status !== "pending" ? (pl / stake) * 100 : 0;
     const sport = typeof detectSport === "function" ? detectSport(bet).label : "";
-    const clv = clvPercent(bet);
-    const edge = probabilityEdge(bet);
 
     return [
       bet.id || "",
@@ -153,18 +81,8 @@
       meta.marketType || "",
       meta.timing === "live" ? "Live" : meta.timing === "prematch" ? "Pre-match" : "",
       meta.tags.join(" | "),
-      review.confidence ?? "",
-      review.thesis || "",
-      decisionLabel(review.processGrade),
-      mistakeLabel(review.mistakeType),
-      review.postReview || "",
       bet.bet || "",
       Number(bet.odds || 0),
-      optionalOdds(bet.openingOdds) ?? "",
-      optionalOdds(bet.closingOdds) ?? "",
-      clv ?? "",
-      edge ?? "",
-      closingVerdict(bet),
       stake,
       stake / unit,
       payoutFor(bet),
@@ -197,7 +115,7 @@
   function decorateSettings() {
     document.querySelectorAll("[data-export-csv]").forEach((button) => {
       button.textContent = "Export detailed CSV";
-      button.title = "Includes pricing, CLV, confidence, thesis, decision quality, mistakes, reviews, metadata, payout, P/L, dates, and sync fields.";
+      button.title = "Includes event, market metadata, odds, stake, payout, status, P/L, dates, notes, and sync fields.";
     });
 
     const button = document.querySelector("[data-export-csv]");
@@ -205,7 +123,7 @@
     if (panel && !panel.querySelector(".csv-export-scope")) {
       const note = document.createElement("div");
       note.className = "backup-scope csv-export-scope";
-      note.innerHTML = "<strong>Detailed CSV includes:</strong> pricing and CLV, confidence, pre-bet thesis, decision quality, mistakes, post-bet review, sport, bookmaker, market, timing, tags, payout, units, ROI, dates, notes, and synchronization identifiers.";
+      note.innerHTML = "<strong>Detailed CSV includes:</strong> event and sport details, bookmaker, market, timing, tags, entry odds, stake, payout, units, ROI, dates, notes, and synchronization identifiers.";
       panel.append(note);
     }
   }
