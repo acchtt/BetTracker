@@ -3,210 +3,175 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#081220" />
-  <title>EdgeLog — Log Bets. Gain Edge.</title>
+  <meta name="theme-color" content="#f5f7fc" />
+  <title>EdgeLog — Dashboard</title>
   <meta name="description" content="EdgeLog is a local-first betting journal for tracking units, exposure, and profit/loss." />
   <link rel="icon" href="assets/edgelog-mark.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="branding.css" />
+  <link rel="stylesheet" href="dashboard.css" />
 </head>
 <body>
   <div class="page-bg"></div>
 
-  <header class="hero">
-    <div class="hero-copy">
-      <img class="brand-mark" src="assets/edgelog-mark.svg" alt="EdgeLog" />
-      <div class="brand-content">
-        <p class="brand-kicker">DATA-DRIVEN BETTING JOURNAL</p>
-        <h1 class="brand-name"><span class="brand-name__edge">Edge</span><span class="brand-name__log">Log</span></h1>
-        <p class="brand-tagline"><strong>Log bets.</strong> Gain edge.</p>
-      </div>
-    </div>
-
-    <div class="hero-actions">
-      <button id="exportJsonBtn" class="button secondary" type="button">Export JSON</button>
-      <button id="exportCsvBtn" class="button secondary" type="button">Export CSV</button>
-      <label class="button secondary file-button">
-        Import JSON
-        <input id="importJsonInput" type="file" accept="application/json,.json" />
-      </label>
-    </div>
-  </header>
-
-  <main class="app-shell">
-    <section class="summary-grid" aria-label="Betting summary">
-      <article class="summary-card summary-card--primary">
-        <div class="summary-label">Total Win/Loss</div>
-        <strong id="netUnits">0.000u</strong>
-        <small id="netVnd">0 VND</small>
-      </article>
-
-      <article class="summary-card summary-card--secondary">
-        <div class="summary-label">Pending Exposure</div>
-        <strong id="pendingUnits">0.000u</strong>
-        <small id="pendingVnd">0 VND</small>
-      </article>
-
-      <article class="summary-card summary-card--compact">
-        <div class="summary-label">Bets Recorded</div>
-        <strong id="totalBetsCount">0</strong>
-        <small id="betCountMeta">0 settled · 0 pending</small>
-      </article>
-
-      <article class="summary-card summary-card--compact">
-        <div class="summary-label">Unit Size</div>
-        <strong id="unitSummaryValue">500,000</strong>
-        <small>VND per unit</small>
-      </article>
-    </section>
-
-    <section class="dashboard-grid">
-      <article class="panel parser-panel">
-        <div class="panel-header">
-          <div>
-            <p class="eyebrow">AUTO DETECT</p>
-            <h2>Paste betslip</h2>
-            <p class="panel-copy">Drop the raw text from your sportsbook slip. The tracker will detect the event, market, odds, stake, and result fields automatically.</p>
-          </div>
-          <span id="parserStatus" class="status-chip neutral">Waiting for input</span>
-        </div>
-
-        <label for="slipInput" class="field-label">Betslip text</label>
-        <textarea id="slipInput" rows="12" placeholder="Paste the full betslip here…"></textarea>
-
-        <div class="option-row">
-          <label class="switch-row">
-            <input id="thousandsMode" type="checkbox" checked />
-            <span>Slip money values are shown in thousands of VND</span>
-          </label>
-          <button id="clearSlipBtn" class="text-button" type="button">Clear</button>
-        </div>
-
-        <div class="detected-card">
-          <div class="detected-header">
-            <div>
-              <h3>Detected fields</h3>
-              <p>Review before saving to the tracker.</p>
-            </div>
-            <span id="confidenceLabel">0% confidence</span>
-          </div>
-          <dl id="detectedFields" class="detected-grid"></dl>
-        </div>
-
-        <div class="button-row button-row--spread">
-          <button id="addDetectedBtn" class="button primary" type="button" disabled>Add detected bet</button>
-          <button id="openManualBtn" class="button secondary" type="button">Manual entry</button>
-        </div>
-      </article>
-
-      <aside class="sidebar-stack">
-        <section class="panel settings-panel">
-          <div class="panel-header panel-header--stacked">
-            <div>
-              <p class="eyebrow">SETTINGS</p>
-              <h2>Tracker rules</h2>
-              <p class="panel-copy">Adjust your unit value once and every unit-based figure updates automatically.</p>
-            </div>
-          </div>
-
-          <label class="field-label" for="unitValue">1 unit equals</label>
-          <div class="money-input-wrap">
-            <input id="unitValue" type="number" min="1" step="1000" value="500000" />
-            <span>VND</span>
-          </div>
-          <p class="helper-text">Changing this updates displayed units only. Stored VND amounts remain unchanged.</p>
-
-          <div class="rule-list">
-            <div><span>Win</span><strong>Stake × (odds − 1)</strong></div>
-            <div><span>Half win</span><strong>½ winning profit</strong></div>
-            <div><span>Loss</span><strong>− full stake</strong></div>
-            <div><span>Half loss</span><strong>− ½ stake</strong></div>
-            <div><span>Void</span><strong>0</strong></div>
-          </div>
-
-          <button id="resetDataBtn" class="button danger" type="button">Reset all tracker data</button>
-        </section>
-
-        <section class="panel help-panel">
-          <div class="panel-header panel-header--stacked">
-            <div>
-              <p class="eyebrow">WORKFLOW</p>
-              <h2>Recommended flow</h2>
-            </div>
-          </div>
-          <ol class="workflow-list">
-            <li>Paste a betslip or add a manual entry.</li>
-            <li>Confirm odds, stake, and status.</li>
-            <li>Use search and status filters to review history.</li>
-            <li>Export JSON regularly as a backup.</li>
-          </ol>
-        </section>
-      </aside>
-    </section>
-
-    <section class="panel table-panel">
-      <div class="table-toolbar">
+  <div class="app-frame">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="sidebar-brand">
+        <img class="sidebar-brand__mark" src="assets/edgelog-mark.svg" alt="EdgeLog" />
         <div>
-          <p class="eyebrow">HISTORY</p>
-          <h2>Bet log</h2>
-          <p class="panel-copy">Review every position by event, league, market, result, or status.</p>
-        </div>
-
-        <div class="filters">
-          <label class="search-field">
-            <span class="visually-hidden">Search bets</span>
-            <input id="searchInput" type="search" placeholder="Search match, league, or bet…" />
-          </label>
-
-          <label class="filter-field">
-            <span class="visually-hidden">Filter by status</span>
-            <select id="statusFilter" aria-label="Filter by status">
-              <option value="all">All statuses</option>
-              <option value="pending">Pending</option>
-              <option value="win">Win</option>
-              <option value="half-win">Half win</option>
-              <option value="loss">Loss</option>
-              <option value="half-loss">Half loss</option>
-              <option value="void">Void</option>
-            </select>
-          </label>
+          <div class="sidebar-brand__name"><span>Edge</span>Log</div>
+          <div class="sidebar-brand__meta">Betting tracker</div>
         </div>
       </div>
 
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Event</th>
-              <th>Bet</th>
-              <th>Odds</th>
-              <th>Stake</th>
-              <th>Status</th>
-              <th>Result</th>
-              <th>P/L</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="betsTableBody"></tbody>
-        </table>
-      </div>
-      <p id="emptyState" class="empty-state" hidden>No bets match the current filters.</p>
-    </section>
-  </main>
+      <nav class="sidebar-nav">
+        <a class="sidebar-link is-active" href="#top"><span class="sidebar-link__icon">▦</span><span>Dashboard</span></a>
+        <a class="sidebar-link" href="#historyPanel"><span class="sidebar-link__icon">◫</span><span>Bets</span></a>
+        <a class="sidebar-link" href="#summaryPanel"><span class="sidebar-link__icon">◔</span><span>Analytics</span></a>
+        <a class="sidebar-link" href="#settingsPanel"><span class="sidebar-link__icon">◈</span><span>Bankroll</span></a>
+        <a class="sidebar-link" href="#parserPanel"><span class="sidebar-link__icon">✦</span><span>Alerts</span></a>
+        <a class="sidebar-link" href="#settingsPanel"><span class="sidebar-link__icon">⚙</span><span>Settings</span></a>
+        <a class="sidebar-link" href="#helpPanel"><span class="sidebar-link__icon">?</span><span>Help</span></a>
+      </nav>
 
-  <footer class="site-footer"><strong>EdgeLog</strong><span class="site-footer__dot"></span>Log bets. Gain edge.<span class="site-footer__dot"></span>Your data stays in this browser.</footer>
+      <div class="sidebar-footer">
+        <button class="sidebar-theme" type="button"><span class="sidebar-theme__dot"></span><span>Light dashboard</span></button>
+      </div>
+    </aside>
+
+    <div class="main-column" id="top">
+      <header class="topbar">
+        <div>
+          <p class="topbar-kicker">EdgeLog</p>
+          <h1>Dashboard</h1>
+          <p class="topbar-subtitle">Log bets, track exposure, and keep your edge organized in one clean workspace.</p>
+        </div>
+
+        <div class="topbar-actions">
+          <button id="openManualBtn" class="button primary" type="button">+ Add Bet</button>
+          <a class="button secondary" href="#parserPanel">Import Bet Slip</a>
+          <button id="exportJsonBtn" class="button subtle" type="button">Export JSON</button>
+          <button id="exportCsvBtn" class="button subtle" type="button">Export CSV</button>
+          <label class="button subtle file-button">Import JSON<input id="importJsonInput" type="file" accept="application/json,.json" /></label>
+          <div class="avatar-pill" aria-hidden="true">A</div>
+        </div>
+      </header>
+
+      <main class="app-shell">
+        <section id="summaryPanel" class="summary-grid" aria-label="Betting summary">
+          <article class="summary-card">
+            <div class="summary-icon summary-icon--danger">↘</div>
+            <div><div class="summary-label">Total Win / Loss</div><strong id="netUnits">0.000u</strong><small id="netVnd">0 VND</small></div>
+          </article>
+          <article class="summary-card">
+            <div class="summary-icon summary-icon--warning">◔</div>
+            <div><div class="summary-label">Pending Exposure</div><strong id="pendingUnits">0.000u</strong><small id="pendingVnd">0 VND</small></div>
+          </article>
+          <article class="summary-card">
+            <div class="summary-icon summary-icon--blue">☰</div>
+            <div><div class="summary-label">Bets Recorded</div><strong id="totalBetsCount">0</strong><small id="betCountMeta">0 settled · 0 pending</small></div>
+          </article>
+          <article class="summary-card">
+            <div class="summary-icon summary-icon--purple">◍</div>
+            <div><div class="summary-label">Unit Size</div><strong id="unitSummaryValue">500,000</strong><small>VND per unit</small></div>
+          </article>
+        </section>
+
+        <section class="workspace-grid">
+          <article id="parserPanel" class="panel parser-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="panel-kicker">PARSE BETSLIP</p>
+                <h2>Paste or upload a bet slip</h2>
+                <p class="panel-copy">Paste Vietnamese or English sportsbook text. EdgeLog detects the event, market, odds, stake, result, and status.</p>
+              </div>
+              <span id="parserStatus" class="status-chip neutral">Waiting for input</span>
+            </div>
+
+            <div class="upload-zone">
+              <label for="slipInput" class="field-label">Betslip text</label>
+              <textarea id="slipInput" rows="10" placeholder="Paste bet slip here…&#10;&#10;Supports VND, decimal odds, handicaps, totals, and common sportsbook labels."></textarea>
+            </div>
+
+            <div class="option-row">
+              <label class="switch-row"><input id="thousandsMode" type="checkbox" checked /><span>Slip money values are shown in thousands of VND</span></label>
+              <button id="clearSlipBtn" class="text-button" type="button">Clear</button>
+            </div>
+
+            <div class="detected-card">
+              <div class="detected-header">
+                <div><h3>Detected fields</h3><p>Review the extracted values before saving.</p></div>
+                <span id="confidenceLabel">0% confidence</span>
+              </div>
+              <dl id="detectedFields" class="detected-grid"></dl>
+            </div>
+
+            <div class="button-row parser-actions">
+              <button id="addDetectedBtn" class="button primary" type="button" disabled>Add detected bet</button>
+              <a class="button secondary" href="#historyPanel">View history</a>
+            </div>
+          </article>
+
+          <section id="settingsPanel" class="panel settings-panel">
+            <div class="panel-heading"><div><p class="panel-kicker">SETTINGS</p><h2>Tracker setup</h2></div></div>
+            <div class="settings-list">
+              <div class="settings-row"><span>Unit Size</span><label class="settings-input-wrap"><input id="unitValue" type="number" min="1" step="1000" value="500000" /><em>VND</em></label></div>
+              <div class="settings-row"><span>Default Stake</span><strong>1u</strong></div>
+              <div class="settings-row"><span>Odds Format</span><strong>Decimal</strong></div>
+              <div class="settings-row"><span>Currency</span><strong>VND (₫)</strong></div>
+              <div class="settings-row"><span>Timezone</span><strong>Asia/Ho Chi Minh</strong></div>
+            </div>
+            <p class="helper-text">Changing unit size updates displayed units only. Stored VND amounts remain unchanged.</p>
+            <div class="rule-list">
+              <div><span>Win</span><strong>Stake × (odds − 1)</strong></div>
+              <div><span>Half win</span><strong>½ winning profit</strong></div>
+              <div><span>Loss</span><strong>− full stake</strong></div>
+              <div><span>Half loss</span><strong>− ½ stake</strong></div>
+              <div><span>Void</span><strong>0</strong></div>
+            </div>
+            <button id="resetDataBtn" class="button soft-danger" type="button">Reset tracker data</button>
+          </section>
+
+          <section id="helpPanel" class="panel help-panel">
+            <div class="panel-heading"><div><p class="panel-kicker">HOW IT WORKS</p><h2>Recommended flow</h2></div></div>
+            <ol class="workflow-list">
+              <li><span>1</span><div>Copy your bet slip from the sportsbook.</div></li>
+              <li><span>2</span><div>Paste it into the parser or add a manual entry.</div></li>
+              <li><span>3</span><div>Review the detected fields and confidence.</div></li>
+              <li><span>4</span><div>Confirm and save the bet.</div></li>
+              <li><span>5</span><div>Track exposure, results, and performance.</div></li>
+            </ol>
+            <div class="help-actions"><span class="status-pill pending">Local-first storage</span><span class="status-pill win">JSON backups</span></div>
+          </section>
+        </section>
+
+        <section id="historyPanel" class="panel table-panel">
+          <div class="table-toolbar">
+            <div><p class="panel-kicker">BET HISTORY</p><h2>Current betting table</h2><p class="panel-copy">Search by event, league, or selection, then filter by result.</p></div>
+            <div class="filters">
+              <label class="search-field"><span class="visually-hidden">Search bets</span><input id="searchInput" type="search" placeholder="Search events, leagues, or selections…" /></label>
+              <label class="filter-field filter-field--ghost"><span class="visually-hidden">Filter by sport</span><select disabled><option>All Sports</option></select></label>
+              <label class="filter-field filter-field--ghost"><span class="visually-hidden">Filter by league</span><select disabled><option>All Leagues</option></select></label>
+              <label class="filter-field"><span class="visually-hidden">Filter by status</span><select id="statusFilter" aria-label="Filter by status"><option value="all">All Results</option><option value="pending">Pending</option><option value="win">Win</option><option value="half-win">Half win</option><option value="loss">Loss</option><option value="half-loss">Half loss</option><option value="void">Void</option></select></label>
+              <input class="date-filter" type="text" value="Start date" disabled aria-label="Start date" />
+              <input class="date-filter" type="text" value="End date" disabled aria-label="End date" />
+              <button class="button reset-filters" type="button" onclick="document.getElementById('searchInput').value='';document.getElementById('statusFilter').value='all';document.getElementById('searchInput').dispatchEvent(new Event('input'));document.getElementById('statusFilter').dispatchEvent(new Event('change'));">Reset</button>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>#</th><th>Event</th><th>Bet</th><th>Odds</th><th>Stake</th><th>Status</th><th>Result</th><th>P/L</th><th></th></tr></thead>
+              <tbody id="betsTableBody"></tbody>
+            </table>
+          </div>
+          <p id="emptyState" class="empty-state" hidden>No bets match the current filters.</p>
+        </section>
+      </main>
+    </div>
+  </div>
 
   <dialog id="manualDialog">
     <form id="manualForm" method="dialog">
-      <div class="dialog-heading">
-        <div>
-          <p class="eyebrow">MANUAL ENTRY</p>
-          <h2 id="dialogTitle">Add bet</h2>
-        </div>
-        <button id="closeDialogBtn" class="icon-button" type="button" aria-label="Close">×</button>
-      </div>
-
+      <div class="dialog-heading"><div><p class="panel-kicker">MANUAL ENTRY</p><h2 id="dialogTitle">Add bet</h2></div><button id="closeDialogBtn" class="icon-button" type="button" aria-label="Close">×</button></div>
       <input id="editingId" type="hidden" />
       <div class="form-grid">
         <label>Event<input id="eventField" required /></label>
@@ -214,25 +179,12 @@
         <label>Bet<input id="betField" required /></label>
         <label>Odds<input id="oddsField" type="number" min="1" step="0.001" required /></label>
         <label>Stake (VND)<input id="stakeField" type="number" min="0" step="1000" required /></label>
-        <label>Status
-          <select id="statusField">
-            <option value="pending">Pending</option>
-            <option value="win">Win</option>
-            <option value="half-win">Half win</option>
-            <option value="loss">Loss</option>
-            <option value="half-loss">Half loss</option>
-            <option value="void">Void</option>
-          </select>
-        </label>
+        <label>Status<select id="statusField"><option value="pending">Pending</option><option value="win">Win</option><option value="half-win">Half win</option><option value="loss">Loss</option><option value="half-loss">Half loss</option><option value="void">Void</option></select></label>
         <label>Event date<input id="dateField" type="datetime-local" /></label>
         <label>Result / score<input id="resultField" /></label>
         <label class="full-width">Notes<textarea id="notesField" rows="3"></textarea></label>
       </div>
-
-      <div class="button-row dialog-actions">
-        <button id="cancelDialogBtn" class="button secondary" type="button">Cancel</button>
-        <button class="button primary" type="submit">Save bet</button>
-      </div>
+      <div class="button-row dialog-actions"><button id="cancelDialogBtn" class="button secondary" type="button">Cancel</button><button class="button primary" type="submit">Save bet</button></div>
     </form>
   </dialog>
 
