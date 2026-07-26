@@ -31,6 +31,24 @@
     bets.unshift({ ...game2Bet, id: uid() });
   }
 
+  const baseRender = render;
+  const renderDashboardExtras = () => {
+    const settledCount = bets.filter((bet) => bet.status !== "pending").length;
+    const pendingCount = bets.length - settledCount;
+    const totalBetsCount = document.querySelector("#totalBetsCount");
+    const betCountMeta = document.querySelector("#betCountMeta");
+    const unitSummaryValue = document.querySelector("#unitSummaryValue");
+
+    if (totalBetsCount) totalBetsCount.textContent = String(bets.length);
+    if (betCountMeta) betCountMeta.textContent = `${settledCount} settled · ${pendingCount} pending`;
+    if (unitSummaryValue) unitSummaryValue.textContent = new Intl.NumberFormat("en-US").format(unitVnd);
+  };
+
+  render = function enhancedRender() {
+    baseRender();
+    renderDashboardExtras();
+  };
+
   persist();
   render();
 })();
