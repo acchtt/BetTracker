@@ -2,7 +2,7 @@
 
 **Log bets. Gain edge.**
 
-EdgeLog is a local-first betting journal designed for GitHub Pages. It helps track units, exposure, results, profit/loss, bankroll cash flow, closing-line value, and configurable risk limits while keeping manual browser entries local.
+EdgeLog is a local-first betting journal designed for GitHub Pages. It helps track units, exposure, results, profit/loss, bankroll cash flow, closing-line value, decision quality, and configurable risk limits while keeping manual browser entries local.
 
 ## Features
 
@@ -10,20 +10,35 @@ EdgeLog is a local-first betting journal designed for GitHub Pages. It helps tra
 - Reads betslip screenshots with browser-based OCR.
 - Detects event, league, market, odds, stake, event date, status, result, payout, bookmaker, timing, and strategy tags.
 - Records entry, opening, and closing decimal odds and calculates closing-line value automatically.
+- Records confidence, pre-bet thesis, decision quality, mistake type, and post-bet review.
 - Converts VND stakes to units using a configurable unit value (default: 500,000 VND).
 - Calculates win, half-win, loss, half-loss, void, pending exposure, and total net P/L.
 - Tracks starting bankroll, deposits, withdrawals, current balance, and available balance after exposure.
 - Displays cumulative profit and bankroll curves plus breakdowns by sport, odds range, market, timing, bookmaker, and strategy tag.
-- Displays average CLV, stake-weighted CLV, beat-close rate, and implied-probability edge.
+- Displays confidence calibration, review coverage, process grades, recurring mistakes, average CLV, stake-weighted CLV, beat-close rate, and implied-probability edge.
 - Provides configurable warnings for maximum stake, pending exposure, and daily settled loss.
 - Automatically displays sport-category icons for esports, soccer, basketball, baseball, and other supported sports.
 - Saves data locally in the browser using `localStorage`.
 - Automatically checks `ledger.json` for new ChatGPT-tracked entries every 10 seconds while the page is open.
 - Refreshes immediately when the tab regains focus or the connection comes back online.
 - Preserves locally edited bets instead of replacing them during remote synchronization.
-- Manual add, edit, delete, and one-click settlement controls.
-- Search and filters for sport, status, bookmaker, market, timing, and tags.
+- Manual add, edit, review, delete, and one-click settlement controls.
+- Search and filters for sport, status, bookmaker, market, timing, tags, and review status.
 - Full JSON backup/restore and detailed CSV export.
+
+## Decision-quality review
+
+The Add/Edit Bet dialog includes process-oriented fields:
+
+- confidence from 1 to 5
+- a pre-bet thesis describing the expected edge
+- a post-settlement decision grade: good, mixed, or poor
+- a mistake category such as bad price, late entry, overstaking, chasing, tilt, or execution error
+- a written post-bet review
+
+Settled bets show a dedicated **Review** action. The Bets page can filter for entries needing review, completed reviews, process grades, or flagged mistakes.
+
+The Analytics page compares confidence levels with win rate, P/L, ROI, average odds, and CLV. It also reports review coverage, good-decision rate, and recurring mistakes. These measures are intended to separate process quality from short-term outcomes: a losing bet may still be a good decision, and a winning bet may still expose poor discipline.
 
 ## Risk guardrails
 
@@ -51,7 +66,7 @@ For example, an entry at `2.10` and a closing price of `1.90` produces positive 
 
 The Settings page exports a versioned EdgeLog JSON backup containing:
 
-- all bets and bet metadata, including opening and closing odds
+- all bets and bet metadata, including line prices, confidence, theses, decision grades, mistakes, and post-bet reviews
 - unit size, starting bankroll, and risk-guardrail settings
 - bankroll deposits and withdrawals
 - theme preference
@@ -82,9 +97,9 @@ The browser checks every 10 seconds while visible and every 30 seconds while hid
 
 ## Privacy behavior
 
-Manual entries, edits, settings, bankroll values, cash-ledger entries, and risk limits remain in browser `localStorage` unless exported by the user.
+Manual entries, edits, settings, bankroll values, cash-ledger entries, risk limits, theses, and reviews remain in browser `localStorage` unless exported by the user.
 
-Entries intentionally added through ChatGPT synchronization are stored in the public repository's `ledger.json` file so GitHub Pages can deliver them to the open website. Do not place private account details, personal identifiers, or sportsbook credentials in synchronized notes.
+Entries intentionally added through ChatGPT synchronization are stored in the public repository's `ledger.json` file so GitHub Pages can deliver them to the open website. Do not place private account details, personal identifiers, or sportsbook credentials in synchronized notes, theses, or reviews.
 
 Clearing browser site data removes local-only tracker data unless a JSON backup was exported.
 
@@ -113,5 +128,8 @@ The parser recognizes common labels including:
 - `Kết quả`
 - `Tỷ lệ mở cửa`
 - `Tỷ lệ đóng cửa`
+- `Độ tin cậy`
+- `Lý do`
+- `Đánh giá`
 
 The **thousands of VND** switch is enabled by default, so a displayed stake of `773.00 VND` is interpreted as `773,000 VND`.
