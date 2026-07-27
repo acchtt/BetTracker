@@ -1,6 +1,6 @@
 (() => {
-  if (globalThis.__edgeLogPwa) return;
-  globalThis.__edgeLogPwa = true;
+  if (globalThis.__slipTracePwa) return;
+  globalThis.__slipTracePwa = true;
 
   const manifest = document.createElement("link");
   manifest.rel = "manifest";
@@ -69,13 +69,13 @@
   addEventListener("appinstalled", () => {
     installPrompt = null;
     document.querySelector(".pwa-install")?.classList.remove("is-visible");
-    if (typeof toast === "function") toast("EdgeLog installed");
+    if (typeof toast === "function") toast("SlipTrace installed");
   });
   addEventListener("online", updateStatus);
   addEventListener("offline", updateStatus);
 
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./sw.js").catch((error) => console.warn("EdgeLog service worker:", error));
+    navigator.serviceWorker.register("./sw.js").catch((error) => console.warn("SlipTrace service worker:", error));
   }
 
   ensureUi();
