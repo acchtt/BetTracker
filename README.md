@@ -1,136 +1,88 @@
-# EdgeLog
+# SlipTrace
 
-**Log bets. Gain edge.**
+**Track every slip.**
 
-EdgeLog is a local-first betting journal designed for GitHub Pages. It helps track units, exposure, results, profit/loss, bankroll cash flow, betting metadata, reports, and configurable risk limits while keeping manual browser entries local.
+SlipTrace is a local-first betting journal designed for GitHub Pages. It tracks units, exposure, results, profit/loss, bankroll cash flow, betting metadata, reports, and configurable risk limits while keeping manual browser entries local.
 
 ## Features
 
-- Automatically parses pasted Vietnamese and English betslip text.
+- Parses pasted Vietnamese and English betslip text.
 - Reads betslip screenshots with browser-based OCR.
-- Provides an editable import-review screen before a detected bet is saved.
+- Provides an editable import-review screen before saving a detected bet.
 - Detects event, league, market, odds, stake, event date, status, result, payout, bookmaker, timing, and strategy tags.
-- Converts VND stakes to units using a configurable unit value (default: 500,000 VND).
+- Converts VND stakes to units using a configurable unit value; the default is 500,000 VND.
 - Calculates win, half-win, loss, half-loss, void, pending exposure, and total net P/L.
-- Tracks starting bankroll, deposits, withdrawals, current balance, available balance, and a configurable bankroll goal.
+- Tracks starting bankroll, deposits, withdrawals, current balance, available balance, and an optional bankroll goal.
 - Displays cumulative profit and bankroll curves plus breakdowns by sport, odds range, market, timing, bookmaker, and strategy tag.
-- Provides weekly and monthly reports with P/L, ROI, stake, win rate, drawdown, strongest sport, and previous-period comparisons.
-- Includes a monthly calendar showing daily settled P/L with click-through to the matching bets.
-- Allows the Dashboard to switch between today, the last 7 days, the last 30 days, the current month, and all time.
-- Provides configurable warnings for maximum stake, pending exposure, and daily settled loss.
+- Provides weekly and monthly reports, a settled-results calendar, and period comparisons.
+- Includes configurable warnings for maximum stake, pending exposure, and daily settled loss.
 - Detects possible duplicate entries before saving.
-- Supports a bet-detail drawer, batch settlement, bulk metadata editing, and bulk deletion.
-- Provides comfortable and compact table density plus configurable visible columns.
-- Automatically displays sport-category icons for esports, soccer, basketball, baseball, and other supported sports.
-- Saves data locally in the browser using `localStorage`.
-- Automatically checks `ledger.json` for new ChatGPT-tracked entries every 10 seconds while the page is open.
-- Refreshes immediately when the tab regains focus or the connection comes back online.
-- Preserves locally edited bets instead of replacing them during remote synchronization.
-- Manual add, edit, delete, and one-click settlement controls.
-- Search and filters for sport, status, bookmaker, market, timing, and tags.
-- Sorting, page-size controls, pagination, full JSON backup/restore, and detailed CSV export.
+- Supports manual add, edit, delete, bulk actions, and one-click settlement.
+- Saves data locally using `localStorage`.
+- Synchronizes confirmed ChatGPT-tracked entries from `ledger.json` while preserving local edits.
+- Exports full JSON backups and detailed CSV files.
 - Installs as a Progressive Web App and caches the application shell for offline access.
 
-## Reports and calendar
+## Data model and synchronization
 
-The Reports page groups dated settled bets by week or month. Each period includes:
+`ledger.json` is the canonical feed for entries added or updated through ChatGPT. An official wager should only be written to the ledger after placement is confirmed.
 
-- settled-bet count and total stake
-- P/L and ROI
-- win rate
-- peak-to-trough drawdown
-- strongest sport by P/L
+For each synchronized change:
 
-The comparison panel contrasts the latest complete or current period with the previous equal period. The Calendar page groups results by day; selecting a day opens Bet History filtered to that date.
+1. Add or update the bet using a stable `syncId`.
+2. Update the top-level `version` timestamp.
+3. Commit the file to `main`.
+4. Allow GitHub Pages to deploy the updated feed.
 
-## Bet-history productivity
+The browser checks for updates while the page is open and refreshes when the tab regains focus or connectivity returns.
 
-The Bets page supports:
+## Bankroll and guardrails
 
-- clicking a row to open a read-only detail drawer
-- selecting multiple entries for settlement, metadata editing, or deletion
-- compact and comfortable row density
-- choosing which table columns are visible
-- possible-duplicate warnings and filtering
-
-Synchronized entries deleted through a bulk action are added to the local hidden-sync list so the live feed does not immediately restore them.
-
-## Bankroll goals
-
-The Bankroll page accepts an optional target balance. Progress uses:
+Current bankroll is calculated from:
 
 `starting bankroll + deposits - withdrawals + settled betting P/L`
 
-The goal panel shows the current balance, percentage completed, remaining amount, or the amount by which the target has been exceeded. Setting the target to `0` clears it.
-
-## Progressive Web App and offline behavior
-
-EdgeLog registers a service worker and provides an installation prompt when supported by the browser. The application shell, core scripts, styles, and primary pages are cached for offline use. Manual browser data remains available because it is stored locally. Live ledger synchronization resumes when the connection returns.
-
-## Risk guardrails
-
-The Settings page includes warning limits for:
+Guardrails are warnings rather than automatic blocks. Limits can be configured for:
 
 - maximum stake per pending bet, measured in units
 - maximum total pending exposure as a percentage of current bankroll
 - maximum daily settled loss, measured in units
 
-Current bankroll is calculated from the starting bankroll, cash-ledger adjustments, and settled betting P/L. Daily P/L uses the settlement timestamp and falls back to the event date when a settlement timestamp is unavailable.
+## Backup and restore
 
-The guardrails are warnings rather than automatic blocks. When a new pending bet exceeds an enabled limit, EdgeLog shows the reasons and asks for confirmation before saving. An individual limit can be disabled by setting it to `0`, or all pre-save warnings can be turned off from Settings.
+The Settings page exports a versioned SlipTrace JSON backup containing:
 
-## Full backup and restore
-
-The Settings page exports a versioned EdgeLog JSON backup containing:
-
-- all bets and bet metadata
-- unit size, starting bankroll, bankroll goal, and risk-guardrail settings
-- bankroll deposits and withdrawals
+- bets and betting metadata
+- unit size, starting bankroll, bankroll goal, and risk settings
+- deposits and withdrawals
 - theme preference
 - locally hidden synchronized bet IDs
 
-Import supports current full backups, older `{ settings, bets }` backups, and legacy backups containing only a bets array. Before an import or full tracker reset, EdgeLog stores a temporary safety snapshot and offers an Undo action for 12 seconds.
+Imports support current backups, older `{ settings, bets }` backups, and legacy backups containing only a bets array. Existing browser storage keys remain compatible with previous EdgeLog builds so current users do not lose local data during the rebrand.
 
-Historical fields from older EdgeLog versions remain preserved inside existing local records and JSON backups even when they are no longer shown in the current interface.
+## Privacy
 
-## Live ledger workflow
+Manual entries, edits, settings, bankroll values, cash-ledger entries, table preferences, and risk limits remain in browser `localStorage` unless exported.
 
-`ledger.json` is the canonical feed for entries added or updated through ChatGPT.
-
-For each change:
-
-1. Add or update the bet using a stable `syncId`.
-2. Change the top-level `version` timestamp.
-3. Commit the file to `main`.
-4. After GitHub Pages deploys the commit, open EdgeLog tabs detect the new version automatically and update without a page refresh.
-
-The browser checks every 10 seconds while visible and every 30 seconds while hidden. GitHub Pages deployment time still applies before the new feed becomes publicly available.
+Entries intentionally synchronized through ChatGPT are stored in the public repository's `ledger.json`. Do not place private account details, personal identifiers, or sportsbook credentials in synchronized notes.
 
 ## Brand
 
-- Product name: **EdgeLog**
-- Tagline: **Log bets. Gain edge.**
-- Primary colors: electric blue, cyan, and violet on a dark navy foundation.
-- Sidebar lockup: `assets/edgelog-horizontal-dark.svg`
-- App icon: `assets/edgelog-app-icon.svg`
-
-## Privacy behavior
-
-Manual entries, edits, settings, bankroll values, cash-ledger entries, table preferences, and risk limits remain in browser `localStorage` unless exported by the user.
-
-Entries intentionally added through ChatGPT synchronization are stored in the public repository's `ledger.json` file so GitHub Pages can deliver them to the open website. Do not place private account details, personal identifiers, or sportsbook credentials in synchronized notes.
-
-Clearing browser site data removes local-only tracker data unless a JSON backup was exported.
+- Product name: **SlipTrace**
+- Tagline: **Track every slip.**
+- Primary colors: violet, electric blue, and cyan on a deep navy foundation
+- Sidebar symbol: `assets/sliptrace-mark.svg`
+- App icon: `assets/sliptrace-app-icon.svg`
+- Horizontal lockup: `assets/sliptrace-horizontal-dark.svg`
+- Brand guide: `brand/SLIPTRACE-BRAND-GUIDE.md`
 
 ## Publish with GitHub Pages
 
-1. Open the repository's **Settings → Pages**.
-2. Under **Build and deployment**, select **GitHub Actions**.
-3. The included workflow deploys the site after every push to `main`.
-
-Current project URL:
+The current repository slug remains `EdgeLog`, so the existing project URL is:
 
 `https://acchtt.github.io/EdgeLog/`
+
+The displayed product and installed PWA are branded as SlipTrace.
 
 ## Supported Vietnamese labels
 
