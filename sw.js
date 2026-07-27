@@ -1,4 +1,4 @@
-const CACHE_NAME = "edgelog-shell-20260727-4";
+const CACHE_NAME = "sliptrace-shell-20260727-1";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -11,6 +11,8 @@ const APP_SHELL = [
   "./help.html",
   "./manifest.webmanifest",
   "./dashboard.css",
+  "./sliptrace-brand.css?v=20260727-1",
+  "./sliptrace-brand.js?v=20260727-1",
   "./dashboard-home.css?v=20260727-1",
   "./analytics-v2.css",
   "./bankroll-v2.css",
@@ -38,8 +40,9 @@ const APP_SHELL = [
   "./bankroll-v2.js",
   "./analytics-v2.js",
   "./analytics-dimensions.js?v=20260727-2",
-  "./assets/edgelog-horizontal-dark.svg?v=1",
-  "./assets/edgelog-app-icon.svg?v=4"
+  "./assets/sliptrace-mark.svg?v=20260727-1",
+  "./assets/sliptrace-horizontal-dark.svg?v=20260727-1",
+  "./assets/sliptrace-app-icon.svg?v=20260727-1"
 ];
 
 self.addEventListener("install", (event) => {
