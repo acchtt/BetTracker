@@ -171,7 +171,7 @@
   });
 
   [
-    "sliptrace-brand.js?v=20260727-1",
+    "sliptrace-brand.js?v=20260727-3",
     "bet-metadata.js?v=20260727-1",
     "bet-metadata-fixes.js?v=20260727-1",
     "backup-v2.js?v=20260727-1",
@@ -188,7 +188,8 @@
     "bets-productivity.js?v=20260727-1",
     "bankroll-goals.js?v=20260727-1",
     "bets-workspace.js?v=20260727-1",
-    "pwa.js?v=20260727-1",
+    "pwa.js?v=20260728-1",
+    "pwa-diagnostics.js?v=20260728-1",
     "parser-image-ocr.js"
   ].forEach((src) => {
     const script = document.createElement("script");
