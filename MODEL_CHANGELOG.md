@@ -27,6 +27,48 @@ Each rule change must include:
 
 ---
 
+## v0.2.2 — 2026-07-28
+
+### Football recommendations: mandatory lineup-aware assessment
+
+**Status:** Active operational rule
+
+**Triggering evidence**
+
+- BK Häcken vs AIK: the first preview used the confirmed formations but did not sufficiently adjust the probabilities and market preference for the actual starting personnel and role interactions.
+- The user requested that confirmed lineups be incorporated explicitly in every recommendation from this point forward.
+
+**Previous rule**
+
+Team form, market prices, historical performance, formations, and live statistics could carry most of the recommendation, while named starting players and role-specific lineup effects were sometimes treated only as supporting context.
+
+**New rule**
+
+For football prematch and live recommendations:
+
+- When confirmed lineups are available, analyze the actual starting XI before issuing an `OFFICIAL BET` candidate.
+- Evaluate more than the listed formation: account for player quality, natural positions, rotation, absences, goalkeeper and centre-back stability, midfield control, pace, finishing, set-piece responsibility, fullback or wingback aggression, and bench substitution options.
+- Explain how the two lineups interact tactically, including width versus narrowness, pressing resistance, transition exposure, aerial matchups, and likely game-state changes after the first goal.
+- Apply lineup effects directly to estimated probabilities and fair odds; do not mention lineups without changing the numerical or market conclusion when the personnel materially matter.
+- Distinguish a strong named lineup from a merely attacking-looking formation. Formation alone is not evidence of attacking quality.
+- For live bets, update the lineup assessment for substitutions, injuries, cards, fatigue, and role changes rather than relying only on the starting shape.
+- If confirmed lineups are unavailable for a lineup-sensitive prematch market, cap the recommendation at `LEAN`, apply an explicit uncertainty discount, and normally wait rather than issue an official wager.
+- Record official football bets that used confirmed lineups with the `lineup-confirmed` tag so their performance can be reviewed separately.
+
+**Expected benefit**
+
+Improve probability estimates by grounding tactical and market analysis in the players who will actually execute the game plan, while reducing generic team-name, form, and formation-only recommendations.
+
+**Possible downside**
+
+Waiting for confirmed lineups may miss an earlier price, and lineup data can contain late errors or misleading listed formations.
+
+**Review threshold**
+
+Review after the next 10 official football bets tagged `lineup-confirmed`, comparing estimated probability, closing-line quality, ROI, and qualitative lineup-read accuracy.
+
+---
+
 ## v0.2.1 — 2026-07-27
 
 ### Football live Asian handicaps: bookmaker settlement verification
