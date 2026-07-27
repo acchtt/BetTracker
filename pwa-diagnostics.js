@@ -23,6 +23,13 @@
     return { level, name, detail };
   }
 
+  function withTimeout(promise, milliseconds, message) {
+    return Promise.race([
+      promise,
+      new Promise((_, reject) => setTimeout(() => reject(new Error(message)), milliseconds))
+    ]);
+  }
+
   async function findSlipTraceCache() {
     if (!("caches" in globalThis)) return null;
     const keys = await caches.keys();
@@ -47,7 +54,7 @@
       checks.push(result("fail", "Service worker support", "This browser does not support service workers."));
     } else {
       try {
-        const registration = await navigator.serviceWorker.ready;
+        const registration = await withTimeout(navigator.serviceWorker.ready, 8000, "Service worker did not become ready within 8 seconds.");
         checks.push(result(registration.active ? "pass" : "warn", "Service worker", registration.active ? `Active with scope ${registration.scope}` : "Registered but not active yet."));
         checks.push(result(navigator.serviceWorker.controller ? "pass" : "warn", "Page control", navigator.serviceWorker.controller ? "The current page is controlled for offline requests." : "Reload once so the active worker can control this page."));
       } catch (error) {
