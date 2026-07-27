@@ -1,6 +1,6 @@
 (() => {
-  if (globalThis.__edgeLogLogoHomeLink) return;
-  globalThis.__edgeLogLogoHomeLink = true;
+  if (globalThis.__slipTraceLogoHomeLink) return;
+  globalThis.__slipTraceLogoHomeLink = true;
 
   const style = document.createElement("style");
   style.textContent = `
@@ -28,7 +28,7 @@
     const link = document.createElement("a");
     link.className = "sidebar-brand__home";
     link.href = "index.html";
-    link.setAttribute("aria-label", "Go to EdgeLog dashboard");
+    link.setAttribute("aria-label", "Go to SlipTrace dashboard");
     while (brand.firstChild) link.append(brand.firstChild);
     brand.append(link);
   });
