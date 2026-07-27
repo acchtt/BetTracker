@@ -1,22 +1,22 @@
 {
-  "name": "EdgeLog — Betting Tracker",
-  "short_name": "EdgeLog",
-  "description": "A local-first betting journal for tracking bets, bankroll, reports, and performance.",
+  "name": "SlipTrace — Betting Tracker",
+  "short_name": "SlipTrace",
+  "description": "Track every slip with a local-first betting journal for bankroll, reports, and performance.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#07101f",
-  "theme_color": "#2563eb",
+  "theme_color": "#0b1220",
   "orientation": "any",
   "icons": [
     {
-      "src": "assets/edgelog-app-icon.svg",
+      "src": "assets/sliptrace-app-icon.svg",
       "sizes": "192x192",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "assets/edgelog-app-icon.svg",
+      "src": "assets/sliptrace-app-icon.svg",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
