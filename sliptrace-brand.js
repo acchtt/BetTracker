@@ -2,7 +2,7 @@
   if (globalThis.__slipTraceBrandApplied) return;
   globalThis.__slipTraceBrandApplied = true;
 
-  const VERSION = "20260727-1";
+  const VERSION = "20260727-2";
   const BRAND = "SlipTrace";
   const TAGLINE = "Track every slip.";
   const MARK = `assets/sliptrace-mark.svg?v=${VERSION}`;
@@ -43,19 +43,19 @@
 
   function updateStaticBrand() {
     document.documentElement.dataset.brand = "sliptrace";
-    document.title = replaceBrandText(document.title);
+    if (document.title.includes("EdgeLog")) document.title = replaceBrandText(document.title);
 
     const description = document.querySelector('meta[name="description"]');
-    if (description) description.content = replaceBrandText(description.content);
+    if (description?.content.includes("EdgeLog")) description.content = replaceBrandText(description.content);
 
     document.querySelectorAll('link[rel~="icon"], link[rel="apple-touch-icon"]').forEach((link) => {
-      link.href = ICON;
-      link.type = "image/svg+xml";
+      if (!link.href.includes("sliptrace-app-icon.svg")) link.href = ICON;
+      if (link.type !== "image/svg+xml") link.type = "image/svg+xml";
     });
 
     document.querySelectorAll(".sidebar-brand__mark").forEach((image) => {
-      image.src = MARK;
-      image.alt = BRAND;
+      if (!image.src.includes("sliptrace-mark.svg")) image.src = MARK;
+      if (image.alt !== BRAND) image.alt = BRAND;
     });
 
     document.querySelectorAll(".sidebar-brand__name").forEach((name) => {
@@ -64,9 +64,11 @@
       name.innerHTML = '<span class="brand-slip">SLIP</span><span class="brand-trace">TRACE</span>';
     });
 
-    document.querySelectorAll(".sidebar-brand__meta").forEach((meta) => { meta.textContent = TAGLINE; });
+    document.querySelectorAll(".sidebar-brand__meta").forEach((meta) => {
+      if (meta.textContent !== TAGLINE) meta.textContent = TAGLINE;
+    });
     document.querySelectorAll(".topbar-kicker").forEach((kicker) => {
-      if (kicker.textContent.trim() === "EdgeLog" || kicker.textContent.trim() === BRAND) kicker.textContent = BRAND;
+      if (kicker.textContent.trim() === "EdgeLog") kicker.textContent = BRAND;
     });
 
     replaceTextNodes(document.body);
@@ -88,16 +90,18 @@
   }, true);
 
   const observer = new MutationObserver((mutations) => {
+    let refreshStatic = false;
     mutations.forEach((mutation) => mutation.addedNodes.forEach((node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        if (node.textContent.includes("EdgeLog")) node.textContent = replaceBrandText(node.textContent);
+        return;
+      }
       if (node.nodeType !== Node.ELEMENT_NODE) return;
       replaceTextNodes(node);
       updateAttributes(node);
-      if (node.matches?.(".sidebar-brand__mark")) {
-        node.src = MARK;
-        node.alt = BRAND;
-      }
+      refreshStatic ||= Boolean(node.matches?.(".sidebar-brand,.sidebar-brand__mark,.sidebar-brand__name,.sidebar-brand__meta,.topbar-kicker") || node.querySelector?.(".sidebar-brand,.topbar-kicker"));
     }));
-    updateStaticBrand();
+    if (refreshStatic) updateStaticBrand();
   });
   observer.observe(document.documentElement, { childList: true, subtree: true });
 })();
