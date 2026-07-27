@@ -70,7 +70,7 @@
         <div>
           <p class="panel-kicker">IMPORT BETSLIP</p>
           <h2>Paste sportsbook text</h2>
-          <p>EdgeLog will detect the event, market, odds, stake, result, and status.</p>
+          <p>SlipTrace will detect the event, market, odds, stake, result, and status.</p>
         </div>
         <button id="closeParserDialogBtn" class="icon-button" type="button" aria-label="Close">×</button>
       </div>
@@ -171,6 +171,7 @@
   });
 
   [
+    "sliptrace-brand.js?v=20260727-1",
     "bet-metadata.js?v=20260727-1",
     "bet-metadata-fixes.js?v=20260727-1",
     "backup-v2.js?v=20260727-1",
