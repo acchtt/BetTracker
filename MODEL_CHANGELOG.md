@@ -27,6 +27,45 @@ Each rule change must include:
 
 ---
 
+## v0.2.1 — 2026-07-27
+
+### Football live Asian handicaps: bookmaker settlement verification
+
+**Status:** Active operational rule
+
+**Triggering evidence**
+
+- FK Tukums 2000 vs FC RFS, live RFS -1 at a displayed score of 0–1: the final score remained 0–1, but BK8 settled the wager as a loss rather than a push.
+
+**Previous rule**
+
+The recommendation assumed the displayed live Asian handicap would settle against the final full-match margin under generic Asian-handicap conventions.
+
+**New rule**
+
+For football live Asian handicaps:
+
+- Do not infer settlement from generic convention alone.
+- Before recommending, identify whether the bookmaker applies the handicap to the final score or to the remaining score after placement.
+- When the settlement basis is not explicitly confirmed, prefer markets with unambiguous settlement or return `NO BET`.
+- For BK8, treat live Asian handicaps as remaining-match handicaps unless a market-specific screen or prior verified settlement proves otherwise.
+- State the exact win, push, half-win, half-loss, and loss conditions using the bookmaker-specific interpretation before the wager is placed.
+- Do not size above 0.25u while a settlement rule remains unverified.
+
+**Expected benefit**
+
+Prevent wagers whose apparent downside protection is based on an incorrect settlement assumption.
+
+**Possible downside**
+
+Some valid live handicap opportunities may be skipped while the market definition is being verified.
+
+**Review threshold**
+
+Review after five additional BK8 live Asian-handicap settlements or after obtaining an explicit bookmaker rule page that confirms the settlement method.
+
+---
+
 ## v0.2.0 — 2026-07-27
 
 ### Football live totals: stoppage-time and late-game risk adjustment
