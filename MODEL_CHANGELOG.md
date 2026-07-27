@@ -27,6 +27,49 @@ Each rule change must include:
 
 ---
 
+## v0.2.3 — 2026-07-28
+
+### Football calibration: minimum edge and temporary stake restriction
+
+**Status:** Active evaluation restriction
+
+**Triggering evidence**
+
+- The first nine evaluation-phase football bets finished 2 wins, 5 losses and 2 pushes.
+- Total football evaluation stake was 1,500,000 VND, with net profit/loss of -806,250 VND and ROI of -53.75%.
+- The sample included a bookmaker-settlement error on RFS -1, underestimated late-goal risk on Sandefjord Under 2.25, and an overly thin halftime Under 1.5 edge in Zaglebie Lubin vs Piast Gliwice.
+- Flamengo -1 and RFS -1 were staked at 0.5u despite material uncertainty, making calibration errors more expensive.
+
+**Previous rule**
+
+Football candidates could become official when the estimated probability modestly exceeded the displayed breakeven probability, and 0.5u was available for apparently stronger edges.
+
+**New rule**
+
+For football recommendations during the next evaluation block:
+
+- Require an uncertainty-adjusted expected-value edge equivalent to at least five percentage points over breakeven before issuing an `OFFICIAL BET` candidate.
+- A three-to-five-point estimated edge is `LEAN`; below three points is `NO BET`.
+- For Asian quarter-lines and whole-goal totals, calculate expected value across win, half-win, push, half-loss and loss outcomes rather than comparing only a single win probability with `1 / odds`.
+- Cap every official football wager at 0.25u until the next 10 settled football bets are reviewed. Do not recommend 0.5u during this restriction.
+- Treat halftime Under 1.5 as a high-variance market. Prefer a safer Under 2 or Under 2.25 when available; require exceptional chance suppression and a larger edge for Under 1.5.
+- Weight xG, big chances, shots on target, box touches, score incentives, substitutions and lineup quality above generic possession, attacks and dangerous-attack counts.
+- Record the model-recommended stake separately in the notes whenever the placed stake differs from the recommendation.
+
+**Expected benefit**
+
+Reduce marginal entries, limit damage from probability and settlement errors, and improve calibration by requiring a larger buffer for noisy live football data.
+
+**Possible downside**
+
+The model will issue fewer official football bets and may miss some profitable moves that sit just below the stricter threshold.
+
+**Review threshold**
+
+Review after the next 10 settled official football bets, including separate results for totals versus handicaps, prematch versus live, lineup-confirmed bets, and entries before versus after halftime.
+
+---
+
 ## v0.2.2 — 2026-07-28
 
 ### Football recommendations: mandatory lineup-aware assessment
