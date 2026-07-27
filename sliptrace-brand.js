@@ -2,14 +2,18 @@
   if (globalThis.__slipTraceBrandApplied) return;
   globalThis.__slipTraceBrandApplied = true;
 
-  const VERSION = "20260727-2";
+  const VERSION = "20260727-3";
   const BRAND = "SlipTrace";
   const TAGLINE = "Track every slip.";
   const MARK = `assets/sliptrace-mark.svg?v=${VERSION}`;
   const ICON = `assets/sliptrace-app-icon.svg?v=${VERSION}`;
 
   function ensureStylesheet() {
-    if (document.querySelector('link[href^="sliptrace-brand.css"]')) return;
+    const existing = document.querySelector('link[href^="sliptrace-brand.css"]');
+    if (existing) {
+      existing.href = `sliptrace-brand.css?v=${VERSION}`;
+      return;
+    }
     const link = document.createElement("link");
     link.rel = "stylesheet";
     link.href = `sliptrace-brand.css?v=${VERSION}`;
@@ -41,34 +45,49 @@
     });
   }
 
+  function canonicalBrandMarkup() {
+    return `<a class="sidebar-brand__home" href="index.html" aria-label="Go to SlipTrace dashboard"><img class="sidebar-brand__mark" src="${MARK}" alt="SlipTrace"><div class="sidebar-brand__copy"><div class="sidebar-brand__name"><span class="brand-slip">SLIP</span><span class="brand-trace">TRACE</span></div><div class="sidebar-brand__meta">${TAGLINE}</div></div></a>`;
+  }
+
+  function enforceSidebarBrand() {
+    document.querySelectorAll(".sidebar-brand").forEach((brand) => {
+      const home = brand.querySelector(":scope > .sidebar-brand__home");
+      const mark = home?.querySelector(":scope > .sidebar-brand__mark");
+      const name = home?.querySelector(".sidebar-brand__name");
+      const oldAsset = [...brand.querySelectorAll("img")].some((image) => /edgelog/i.test(image.getAttribute("src") || ""));
+      const oldText = /edge\s*\.?\s*log/i.test(brand.textContent || "");
+      const canonical = Boolean(home && mark && name && name.textContent.replace(/\s/g, "").toUpperCase() === "SLIPTRACE");
+
+      if (!canonical || oldAsset || oldText) {
+        brand.innerHTML = canonicalBrandMarkup();
+        return;
+      }
+
+      if (mark.getAttribute("src") !== MARK) mark.setAttribute("src", MARK);
+      mark.alt = BRAND;
+      home.href = "index.html";
+      home.setAttribute("aria-label", "Go to SlipTrace dashboard");
+      const meta = home.querySelector(".sidebar-brand__meta");
+      if (meta && meta.textContent !== TAGLINE) meta.textContent = TAGLINE;
+    });
+  }
+
   function updateStaticBrand() {
     document.documentElement.dataset.brand = "sliptrace";
-    if (document.title.includes("EdgeLog")) document.title = replaceBrandText(document.title);
+    document.title = replaceBrandText(document.title);
 
     const description = document.querySelector('meta[name="description"]');
-    if (description?.content.includes("EdgeLog")) description.content = replaceBrandText(description.content);
+    if (description) description.content = replaceBrandText(description.content);
 
     document.querySelectorAll('link[rel~="icon"], link[rel="apple-touch-icon"]').forEach((link) => {
-      if (!link.href.includes("sliptrace-app-icon.svg")) link.href = ICON;
-      if (link.type !== "image/svg+xml") link.type = "image/svg+xml";
+      link.href = ICON;
+      link.type = "image/svg+xml";
     });
 
-    document.querySelectorAll(".sidebar-brand__mark").forEach((image) => {
-      if (!image.src.includes("sliptrace-mark.svg")) image.src = MARK;
-      if (image.alt !== BRAND) image.alt = BRAND;
-    });
+    enforceSidebarBrand();
 
-    document.querySelectorAll(".sidebar-brand__name").forEach((name) => {
-      if (name.dataset.sliptraceReady === "true") return;
-      name.dataset.sliptraceReady = "true";
-      name.innerHTML = '<span class="brand-slip">SLIP</span><span class="brand-trace">TRACE</span>';
-    });
-
-    document.querySelectorAll(".sidebar-brand__meta").forEach((meta) => {
-      if (meta.textContent !== TAGLINE) meta.textContent = TAGLINE;
-    });
     document.querySelectorAll(".topbar-kicker").forEach((kicker) => {
-      if (kicker.textContent.trim() === "EdgeLog") kicker.textContent = BRAND;
+      if (kicker.textContent.trim() === "EdgeLog" || kicker.textContent.trim() === BRAND) kicker.textContent = BRAND;
     });
 
     replaceTextNodes(document.body);
@@ -89,19 +108,25 @@
     link.download = link.download.replace(/edgelog/gi, "sliptrace");
   }, true);
 
-  const observer = new MutationObserver((mutations) => {
-    let refreshStatic = false;
-    mutations.forEach((mutation) => mutation.addedNodes.forEach((node) => {
-      if (node.nodeType === Node.TEXT_NODE) {
-        if (node.textContent.includes("EdgeLog")) node.textContent = replaceBrandText(node.textContent);
-        return;
-      }
-      if (node.nodeType !== Node.ELEMENT_NODE) return;
-      replaceTextNodes(node);
-      updateAttributes(node);
-      refreshStatic ||= Boolean(node.matches?.(".sidebar-brand,.sidebar-brand__mark,.sidebar-brand__name,.sidebar-brand__meta,.topbar-kicker") || node.querySelector?.(".sidebar-brand,.topbar-kicker"));
-    }));
-    if (refreshStatic) updateStaticBrand();
+  let queued = false;
+  const scheduleUpdate = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => {
+      queued = false;
+      updateStaticBrand();
+    });
+  };
+
+  const observer = new MutationObserver(scheduleUpdate);
+  observer.observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["src", "alt", "title", "aria-label"]
   });
-  observer.observe(document.documentElement, { childList: true, subtree: true });
+
+  addEventListener("DOMContentLoaded", updateStaticBrand, { once: true });
+  addEventListener("load", updateStaticBrand, { once: true });
+  [100, 500, 1500, 3000].forEach((delay) => setTimeout(updateStaticBrand, delay));
 })();
