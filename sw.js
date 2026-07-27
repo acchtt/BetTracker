@@ -1,4 +1,4 @@
-const CACHE_NAME = "sliptrace-shell-20260728-1";
+const CACHE_NAME = "sliptrace-shell-20260728-2";
 
 const CORE_SHELL = [
   "./",
@@ -13,6 +13,7 @@ const CORE_SHELL = [
   "./manifest.webmanifest",
   "./dashboard.css",
   "./sliptrace-brand.css?v=20260727-3",
+  "./sliptrace-brand.css?v=20260727-1",
   "./sliptrace-brand.js?v=20260727-3",
   "./dashboard-home.css?v=20260727-1",
   "./analytics-v2.css",
@@ -20,7 +21,9 @@ const CORE_SHELL = [
   "./app-v3.js",
   "./parser-popup.js",
   "./pwa.js?v=20260728-1",
+  "./assets/sliptrace-mark.svg",
   "./assets/sliptrace-mark.svg?v=20260727-3",
+  "./assets/sliptrace-app-icon.svg",
   "./assets/sliptrace-app-icon.svg?v=20260727-3"
 ];
 
