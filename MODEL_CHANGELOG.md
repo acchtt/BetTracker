@@ -27,6 +27,53 @@ Each rule change must include:
 
 ---
 
+## v0.2.4 — 2026-07-28
+
+### Football first-half Under 0.75: strict qualifying gate
+
+**Status:** Active operational restriction
+
+**Triggering evidence**
+
+- Gualberto Villarroel San Jose vs Universitario De Vinto, first-half Under 0.75: the match showed very low early xG and shot volume, but one goal still arrived before halftime and the wager settled as a half-loss.
+- The model candidate had a minimum acceptable price of 1.95, but the wager was placed at 1.77, showing that a shortened price can erase the value even when the match profile remains quiet.
+- The review found that low current activity was being treated too readily as evidence of low future scoring.
+
+**Previous rule**
+
+Exceptional early chance suppression, confirmed lineups and a positive estimated edge could support a first-half Under 0.75 candidate, with some discretion over the exact minute, price and persistence of the low-event pattern.
+
+**New rule**
+
+For football first-half Under 0.75 recommendations:
+
+- Do not issue an `OFFICIAL BET` candidate unless every mandatory condition below is satisfied. If one is missing, return `NO BET`; do not use `LEAN` for this market.
+- The score must be 0-0 and the preferred entry window is minutes 22-32. Earlier entries require exceptional evidence and later entries require a separate stoppage-time penalty.
+- Combined live xG should normally be 0.25 or lower, with zero big chances, no more than one combined shot on target and no sustained sequence of dangerous box entries or set pieces.
+- The quiet pattern must persist for at least the previous 8-10 minutes; one static screenshot is not enough.
+- Confirmed lineups or clearly observed live roles must support a compact game: no strong attacking mismatch, no emergency attacking substitution, no red card, no penalty or VAR incident, and no obvious defensive injury.
+- Expected first-half stoppage time must be low. Long injuries, VAR reviews, repeated time delays or other causes of extended added time invalidate the candidate.
+- Calculate expected value across the three settlement outcomes: full win at 0 goals, half loss at exactly 1 goal and full loss at 2 or more goals.
+- Require an uncertainty-adjusted expected ROI of at least +8% after accounting for the remaining clock and likely stoppage time.
+- Require odds of at least 1.95. Any move below 1.95 cancels the candidate and must not be chased.
+- Maximum stake remains 0.25u.
+- Evaluate the corresponding over and `NO BET` case symmetrically. Low xG alone cannot create an under recommendation.
+- Record qualifying wagers with the tag `fh-under-0-75-strict` and record any below-cutoff user execution separately from model performance at the recommended price.
+
+**Expected benefit**
+
+Reduce false confidence from short low-event samples, prevent value loss from chasing shortened prices, and reserve the market for genuinely suppressed first halves with clear tactical and timing support.
+
+**Possible downside**
+
+The model will pass many quiet matches and may miss some winning unders that fail one hard condition or move below the required price before entry.
+
+**Review threshold**
+
+Review after 10 settled official first-half Under 0.75 wagers tagged `fh-under-0-75-strict`, or after 25 fully documented assessed opportunities if 10 official wagers have not occurred.
+
+---
+
 ## v0.2.3 — 2026-07-28
 
 ### Football calibration: minimum edge and temporary stake restriction
@@ -120,7 +167,7 @@ Review after the next 10 official football bets tagged `lineup-confirmed`, compa
 
 **Triggering evidence**
 
-- FK Tukums 2000 vs FC RFS, live RFS -1 at a displayed score of 0–1: the final score remained 0–1, but BK8 settled the wager as a loss rather than a push.
+- FK Tukums 2000 vs FC RFS, live RFS -1 at a displayed score of 0-1: the final score remained 0-1, but BK8 settled the wager as a loss rather than a push.
 
 **Previous rule**
 
@@ -188,7 +235,7 @@ Safer lines may reduce average odds and occasionally sacrifice value when the ma
 
 **Review threshold**
 
-Review after the next 10 official football live-total recommendations, with separate reporting for entries before minute 60, minutes 60–74, and minute 75 onward.
+Review after the next 10 official football live-total recommendations, with separate reporting for entries before minute 60, minutes 60-74, and minute 75 onward.
 
 ---
 
