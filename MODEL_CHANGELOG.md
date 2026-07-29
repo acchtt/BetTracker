@@ -4,7 +4,7 @@ This file records betting-model rules, evidence, and approved changes. `ledger.j
 
 ## Active operational documents
 
-- Football recommendations must follow `FOOTBALL_BETTING_PROCEDURE.md`, `MODEL_RULES_FOOTBALL_V0.2.5.md`, and this changelog.
+- Football recommendations must follow `FOOTBALL_BETTING_PROCEDURE.md`, `MODEL_RULES_FOOTBALL_V0.2.6.md`, and this changelog. `MODEL_RULES_FOOTBALL_V0.2.5.md` remains the base aggregate-state rule where v0.2.6 does not override it.
 - League of Legends recommendations must follow `LOL_BETTING_PROCEDURE.md` and this changelog.
 - When a procedure and an older changelog interpretation conflict, the newer dated rule or procedure controls until formally reviewed.
 - Every future material procedure change must also receive a dated entry in `MODEL_CHANGELOG.md`; editing a procedure file alone is not sufficient.
@@ -87,6 +87,54 @@ Waiting for confirmed rosters and drafts can miss earlier prices. Korean and Chi
 **Review threshold**
 
 Review after the next 10 settled official LoL wagers under v0.3.0. Report separately by league, series versus map, prematch versus post-draft versus live, roster-confirmed versus uncertain, map-result versus kill markets, and whether the predicted draft or macro branch occurred. Compare closing-line quality, calibration, ROI, and qualitative draft/live-state accuracy.
+
+---
+
+## v0.2.6 — 2026-07-30
+
+### Football knockout chase calibration, next-goal reset, and correlated-evidence control
+
+**Status:** Active evaluation rule  
+**Detailed implementation:** `MODEL_RULES_FOOTBALL_V0.2.6.md` with `MODEL_RULES_FOOTBALL_V0.2.5.md` retained as the base rule.
+
+**Sport and markets affected**
+
+Football live totals, team totals, 1X2, and Asian handicaps in knockout fixtures, especially halftime and early-second-half markets requiring two or more additional goals.
+
+**Triggering evidence**
+
+- Gornik Zabrze vs Fenerbahce, live Over 3.5 at 1-1 and 45:40: Gornik needed one goal to level the aggregate and force extra time, while the wager required two additional regulation-time goals.
+- The provisional review identified a process defect independent of final settlement: the model priced the incentive for the next goal but did not adequately price the lower-urgency state that could follow an aggregate equalizer.
+- The assessment also treated xG, xGOT, big chances, shots on target, box shots, and box touches as more independent than they were, inflating confidence from overlapping chance sequences.
+
+**Previous rule**
+
+The aggregate-state model separated controlled and forced-chase branches and increased transition variance when a trailing team attacked. It did not formally distinguish one-goal-to-level from multi-goal chase states, require a next-goal state tree, apply an aggregate-equalizer reset, or discount correlated chance indicators.
+
+**New rule**
+
+- Classify every knockout state as `single-goal-to-level`, `single-goal-to-qualify`, `multi-goal-chase`, or `no-chase` before applying any chase uplift.
+- Reserve the strong late multi-goal-tail increase for behaviorally confirmed `multi-goal-chase` states. A team needing one goal to force extra time does not automatically create a strong two-goal remaining tail.
+- For any total requiring two or more additional goals, build a next-goal state tree and reprice incentives after each possible scorer.
+- When a trailing-team goal levels the aggregate and makes extra time available, apply an `aggregate-reset` branch and reduce immediate scoring intensity unless observed behavior supports continued aggression.
+- Treat xG, xGOT, big chances, shots on target, box shots, and box touches as correlated `chance-cluster` evidence rather than independent probability uplifts.
+- Apply a persistence penalty to static halftime snapshots unless the previous 10–15 minutes or multiple snapshots confirm continuing high-quality chance creation.
+- Halftime or early-second-half totals needing two or more additional goals require an extra two-percentage-point edge buffer when one goal could reset the aggregate to level. Under the active v0.2.3 restriction, this normally means at least seven points over breakeven for `OFFICIAL BET` status.
+- Cap the output at `LEAN` when the thesis establishes only a strong next-goal case but not an independently supported pathway to the second required goal.
+- Prefer whole-goal protection when the push boundary is reasonably priced.
+- Applicable recommendations must show `Goals-required tier`, `Next-goal state tree`, `Aggregate-reset risk`, `Chance-quality and correlation check`, `Late-game and stoppage-time branch`, and `Market implication`.
+
+**Expected benefit**
+
+Improve calibration of knockout totals, prevent overstatement of forced-chase intensity, price post-equalizer caution explicitly, and reduce double-counting of overlapping live metrics.
+
+**Possible downside**
+
+The added branching can slow live decisions, may miss some genuinely open ties, and will increase the number of passed opportunities.
+
+**Review threshold**
+
+Review after the next 10 settled official football totals assessed under v0.2.6, including at least five knockout totals if available. Separate `single-goal-to-level` from `multi-goal-chase`, one-goal from two-or-more-goal requirements, aggregate-reset occurrence, closing-line quality, calibration, ROI, and process accuracy.
 
 ---
 
@@ -357,7 +405,6 @@ Review after the next 10 official football live-total recommendations, with sepa
 ### Initial evaluation framework
 
 **Status:** Active baseline
-
 - Begin each recommendation with `OFFICIAL BET`, `LEAN`, or `NO BET`.
 - Require odds of at least 1.60.
 - Use 0.25u as the standard evaluation stake.
