@@ -1,11 +1,11 @@
 # Football Betting Procedure
 
 **Status:** Active operational procedure  
-**Effective date:** 2026-07-29  
+**Effective date:** 2026-07-30  
 **Applies to:** Football prematch and live betting analysis in the Betting model project  
-**Related rules:** `MODEL_CHANGELOG.md`, `MODEL_RULES_FOOTBALL_V0.2.5.md`, and `ledger.json`
+**Related rules:** `MODEL_CHANGELOG.md`, `MODEL_RULES_FOOTBALL_V0.2.6.md`, `MODEL_RULES_FOOTBALL_V0.2.5.md`, and `ledger.json`
 
-`ledger.json` remains the authoritative betting record. This procedure controls how football opportunities are researched, analyzed, recommended, confirmed, recorded, settled, and reviewed.
+`ledger.json` remains the authoritative betting record. This procedure controls how football opportunities are researched, analyzed, recommended, confirmed, recorded, settled, and reviewed. Where v0.2.6 conflicts with an older aggregate-state interpretation, v0.2.6 controls.
 
 ---
 
@@ -82,6 +82,8 @@ Every recommendation must display:
 - `Late-game branch`
 - `Market implication`
 
+Applicable knockout recommendations must additionally display the v0.2.6 fields in section 8.
+
 ---
 
 ## 5. Lineup and personnel gate
@@ -155,11 +157,29 @@ For live football analysis, prioritize:
 
 A single screenshot is a snapshot, not proof of a persistent pattern. When possible, compare the previous 8–15 minutes with the full-match profile.
 
+### Correlated-evidence check
+
+Treat xG, xGOT, big chances, shots on target, box shots, and box touches as partially correlated rather than independent confirmations.
+
+- Group overlapping indicators from the same attacking passage into a `chance cluster`.
+- Use xG and xGOT together to separate chance creation from shot execution.
+- High xG with materially lower xGOT requires regression unless the missed chances were clearly repeatable tactical products.
+- Low-xG shots on target do not justify the same forward scoring rate as high-quality shots on target.
+- Big chances, box shots, and box touches cannot each receive a full separate probability uplift when they came from the same sequence.
+- Apply an additional persistence penalty to a static halftime snapshot unless the previous 10–15 minutes or multiple snapshots confirm continuing chance creation.
+
 ---
 
 ## 8. Aggregate-state procedure
 
-For knockout ties, model two separate effects:
+For knockout ties, first classify the trailing team's goals-required tier:
+
+- `single-goal-to-level`: one goal levels the aggregate or forces extra time;
+- `single-goal-to-qualify`: one goal moves the team ahead on aggregate or qualifies it;
+- `multi-goal-chase`: at least two goals are still required to level or qualify;
+- `no-chase`: the current score creates no rational need for greater attacking risk.
+
+Model two separate effects:
 
 - the aggregate-leading team's sustained attacking urgency;
 - the aggregate-leading team's transition scoring opportunity.
@@ -182,7 +202,59 @@ An aggregate gap of three or more goals is a `large-aggregate-gap` state and req
 
 A large aggregate cushion alone can never justify an under, an underdog handicap, or a short-favorite fade.
 
-From minute 60 onward, when the trailing team still needs two or more goals, increase the favorite's transition-goal rate and the probability of multiple remaining goals unless the observed substitutions and behavior contradict the chase scenario.
+Do not apply the strong multi-goal forced-chase uplift merely because a team trails. From minute 60 onward, the automatic multiple-goal-tail increase applies only when the team still needs at least two goals and observed substitutions, fullback height, tempo, or behavior confirm that the team is accepting transition risk.
+
+### Mandatory next-goal state tree
+
+For any live total or team total requiring two or more additional goals, price at least three branches:
+
+1. the aggregate-trailing team scores next;
+2. the aggregate-leading team scores next;
+3. no goal through the next material time checkpoint.
+
+After each branch, recalculate:
+
+- aggregate score;
+- goals still required by each team;
+- whether extra time becomes available or remains avoidable;
+- expected attacking urgency for the next 5–10 minutes;
+- transition exposure;
+- probability of the subsequent goal required by the wager.
+
+A next goal cannot be treated only as evidence that the match is open. Its effect on future incentives must be priced separately.
+
+### Aggregate-reset branch
+
+When the trailing team scores and the aggregate becomes level with extra time available:
+
+- apply `aggregate-reset`;
+- reduce immediate combined scoring intensity for the next 5–10 minutes unless observed tactics, substitutions, fatigue, or competition rules support continued regulation-time aggression;
+- do not assume both teams will continue chasing a regulation winner;
+- widen the probability interval because some teams accept extra time while others continue attacking;
+- price the subsequent goal separately when the market still requires another goal.
+
+### Branch-weighting discipline
+
+Do not make the forced-chase branch dominant solely because the fixture is a knockout tie. Increase it only when supported by at least two of:
+
+- two or more goals still required;
+- attacking substitutions;
+- visibly advanced fullbacks or wingbacks;
+- reduced defensive numbers;
+- repeated transition chances;
+- high-quality chance persistence over at least 10 minutes;
+- cards or fatigue materially weakening defensive containment.
+
+If these conditions are absent, widen the interval and return `LEAN` or `NO BET` when the edge is not robust.
+
+Applicable knockout recommendations must show:
+
+- `Goals-required tier`
+- `Next-goal state tree`
+- `Aggregate-reset risk`
+- `Chance-quality and correlation check`
+- `Late-game and stoppage-time branch`
+- `Market implication`
 
 ---
 
@@ -199,6 +271,8 @@ For every live total and handicap:
 - do not confuse stoppage time with extra time.
 
 For live unders, explicitly assess late attacking incentives, score margin, substitutions, cards, and likely added time before recommending.
+
+For knockout totals, re-run the goals-required tier and aggregate-reset analysis after every goal, red card, attacking substitution, or material time checkpoint.
 
 ---
 
@@ -249,7 +323,9 @@ Under the active football restriction:
 - at least a five-percentage-point uncertainty-adjusted edge over breakeven is required for an actionable `OFFICIAL BET` recommendation;
 - three to five points is `LEAN`;
 - below three points is `NO BET`;
-- forced-chase underdog handicaps require an additional two-point buffer, normally at least seven points over breakeven.
+- forced-chase underdog handicaps require an additional two-point buffer, normally at least seven points over breakeven;
+- halftime or early-second-half totals requiring two or more additional goals require an additional two-point buffer when the trailing team is `single-goal-to-level` and the first goal could trigger an aggregate reset;
+- cap such a market at `LEAN` when the analysis supports only the next goal and does not independently support the subsequent goal required for settlement.
 
 ---
 
@@ -276,6 +352,16 @@ If one condition fails, return `NO BET`.
 ### Halftime Under 1.5
 
 Treat as high variance. Prefer Under 2 or Under 2.25 when the added protection is reasonably priced. Require exceptional suppression and a larger edge for Under 1.5.
+
+### Knockout halftime overs requiring two or more additional goals
+
+- Identify the goals-required tier before pricing the over.
+- Build the next-goal state tree and include aggregate-reset risk.
+- Require an independently supported pathway to the second required goal.
+- Require persistent high-quality chance creation over the previous 10–15 minutes or multiple independent evidence groups.
+- When one goal would level the aggregate and make extra time available, require at least a seven-percentage-point uncertainty-adjusted edge under the active evaluation restriction.
+- If only the next goal is strongly supported, return `LEAN` or `NO BET`.
+- Prefer whole-goal protection when reasonably priced.
 
 ---
 
@@ -377,6 +463,11 @@ Useful football tags include:
 - `aggregate-state`
 - `large-aggregate-gap`
 - `forced-chase`
+- `single-goal-to-level`
+- `single-goal-to-qualify`
+- `multi-goal-chase`
+- `aggregate-reset`
+- `chance-cluster-adjusted`
 - `stoppage-time-risk`
 - `below-model-cutoff`
 - `stake-above-model-cap`
@@ -398,7 +489,7 @@ For every settled wager:
 6. Review lineup, competition, aggregate, and live-state assumptions.
 7. Identify whether the result was normal variance, bad data, settlement misunderstanding, or a model-process error.
 8. Record honest lessons without rewriting the original reasoning.
-9. Do not promote a new rule from one result alone.
+9. Do not promote a new rule from one result alone unless the review identifies a deterministic logic or settlement defect; such an update must remain an evaluation rule with a defined sample review threshold.
 10. Review performance separately by competition, market, prematch/live timing, recommendation type, lineup confirmation, and relevant strategy tags.
 
 Use closing-line quality where available and compare estimated probabilities with actual outcomes over an adequate sample.
@@ -411,7 +502,7 @@ Use closing-line quality where available and compare estimated probabilities wit
 
 Paste this as the first message in a new chat inside the Betting model project:
 
-> This chat is only for football betting analysis and ledger work. Follow `FOOTBALL_BETTING_PROCEDURE.md`, `MODEL_CHANGELOG.md`, and `MODEL_RULES_FOOTBALL_V0.2.5.md` before every recommendation. Begin every recommendation with OFFICIAL BET, LEAN, or NO BET. Verify the exact event, competition, stage, kickoff time, venue, format, aggregate score, qualification rules, bookmaker market, and settlement basis. Run the mandatory competition-context, lineup, aggregate-state, late-game, and stoppage-time modules. Use xG, xGOT, big chances, shots on target, box shots, box touches, substitutions, cards, score incentives, and tactical changes above generic possession or dangerous-attack counts. Price each changed line independently and calculate quarter-line outcomes correctly. Minimum odds are 1.60 unless a stricter market rule applies. The active football recommendation cap is 0.25u. An OFFICIAL BET recommendation is not placed until I confirm execution. After confirmation, record the exact event, market, odds, stake, status, payout, slip ID, entry score and minute, reasoning, and tags in EdgeLog `ledger.json`. Review every settled bet honestly, separating result from process.
+> This chat is only for football betting analysis and ledger work. Follow `FOOTBALL_BETTING_PROCEDURE.md`, `MODEL_CHANGELOG.md`, `MODEL_RULES_FOOTBALL_V0.2.6.md`, and the base rules in `MODEL_RULES_FOOTBALL_V0.2.5.md` before every recommendation. Begin every recommendation with OFFICIAL BET, LEAN, or NO BET. Verify the exact event, competition, stage, kickoff time, venue, format, aggregate score, qualification rules, bookmaker market, and settlement basis. Run the mandatory competition-context, lineup, aggregate-state, goals-required-tier, next-goal-state-tree, aggregate-reset, chance-correlation, late-game, and stoppage-time modules. Use xG, xGOT, big chances, shots on target, box shots, box touches, substitutions, cards, score incentives, and tactical changes above generic possession or dangerous-attack counts, without double-counting correlated indicators. Price each changed line independently and calculate quarter-line outcomes correctly. Minimum odds are 1.60 unless a stricter market rule applies. The active football recommendation cap is 0.25u. An OFFICIAL BET recommendation is not placed until I confirm execution. After confirmation, record the exact event, market, odds, stake, status, payout, slip ID, entry score and minute, reasoning, and tags in EdgeLog `ledger.json`. Review every settled bet honestly, separating result from process.
 
 ---
 
@@ -426,8 +517,13 @@ Before sending any football recommendation, confirm that all applicable boxes ar
 - [ ] Market and bookmaker settlement basis verified
 - [ ] Live score, minute, and stoppage-time horizon included
 - [ ] xG, xGOT, big chances, SOT, box shots, and box touches assessed
+- [ ] Correlated chance indicators grouped rather than double-counted
+- [ ] Live-state persistence over the previous 8–15 minutes assessed
 - [ ] Substitutions, cards, injuries, fatigue, and tactical changes assessed
+- [ ] Goals-required tier classified for knockout ties
 - [ ] Controlled and forced-chase branches assessed when applicable
+- [ ] Next-goal state tree completed when the market requires two or more additional goals
+- [ ] Aggregate-reset risk priced when an equalizer could make extra time available
 - [ ] Each changed line priced independently
 - [ ] Quarter-line settlement outcomes calculated
 - [ ] Fair price, cutoff, edge, and risks stated
