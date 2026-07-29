@@ -4,7 +4,7 @@ on:
   push:
     branches: ["main"]
     paths:
-      - ".edgelog-triggers/ucv-result.json"
+      - "ucv-result-trigger.json"
 
 permissions:
   contents: write
@@ -58,6 +58,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add ledger.json
-          git rm -f .edgelog-triggers/ucv-result.json .github/workflows/update-ucv-result.yml
+          git rm -f ucv-result-trigger.json .github/workflows/update-ucv-result.yml
           git commit -m "Settle UCV +1.25 as stoppage-time loss"
           git push
