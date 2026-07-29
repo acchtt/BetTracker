@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-29T14:03:00Z",
+  "version": "2026-07-29T15:28:00Z",
   "bets": [
     {
       "syncId": "eval-20260729-blg-lgd-g3-lgd-plus-10-5-kills",
@@ -211,15 +211,15 @@
     },
     {
       "syncId": "eval-20260729-t1-kt-g2-over-33-minutes",
-      "updatedAt": "2026-07-29T11:31:00Z",
+      "updatedAt": "2026-07-29T15:28:00Z",
       "event": "T1 vs KT Rolster — Game 2",
       "league": "LCK 2026 Rounds 3-4",
       "bet": "Over 33 minutes",
       "odds": 1.779,
       "stakeVnd": 250000,
       "payoutVnd": 444750,
-      "status": "pending",
-      "result": "Pending",
+      "status": "win",
+      "result": "Over 33 minutes won (user-confirmed); final duration not provided",
       "eventDate": "2026-07-29",
       "marketType": "Duration",
       "timing": "live",
@@ -277,11 +277,16 @@
         "user-placed-from-lean",
         "below-observed-price",
         "stake-above-recommendation",
-        "model-generated"
+        "model-generated",
+        "user-confirmed-result"
       ],
-      "notes": "The model classified Over 33 at 1.892 as LEAN only, with 0.25u maximum, from the synchronized 17:45 state: KT led 6-2 in kills, T1 led 32.2k-31.1k in gold and 2-0 in towers. The user placed 0.5u (250,000 VND) at 1.779. Execution was 0.113 below the observed lean price and double the suggested stake. Potential payout is 444,750 VND and potential net profit is 194,750 VND (+0.3895u). The wager is official because placement was confirmed, but it must be evaluated separately from model-approved official bets because the original recommendation type was LEAN and the execution worsened both price and stake discipline.",
+      "notes": "The model classified Over 33 at 1.892 as LEAN only, with 0.25u maximum, from the synchronized 17:45 state: KT led 6-2 in kills, T1 led 32.2k-31.1k in gold and 2-0 in towers. The user placed 0.5u (250,000 VND) at 1.779. Execution was 0.113 below the observed lean price and double the suggested stake. The user later confirmed the wager won; final duration was not provided. Payout 444,750 VND and net profit 194,750 VND (+0.3895u). This remains classified separately from model-approved official bets because the original recommendation type was LEAN and the execution worsened both price and stake discipline.",
       "addedAt": "2026-07-29T11:31:00Z",
-      "createdAt": "2026-07-29T11:31:00Z"
+      "createdAt": "2026-07-29T11:31:00Z",
+      "stakeUnits": 0.5,
+      "netProfitVnd": 194750,
+      "netUnits": 0.3895,
+      "settledAt": "2026-07-29T15:28:00Z"
     },
     {
       "syncId": "eval-20260729-t1-kt-g1-kt-ml",
@@ -1292,7 +1297,7 @@
       "pending/2026-07-29-krx-vs-ns-open-bets.json",
       "pending/2026-07-29-t1-vs-kt-open-bets.json"
     ],
-    "officialRecordsAdded": 7,
-    "officialRecordsUpdated": 0
+    "officialRecordsAdded": 0,
+    "officialRecordsUpdated": 7
   }
 }
