@@ -1,8 +1,10 @@
 (() => {
-  if (globalThis.__edgeLogBackupV2 || typeof bets === "undefined") return;
+  if (globalThis.__slipTraceBackupV2 || globalThis.__edgeLogBackupV2 || typeof bets === "undefined") return;
+  globalThis.__slipTraceBackupV2 = true;
   globalThis.__edgeLogBackupV2 = true;
 
   const BACKUP_SCHEMA_VERSION = 2;
+  // Legacy storage keys are intentionally retained to preserve existing browser data.
   const TRANSACTION_KEY = "edgelog-bankroll-transactions-v1";
   const HIDDEN_SYNC_KEY = "edgelog-hidden-sync-ids";
   const SAFETY_BACKUP_KEY = "edgelog-pre-import-backup-v1";
@@ -64,9 +66,15 @@
     return [...new Set((Array.isArray(value) ? value : []).map((item) => String(item || "").trim()).filter(Boolean))];
   }
 
+  function dispatchBackupRestored(detail) {
+    dispatchEvent(new CustomEvent("sliptrace:backup-restored", { detail }));
+    // Retained for compatibility with modules from earlier EdgeLog builds.
+    dispatchEvent(new CustomEvent("edgelog:backup-restored", { detail }));
+  }
+
   function currentSnapshot() {
     return {
-      app: "EdgeLog",
+      app: "SlipTrace",
       schemaVersion: BACKUP_SCHEMA_VERSION,
       exportedAt: new Date().toISOString(),
       settings: { ...settings },
@@ -80,7 +88,7 @@
   function datedFilename() {
     const date = new Date();
     const stamp = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
-    return `edgelog-full-backup-${stamp}.json`;
+    return `sliptrace-full-backup-${stamp}.json`;
   }
 
   function exportFullBackup() {
@@ -144,19 +152,17 @@
 
     localStorage.removeItem(LIVE_VERSION_KEY);
     render();
-    dispatchEvent(new CustomEvent("edgelog:backup-restored", {
-      detail: {
-        transactions: snapshot.transactions,
-        source: options.source || "import"
-      }
-    }));
+    dispatchBackupRestored({
+      transactions: snapshot.transactions,
+      source: options.source || "import"
+    });
   }
 
   function safetySnapshot() {
     try {
       localStorage.setItem(SAFETY_BACKUP_KEY, JSON.stringify(currentSnapshot()));
     } catch (error) {
-      console.warn("EdgeLog safety backup could not be saved:", error);
+      console.warn("SlipTrace safety backup could not be saved:", error);
     }
   }
 
@@ -200,8 +206,8 @@
       applySnapshot(prepared);
       showUndo(`Backup imported · ${prepared.bets.length} bets${prepared.transactions !== null ? ` · ${cashCount} cash entries` : ""}`);
     } catch (error) {
-      console.warn("EdgeLog backup import:", error);
-      alert("This file is not a valid EdgeLog JSON backup.");
+      console.warn("SlipTrace backup import:", error);
+      alert("This file is not a valid SlipTrace or legacy EdgeLog JSON backup.");
     } finally {
       input.value = "";
     }
@@ -216,7 +222,7 @@
     localStorage.removeItem(LIVE_VERSION_KEY);
     persist();
     render();
-    dispatchEvent(new CustomEvent("edgelog:backup-restored", { detail: { transactions: [], source: "reset" } }));
+    dispatchBackupRestored({ transactions: [], source: "reset" });
     showUndo("Tracker data reset");
   }
 
@@ -235,7 +241,7 @@
       const transactions = safeArray(TRANSACTION_KEY).length;
       const scope = document.createElement("div");
       scope.className = "backup-scope";
-      scope.innerHTML = `<strong>Full backup includes:</strong> bets and metadata, unit and bankroll settings, ${transactions} cash-ledger entr${transactions === 1 ? "y" : "ies"}, theme, and locally hidden synced bets. Older EdgeLog JSON backups remain supported.`;
+      scope.innerHTML = `<strong>Full backup includes:</strong> bets and metadata, unit and bankroll settings, ${transactions} cash-ledger entr${transactions === 1 ? "y" : "ies"}, theme, and locally hidden synced bets. Legacy EdgeLog JSON backups remain supported.`;
       panel.append(scope);
     }
   }
