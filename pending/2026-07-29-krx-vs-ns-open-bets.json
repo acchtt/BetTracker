@@ -1,10 +1,11 @@
 {
   "createdAt": "2026-07-29T08:20:00Z",
+  "updatedAt": "2026-07-29T08:33:00Z",
   "status": "pending-ledger-merge",
   "bets": [
     {
       "syncId": "eval-20260729-krx-ns-series-krx-ml",
-      "updatedAt": "2026-07-29T08:05:00Z",
+      "updatedAt": "2026-07-29T08:33:00Z",
       "event": "Nongshim RedForce vs KIWOOM DRX — Series",
       "league": "LCK 2026 Rounds 3-4",
       "bet": "KIWOOM DRX series moneyline",
@@ -12,7 +13,7 @@
       "stakeVnd": 125000,
       "payoutVnd": 338375,
       "status": "open",
-      "result": "Pending",
+      "result": "Pending; NS leads series 1-0 after Game 1",
       "eventDate": "2026-07-29",
       "marketType": "Moneyline",
       "timing": "prematch",
@@ -24,25 +25,26 @@
       },
       "patch": "26.14",
       "tags": ["evaluation", "official", "prematch", "series-moneyline", "lineup-confirmed", "patch-confirmed", "model-generated"],
-      "notes": "Official 0.25u series moneyline placed after model recommendation. Potential net profit 213,375 VND."
+      "notes": "Official 0.25u series moneyline placed after model recommendation. Potential net profit 213,375 VND. Game 1 was lost by KRX; series wager remains open and must not be settled from the map result."
     },
     {
       "syncId": "eval-20260729-krx-ns-g1-krx-plus-14-5-kills",
-      "updatedAt": "2026-07-29T08:19:00Z",
+      "updatedAt": "2026-07-29T08:33:00Z",
       "event": "Nongshim RedForce vs KIWOOM DRX — Game 1",
       "league": "LCK 2026 Rounds 3-4",
       "bet": "KIWOOM DRX +14.5 kills",
       "odds": 1.872,
       "stakeVnd": 125000,
-      "payoutVnd": 234000,
-      "status": "open",
-      "result": "Pending",
+      "payoutVnd": 0,
+      "status": "loss",
+      "result": "NS 28-13 KRX (Loss; final kill margin 15)",
       "eventDate": "2026-07-29",
+      "settledAt": "2026-07-29T08:33:00Z",
       "marketType": "Handicap",
       "timing": "live",
       "slipId": "1147352781",
       "entryScore": "KRX 8-13 NS",
-      "entryMinute": "12:23",
+      "entryMinute": "12:23 analyzed snapshot; exact execution state not synchronized",
       "entryGold": "KRX 22.1k-25.3k NS",
       "entryObjectives": "Towers 0-0; KRX 3 Void Grubs; NS first dragon",
       "draft": {
@@ -54,8 +56,8 @@
         "NS": ["Kingen", "Sponge", "Scout", "Diable", "Lehends"]
       },
       "patch": "26.14",
-      "tags": ["evaluation", "official", "live-read", "lineup-confirmed", "draft-read", "kill-handicap", "changed-price", "model-generated"],
-      "notes": "Official 0.25u Game 1 final-kill handicap placed at 1.872 after the recommended line had moved from 2.082. Settlement includes the current kill score. KRX +14.5 wins if KRX's final kill deficit is 14 or fewer. Potential net profit 109,000 VND."
+      "tags": ["evaluation", "official", "live-read", "lineup-confirmed", "patch-confirmed", "side-confirmed", "draft-read", "kill-handicap", "changed-price", "unsynchronized-execution", "runaway-state", "model-generated", "model-review"],
+      "notes": "Official 0.25u Game 1 final-kill handicap. The model candidate was KRX +14.5 at 2.082 from the 12:23 state, but the user executed at 1.872 after the price changed and without a fresh synchronized map-state screenshot. Potential payout was 234,000 VND. Final kills were NS 28-13 KRX, so the 15-kill deficit lost +14.5 by 0.5 kills. Payout 0 VND; net loss 125,000 VND (-0.25u). From the analyzed 8-13 state, future kills were NS 15-5 KRX, a +10 future net-kill swing. Process review: the model overvalued theoretical KRX scaling and early kill-trading, treated three Void Grubs as more protective than they were, underweighted NS engage/chase/global reinforcement and repeated one-sided fight chains, followed the positive-handicap ladder through worsening states, and incorrectly approved a changed execution price without a synchronized live state."
     }
   ]
 }
