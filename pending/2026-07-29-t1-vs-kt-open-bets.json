@@ -1,0 +1,39 @@
+{
+  "createdAt": "2026-07-29T10:16:00Z",
+  "updatedAt": "2026-07-29T10:16:00Z",
+  "status": "pending-ledger-merge",
+  "bets": [
+    {
+      "syncId": "eval-20260729-t1-kt-g1-kt-ml",
+      "updatedAt": "2026-07-29T10:16:00Z",
+      "event": "T1 vs KT Rolster — Game 1",
+      "league": "LCK 2026 Rounds 3-4",
+      "bet": "KT Rolster Game 1 moneyline",
+      "odds": 3.196,
+      "stakeVnd": 125000,
+      "payoutVnd": 399500,
+      "status": "open",
+      "result": "Pending",
+      "eventDate": "2026-07-29",
+      "marketType": "Moneyline",
+      "timing": "post-draft/pre-game",
+      "slipId": "1147430276",
+      "entryState": "0-0 before first meaningful Game 1 event",
+      "sides": {
+        "T1": "blue",
+        "KT": "red"
+      },
+      "draft": {
+        "T1_blue": ["Ambessa", "Vi", "Akali", "Viktor", "Leona"],
+        "KT_red": ["Zaahen", "Pantheon", "Cassiopeia", "Ezreal", "Nautilus"]
+      },
+      "roster": {
+        "T1": ["Doran", "Oner", "Faker", "Peyz", "Keria"],
+        "KT": ["PerfecT", "Cuzz", "Bdd", "Fenrir", "Effort"]
+      },
+      "patch": "26.14",
+      "tags": ["evaluation", "official", "post-draft", "lineup-confirmed", "side-confirmed", "draft-read", "game-moneyline", "model-generated"],
+      "notes": "Official 0.25u Game 1 moneyline placed after the model recommended KT at 3.200 from the 0-0 post-draft state. User executed at 3.196, a negligible 0.004 price change, with no reported game-state change. Potential payout 399,500 VND and potential net profit 274,500 VND. Model thesis: KT's Cassiopeia-Pantheon-Nautilus anti-dive and counter-engage structure was priced materially above the model's approximately 39-42% draft-adjusted win estimate, while Ezreal reduced T1's backline-access reliability. This wager is open and must not be settled without a confirmed Game 1 result."
+    }
+  ]
+}
