@@ -125,3 +125,92 @@
   globalThis.SlipTracePWA = { ...(globalThis.SlipTracePWA || {}), runDiagnostics };
   mount();
 })();
+
+(() => {
+  if (globalThis.__slipTraceRecentAdded || typeof bets === "undefined") return;
+  globalThis.__slipTraceRecentAdded = true;
+
+  function timestamp(value) {
+    const parsed = Date.parse(value || "");
+    return Number.isFinite(parsed) ? parsed : 0;
+  }
+
+  function stampMissingAddedTimes() {
+    const base = Date.now();
+    let changed = false;
+    bets.forEach((bet, index) => {
+      if (timestamp(bet.addedAt)) return;
+      bet.addedAt = new Date(base - index).toISOString();
+      changed = true;
+    });
+    if (changed && typeof persist === "function") persist();
+    return changed;
+  }
+
+  function reportingDate(bet) {
+    const value = bet.settledAt || bet.eventDate || bet._localEditedAt || bet._syncUpdatedAt;
+    const date = value ? new Date(value) : null;
+    return date && !Number.isNaN(date.getTime()) ? date : null;
+  }
+
+  function startOfDay(date) {
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  }
+
+  function rangeStart(key, now = new Date()) {
+    if (key === "today") return startOfDay(now);
+    if (key === "7") {
+      const start = startOfDay(now);
+      start.setDate(start.getDate() - 6);
+      return start;
+    }
+    if (key === "30") {
+      const start = startOfDay(now);
+      start.setDate(start.getDate() - 29);
+      return start;
+    }
+    if (key === "month") return new Date(now.getFullYear(), now.getMonth(), 1);
+    return null;
+  }
+
+  function visibleForDashboardRange(bet) {
+    const key = document.querySelector("#dashboardRange")?.value || "all";
+    const start = rangeStart(key);
+    if (!start) return true;
+    const date = reportingDate(bet);
+    return Boolean(date && date >= start && date <= new Date());
+  }
+
+  function renderLatestAddedBets() {
+    const body = document.querySelector("#recentBetsBody");
+    if (!body || typeof betRow !== "function") return;
+    stampMissingAddedTimes();
+    const latest = bets
+      .filter(visibleForDashboardRange)
+      .slice()
+      .sort((a, b) => timestamp(b.addedAt) - timestamp(a.addedAt))
+      .slice(0, 5);
+    body.innerHTML = latest.map((bet, index) => betRow(bet, index, false)).join("");
+  }
+
+  stampMissingAddedTimes();
+
+  if (typeof render === "function") {
+    const previousRender = render;
+    render = function slipTraceAddedTimeRender(...args) {
+      const result = previousRender(...args);
+      renderLatestAddedBets();
+      return result;
+    };
+  }
+
+  document.addEventListener("change", (event) => {
+    if (event.target?.id === "dashboardRange") setTimeout(renderLatestAddedBets, 0);
+  });
+  addEventListener("storage", (event) => {
+    if (typeof STORAGE_KEY !== "undefined" && event.key === STORAGE_KEY) setTimeout(renderLatestAddedBets, 0);
+  });
+
+  globalThis.SlipTraceRecent = { render: renderLatestAddedBets, stampMissingAddedTimes };
+  renderLatestAddedBets();
+})();
