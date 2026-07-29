@@ -2,6 +2,13 @@
 
 This file records betting-model rules, evidence, and approved changes. `ledger.json` remains the authoritative betting record.
 
+## Active operational documents
+
+- Football recommendations must follow `FOOTBALL_BETTING_PROCEDURE.md`, `MODEL_RULES_FOOTBALL_V0.2.5.md`, and this changelog.
+- League of Legends recommendations must follow `LOL_BETTING_PROCEDURE.md` and this changelog.
+- When a procedure and an older changelog interpretation conflict, the newer dated rule or procedure controls until formally reviewed.
+- Every future material procedure change must also receive a dated entry in `MODEL_CHANGELOG.md`; editing a procedure file alone is not sufficient.
+
 ## Operating baseline
 
 - 1 unit = 500,000 VND.
@@ -10,7 +17,7 @@ This file records betting-model rules, evidence, and approved changes. `ledger.j
 - Standard evaluation stake: 0.25u; maximum normally 0.5u.
 - Prefer selectivity over action; `NO BET` is a valid model output.
 - Reassess every changed line independently.
-- Separate reporting by sport, league, market, prematch/live, and recommendation type.
+- Separate reporting by sport, league, market, prematch/post-draft/live, and recommendation type.
 - Do not use missed, unavailable, or unconfirmed wagers in performance results.
 
 ## Change format
@@ -24,6 +31,112 @@ Each rule change must include:
 5. New rule.
 6. Expected benefit and possible downside.
 7. Review threshold.
+
+---
+
+## v0.3.0 — 2026-07-29
+
+### League of Legends complete roster, patch, draft, side, and live-state procedure
+
+**Status:** Active operational and evaluation rule  
+**Detailed implementation:** `LOL_BETTING_PROCEDURE.md`
+
+**Triggering evidence**
+
+- Recent LCK CL previews moved too quickly from standings, recent records, and prices to series opinions without consistently completing roster confirmation, patch filtering, side selection, lane-matchup analysis, and full market-distribution pricing.
+- DN SOOPers vs BRO Game 3, BRO +3.5 kills: the model overrated engage coherence, underweighted damage sufficiency and opposing carry redundancy, and treated a sub-three-minute gold difference as meaningful when it was mostly noise.
+- KT Challengers +13.5 kills: a first-to-five-kills marker was initially interpreted as a neutral-objective indicator, reinforcing the need to verify screen icons, market definitions, and live state before pricing.
+- Other LCK CL bets showed the value of changed-line and draft-aware reassessment, but the workflow was scattered across chat instead of enforced by one procedure.
+- The user requested dedicated LoL and football chats because mixed-sport analysis was causing required LoL steps to be skipped.
+
+**Previous rule**
+
+The LoL baseline prioritized gold, towers, objectives, scaling, items, lane states, and map control above kills, but did not enforce a complete ordered workflow for sources, match verification, roster certainty, patch compatibility, side selection, draft assessment, independent market pricing, execution, ledger recording, and review.
+
+**New rule**
+
+For every League of Legends prematch, pre-draft, post-draft, and live assessment:
+
+- Follow `LOL_BETTING_PROCEDURE.md` before issuing a recommendation.
+- Verify exact teams and academy labels, competition, stage, start time, best-of format, patch, series score, side-selection rules, standings implications, bookmaker market, and settlement basis.
+- Use official Riot, league, tournament, and team sources first. Use current Korean- and Chinese-language reporting only when attributable, current, and cross-checked. Reject stale roster pages and legacy player listings.
+- Confirm the expected five-player roster. Material roster uncertainty caps prematch output at `LEAN` and normally blocks map-specific or player-specific markets.
+- Filter recent performance for patch relevance. New-patch or low-sample environments require wider fair-price ranges and preference for post-draft or live markets.
+- Decompose team strength using opponent-adjusted early gold, gold at 10/15/20, towers, Void Grubs, dragons, Herald, Baron, objective setup, vision, lead conversion, comeback rate, throw rate, duration, side performance, champion pools, damage distribution, engage, peel, frontline, wave-clear, and macro consistency.
+- Analyze all five role matchups, including jungle-support and mid-jungle coordination, and convert material matchup effects into market probabilities.
+- Treat blue and red side as separate game states. Do not copy a series opinion automatically into a map after side selection changes.
+- Reassess every map after the completed draft for lane priority, skirmish strength, jungle access, engage, disengage, frontline, damage balance, range, wave-clear, side lanes, scaling by item breakpoint, execution difficulty, comeback tools, objective fighting, and player proficiency.
+- Official map bets should normally wait for the full draft. A pre-draft series position must remain robust across realistic draft branches.
+- Price series moneyline, map handicap, correct score, total maps, map moneyline, kill markets, objectives, towers, and duration independently.
+- For live maps, prioritize gold and its role distribution, towers, objectives, items, lane states, summoner spells, vision, scaling, shutdowns, and map consequences above kills.
+- Treat tiny early gold differences as noise unless caused by a durable structural event.
+- Build leading-team conversion and comeback/throw branches for every live map.
+- Apply stricter uncertainty to kill markets and report kill-handicap performance separately from map-result markets.
+- Every recommendation must display `Competition context`, `Roster certainty`, `Patch/meta context`, `Draft/side state`, and `Market implication`.
+- Reassess every changed line, odds move, roster update, side change, completed draft, map score, and live state independently.
+- A bet becomes official only after confirmed placement. Record exact series or map, market, odds, stake, slip ID, roster, side, draft, live state, reasoning, and tags in `ledger.json`.
+
+**Expected benefit**
+
+Reduce stale-roster and old-patch errors, improve draft and side calibration, prevent kill-score overreaction, and make series, map, kill, objective, and duration recommendations reproducible and separately measurable.
+
+**Possible downside**
+
+Waiting for confirmed rosters and drafts can miss earlier prices. Korean and Chinese coverage may be incomplete or contradictory, and academy roster volatility can still defeat careful preparation.
+
+**Review threshold**
+
+Review after the next 10 settled official LoL wagers under v0.3.0. Report separately by league, series versus map, prematch versus post-draft versus live, roster-confirmed versus uncertain, map-result versus kill markets, and whether the predicted draft or macro branch occurred. Compare closing-line quality, calibration, ROI, and qualitative draft/live-state accuracy.
+
+---
+
+## v0.2.5 — 2026-07-29
+
+### Football competition context and asymmetric aggregate-state model
+
+**Status:** Active evaluation rule  
+**Detailed implementation:** `MODEL_RULES_FOOTBALL_V0.2.5.md` and `FOOTBALL_BETTING_PROCEDURE.md`
+
+**Triggering evidence**
+
+- Santos vs Universidad Central de Venezuela, live Universidad Central +1.25 at halftime: Santos held a large aggregate lead. The analysis recognized reduced favorite urgency but applied the cushion too one-directionally and underweighted forced chase, attacking substitutions, transition exposure, and stoppage-time risk.
+- The handicap-breaking goal arrived in regulation-time stoppage time as Santos won the remaining second half by two goals, showing that a large aggregate cushion can reduce deliberate attacking volume while increasing counterattack and multi-goal-tail risk.
+- CD Olimpia vs Deportivo Mixco, live Under 2.75: the match read was supported by low combined xG and weak Mixco threat, but the regional-cup context had not been converted into a numerical uncertainty adjustment. The win did not validate execution below the price cutoff or above the active stake cap.
+- The user requested that league or competition importance become an explicit model input instead of informal commentary.
+
+**Previous rule**
+
+Competition strength, tournament stage, aggregate score, motivation, travel, rotation, and qualification incentives could be discussed qualitatively. A large aggregate lead was sometimes treated mainly as reducing the favorite's need to score, without separately modeling the opponent's forced chase or the favorite's transition opportunity.
+
+**New rule**
+
+For every football prematch and live assessment:
+
+- Run a mandatory `competition-context` module before producing probabilities or fair odds.
+- Separate competition strength and data reliability from fixture importance and incentives.
+- Verify competition, stage, format, aggregate state, qualification and tiebreak rules, travel, rotation, schedule congestion, venue conditions, and settlement basis.
+- Do not transfer domestic-league scoring or strength priors directly into continental, regional, youth, reserve, or cross-border competition without an uncertainty adjustment.
+- Translate context into numerical changes to scoring rates, draw probability, tempo, variance, and fair prices; narrative mention alone is insufficient.
+- For knockout ties, model the aggregate leader's sustained attacking urgency separately from its transition scoring opportunity.
+- Treat an aggregate gap of three or more goals as a `large-aggregate-gap` state and calculate both a controlled branch and a forced-chase/open-transition branch.
+- A large aggregate cushion alone can never justify an under, underdog handicap, or short-favorite fade.
+- From minute 60 onward, when the trailing team still needs at least two goals, increase the favorite's transition-goal rate and the probability of multiple remaining goals unless observed behavior contradicts the chase scenario.
+- Extend relevant live projections through expected stoppage time and treat regulation-time stoppage goals as fully relevant to settlement.
+- Positive live underdog handicaps in forced-chase states require the normal uncertainty-adjusted edge plus an additional two-percentage-point buffer, normally at least seven points over breakeven while v0.2.3 remains active.
+- Every football recommendation must display `Competition context`, `Aggregate state`, `Late-game branch`, and `Market implication`.
+- Tag applicable official bets with `competition-context`, `aggregate-state`, `large-aggregate-gap`, and `forced-chase`.
+
+**Expected benefit**
+
+Prevent one-directional interpretations of motivation, improve calibration across domestic and international competitions, and better price the high-scoring and multi-goal-margin tail created when a trailing team must attack.
+
+**Possible downside**
+
+The added uncertainty and branch analysis will produce more `NO BET` decisions, may slow live responses, and can overstate transition risk when the trailing team does not actually chase.
+
+**Review threshold**
+
+Review after the next 10 settled official football bets tagged `competition-context`, including at least five knockout or aggregate-state bets when available. Report separately by competition, totals versus handicaps, aggregate gap below three versus three or more, and whether the forced-chase branch occurred.
 
 ---
 
