@@ -1,10 +1,12 @@
 (() => {
-  if (globalThis.__edgeLogLiveSync || typeof bets === "undefined") return;
+  if (globalThis.__slipTraceLiveSync || globalThis.__edgeLogLiveSync || typeof bets === "undefined") return;
+  globalThis.__slipTraceLiveSync = true;
   globalThis.__edgeLogLiveSync = true;
 
   const FEED_URL = "ledger.json";
   const VERSION_KEY = "edgelog-live-ledger-version";
   const HIDDEN_SYNC_KEY = "edgelog-hidden-sync-ids";
+  const CREATED_AT_MIGRATION_KEY = "sliptrace-sync-created-at-v1";
   const POLL_VISIBLE_MS = 10000;
   const POLL_HIDDEN_MS = 30000;
   const syncedFields = [
@@ -22,9 +24,9 @@
   style.textContent = `
     .live-sync-status{display:inline-flex;align-items:center;gap:7px;min-height:34px;padding:7px 10px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--muted);font-size:.75rem;font-weight:750;white-space:nowrap}
     .live-sync-status::before{content:"";width:7px;height:7px;border-radius:999px;background:var(--green);box-shadow:0 0 0 4px color-mix(in srgb,var(--green) 14%,transparent)}
-    .live-sync-status[data-state="syncing"]::before{background:var(--blue);box-shadow:0 0 0 4px color-mix(in srgb,var(--blue) 14%,transparent);animation:edgelog-sync-pulse 1s ease-in-out infinite}
+    .live-sync-status[data-state="syncing"]::before{background:var(--blue);box-shadow:0 0 0 4px color-mix(in srgb,var(--blue) 14%,transparent);animation:sliptrace-sync-pulse 1s ease-in-out infinite}
     .live-sync-status[data-state="offline"]::before,.live-sync-status[data-state="error"]::before{background:var(--amber);box-shadow:0 0 0 4px color-mix(in srgb,var(--amber) 14%,transparent)}
-    @keyframes edgelog-sync-pulse{50%{opacity:.35;transform:scale(.75)}}
+    @keyframes sliptrace-sync-pulse{50%{opacity:.35;transform:scale(.75)}}
     @media(max-width:720px){.live-sync-status{display:none}}
   `;
   document.head.append(style);
@@ -38,7 +40,7 @@
     statusElement.className = "live-sync-status";
     statusElement.dataset.state = "live";
     statusElement.textContent = "Live sync";
-    statusElement.title = "EdgeLog checks for new ChatGPT ledger entries automatically. Click to check now.";
+    statusElement.title = "SlipTrace checks for new ChatGPT ledger entries automatically. Click to check now.";
     statusElement.addEventListener("click", () => syncNow({ manual: true }));
     actions.prepend(statusElement);
     return statusElement;
@@ -83,6 +85,7 @@
         ? globalThis.EdgeLogMetadata.normalizeTags(record.tags)
         : Array.isArray(record.tags) ? record.tags : [];
     }
+    if (record.status === "open") record.status = "pending";
     return record;
   }
 
@@ -94,7 +97,8 @@
 
     (Array.isArray(feed?.bets) ? feed.bets : []).forEach((remote) => {
       if (!remote?.syncId || !remote.event || !remote.bet || hiddenIds.has(remote.syncId)) return;
-      const remoteUpdatedAt = feed.version || remote.updatedAt || new Date(0).toISOString();
+      const remoteUpdatedAt = remote.updatedAt || feed.version || new Date(0).toISOString();
+      const remoteAddedAt = remote.addedAt || remote.createdAt || remote.placedAt || remote.updatedAt || feed.version || new Date().toISOString();
       let existing = bets.find((bet) => bet._syncId === remote.syncId);
 
       if (!existing) {
@@ -102,14 +106,31 @@
         if (existing) {
           existing._syncId = remote.syncId;
           existing._syncUpdatedAt = remoteUpdatedAt;
+          existing._syncCreatedAt = remoteAddedAt;
+          if (!timestamp(existing.addedAt)) existing.addedAt = remoteAddedAt;
           metadataAttached += 1;
           return;
         }
       }
 
       if (!existing) {
-        additions.push({ ...remoteRecord(remote), id: uid(), _syncId: remote.syncId, _syncUpdatedAt: remoteUpdatedAt });
+        additions.push({
+          ...remoteRecord(remote),
+          id: uid(),
+          addedAt: remoteAddedAt,
+          _addedAtSource: "sync-record",
+          _syncId: remote.syncId,
+          _syncCreatedAt: remoteAddedAt,
+          _syncUpdatedAt: remoteUpdatedAt
+        });
         return;
+      }
+
+      if (!timestamp(existing._syncCreatedAt)) {
+        existing._syncCreatedAt = remoteAddedAt;
+        existing.addedAt = remoteAddedAt;
+        existing._addedAtSource = "sync-record";
+        metadataAttached += 1;
       }
 
       const previousSyncTime = timestamp(existing._syncUpdatedAt);
@@ -119,7 +140,13 @@
       if (remoteEditTime && remoteEditTime <= previousSyncTime) return;
 
       const before = comparableSnapshot(existing);
-      const preserved = { id: existing.id, _localEditedAt: existing._localEditedAt };
+      const preserved = {
+        id: existing.id,
+        addedAt: existing.addedAt || remoteAddedAt,
+        _addedAtSource: existing._addedAtSource || "sync-record",
+        _syncCreatedAt: existing._syncCreatedAt || remoteAddedAt,
+        _localEditedAt: existing._localEditedAt
+      };
       Object.assign(existing, remoteRecord(remote), preserved, { _syncId: remote.syncId, _syncUpdatedAt: remoteUpdatedAt });
       if (comparableSnapshot(existing) !== before) updated += 1;
     });
@@ -150,23 +177,26 @@
       if (!feed?.version || !Array.isArray(feed.bets)) throw new Error("Invalid ledger feed");
 
       const currentVersion = localStorage.getItem(VERSION_KEY);
-      if (feed.version !== currentVersion) {
+      const needsCreationMigration = localStorage.getItem(CREATED_AT_MIGRATION_KEY) !== "complete";
+      if (feed.version !== currentVersion || needsCreationMigration) {
         const changes = mergeFeed(feed);
         if (changes.added || changes.updated || changes.metadataAttached) {
           persist();
           render();
+          globalThis.SlipTraceLatestBets?.render?.();
         }
         localStorage.setItem(VERSION_KEY, feed.version);
+        localStorage.setItem(CREATED_AT_MIGRATION_KEY, "complete");
         if (changes.added || changes.updated) {
           const parts = [];
           if (changes.added) parts.push(`${changes.added} new bet${changes.added === 1 ? "" : "s"}`);
           if (changes.updated) parts.push(`${changes.updated} updated`);
           toast(`${parts.join(" · ")} synced from ChatGPT`);
-        } else if (options.manual) toast("EdgeLog is up to date");
-      } else if (options.manual) toast("EdgeLog is up to date");
+        } else if (options.manual) toast("SlipTrace is up to date");
+      } else if (options.manual) toast("SlipTrace is up to date");
       setStatus("live", "Live sync");
     } catch (error) {
-      console.warn("EdgeLog live sync:", error);
+      console.warn("SlipTrace live sync:", error);
       setStatus("error", "Sync retrying");
       if (options.manual) toast("Could not check for new entries yet");
     } finally {
@@ -186,6 +216,7 @@
       if (Array.isArray(incoming)) {
         bets = incoming;
         render();
+        globalThis.SlipTraceLatestBets?.render?.();
       }
     } catch {
       // Ignore malformed data from another tab.
