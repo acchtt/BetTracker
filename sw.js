@@ -1,4 +1,4 @@
-const CACHE_NAME = "sliptrace-shell-20260728-2";
+const CACHE_NAME = "sliptrace-shell-20260729-1";
 
 const CORE_SHELL = [
   "./",
