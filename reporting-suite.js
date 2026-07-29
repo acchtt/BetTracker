@@ -40,6 +40,12 @@
     return date && !Number.isNaN(date.getTime()) ? date : null;
   }
 
+  function addedTime(bet) {
+    const value = bet._syncCreatedAt || bet.createdAt || bet.placedAt || bet.addedAt || bet._localEditedAt || bet._syncUpdatedAt;
+    const parsed = Date.parse(value || "");
+    return Number.isFinite(parsed) ? parsed : 0;
+  }
+
   function dayKey(date) {
     return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,"0")}-${String(date.getDate()).padStart(2,"0")}`;
   }
@@ -124,7 +130,8 @@
     setText("averageOddsValue",m.avgOdds.toFixed(2)); setText("settledStakeUnits",formatUnits(m.stake)); setText("settledStakeVnd",formatVnd(m.stake));
     tone(document.querySelector("#netUnits"),m.pl); tone(document.querySelector("#roiValue"),m.roi);
     const context=document.querySelector("#dashboardRangeContext"); if(context) context.textContent=`Dashboard period: ${bounds.label} · ${m.total} recorded bet${m.total===1?"":"s"}`;
-    const recent=document.querySelector("#recentBetsBody"); if(recent) recent.innerHTML=items.slice().sort((a,b)=>(dateForBet(b)?.getTime()||0)-(dateForBet(a)?.getTime()||0)).slice(0,5).map((bet,index)=>betRow(bet,index,false)).join("");
+    const recent=document.querySelector("#recentBetsBody");
+    if(recent) recent.innerHTML=bets.slice().sort((a,b)=>addedTime(b)-addedTime(a)).slice(0,5).map((bet,index)=>betRow(bet,index,false)).join("");
   }
 
   function ensureNavLinks() {
