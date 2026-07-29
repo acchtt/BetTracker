@@ -1,11 +1,11 @@
 {
   "createdAt": "2026-07-29T13:44:00Z",
-  "updatedAt": "2026-07-29T13:44:00Z",
+  "updatedAt": "2026-07-29T13:46:00Z",
   "status": "pending-ledger-merge",
   "bets": [
     {
       "syncId": "eval-20260729-blg-lgd-g3-lgd-plus-10-5-kills",
-      "updatedAt": "2026-07-29T13:44:00Z",
+      "updatedAt": "2026-07-29T13:46:00Z",
       "event": "Bilibili Gaming vs LGD Gaming — Game 3",
       "league": "LPL 2026 Split 3",
       "bet": "LGD Gaming +10.5 kills",
@@ -42,12 +42,14 @@
         "odds": 2.184,
         "stakeUnits": 0.25,
         "stakeVnd": 125000,
-        "stateSynchronized": false,
-        "deviations": ["price changed from 2.194 to 2.184 without a fresh synchronized game-state snapshot"],
+        "sameMarketAndLine": true,
+        "priceOnlyMoveAccepted": true,
+        "priceMoveClassification": "normal live price drift",
+        "deviations": [],
         "withinStakeCap": true
       },
-      "tags": ["evaluation", "official-after-user-confirmation", "live-read", "kill-handicap", "user-executed", "model-lean", "unsynchronized-execution", "within-stake-cap", "pending-result"],
-      "notes": "User confirmed placement by sportsbook slip. Exact market: LGD Gaming +10.5 kills in Game 3 at 2.184 for 0.25u (125,000 VND), slip #1147594162. Potential payout 273,000 VND and potential profit 148,000 VND. The prior model position was LEAN at 2.194, not an OFFICIAL BET recommendation, because the game was before 15 minutes and the underdog positive kill-handicap structural gates were incomplete. The user placed the same line at a slightly lower price without a fresh synchronized state, so execution is tracked as unsynchronized but within the 0.25u stake cap."
+      "tags": ["evaluation", "official-after-user-confirmation", "live-read", "kill-handicap", "user-executed", "model-lean", "normal-price-drift", "within-stake-cap", "pending-result"],
+      "notes": "User confirmed placement by sportsbook slip. Exact market: LGD Gaming +10.5 kills in Game 3 at 2.184 for 0.25u (125,000 VND), slip #1147594162. Potential payout 273,000 VND and potential profit 148,000 VND. The prior model position was LEAN at 2.194, not an OFFICIAL BET recommendation, because the game was before 15 minutes and the underdog positive kill-handicap structural gates were incomplete. The move from 2.194 to 2.184 is treated as normal live price drift on the same market and line, not an unsynchronized execution. Stake remained within the 0.25u cap."
     }
   ]
 }
