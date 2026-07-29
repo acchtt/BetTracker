@@ -1,0 +1,84 @@
+name: Settle Kairat ledger entry
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/settle-kairat-ledger.yml
+
+permissions:
+  contents: write
+
+jobs:
+  settle-ledger-entry:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update authoritative ledger
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          path = Path("ledger.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          sync_id = "eval-20260729-kairat-omonia-kairat-team-total-over-1-5"
+          settled_at = "2026-07-29T17:00:00Z"
+
+          target = next((bet for bet in data.get("bets", []) if bet.get("syncId") == sync_id), None)
+          if target is None:
+              raise SystemExit(f"Missing ledger entry: {sync_id}")
+
+          target.update({
+              "updatedAt": settled_at,
+              "status": "loss",
+              "result": "Kairat Almaty 1-0 Omonia Nicosia after 90 minutes (Loss; Kairat team total Over 1.5)",
+              "payoutVnd": 0,
+              "netProfitVnd": -125000,
+              "netUnits": -0.25,
+              "settledAt": settled_at,
+              "finalRegulationScore": "Kairat Almaty 1-0 Omonia Nicosia",
+              "finalAggregateAfter90": "1-1; match proceeded beyond regulation",
+              "finalStats": {
+                  "possession": "Kairat 69%-31% Omonia",
+                  "shots": "Kairat 30-3 Omonia",
+                  "shotsOnTarget": "Kairat 6-0 Omonia",
+                  "shotsOffTarget": "Kairat 10-2 Omonia",
+                  "blockedShots": "Kairat 14-1 Omonia",
+                  "corners": "Kairat 7-2 Omonia",
+                  "redCards": "Kairat 0-1 Omonia"
+              }
+          })
+
+          tags = target.setdefault("tags", [])
+          for tag in ["user-confirmed-result", "loss", "model-review"]:
+              if tag not in tags:
+                  tags.append(tag)
+
+          review = (
+              " Settlement confirmed by the user: regulation ended Kairat 1-0 Omonia, so Kairat team total Over 1.5 lost. "
+              "Payout 0 VND; net loss 125,000 VND (-0.25u). Final regulation statistics showed Kairat with 69% possession, "
+              "30-3 shots, 6-0 shots on target, 14-1 blocked shots and 7-2 corners against ten-player Omonia. "
+              "Result review: the territorial and numerical-advantage thesis occurred, but it did not produce the required second goal. "
+              "Process review: the entry price and stake followed the recommendation, yet the probability estimate relied too heavily on raw shot pressure and blocked shots without current xG, xGOT, big-chance or box-touch quality. "
+              "The possibility that Omonia's compact low block would force low-quality attempts and that both teams could accept extra time was underweighted. "
+              "This is one result, so no permanent rule change is promoted; retain the data-quality penalty and require stronger chance-quality confirmation before upgrading similar late team-total overs."
+          )
+          if review.strip() not in target.get("notes", ""):
+              target["notes"] = target.get("notes", "") + review
+
+          data["version"] = settled_at
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+      - name: Commit ledger settlement
+        run: |
+          git config user.name "SlipTrace Ledger Bot"
+          git config user.email "ledger-bot@users.noreply.github.com"
+          git add ledger.json
+          git commit -m "Settle Kairat team total as loss"
+          git push
