@@ -2,6 +2,7 @@
   if (globalThis.__slipTraceLatestBets || typeof bets === "undefined") return;
   globalThis.__slipTraceLatestBets = true;
 
+  const ORDER_MIGRATION_KEY = "sliptrace-added-order-v3";
   let writing = false;
   let timer = 0;
 
@@ -10,22 +11,31 @@
     return Number.isFinite(parsed) ? parsed : 0;
   }
 
+  function repairExistingOrder() {
+    if (localStorage.getItem(ORDER_MIGRATION_KEY) === "complete") return false;
+    const base = Date.now();
+    bets.forEach((bet, index) => {
+      bet.addedAt = new Date(base - index).toISOString();
+    });
+    if (typeof persist === "function") persist();
+    localStorage.setItem(ORDER_MIGRATION_KEY, "complete");
+    return true;
+  }
+
   function ensureAddedTimes() {
     const missing = bets.filter((bet) => !timestamp(bet.addedAt));
     if (!missing.length) return false;
 
     const newestExisting = bets.reduce((latest, bet) => Math.max(latest, timestamp(bet.addedAt)), 0);
     const base = Math.max(Date.now(), newestExisting + bets.length + 1);
-    let changed = false;
 
     missing.forEach((bet) => {
       const trackerPosition = Math.max(0, bets.indexOf(bet));
       bet.addedAt = new Date(base - trackerPosition).toISOString();
-      changed = true;
     });
 
-    if (changed && typeof persist === "function") persist();
-    return changed;
+    if (typeof persist === "function") persist();
+    return true;
   }
 
   function latestBets() {
@@ -56,6 +66,8 @@
     timer = setTimeout(renderLatest, 0);
     setTimeout(renderLatest, 120);
   }
+
+  repairExistingOrder();
 
   if (typeof render === "function") {
     const previousRender = render;
@@ -92,6 +104,6 @@
   addEventListener("sliptrace:pwa-controller-change", scheduleRender);
   document.addEventListener("visibilitychange", () => { if (!document.hidden) scheduleRender(); });
 
-  globalThis.SlipTraceLatestBets = { render: renderLatest, ensureAddedTimes };
+  globalThis.SlipTraceLatestBets = { render: renderLatest, ensureAddedTimes, repairExistingOrder };
   scheduleRender();
 })();
