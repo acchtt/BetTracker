@@ -1,4 +1,4 @@
-const CACHE_NAME = "sliptrace-shell-20260729-4";
+const CACHE_NAME = "sliptrace-shell-20260729-5";
 
 const CORE_SHELL = [
   "./",
@@ -20,7 +20,8 @@ const CORE_SHELL = [
   "./bankroll-v2.css",
   "./app-v3.js",
   "./parser-popup.js",
-  "./latest-bets.js?v=20260729-4",
+  "./parser-popup.js?v=20260729-1",
+  "./latest-bets.js?v=20260729-5",
   "./pwa.js?v=20260728-1",
   "./assets/sliptrace-mark.svg",
   "./assets/sliptrace-mark.svg?v=20260727-3",
@@ -36,8 +37,8 @@ const OPTIONAL_SHELL = [
   "./risk-guardrails.js?v=20260727-1",
   "./duplicate-check.js?v=20260727-1",
   "./sport-detection-patch.js?v=20260727-1",
-  "./live-sync.js?v=20260727-6",
-  "./manual-popup.js?v=20260727-8",
+  "./live-sync.js?v=20260729-1",
+  "./manual-popup.js?v=20260729-1",
   "./logo-home-link.js?v=20260727-1",
   "./quick-settlement.js?v=20260727-2",
   "./mobile-history.js?v=20260727-1",
