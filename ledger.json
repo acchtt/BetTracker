@@ -1,9 +1,9 @@
 {
-  "version": "2026-07-29T16:38:00Z",
+  "version": "2026-07-29T17:00:00Z",
   "bets": [
     {
       "syncId": "eval-20260729-kairat-omonia-kairat-team-total-over-1-5",
-      "updatedAt": "2026-07-29T16:38:00Z",
+      "updatedAt": "2026-07-29T17:00:00Z",
       "event": "Kairat Almaty vs Omonia Nicosia — Second Leg",
       "league": "UEFA Champions League Qualifying",
       "bet": "Kairat Almaty team total Over 1.5",
@@ -12,8 +12,8 @@
       "stakeUnits": 0.25,
       "potentialPayoutVnd": 272500,
       "potentialProfitVnd": 147500,
-      "status": "pending",
-      "result": "Pending",
+      "status": "loss",
+      "result": "Kairat Almaty 1-0 Omonia Nicosia after 90 minutes (Loss; Kairat team total Over 1.5)",
       "eventDate": "2026-07-29",
       "marketType": "Team total",
       "timing": "live",
@@ -61,12 +61,30 @@
         "model-generated",
         "user-executed",
         "price-above-model-cutoff",
-        "within-stake-cap"
+        "within-stake-cap",
+        "user-confirmed-result",
+        "loss",
+        "model-review"
       ],
-      "notes": "Official live football bet confirmed by the user. Kairat Almaty team total Over 1.5 at 2.18 for 0.25u (125,000 VND), sportsbook slip #870343211460730880. Entry was approximately 70:50 with Kairat leading 1-0, aggregate 1-1, and Omonia reduced to ten players. One additional Kairat goal wins. Potential payout is 272,500 VND and potential profit is 147,500 VND (+0.295u). Execution exceeded the model minimum acceptable odds of 1.97 and respected the active 0.25u football stake cap. Main evidence: Kairat's second-half 81% possession, 12-1 shots, 3-0 shots on target, 6-0 blocked shots and 4-0 corners. Main risks: Omonia's compact ten-man low block, limited on-target conversion, missing current xG/xGOT/big-chance/box-touch data, and extra time remaining an acceptable fallback if regulation ended 1-0.",
+      "notes": "Official live football bet confirmed by the user. Kairat Almaty team total Over 1.5 at 2.18 for 0.25u (125,000 VND), sportsbook slip #870343211460730880. Entry was approximately 70:50 with Kairat leading 1-0, aggregate 1-1, and Omonia reduced to ten players. One additional Kairat goal wins. Potential payout is 272,500 VND and potential profit is 147,500 VND (+0.295u). Execution exceeded the model minimum acceptable odds of 1.97 and respected the active 0.25u football stake cap. Main evidence: Kairat's second-half 81% possession, 12-1 shots, 3-0 shots on target, 6-0 blocked shots and 4-0 corners. Main risks: Omonia's compact ten-man low block, limited on-target conversion, missing current xG/xGOT/big-chance/box-touch data, and extra time remaining an acceptable fallback if regulation ended 1-0. Settlement confirmed by the user: regulation ended Kairat 1-0 Omonia, so Kairat team total Over 1.5 lost. Payout 0 VND; net loss 125,000 VND (-0.25u). Final regulation statistics showed Kairat with 69% possession, 30-3 shots, 6-0 shots on target, 14-1 blocked shots and 7-2 corners against ten-player Omonia. Result review: the territorial and numerical-advantage thesis occurred, but it did not produce the required second goal. Process review: the entry price and stake followed the recommendation, yet the probability estimate relied too heavily on raw shot pressure and blocked shots without current xG, xGOT, big-chance or box-touch quality. The possibility that Omonia's compact low block would force low-quality attempts and that both teams could accept extra time was underweighted. This is one result, so no permanent rule change is promoted; retain the data-quality penalty and require stronger chance-quality confirmation before upgrading similar late team-total overs.",
       "placedAt": "2026-07-29T23:33:00+07:00",
       "addedAt": "2026-07-29T16:38:00Z",
-      "createdAt": "2026-07-29T16:38:00Z"
+      "createdAt": "2026-07-29T16:38:00Z",
+      "payoutVnd": 0,
+      "netProfitVnd": -125000,
+      "netUnits": -0.25,
+      "settledAt": "2026-07-29T17:00:00Z",
+      "finalRegulationScore": "Kairat Almaty 1-0 Omonia Nicosia",
+      "finalAggregateAfter90": "1-1; match proceeded beyond regulation",
+      "finalStats": {
+        "possession": "Kairat 69%-31% Omonia",
+        "shots": "Kairat 30-3 Omonia",
+        "shotsOnTarget": "Kairat 6-0 Omonia",
+        "shotsOffTarget": "Kairat 10-2 Omonia",
+        "blockedShots": "Kairat 14-1 Omonia",
+        "corners": "Kairat 7-2 Omonia",
+        "redCards": "Kairat 0-1 Omonia"
+      }
     },
     {
       "syncId": "eval-20260729-blg-lgd-g3-lgd-plus-10-5-kills",
