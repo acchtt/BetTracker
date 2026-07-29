@@ -4,24 +4,6 @@
 
   document.querySelectorAll(".sidebar-nav a[href='parser.html'], .avatar-pill").forEach((element) => element.remove());
 
-  const horizontalBrandStyle = document.createElement("style");
-  horizontalBrandStyle.textContent = `
-    .sidebar-brand.sidebar-brand--horizontal { display: block; padding: 0 4px 20px; }
-    .sidebar-brand__horizontal { display: block; width: min(100%, 190px); height: auto; margin: 0 auto; }
-  `;
-  document.head.append(horizontalBrandStyle);
-
-  document.querySelectorAll(".sidebar-brand").forEach((brand) => {
-    brand.classList.add("sidebar-brand--horizontal");
-    brand.innerHTML = `<img class="sidebar-brand__horizontal" src="assets/edgelog-horizontal-dark.svg?v=1" alt="EdgeLog — Log Bets. Gain Edge.">`;
-  });
-
-  const favicon = document.querySelector("link[rel~='icon']");
-  if (favicon) {
-    favicon.href = "assets/edgelog-app-icon.svg?v=4";
-    favicon.type = "image/svg+xml";
-  }
-
   document.querySelectorAll("a[href='bets.html?add=1'], a[href$='/bets.html?add=1']").forEach((link) => {
     link.dataset.openManual = "";
     link.href = "#";
@@ -130,6 +112,7 @@
     if (dialog.open) dialog.close();
   }
 
+  window.openSlipTraceManualBet = openManual;
   window.openEdgeLogManualBet = openManual;
   if (typeof openDialog === "function") openDialog = openManual;
 
@@ -169,6 +152,7 @@
       timing: field("timingField").value,
       tags,
       notes: field("notesField").value.trim(),
+      addedAt: existing?.addedAt || now,
       settledAt: status === "pending" ? existing?.settledAt : (existing?.settledAt || now),
       _localEditedAt: now
     };
