@@ -1,0 +1,109 @@
+name: Update model v0.2.5
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".edgelog-triggers/model-v0-2-5.json"
+
+permissions:
+  contents: write
+
+jobs:
+  update-model:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Insert model rule
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path("MODEL_CHANGELOG.md")
+          text = path.read_text(encoding="utf-8")
+          marker = "---\n\n## v0.2.4"
+          if "## v0.2.5 — 2026-07-29" in text:
+              raise SystemExit("v0.2.5 already present")
+          if marker not in text:
+              raise RuntimeError("Insertion marker not found")
+
+          section = r'''---
+
+## v0.2.5 — 2026-07-29
+
+### Football competition importance and asymmetric aggregate-state model
+
+**Status:** Active evaluation rule
+
+**Sport and markets affected**
+
+Football prematch and live 1X2, Asian handicap and totals markets, with special emphasis on continental or regional competitions, knockout ties and second legs.
+
+**Triggering evidence**
+
+- Santos vs Universidad Central de Venezuela, live Universidad Central +1.25 at halftime: the full-match score was 1-1 and Santos led 5-2 on aggregate. The wager lost after Santos won the second half 3-1, with the handicap-breaking goal arriving in regulation-time stoppage time.
+- The review correctly identified Santos' reduced need to force sustained attacks, but applied the large aggregate cushion too one-directionally. It underweighted Universidad Central's forced chase, attacking substitutions, defensive exposure and the resulting Santos counterattack tail.
+- Recent continental and regional-cup assessments showed that competition strength, stage and importance were being used qualitatively rather than as consistent probability inputs.
+- The user requested an explicit model update incorporating league or competition importance and the asymmetric effects of a large aggregate score.
+
+**Previous rule**
+
+Competition format, aggregate score, motivation and schedule context could be discussed manually, but they were not a mandatory calibrated module. A large aggregate lead could be treated mainly as reducing the favourite's attacking urgency, which risked lowering projected goals and favourite margin without separately increasing forced-chase and transition variance.
+
+**New rule**
+
+For every football assessment:
+
+- Run a mandatory `competition-context` module before producing probabilities or fair odds. Separate **competition strength and data reliability** from **fixture importance and incentives**; they are different variables.
+- Record the competition and its relevant scoring environment, the teams' underlying league strength, and whether cross-league priors are reliable. Do not transfer domestic-league scoring or team-strength estimates into continental or regional play without an uncertainty adjustment.
+- Identify the stage explicitly: domestic league, domestic cup, group stage, first leg, second leg or single-match knockout. Confirm the qualification and tiebreak conditions that shape incentives.
+- Account for rotation, schedule congestion, travel, home conditions, motivation, bench quality and expected substitution patterns. An unfamiliar or low-data competition receives a wider probability interval and an uncertainty penalty; when the edge is not robust after that penalty, return `LEAN` or `NO BET`.
+- Translate context into numerical changes to team scoring rates, draw probability, expected tempo and outcome variance. Context must not appear only as narrative commentary.
+
+For knockout ties and aggregate states:
+
+- Model the aggregate-leading team's **sustained attacking urgency** separately from its **transition scoring opportunity**. A large lead can reduce possession risk and deliberate attacking volume while leaving counterattack scoring unchanged or higher.
+- Model the aggregate-trailing team's required chase separately: goals still needed, time remaining, attacking substitutions, fullback height, defensive numbers, cards, fatigue and willingness to accept transition risk.
+- Do not assume that a large aggregate cushion makes the match low scoring. When the trailing side must chase multiple goals, the mean can fall slightly while the multi-goal tail and variance rise; totals and handicaps must use the full outcome distribution rather than only the central projection.
+- Treat an aggregate gap of three or more goals at the assessment point as a `large-aggregate-gap` state. In that state, create at least two explicit branches: a controlled branch and a forced-chase/open-transition branch.
+- From minute 60 onward, if the trailing side still needs two or more goals, increase the favourite's transition-goal rate and the probability of two or more remaining goals unless observed substitutions and match behaviour clearly contradict the chase scenario.
+- Extend the horizon through expected stoppage time. Late goals remain regulation-time events and must be included in handicap and totals settlement risk.
+
+Market restrictions:
+
+- A large aggregate lead alone can never justify an underdog handicap, an under or a short favourite fade.
+- For positive live underdog handicaps against a materially stronger aggregate-leading favourite, require the normal uncertainty-adjusted edge plus an additional two-percentage-point buffer when the trailing team is forced to chase. Under the current v0.2.3 restriction, this normally means at least a seven-point edge over breakeven for an `OFFICIAL BET` candidate.
+- Calculate Asian quarter-line value across full win, half win, push, half loss and loss outcomes under both the controlled and forced-chase branches.
+- Prefer `NO BET` or a protected favourite market when the underdog's qualification need creates a clear transition mismatch.
+- Every qualifying recommendation must show four fields: `Competition context`, `Aggregate state`, `Late-game branch`, and `Market implication`.
+- Tag official bets using this module with `competition-context`; add `aggregate-state`, `large-aggregate-gap` and `forced-chase` when applicable so results can be reviewed separately.
+
+**Expected benefit**
+
+Prevent one-directional interpretations of motivation, improve cross-competition calibration, and better price the high-scoring and multi-goal-margin tail created when a trailing knockout team must attack despite the favourite having little need to dominate possession.
+
+**Possible downside**
+
+The added uncertainty and branch analysis will produce more `NO BET` decisions, may reduce responsiveness to fast live markets, and can overstate transition risk when a trailing team does not actually chase as expected.
+
+**Review threshold**
+
+Review after the next 10 settled official football bets tagged `competition-context`, including at least five knockout or aggregate-state bets if available. Report separately by competition, totals versus handicaps, aggregate gap below three versus three or more, and whether the forced-chase branch occurred. Compare estimated tail probabilities, closing-line quality, ROI and qualitative game-state accuracy.
+
+'''
+
+          text = text.replace(marker, section + "## v0.2.4", 1)
+          path.write_text(text, encoding="utf-8")
+
+      - name: Commit model update and clean trigger
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add MODEL_CHANGELOG.md
+          git rm -f .edgelog-triggers/model-v0-2-5.json .github/workflows/update-model-v0-2-5.yml
+          git commit -m "Add competition and aggregate-state football model rule"
+          git push
