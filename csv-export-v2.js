@@ -1,5 +1,6 @@
 (() => {
-  if (globalThis.__edgeLogCsvExportV2 || typeof bets === "undefined") return;
+  if (globalThis.__slipTraceCsvExportV2 || globalThis.__edgeLogCsvExportV2 || typeof bets === "undefined") return;
+  globalThis.__slipTraceCsvExportV2 = true;
   globalThis.__edgeLogCsvExportV2 = true;
 
   const headers = [
@@ -102,7 +103,7 @@
   function filename() {
     const date = new Date();
     const stamp = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
-    return `edgelog-detailed-bets-${stamp}.csv`;
+    return `sliptrace-detailed-bets-${stamp}.csv`;
   }
 
   function exportDetailedCsv() {
