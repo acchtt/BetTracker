@@ -1,9 +1,9 @@
 {
-  "version": "2026-07-29T17:39:00Z",
+  "version": "2026-07-29T18:58:00Z",
   "bets": [
     {
       "syncId": "eval-20260729-lech-agf-over-3",
-      "updatedAt": "2026-07-29T17:39:00Z",
+      "updatedAt": "2026-07-29T18:58:00Z",
       "event": "Lech Poznan vs AGF Aarhus — Second Leg",
       "league": "UEFA Champions League Qualifying",
       "bet": "Over 3 total goals",
@@ -12,8 +12,8 @@
       "stakeUnits": 0.25,
       "potentialPayoutVnd": 283750,
       "potentialProfitVnd": 158750,
-      "status": "pending",
-      "result": "Pending",
+      "status": "push",
+      "result": "Lech Poznan 0-3 AGF Aarhus after 90 minutes (Push; Over 3 total goals)",
       "eventDate": "2026-07-29",
       "marketType": "Totals",
       "timing": "live",
@@ -62,12 +62,21 @@
         "model-generated",
         "user-executed",
         "price-above-model-cutoff",
-        "within-stake-cap"
+        "within-stake-cap",
+        "user-confirmed-result",
+        "push",
+        "model-review"
       ],
-      "notes": "Official live football bet confirmed by the user. Lech Poznan vs AGF Aarhus full-match Over 3 at 2.27 for 0.25u (125,000 VND), sportsbook slip #870359860280733696. Entry was approximately 33:48 with AGF leading 1-0 and Lech leading 4-2 on aggregate. Exactly three total goals returns the stake; four or more wins; two or fewer loses. Potential payout is 283,750 VND and potential profit is 158,750 VND (+0.3175u). Execution exceeded the model minimum acceptable odds of 1.90 and respected the active 0.25u football stake cap. Main thesis: AGF's continuing qualification chase increased their attacking commitment and Lech's transition opportunities. Main risks: combined xG was only 0.87, AGF's goal was deflected, and Lech could still qualify while controlling the match.",
+      "notes": "Official live football bet confirmed by the user. Lech Poznan vs AGF Aarhus full-match Over 3 at 2.27 for 0.25u (125,000 VND), sportsbook slip #870359860280733696. Entry was approximately 33:48 with AGF leading 1-0 and Lech leading 4-2 on aggregate. Exactly three total goals returns the stake; four or more wins; two or fewer loses. Potential payout is 283,750 VND and potential profit is 158,750 VND (+0.3175u). Execution exceeded the model minimum acceptable odds of 1.90 and respected the active 0.25u football stake cap. Main thesis: AGF's continuing qualification chase increased their attacking commitment and Lech's transition opportunities. Main risks: combined xG was only 0.87, AGF's goal was deflected, and Lech could still qualify while controlling the match. Settlement confirmed by the user: regulation ended Lech Poznan 0-3 AGF Aarhus, so Over 3 pushed. Payout 125,000 VND; net result 0 VND (0.00u). Result review: the forced-chase branch occurred strongly enough to produce three total goals, but not a fourth. Process review: the whole-goal line protection worked exactly as intended at the boundary outcome. The goals thesis was directionally sound, while the push shows why the model preferred Over 3 rather than a more aggressive quarter-line. No rule change is promoted from this single settlement.",
       "placedAt": "2026-07-30T00:39:00+07:00",
       "addedAt": "2026-07-29T17:39:00Z",
-      "createdAt": "2026-07-29T17:39:00Z"
+      "createdAt": "2026-07-29T17:39:00Z",
+      "payoutVnd": 125000,
+      "netProfitVnd": 0,
+      "netUnits": 0.0,
+      "settledAt": "2026-07-29T18:58:00Z",
+      "finalRegulationScore": "Lech Poznan 0-3 AGF Aarhus",
+      "finalAggregateAfter90": "4-4; match proceeded beyond regulation"
     },
     {
       "syncId": "eval-20260729-kairat-omonia-kairat-team-total-over-1-5",
