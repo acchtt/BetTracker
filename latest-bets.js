@@ -2,7 +2,6 @@
   if (globalThis.__slipTraceLatestBets || typeof bets === "undefined") return;
   globalThis.__slipTraceLatestBets = true;
 
-  const initialIds = new Set(bets.map((bet) => bet.id));
   let writing = false;
   let timer = 0;
 
@@ -15,12 +14,13 @@
     const missing = bets.filter((bet) => !timestamp(bet.addedAt));
     if (!missing.length) return false;
 
-    const base = Date.now();
+    const newestExisting = bets.reduce((latest, bet) => Math.max(latest, timestamp(bet.addedAt)), 0);
+    const base = Math.max(Date.now(), newestExisting + bets.length + 1);
     let changed = false;
-    missing.forEach((bet, index) => {
-      const isNewAfterLoad = !initialIds.has(bet.id);
-      const offset = isNewAfterLoad ? index : 86400000 + bets.indexOf(bet);
-      bet.addedAt = new Date(base - offset).toISOString();
+
+    missing.forEach((bet) => {
+      const trackerPosition = Math.max(0, bets.indexOf(bet));
+      bet.addedAt = new Date(base - trackerPosition).toISOString();
       changed = true;
     });
 
