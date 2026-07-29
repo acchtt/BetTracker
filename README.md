@@ -76,13 +76,12 @@ Entries intentionally synchronized through ChatGPT are stored in the public repo
 - Horizontal lockup: `assets/sliptrace-horizontal-dark.svg`
 - Brand guide: `brand/SLIPTRACE-BRAND-GUIDE.md`
 
-## Publish with GitHub Pages
+## Repository and GitHub Pages
 
-The current repository slug remains `EdgeLog`, so the existing project URL is:
+- Repository: `https://github.com/acchtt/SlipTrace`
+- Live site: `https://acchtt.github.io/SlipTrace/`
 
-`https://acchtt.github.io/EdgeLog/`
-
-The displayed product and installed PWA are branded as SlipTrace.
+The repository slug, displayed product, and installed PWA all use the SlipTrace name.
 
 ## Supported Vietnamese labels
 
