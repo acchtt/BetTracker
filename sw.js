@@ -1,4 +1,4 @@
-const CACHE_NAME = "sliptrace-shell-20260729-5";
+const CACHE_NAME = "sliptrace-shell-20260729-6";
 
 const CORE_SHELL = [
   "./",
@@ -42,7 +42,7 @@ const OPTIONAL_SHELL = [
   "./logo-home-link.js?v=20260727-1",
   "./quick-settlement.js?v=20260727-2",
   "./mobile-history.js?v=20260727-1",
-  "./reporting-suite.js?v=20260727-1",
+  "./reporting-suite.js?v=20260729-1",
   "./bets-productivity.js?v=20260727-1",
   "./bankroll-goals.js?v=20260727-1",
   "./bets-workspace.js?v=20260727-1",
