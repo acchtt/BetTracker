@@ -2,7 +2,7 @@
   if (globalThis.__slipTraceLatestBets || typeof bets === "undefined") return;
   globalThis.__slipTraceLatestBets = true;
 
-  const ORDER_MIGRATION_KEY = "sliptrace-added-order-v3";
+  const ORDER_MIGRATION_KEY = "sliptrace-added-at-v5";
   let writing = false;
   let timer = 0;
 
@@ -11,37 +11,81 @@
     return Number.isFinite(parsed) ? parsed : 0;
   }
 
+  function sourceTimestamp(bet) {
+    const explicit = timestamp(bet.createdAt)
+      || timestamp(bet.placedAt)
+      || timestamp(bet.sourceAddedAt)
+      || timestamp(bet._createdAt);
+    if (explicit) return explicit;
+
+    if (bet._syncId) {
+      return timestamp(bet._syncCreatedAt)
+        || timestamp(bet.addedAt)
+        || timestamp(bet._syncUpdatedAt);
+    }
+
+    return timestamp(bet.addedAt)
+      || timestamp(bet._localEditedAt);
+  }
+
   function repairExistingOrder() {
     if (localStorage.getItem(ORDER_MIGRATION_KEY) === "complete") return false;
-    const base = Date.now();
-    bets.forEach((bet, index) => {
-      bet.addedAt = new Date(base - index).toISOString();
+
+    const known = bets.map((bet) => {
+      if (bet._syncId) {
+        return timestamp(bet._syncCreatedAt) || timestamp(bet._syncUpdatedAt);
+      }
+      return timestamp(bet.createdAt)
+        || timestamp(bet.placedAt)
+        || timestamp(bet._createdAt)
+        || timestamp(bet._localEditedAt);
     });
+    const positive = known.filter(Boolean);
+    const fallbackBase = positive.length ? Math.min(...positive) - 1000 : Date.now();
+
+    bets.forEach((bet, index) => {
+      const derived = known[index] || fallbackBase - index;
+      bet.addedAt = new Date(derived).toISOString();
+      bet._addedAtSource = known[index]
+        ? (bet._syncId ? "sync-record" : "local-record")
+        : "legacy-order";
+    });
+
     if (typeof persist === "function") persist();
     localStorage.setItem(ORDER_MIGRATION_KEY, "complete");
     return true;
   }
 
   function ensureAddedTimes() {
-    const missing = bets.filter((bet) => !timestamp(bet.addedAt));
-    if (!missing.length) return false;
-
-    const newestExisting = bets.reduce((latest, bet) => Math.max(latest, timestamp(bet.addedAt)), 0);
+    let changed = false;
+    const newestExisting = bets.reduce((latest, bet) => Math.max(latest, sourceTimestamp(bet)), 0);
     const base = Math.max(Date.now(), newestExisting + bets.length + 1);
 
-    missing.forEach((bet) => {
-      const trackerPosition = Math.max(0, bets.indexOf(bet));
-      bet.addedAt = new Date(base - trackerPosition).toISOString();
+    bets.forEach((bet, index) => {
+      const syncCreated = bet._syncId ? timestamp(bet._syncCreatedAt) : 0;
+      if (syncCreated && timestamp(bet.addedAt) !== syncCreated) {
+        bet.addedAt = new Date(syncCreated).toISOString();
+        bet._addedAtSource = "sync-record";
+        changed = true;
+        return;
+      }
+
+      if (timestamp(bet.addedAt)) return;
+      const localCreated = !bet._syncId && timestamp(bet._localEditedAt);
+      const derived = localCreated || base - index;
+      bet.addedAt = new Date(derived).toISOString();
+      bet._addedAtSource = localCreated ? "local-record" : "new-record";
+      changed = true;
     });
 
-    if (typeof persist === "function") persist();
-    return true;
+    if (changed && typeof persist === "function") persist();
+    return changed;
   }
 
   function latestBets() {
     const originalOrder = new Map(bets.map((bet, index) => [bet.id, index]));
     return bets.slice().sort((a, b) => {
-      const timeDifference = timestamp(b.addedAt) - timestamp(a.addedAt);
+      const timeDifference = sourceTimestamp(b) - sourceTimestamp(a);
       return timeDifference || (originalOrder.get(a.id) ?? 0) - (originalOrder.get(b.id) ?? 0);
     }).slice(0, 5);
   }
@@ -64,7 +108,7 @@
     clearTimeout(timer);
     queueMicrotask(renderLatest);
     timer = setTimeout(renderLatest, 0);
-    setTimeout(renderLatest, 120);
+    setTimeout(renderLatest, 150);
   }
 
   repairExistingOrder();
@@ -101,7 +145,6 @@
     if (typeof STORAGE_KEY !== "undefined" && event.key === STORAGE_KEY) scheduleRender();
   });
   addEventListener("focus", scheduleRender);
-  addEventListener("sliptrace:pwa-controller-change", scheduleRender);
   document.addEventListener("visibilitychange", () => { if (!document.hidden) scheduleRender(); });
 
   globalThis.SlipTraceLatestBets = { render: renderLatest, ensureAddedTimes, repairExistingOrder };
