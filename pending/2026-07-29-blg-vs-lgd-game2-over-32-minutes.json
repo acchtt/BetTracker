@@ -1,11 +1,11 @@
 {
   "createdAt": "2026-07-29T13:12:00Z",
-  "updatedAt": "2026-07-29T13:12:00Z",
+  "updatedAt": "2026-07-29T13:14:00Z",
   "status": "pending-ledger-merge",
   "bets": [
     {
       "syncId": "eval-20260729-blg-lgd-g2-over-32-minutes",
-      "updatedAt": "2026-07-29T13:12:00Z",
+      "updatedAt": "2026-07-29T13:14:00Z",
       "event": "Bilibili Gaming vs LGD Gaming — Game 2",
       "league": "LPL 2026 Split 3",
       "bet": "Over 32 minutes",
@@ -16,7 +16,8 @@
       "netProfitVnd": -250000,
       "netUnits": -0.5,
       "status": "loss",
-      "result": "Loss confirmed by user; final game duration not provided",
+      "result": "Final duration 29:00; Over 32 minutes lost",
+      "finalDurationMinutes": 29,
       "eventDate": "2026-07-29",
       "marketType": "Duration",
       "timing": "live",
@@ -45,8 +46,8 @@
         "stateSynchronized": false,
         "deviations": ["entry after analyzed state changed", "stake above model recommendation"]
       },
-      "tags": ["evaluation", "official", "live-read", "duration-market", "user-executed", "unsynchronized-execution", "stake-above-model-recommendation", "user-confirmed-result", "model-review", "pending-slip-id"],
-      "notes": "User confirmed placement of Game 2 Over 32 minutes at 1.787 and later confirmed the wager lost. Stake was confirmed as 0.5u (250,000 VND). The price remained above the model cutoff of 1.75, but the prior synchronized recommendation had expired after the game state changed, and the placed stake was double the recommended 0.25u. Payout 0 VND; net loss 250,000 VND (-0.5u). Final game duration and sportsbook slip ID were not provided."
+      "tags": ["evaluation", "official", "live-read", "duration-market", "user-executed", "unsynchronized-execution", "stake-above-model-recommendation", "user-confirmed-result", "model-review", "duration-over-miss", "fast-close-tail", "pending-slip-id"],
+      "notes": "User confirmed placement of Game 2 Over 32 minutes at 1.787 for 0.5u (250,000 VND) and confirmed the final duration was 29:00, so the wager lost by three minutes. The price remained above the model cutoff of 1.75, but the prior synchronized recommendation had expired after the state changed, and the stake was double the recommended 0.25u. Process review: the model over-weighted scaling, wave-clear, even early gold and zero towers as evidence of a long game. It under-weighted the fast-close paths from Skarner-Orianna engage, BLG front-to-back objective control, LGD pick volatility through Lee Sin-Bard, and the possibility that an early dragon cycle would accelerate mandatory midgame fights rather than delay the finish. Zero towers before eight minutes was weak duration evidence, not a sufficient stall signal. The recommendation should have remained LEAN or NO BET until later evidence showed inhibited conversion, completed defensive items, stable wave-clear and no immediate Baron or soul-point close route. No permanent rule is promoted from this single result; flag the duration model for review across the next documented sample. Payout 0 VND; net loss 250,000 VND (-0.5u). Sportsbook slip ID remains unprovided."
     }
   ]
 }
