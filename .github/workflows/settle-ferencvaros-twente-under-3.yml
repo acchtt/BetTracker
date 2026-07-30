@@ -1,0 +1,65 @@
+name: Settle Ferencvaros Twente Under 3
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/settle-ferencvaros-twente-under-3.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Settle Ferencvaros wager
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          path = Path('ledger.json')
+          data = json.loads(path.read_text(encoding='utf-8'))
+          now = '2026-07-30T20:18:00Z'
+          target = 'eval-20260731-ferencvaros-twente-under-3'
+
+          for bet in data.get('bets', []):
+              if bet.get('syncId') != target:
+                  continue
+              bet['updatedAt'] = now
+              bet['status'] = 'loss'
+              bet['result'] = 'Full loss; FC Twente scored twice after Ferencvaros led 2-0, taking the match total to at least four goals'
+              bet['finalTotalGoalsMinimumConfirmed'] = 4
+              bet['settlementType'] = 'full_loss'
+              bet['payoutVnd'] = 0
+              bet['profitVnd'] = -125000
+              bet['profitUnits'] = -0.25
+              bet['netProfitVnd'] = -125000
+              bet['netUnits'] = -0.25
+              bet['settledAt'] = now
+              tags = [t for t in bet.get('tags', []) if t != 'pending']
+              for tag in ['loss', 'settled', 'user-confirmed-result', 'red-card-state', 'multi-goal-chase-realized']:
+                  if tag not in tags:
+                      tags.append(tag)
+              bet['tags'] = tags
+              bet['notes'] = bet.get('notes', '') + ' Settlement confirmed by the user: FC Twente scored two quick goals after Ferencvaros led 2-0, taking the total to at least four goals and making Under 3 a full loss. Return 0 VND; net loss 125,000 VND (-0.25u). Exact final score has not yet been separately confirmed.'
+              bet['review'] = {
+                  'resultAssessment': 'The wager lost in full because the match reached at least four total goals.',
+                  'processAssessment': 'The pre-match under thesis was vulnerable to the specific adverse branch that developed: Ferencvaros led 2-0, then played with ten men while Twente used attacking halftime substitutions and entered a genuine multi-goal chase. Twente then scored twice quickly. The red card was not predictable pre-match, but once it occurred the live state materially increased the goal tail. The wager was a user-placed LEAN below the official-bet cutoff, not a model-approved OFFICIAL BET.',
+                  'lineSelectionAssessment': 'Under 3 provided a push only at exactly three goals, but offered no protection once the match reached four. The whole-goal line was still preferable to Under 2.75 for the realized path, though both lost once Twente scored twice.'
+              }
+              break
+
+          data['version'] = now
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+      - name: Commit ledger update
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add ledger.json
+          git commit -m 'Settle Ferencvaros Twente Under 3' || exit 0
+          git push
