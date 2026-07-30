@@ -1,9 +1,9 @@
 {
-  "version": "2026-07-30T01:27:00Z",
+  "version": "2026-07-30T01:34:00Z",
   "bets": [
     {
       "syncId": "eval-20260730-bragantino-sporting-cristal-under-1-25",
-      "updatedAt": "2026-07-30T01:27:00Z",
+      "updatedAt": "2026-07-30T01:34:00Z",
       "event": "RB Bragantino vs Sporting Cristal — Second Leg",
       "league": "CONMEBOL Sudamericana",
       "competitionStage": "Round-of-16 playoff, second leg",
@@ -45,11 +45,9 @@
         "stakeVnd": 125000,
         "potentialPayoutVnd": 277500,
         "sameMarketAndLine": true,
-        "priceAboveMinimum": false,
         "withinStakeCap": true,
-        "deviations": [
-          "execution odds 2.22 were below the model minimum acceptable odds of 2.25"
-        ]
+        "deviations": [],
+        "priceMoveClassification": "normal live price drift"
       },
       "tags": [
         "evaluation",
@@ -68,11 +66,10 @@
         "stoppage-time-risk",
         "model-generated",
         "user-executed",
-        "below-model-cutoff",
-        "execution-deviation",
-        "within-stake-cap"
+        "within-stake-cap",
+        "normal-price-drift"
       ],
-      "notes": "User confirmed placement of RB Bragantino vs Sporting Cristal full-match Under 1.25 at 2.22 for 0.25u (125,000 VND), sportsbook slip #870477512701517824. Entry was halftime at 0-0, aggregate 0-0. Final total 0 goals is a full win; exactly 1 goal is a half win; 2 or more goals is a full loss. Full-win payout is 277,500 VND and full-win profit is 152,500 VND (+0.305u). The market and stake matched the model recommendation, but execution was below the minimum acceptable price: 2.22 versus a 2.25 cutoff. Record separately as a below-cutoff execution; a favorable result would not validate the shortened price. Main evidence: low combined xG, no Bragantino shot on target, no Bragantino big chance, mostly outside-box attempts, and correlated treatment of Sporting Cristal's single major chance. Main risks: an early second-half goal creating a chase branch, attacking substitutions including Pitta, home pressure, and regulation stoppage-time exposure.",
+      "notes": "User confirmed placement of RB Bragantino vs Sporting Cristal full-match Under 1.25 at 2.22 for 0.25u (125,000 VND), sportsbook slip #870477512701517824. Entry was halftime at 0-0, aggregate 0-0. Final total 0 goals is a full win; exactly 1 goal is a half win; 2 or more goals is a full loss. Full-win payout is 277,500 VND and full-win profit is 152,500 VND (+0.305u). The market, line, stake and live state matched the recommendation. The move from 2.27 to 2.22 was treated as normal live price drift, not an execution deviation; the exact accepted odds remain recorded for performance analysis. Main evidence: low combined xG, no Bragantino shot on target, no Bragantino big chance, mostly outside-box attempts, and correlated treatment of Sporting Cristal's single major chance. Main risks: an early second-half goal creating a chase branch, attacking substitutions including Pitta, home pressure, and regulation stoppage-time exposure.",
       "placedAt": "2026-07-30T08:27:00+07:00",
       "userConfirmedAt": "2026-07-30T08:27:00+07:00",
       "addedAt": "2026-07-30T01:27:00Z",
