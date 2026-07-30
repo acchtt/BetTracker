@@ -1,0 +1,73 @@
+name: Settle Bragantino Under 1.25 half win
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/settle-bragantino-under125-half-win.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Settle confirmed bet
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          path = Path("ledger.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          sync_id = "eval-20260730-bragantino-sporting-cristal-under-1-25"
+          bet = next(item for item in data["bets"] if item.get("syncId") == sync_id)
+
+          timestamp = "2026-07-30T02:30:00Z"
+          data["version"] = timestamp
+          bet["updatedAt"] = timestamp
+          bet["status"] = "win"
+          bet["result"] = "RB Bragantino 1-0 Sporting Cristal after 90 minutes (Half win; Under 1.25 total goals)"
+          bet["finalScore"] = "RB Bragantino 1-0 Sporting Cristal"
+          bet["finalTotalGoals"] = 1
+          bet["settlementType"] = "half_win"
+          bet["payoutVnd"] = 201250
+          bet["profitVnd"] = 76250
+          bet["profitUnits"] = 0.1525
+          bet["settledAt"] = timestamp
+
+          tags = bet.setdefault("tags", [])
+          for tag in ["user-confirmed-result", "win", "half-win", "settled"]:
+              if tag not in tags:
+                  tags.append(tag)
+
+          review = bet.setdefault("review", {})
+          review["resultAssessment"] = "The wager produced a half win because the match finished with exactly one total goal."
+          review["processAssessment"] = "The Under 1.25 and Under 1.5 alternatives were close in expected value at the quoted prices. Under 1.25 paid more in the no-goal branch, while Under 1.5 paid more in the exactly-one-goal branch. The realized one-goal result favored Under 1.5, but that does not by itself make the Under 1.25 selection incorrect. Future recommendations should show an explicit adjacent-line comparison when both lines clear the minimum odds threshold."
+          review["alternativeLine"] = {
+              "market": "Under 1.5 total goals",
+              "observedOdds": 1.92,
+              "realizedPayoutVndAtSameStake": 240000,
+              "realizedProfitVndAtSameStake": 115000,
+              "realizedProfitUnitsAtSameStake": 0.23,
+              "differenceVsExecutedProfitVnd": 38750,
+              "differenceVsExecutedProfitUnits": 0.0775
+          }
+
+          bet["notes"] = bet.get("notes", "") + " Settlement confirmed by user: final score 1-0, producing a half win. Return 201,250 VND; net profit 76,250 VND (+0.1525u). Post-settlement adjacent-line review: Under 1.5 was available around 1.92 and would have returned 240,000 VND for a 115,000 VND profit at the same stake. The outcome favored that line, but the pre-bet choice remained close because Under 1.25 offered the higher payout in the 0-goal branch."
+
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+      - name: Commit ledger update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ledger.json
+          git commit -m "Settle Bragantino Under 1.25 as half win" || exit 0
+          git push
