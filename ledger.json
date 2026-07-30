@@ -274,6 +274,110 @@
       "createdAt": "2026-07-30T10:19:00Z"
     },
     {
+      "syncId": "eval-20260730-bfx-dns-g1-under-22-5-kills",
+      "updatedAt": "2026-07-30T11:55:00Z",
+      "event": "BNK FEARX vs DN SOOPers — Game 1",
+      "league": "LCK 2026 Rounds 3-4",
+      "format": "Best-of-three series; Game 1",
+      "bet": "Under 22.5 total kills",
+      "settlementBasis": "The wager wins if Game 1 finishes with 22 or fewer total kills and loses at 23 or more.",
+      "odds": 2.042,
+      "stakeVnd": 125000,
+      "stakeUnits": 0.25,
+      "potentialPayoutVnd": 255250,
+      "potentialProfitVnd": 130250,
+      "payoutVnd": 255250,
+      "netProfitVnd": 130250,
+      "netUnits": 0.2605,
+      "status": "win",
+      "result": "BNK FEARX won Game 1 with final kills 17-5; 22 total kills; Under 22.5 won",
+      "eventDate": "2026-07-30",
+      "settledAt": "2026-07-30T11:55:00Z",
+      "marketType": "Kills total",
+      "timing": "live",
+      "slipId": "1147820090",
+      "sportsbookDisplayedTime": "07/30 16:07",
+      "seriesState": "Series 0-0; Game 1",
+      "patch": "26.14",
+      "sides": {
+        "BFX": "blue",
+        "DNS": "red"
+      },
+      "draft": {
+        "BFX_blue": [
+          "Rumble",
+          "Lee Sin",
+          "Cassiopeia",
+          "Corki",
+          "Shen"
+        ],
+        "DNS_red": [
+          "Jayce",
+          "Jarvan IV",
+          "Syndra",
+          "Viktor",
+          "Rell"
+        ]
+      },
+      "entryState": {
+        "minute": "14:00",
+        "kills": "BFX 2-0 DNS",
+        "gold": "BFX 24.3k-21.9k DNS",
+        "goldDifference": "BFX +2.4k",
+        "towers": "0-0",
+        "pace": "low fight pace"
+      },
+      "modelRecommendation": {
+        "recommendationType": "lean",
+        "market": "Under 22.5 total kills",
+        "odds": 1.768,
+        "stakeUnits": 0.25,
+        "state": "14:00, BFX led 2-0 kills and 24.3k-21.9k gold, towers 0-0",
+        "reasoning": "Low fight pace, controlled BFX lead and strong wave-clear supported the under."
+      },
+      "execution": {
+        "odds": 2.042,
+        "stakeUnits": 0.25,
+        "stakeVnd": 125000,
+        "sameMarketAndLine": true,
+        "priceOnlyMoveAccepted": true,
+        "priceMoveClassification": "price-only market move with no material game action",
+        "withinStakeCap": true,
+        "deviations": []
+      },
+      "finalKills": {
+        "BFX": 17,
+        "DNS": 5,
+        "total": 22
+      },
+      "review": {
+        "resultAssessment": "The wager won by 0.5 kill because the final total was 22.",
+        "processAssessment": "The low-kill thesis was directionally correct, though the realized margin was narrow."
+      },
+      "tags": [
+        "evaluation",
+        "official-after-user-confirmation",
+        "lol",
+        "lck",
+        "live-read",
+        "kills-total",
+        "under-22-5",
+        "model-lean",
+        "user-executed",
+        "price-only-move",
+        "within-stake-cap",
+        "user-confirmed-result",
+        "win",
+        "settled",
+        "narrow-margin"
+      ],
+      "notes": "User confirmed placement at 15:23 ICT. Exact wager: Under 22.5 total kills in BNK FEARX vs DN SOOPers Game 1 at 2.042 for 0.25u (125,000 VND), slip #1147820090. Final kills were BFX 17-5 DNS, totaling 22. Payout 255,250 VND; net profit 130,250 VND (+0.2605u).",
+      "placedAt": "2026-07-30T15:23:00+07:00",
+      "userConfirmedAt": "2026-07-30T15:23:00+07:00",
+      "addedAt": "2026-07-30T08:23:00Z",
+      "createdAt": "2026-07-30T08:23:00Z"
+    },
+    {
       "syncId": "eval-20260730-dkc-t1a-series-dkc-ml",
       "updatedAt": "2026-07-30T11:58:00Z",
       "event": "Dplus KIA Challengers vs T1 Esports Academy — Series",
@@ -1473,18 +1577,18 @@
     },
     {
       "syncId": "eval-20260728-lincoln-mjallby-mjallby-minus-0-5",
-      "updatedAt": "2026-07-28T17:06:00Z",
+      "updatedAt": "2026-07-30T11:55:00Z",
       "event": "Lincoln Red Imps FC vs Mjällby AIF — Second Leg",
       "league": "UEFA Champions League Qualifying",
       "bet": "Mjällby AIF -0.5",
       "odds": 2.04,
       "stakeVnd": 125000,
       "payoutVnd": 0,
-      "status": "pending",
-      "result": "Pending",
+      "status": "loss",
+      "result": "Lincoln Red Imps FC 0-0 Mjällby AIF after 90 minutes; Mjällby -0.5 lost",
       "eventDate": "2026-07-28",
       "marketType": "Handicap",
-      "timing": "live",
+      "timing": "live-halftime",
       "tags": [
         "evaluation",
         "official",
@@ -1492,11 +1596,26 @@
         "lineup-confirmed",
         "knockout-second-leg",
         "halftime",
-        "handicap"
+        "handicap",
+        "final-result-web-verified",
+        "loss",
+        "settled"
       ],
-      "notes": "Evaluation bet #23 — live full-match Mjällby AIF -0.5 placed at halftime with the score 0–0 at 2.04 for 0.25u (125,000 VND); sportsbook slip ID not provided. Mjällby led 3–0 on aggregate and controlled the first half with 56% possession, 10–5 shots and 4–1 shots on target. The earlier -0.25 price of 1.67 was rejected because handicap bets must be at least 1.70. The changed -0.5 line at 2.04 was accepted independently; it requires Mjällby to win the match. Potential payout 255,000 VND and potential profit 130,000 VND.",
+      "notes": "Evaluation bet #23 — live full-match Mjällby AIF -0.5 placed at halftime with the score 0-0 at 2.04 for 0.25u (125,000 VND); sportsbook slip ID not provided. Mjällby led 3-0 on aggregate and controlled the first half with 56% possession, 10-5 shots and 4-1 shots on target. The changed -0.5 line required Mjällby to win the match. The second leg finished 0-0, so the wager lost. Payout 0 VND; net loss 125,000 VND (-0.25u).",
       "addedAt": "2026-07-28T17:06:00Z",
-      "createdAt": "2026-07-28T17:06:00Z"
+      "createdAt": "2026-07-28T17:06:00Z",
+      "competitionStage": "Second qualifying round, second leg",
+      "format": "Two-legged knockout tie; full-match handicap settles after 90 minutes plus regulation stoppage time; extra time excluded",
+      "settlementBasis": "Mjällby AIF must win the second-leg match after 90 minutes plus regulation stoppage time.",
+      "stakeUnits": 0.25,
+      "potentialPayoutVnd": 255000,
+      "potentialProfitVnd": 130000,
+      "netProfitVnd": -125000,
+      "netUnits": -0.25,
+      "settledAt": "2026-07-30T11:55:00Z",
+      "entryScore": "0-0",
+      "entryMinute": "Halftime",
+      "entryAggregateScore": "Mjällby AIF led 3-0"
     },
     {
       "syncId": "eval-20260728-kups-sabah-under-1-5",
@@ -2188,9 +2307,10 @@
       "pending/2026-07-30-dkc-vs-t1a-series-settlement.json",
       "pending/2026-07-30-hle-vs-dk-game1-dk-plus-6-5-kills.json",
       "pending/2026-07-30-hle-vs-dk-game2-dk-ml.json",
+      "pending/2026-07-30-reconcile-all-unverified-bets.json",
       "pending/2026-07-30-t1a-vs-dkc-game1-dkc-plus-6-5-kills-settlement.json"
     ],
     "officialRecordsAdded": 1,
-    "officialRecordsUpdated": 10
+    "officialRecordsUpdated": 12
   }
 }
