@@ -1,0 +1,131 @@
+name: Record DK Challengers Game 1 +6.5 kills
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/record-dkc-game1-plus65.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Record confirmed LoL wager
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          path = Path("ledger.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          timestamp = "2026-07-30T05:20:00Z"
+          sync_id = "eval-20260730-t1a-dkc-g1-dkc-plus-6-5-kills"
+
+          for item in data.get("bets", []):
+              if item.get("syncId") == "eval-20260730-dkc-t1a-series-dkc-ml":
+                  item["updatedAt"] = timestamp
+                  item["sideStatus"] = "Game 1 confirmed: T1 Esports Academy blue; Dplus KIA Challengers red"
+                  item["draftStatus"] = "Game 1 draft confirmed"
+                  item["game1Draft"] = {
+                      "T1A_blue": ["Ambessa", "Lee Sin", "Akali", "Jhin", "Camille"],
+                      "DKC_red": ["Renekton", "Vi", "Locke", "Ziggs", "Shen"]
+                  }
+                  for tag in ["side-confirmed", "draft-read"]:
+                      if tag not in item.setdefault("tags", []):
+                          item["tags"].append(tag)
+                  break
+
+          if not any(item.get("syncId") == sync_id for item in data.get("bets", [])):
+              entry = {
+                  "syncId": sync_id,
+                  "updatedAt": timestamp,
+                  "event": "T1 Esports Academy vs Dplus KIA Challengers — Game 1",
+                  "league": "LCK CL 2026 Rounds 3-4",
+                  "competitionStage": "Challenge Group, Round 3 Match 97",
+                  "format": "Game 1 of a best-of-three series",
+                  "bet": "Dplus KIA Challengers +6.5 kills",
+                  "settlementBasis": "Dplus KIA Challengers wins if its final kill total is no more than 6 kills below T1 Esports Academy; loses if T1A finishes at least 7 kills ahead.",
+                  "odds": 1.908,
+                  "stakeVnd": 125000,
+                  "stakeUnits": 0.25,
+                  "potentialPayoutVnd": 238500,
+                  "potentialProfitVnd": 113500,
+                  "status": "open",
+                  "result": "Pending",
+                  "eventDate": "2026-07-30",
+                  "marketType": "Kill handicap",
+                  "timing": "live",
+                  "slipId": "1147699322",
+                  "sportsbookDisplayedPlacedAt": "07/30 12:20",
+                  "seriesState": "Series 0-0; Game 1",
+                  "patch": "26.14",
+                  "rosterStatus": "confirmed",
+                  "roster": {
+                      "DKC": ["Jaehyuk", "Solid", "Garden", "Wayne", "Loopy"],
+                      "T1A": ["Haetae", "Painter", "Guti", "Cypher", "Cloud"]
+                  },
+                  "sides": {"T1A": "blue", "DKC": "red"},
+                  "draft": {
+                      "T1A_blue": ["Ambessa", "Lee Sin", "Akali", "Jhin", "Camille"],
+                      "DKC_red": ["Renekton", "Vi", "Locke", "Ziggs", "Shen"]
+                  },
+                  "entryState": {
+                      "gameTime": "6:19 latest documented state before confirmation",
+                      "kills": "T1A 2-2 DKC",
+                      "gold": "T1A 11.4k-11.1k DKC",
+                      "goldDifference": "T1A +0.3k",
+                      "towers": "0-0",
+                      "neutralObjectives": "0-0",
+                      "firstBlood": "T1A"
+                  },
+                  "modelRecommendation": {
+                      "recommendationType": "lean",
+                      "market": "Dplus KIA Challengers +6.5 kills",
+                      "observedOdds": 1.951,
+                      "stakeUnits": 0.25,
+                      "projectMinimumOdds": 1.60,
+                      "reasoning": "From a tied 2-2 kill state with nearly even gold and no tower or objective conversion, T1A needed a final kill margin of at least 7 to beat the handicap. DK retained realistic kill-trading through Vi-Shen initiation, Renekton follow-up, Locke access and Ziggs ranged damage. The main risk was T1A's repeated dive and chase through Ambessa, Lee Sin, Akali and Camille."
+                  },
+                  "execution": {
+                      "odds": 1.908,
+                      "stakeUnits": 0.25,
+                      "stakeVnd": 125000,
+                      "potentialPayoutVnd": 238500,
+                      "sameMarketAndLine": true,
+                      "priceAboveProjectMinimum": true,
+                      "priceMoveClassification": "normal live price drift",
+                      "withinStakeCap": true,
+                      "deviations": []
+                  },
+                  "correlatedExposure": "Open Dplus KIA Challengers series moneyline at 2.88 for 0.25u",
+                  "tags": [
+                      "evaluation", "official-after-user-confirmation", "lol", "lck-cl",
+                      "live-read", "kill-handicap", "model-lean", "user-executed",
+                      "roster-confirmed", "patch-confirmed", "side-confirmed", "draft-read",
+                      "normal-price-drift", "within-stake-cap", "correlated-exposure", "pending-result"
+                  ],
+                  "notes": "User confirmed placement by sportsbook slip. Exact wager: Dplus KIA Challengers +6.5 final kills in Game 1 against T1 Esports Academy at 1.908 for 0.25u (125,000 VND), slip #1147699322. Potential payout 238,500 VND and potential profit 113,500 VND (+0.227u). The model position was LEAN at 1.951, not an official model recommendation, because the game was still early and objective setup and vision were incomplete. Execution kept the same line, remained above the 1.60 project minimum and respected the 0.25u cap. The price move is treated as normal live drift. This wager is correlated with the existing DK Challengers series moneyline.",
+                  "placedAt": "2026-07-30T12:20:00+07:00",
+                  "userConfirmedAt": "2026-07-30T12:20:00+07:00",
+                  "addedAt": timestamp,
+                  "createdAt": timestamp
+              }
+              data.setdefault("bets", []).insert(0, entry)
+
+          data["version"] = timestamp
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+      - name: Commit ledger update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ledger.json
+          git commit -m "Record DK Challengers Game 1 +6.5 kills bet" || exit 0
+          git push
