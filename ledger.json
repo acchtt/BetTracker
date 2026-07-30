@@ -1,9 +1,9 @@
 {
-  "version": "2026-07-29T19:11:00Z",
+  "version": "2026-07-30T01:07:00Z",
   "bets": [
     {
       "syncId": "eval-20260729-gornik-fenerbahce-over-3-5",
-      "updatedAt": "2026-07-29T19:11:00Z",
+      "updatedAt": "2026-07-30T01:07:00Z",
       "event": "Gornik Zabrze vs Fenerbahce — Second Leg",
       "league": "UEFA Champions League Qualifying",
       "competitionStage": "Second qualifying round, second leg",
@@ -15,8 +15,8 @@
       "stakeUnits": 0.25,
       "potentialPayoutVnd": 253750,
       "potentialProfitVnd": 128750,
-      "status": "pending",
-      "result": "Pending",
+      "status": "loss",
+      "result": "Gornik Zabrze 1-1 Fenerbahce after 90 minutes (Loss; Over 3.5 total goals)",
       "eventDate": "2026-07-29",
       "sportsbookEventDate": "2026/07/29 10:00",
       "sportsbookPlacedAt": "2026/07/29 11:10",
@@ -64,13 +64,40 @@
         "model-generated",
         "user-executed",
         "price-above-model-cutoff",
-        "within-stake-cap"
+        "within-stake-cap",
+        "user-confirmed-result",
+        "loss",
+        "model-review",
+        "single-goal-to-level",
+        "aggregate-reset-risk",
+        "chance-cluster-overcount",
+        "v0.2.6-trigger"
       ],
-      "notes": "Official live football bet confirmed by the user. Gornik Zabrze vs Fenerbahce full-match Over 3.5 at 2.03 for 0.25u (125,000 VND), betting slip #870382851144253441 and settlement slip #870382851144253440. Entry was 45:40 with the score 1-1 and Fenerbahce leading 2-1 on aggregate. The existing two goals count; two or more additional regulation-time goals are required to win. Potential payout is 253,750 VND and potential profit is 128,750 VND (+0.2575u). Execution exceeded the model minimum acceptable odds of 1.90 and respected the active 0.25u football stake cap. Main evidence: combined 2.20 xG, four big chances, Gornik's aggregate chase and Fenerbahce's transition threat. Main risks: Fenerbahce could manage the qualifying position, Gornik's shot quality was mixed, and a single additional goal would still leave the wager short.",
+      "notes": "Official live football bet confirmed by the user. Gornik Zabrze vs Fenerbahce full-match Over 3.5 at 2.03 for 0.25u (125,000 VND), betting slip #870382851144253441 and settlement slip #870382851144253440. Entry was 45:40 with the score 1-1 and Fenerbahce leading 2-1 on aggregate. The existing two goals count; two or more additional regulation-time goals are required to win. Potential payout is 253,750 VND and potential profit is 128,750 VND (+0.2575u). Execution exceeded the model minimum acceptable odds of 1.90 and respected the active 0.25u football stake cap. Main evidence: combined 2.20 xG, four big chances, Gornik's aggregate chase and Fenerbahce's transition threat. Main risks: Fenerbahce could manage the qualifying position, Gornik's shot quality was mixed, and a single additional goal would still leave the wager short. Settlement confirmed by the user: regulation ended Gornik Zabrze 1-1 Fenerbahce, so the full-match Over 3.5 lost. Payout 0 VND; net loss 125,000 VND (-0.25u). Final statistics were xG 0.59-2.66, xGOT 0.97-1.35, shots 15-14, shots on target 6-2, big chances 1-4, inside-box shots 5-10, box touches 30-25 and corners 9-7. Result review: no additional regulation-time goal was scored after the 1-1 halftime entry. Process review: execution met the stated odds cutoff and stake cap, but the model overstated the two-goal second-half tail. Gornik were in a single-goal-to-level state, so one goal could have made extra time available and reduced immediate urgency; the recommendation priced the next-goal incentive without an independently supported path to the second required goal. The halftime xG, xGOT, big chances, shots on target, box shots and box touches were also partially correlated and were weighted too independently. This deterministic state-transition and evidence-correlation defect triggered football model v0.2.6, including goals-required tiers, a mandatory next-goal tree, aggregate-reset risk, chance-cluster adjustment and a seven-point gate for comparable knockout halftime overs.",
       "placedAt": "2026-07-29T11:10:00",
       "userConfirmedAt": "2026-07-30T02:11:00+07:00",
       "addedAt": "2026-07-29T19:11:00Z",
-      "createdAt": "2026-07-29T19:11:00Z"
+      "createdAt": "2026-07-29T19:11:00Z",
+      "payoutVnd": 0,
+      "netProfitVnd": -125000,
+      "netUnits": -0.25,
+      "settledAt": "2026-07-30T01:07:00Z",
+      "finalRegulationScore": "Gornik Zabrze 1-1 Fenerbahce",
+      "finalAggregateAfter90": "Fenerbahce 2-1 Gornik Zabrze; Fenerbahce qualified",
+      "finalStats": {
+        "xG": "Gornik Zabrze 0.59-2.66 Fenerbahce",
+        "xGOT": "Gornik Zabrze 0.97-1.35 Fenerbahce",
+        "possession": "Gornik Zabrze 48%-52% Fenerbahce",
+        "shots": "Gornik Zabrze 15-14 Fenerbahce",
+        "shotsOnTarget": "Gornik Zabrze 6-2 Fenerbahce",
+        "bigChances": "Gornik Zabrze 1-4 Fenerbahce",
+        "shotsInsideBox": "Gornik Zabrze 5-10 Fenerbahce",
+        "shotsOutsideBox": "Gornik Zabrze 10-4 Fenerbahce",
+        "blockedShots": "Gornik Zabrze 5-5 Fenerbahce",
+        "boxTouches": "Gornik Zabrze 30-25 Fenerbahce",
+        "corners": "Gornik Zabrze 9-7 Fenerbahce",
+        "yellowCards": "Gornik Zabrze 4-6 Fenerbahce"
+      }
     },
     {
       "syncId": "eval-20260729-lech-agf-over-3",
