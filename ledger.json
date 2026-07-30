@@ -1,9 +1,9 @@
 {
-  "version": "2026-07-30T19:47:00Z",
+  "version": "2026-07-30T20:18:00Z",
   "bets": [
     {
       "syncId": "eval-20260731-ferencvaros-twente-under-3",
-      "updatedAt": "2026-07-30T18:22:00Z",
+      "updatedAt": "2026-07-30T20:18:00Z",
       "event": "Ferencvaros vs FC Twente — Second Leg",
       "league": "UEFA Europa League Qualifying",
       "competitionStage": "Second qualifying round, second leg",
@@ -15,8 +15,8 @@
       "stakeUnits": 0.25,
       "potentialPayoutVnd": 241250,
       "potentialProfitVnd": 116250,
-      "status": "pending",
-      "result": "Pending",
+      "status": "loss",
+      "result": "Full loss; FC Twente scored twice after Ferencvaros led 2-0, taking the match total to at least four goals",
       "eventDate": "2026-07-31",
       "marketType": "Totals",
       "timing": "prematch",
@@ -72,13 +72,30 @@
         "within-stake-cap",
         "price-better-than-quoted",
         "below-official-cutoff",
-        "pending"
+        "loss",
+        "settled",
+        "user-confirmed-result",
+        "red-card-state",
+        "multi-goal-chase-realized"
       ],
-      "notes": "User confirmed sportsbook acceptance of Ferencvaros vs FC Twente full-match Under 3 at 1.93 for 0.25u (125,000 VND), slip #870732932078288896. Potential full-win payout is 241,250 VND and potential profit is 116,250 VND (+0.2325u). Exactly three total goals returns the stake; zero to two goals wins; four or more loses. The model classified the market as LEAN at 1.92 with a 2.00 official-upgrade cutoff. Execution at 1.93 was slightly better than the observed lean price and respected the 0.25u cap, but it remains separate from model-approved OFFICIAL BET performance because it was placed from a lean below the official cutoff.",
+      "notes": "User confirmed sportsbook acceptance of Ferencvaros vs FC Twente full-match Under 3 at 1.93 for 0.25u (125,000 VND), slip #870732932078288896. Potential full-win payout is 241,250 VND and potential profit is 116,250 VND (+0.2325u). Exactly three total goals returns the stake; zero to two goals wins; four or more loses. The model classified the market as LEAN at 1.92 with a 2.00 official-upgrade cutoff. Execution at 1.93 was slightly better than the observed lean price and respected the 0.25u cap, but it remains separate from model-approved OFFICIAL BET performance because it was placed from a lean below the official cutoff. Settlement confirmed by the user: FC Twente scored two quick goals after Ferencvaros led 2-0, taking the total to at least four goals and making Under 3 a full loss. Return 0 VND; net loss 125,000 VND (-0.25u). Exact final score has not yet been separately confirmed.",
       "placedAt": "2026-07-31T01:22:00+07:00",
       "userConfirmedAt": "2026-07-31T01:22:00+07:00",
       "addedAt": "2026-07-30T18:22:00Z",
-      "createdAt": "2026-07-30T18:22:00Z"
+      "createdAt": "2026-07-30T18:22:00Z",
+      "finalTotalGoalsMinimumConfirmed": 4,
+      "settlementType": "full_loss",
+      "payoutVnd": 0,
+      "profitVnd": -125000,
+      "profitUnits": -0.25,
+      "netProfitVnd": -125000,
+      "netUnits": -0.25,
+      "settledAt": "2026-07-30T20:18:00Z",
+      "review": {
+        "resultAssessment": "The wager lost in full because the match reached at least four total goals.",
+        "processAssessment": "The pre-match under thesis was vulnerable to the specific adverse branch that developed: Ferencvaros led 2-0, then played with ten men while Twente used attacking halftime substitutions and entered a genuine multi-goal chase. Twente then scored twice quickly. The red card was not predictable pre-match, but once it occurred the live state materially increased the goal tail. The wager was a user-placed LEAN below the official-bet cutoff, not a model-approved OFFICIAL BET.",
+        "lineSelectionAssessment": "Under 3 provided a push only at exactly three goals, but offered no protection once the match reached four. The whole-goal line was still preferable to Under 2.75 for the realized path, though both lost once Twente scored twice."
+      }
     },
     {
       "syncId": "eval-20260731-paok-dynamo-under-2-25",
