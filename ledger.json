@@ -1,6 +1,83 @@
 {
-  "version": "2026-07-30T15:33:00Z",
+  "version": "2026-07-30T16:37:00Z",
   "bets": [
+    {
+      "syncId": "eval-20260730-noah-zimbru-under-2-75",
+      "updatedAt": "2026-07-30T16:37:00Z",
+      "event": "FC Noah vs Zimbru Chisinau — Second Leg",
+      "league": "UEFA Conference League Qualifying",
+      "competitionStage": "Second qualifying round, second leg",
+      "format": "Two-legged knockout tie; full-match total settles after 90 minutes plus regulation stoppage time; extra time and penalties excluded",
+      "bet": "Under 2.75 total goals",
+      "odds": 2.03,
+      "stakeVnd": 125000,
+      "stakeUnits": 0.25,
+      "potentialPayoutVnd": 253750,
+      "potentialProfitVnd": 128750,
+      "status": "pending",
+      "result": "Pending",
+      "eventDate": "2026-07-30",
+      "marketType": "Totals",
+      "timing": "live-first-half",
+      "bookmaker": "BK8",
+      "slipId": "870706720962912256",
+      "entryScore": "FC Noah 1-0 Zimbru Chisinau",
+      "entryAggregateScore": "FC Noah led 2-1 on aggregate",
+      "entryMinute": "First half shortly after the 34:23 model snapshot; exact execution minute unconfirmed",
+      "settlementBasis": "Full-match Asian total Under 2.75 including the existing 1-0 score; 90 minutes plus regulation stoppage time; extra time excluded. Final total 0-2 goals is a full win; exactly 3 goals is a half loss with 62,500 VND returned; 4 or more goals is a full loss.",
+      "modelRecommendation": {
+        "recommendationType": "official bet at prior synchronized state",
+        "modelVersion": "football-v0.2.7",
+        "market": "Under 2.75 total goals",
+        "quotedOdds": 2.11,
+        "minimumAcceptableOdds": 2.0,
+        "stakeUnits": 0.25,
+        "state": "0-0 at 34:23 of the first half; Noah led shots 6-1, shots on target 2-0, corners 2-0 and possession 64%-36%.",
+        "reasoning": "The protected Under 2.75 line was preferred to Under 2.5 because three total goals produced only a half loss. Noah were territorially dominant but the match had only seven shots, two on target and little Zimbru threat at the synchronized state."
+      },
+      "execution": {
+        "odds": 2.03,
+        "stakeUnits": 0.25,
+        "stakeVnd": 125000,
+        "potentialPayoutVnd": 253750,
+        "sameMarketAndLine": true,
+        "priceAboveOriginalMinimum": true,
+        "withinStakeCap": true,
+        "stateSynchronized": false,
+        "priceMoveClassification": "price remained above prior cutoff, but score changed before execution",
+        "deviations": [
+          "entry score changed from 0-0 to 1-0 before placement",
+          "exact execution minute was not supplied",
+          "no fresh model reassessment after the goal"
+        ]
+      },
+      "tags": [
+        "evaluation",
+        "official-after-user-confirmation",
+        "football",
+        "uefa-conference-league",
+        "knockout-second-leg",
+        "live-read",
+        "totals",
+        "asian-total",
+        "under-2-75",
+        "lineup-confirmed",
+        "competition-context",
+        "aggregate-state",
+        "single-goal-to-level",
+        "stoppage-time-risk",
+        "user-executed",
+        "within-stake-cap",
+        "state-change-before-execution",
+        "unsynchronized-execution",
+        "model-recommendation-expired"
+      ],
+      "notes": "User confirmed sportsbook acceptance of FC Noah vs Zimbru Chisinau full-match Under 2.75 at 2.03 for 0.25u (125,000 VND), slip #870706720962912256. Potential full-win payout is 253,750 VND and potential profit is 128,750 VND (+0.2575u). The slip displayed [1:0], whereas the model recommendation was issued at 0-0 at 34:23. The score change is material: Noah moved ahead 2-1 on aggregate and Zimbru became single-goal-to-level. Although the accepted price remained above the prior 2.00 cutoff and the stake respected the cap, the original recommendation expired when the goal was scored. The wager is official/open after user confirmation but is separated from fully synchronized model-approved performance until a fresh state review can validate the execution.",
+      "placedAt": "2026-07-30T23:37:00+07:00",
+      "userConfirmedAt": "2026-07-30T23:37:00+07:00",
+      "addedAt": "2026-07-30T16:37:00Z",
+      "createdAt": "2026-07-30T16:37:00Z"
+    },
     {
       "syncId": "eval-20260730-jdg-tt-g3-tt-plus-6-5-kills",
       "updatedAt": "2026-07-30T15:33:00Z",
@@ -2513,7 +2590,7 @@
       "pending/2026-07-30-reconcile-all-unverified-bets.json",
       "pending/2026-07-30-t1a-vs-dkc-game1-dkc-plus-6-5-kills-settlement.json"
     ],
-    "officialRecordsAdded": 0,
+    "officialRecordsAdded": 1,
     "officialRecordsUpdated": 15
   }
 }
