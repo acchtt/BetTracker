@@ -275,12 +275,12 @@
     },
     {
       "syncId": "eval-20260730-bfx-dns-g1-under-22-5-kills",
-      "updatedAt": "2026-07-30T11:55:00Z",
+      "updatedAt": "2026-07-30T11:58:00Z",
       "event": "BNK FEARX vs DN SOOPers — Game 1",
       "league": "LCK 2026 Rounds 3-4",
       "format": "Best-of-three series; Game 1",
       "bet": "Under 22.5 total kills",
-      "settlementBasis": "The wager wins if Game 1 finishes with 22 or fewer total kills and loses at 23 or more.",
+      "settlementBasis": "The wager wins if the final combined kill total is 22 or fewer and loses at 23 or more.",
       "odds": 2.042,
       "stakeVnd": 125000,
       "stakeUnits": 0.25,
@@ -290,9 +290,9 @@
       "netProfitVnd": 130250,
       "netUnits": 0.2605,
       "status": "win",
-      "result": "BNK FEARX won Game 1 with final kills 17-5; 22 total kills; Under 22.5 won",
+      "result": "BNK FEARX 17-5 DN SOOPers; 22 total kills, Under 22.5 won",
       "eventDate": "2026-07-30",
-      "settledAt": "2026-07-30T11:55:00Z",
+      "settledAt": "2026-07-30T11:58:00Z",
       "marketType": "Kills total",
       "timing": "live",
       "slipId": "1147820090",
@@ -319,29 +319,20 @@
           "Rell"
         ]
       },
-      "entryState": {
-        "minute": "14:00",
-        "kills": "BFX 2-0 DNS",
-        "gold": "BFX 24.3k-21.9k DNS",
-        "goldDifference": "BFX +2.4k",
-        "towers": "0-0",
-        "pace": "low fight pace"
-      },
+      "entryState": "14:00, BFX led 2-0 kills and 24.3k-21.9k gold, towers 0-0; low fight pace",
       "modelRecommendation": {
         "recommendationType": "lean",
         "market": "Under 22.5 total kills",
         "odds": 1.768,
         "stakeUnits": 0.25,
-        "state": "14:00, BFX led 2-0 kills and 24.3k-21.9k gold, towers 0-0",
-        "reasoning": "Low fight pace, controlled BFX lead and strong wave-clear supported the under."
+        "reasoning": "Low early fight pace, BFX's controlled lead and DNS wave-clear supported a low-total branch."
       },
       "execution": {
         "odds": 2.042,
         "stakeUnits": 0.25,
         "stakeVnd": 125000,
         "sameMarketAndLine": true,
-        "priceOnlyMoveAccepted": true,
-        "priceMoveClassification": "price-only market move with no material game action",
+        "priceMoveClassification": "price-only market move with no reported material game action",
         "withinStakeCap": true,
         "deviations": []
       },
@@ -351,8 +342,8 @@
         "total": 22
       },
       "review": {
-        "resultAssessment": "The wager won by 0.5 kill because the final total was 22.",
-        "processAssessment": "The low-kill thesis was directionally correct, though the realized margin was narrow."
+        "resultAssessment": "The wager won by 0.5 kill because the final combined total was 22.",
+        "processAssessment": "The low-kill thesis was directionally correct, though the final margin was narrow. The odds moved without a reported material state change."
       },
       "tags": [
         "evaluation",
@@ -364,14 +355,13 @@
         "under-22-5",
         "model-lean",
         "user-executed",
-        "price-only-move",
         "within-stake-cap",
         "user-confirmed-result",
         "win",
         "settled",
         "narrow-margin"
       ],
-      "notes": "User confirmed placement at 15:23 ICT. Exact wager: Under 22.5 total kills in BNK FEARX vs DN SOOPers Game 1 at 2.042 for 0.25u (125,000 VND), slip #1147820090. Final kills were BFX 17-5 DNS, totaling 22. Payout 255,250 VND; net profit 130,250 VND (+0.2605u).",
+      "notes": "User confirmed placement of Game 1 Under 22.5 kills at 2.042 for 0.25u (125,000 VND), slip #1147820090. Final kills were BFX 17-5 DNS, exactly 22 total, so the wager won by 0.5 kill. Payout 255,250 VND and net profit 130,250 VND (+0.2605u).",
       "placedAt": "2026-07-30T15:23:00+07:00",
       "userConfirmedAt": "2026-07-30T15:23:00+07:00",
       "addedAt": "2026-07-30T08:23:00Z",
@@ -2304,13 +2294,14 @@
       "pending/2026-07-29-blg-vs-lgd-open-bets.json",
       "pending/2026-07-29-krx-vs-ns-open-bets.json",
       "pending/2026-07-29-t1-vs-kt-open-bets.json",
+      "pending/2026-07-30-bfx-vs-dns-game1-under-22-5-kills-settlement-v2.json",
       "pending/2026-07-30-dkc-vs-t1a-series-settlement.json",
       "pending/2026-07-30-hle-vs-dk-game1-dk-plus-6-5-kills.json",
       "pending/2026-07-30-hle-vs-dk-game2-dk-ml.json",
       "pending/2026-07-30-reconcile-all-unverified-bets.json",
       "pending/2026-07-30-t1a-vs-dkc-game1-dkc-plus-6-5-kills-settlement.json"
     ],
-    "officialRecordsAdded": 1,
-    "officialRecordsUpdated": 12
+    "officialRecordsAdded": 0,
+    "officialRecordsUpdated": 13
   }
 }
