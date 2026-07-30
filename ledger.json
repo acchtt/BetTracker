@@ -1,9 +1,9 @@
 {
-  "version": "2026-07-30T16:43:00Z",
+  "version": "2026-07-30T17:54:00Z",
   "bets": [
     {
       "syncId": "eval-20260730-noah-zimbru-under-2-75",
-      "updatedAt": "2026-07-30T16:43:00Z",
+      "updatedAt": "2026-07-30T17:54:00Z",
       "event": "FC Noah vs Zimbru Chisinau — Second Leg",
       "league": "UEFA Conference League Qualifying",
       "competitionStage": "Second qualifying round, second leg",
@@ -14,8 +14,8 @@
       "stakeUnits": 0.25,
       "potentialPayoutVnd": 253750,
       "potentialProfitVnd": 128750,
-      "status": "pending",
-      "result": "Pending",
+      "status": "half-loss",
+      "result": "FC Noah 2-1 Zimbru Chisinau after 90 minutes (Half loss; Under 2.75 total goals)",
       "eventDate": "2026-07-30",
       "marketType": "Totals",
       "timing": "live-first-half",
@@ -68,14 +68,48 @@
         "model-generated",
         "normal-price-drift",
         "screen-read-correction",
-        "model-screen-read-error"
+        "model-screen-read-error",
+        "user-confirmed-result",
+        "half-loss",
+        "settled",
+        "final-stats-verified",
+        "model-review",
+        "boundary-protection-worked"
       ],
-      "notes": "User confirmed sportsbook acceptance of FC Noah vs Zimbru Chisinau full-match Under 2.75 at 2.03 for 0.25u (125,000 VND), slip #870706720962912256. The synchronized screenshot at 34:23 clearly showed FC Noah leading 1-0, with Noah ahead 2-1 on aggregate. The assistant incorrectly transcribed that visible score as 0-0 in the recommendation text. The execution matched the actual screenshot state and is therefore not an unsynchronized or post-goal deviation. Accepted odds remained above the 2.00 cutoff, and the stake respected the 0.25u cap. Potential full-win payout is 253,750 VND and potential profit is 128,750 VND (+0.2575u). Settlement: final total 0-2 goals is a full win; exactly 3 is a half loss with 62,500 VND returned; 4 or more is a full loss. Process flag: model screen-reading error; future live recommendations must verify the scoreboard before pricing aggregate state.",
+      "notes": "User confirmed sportsbook acceptance of FC Noah vs Zimbru Chisinau full-match Under 2.75 at 2.03 for 0.25u (125,000 VND), slip #870706720962912256. The synchronized screenshot at 34:23 clearly showed FC Noah leading 1-0, with Noah ahead 2-1 on aggregate. The assistant incorrectly transcribed that visible score as 0-0 in the recommendation text. The execution matched the actual screenshot state and is therefore not an unsynchronized or post-goal deviation. Accepted odds remained above the 2.00 cutoff, and the stake respected the 0.25u cap. Potential full-win payout is 253,750 VND and potential profit is 128,750 VND (+0.2575u). Settlement: final total 0-2 goals is a full win; exactly 3 is a half loss with 62,500 VND returned; 4 or more is a full loss. Process flag: model screen-reading error; future live recommendations must verify the scoreboard before pricing aggregate state. Settlement confirmed by the user: FC Noah won 2-1, producing exactly three total goals and a half loss on Under 2.75. Return 62,500 VND; net loss 62,500 VND (-0.125u). Final statistics supplied by the user: possession 59%-41%, shots 13-4, shots on target 4-1, shots off target 6-2, blocked shots 3-1, corners 7-2, offsides 2-0, free kicks 17-13, throw-ins 30-19, fouls 7-18 and yellow cards 1-3. The quarter-line protection worked at the exact boundary: Under 2.5 would have lost in full, while Under 2.75 lost only half.",
       "placedAt": "2026-07-30T23:37:00+07:00",
       "userConfirmedAt": "2026-07-30T23:37:00+07:00",
       "addedAt": "2026-07-30T16:37:00Z",
       "createdAt": "2026-07-30T16:37:00Z",
-      "processIssue": "The assistant misread the visible 1-0 scoreboard as 0-0 when writing the recommendation. The user execution itself matched the screenshot state, market and line; this was a model screen-reading error, not an execution deviation."
+      "processIssue": "The assistant misread the visible 1-0 scoreboard as 0-0 when writing the recommendation. The user execution itself matched the screenshot state, market and line; this was a model screen-reading error, not an execution deviation.",
+      "finalScore": "FC Noah 2-1 Zimbru Chisinau",
+      "finalAggregateAfter90": "FC Noah won 3-2 on aggregate and advanced",
+      "finalTotalGoals": 3,
+      "settlementType": "half_loss",
+      "payoutVnd": 62500,
+      "profitVnd": -62500,
+      "profitUnits": -0.125,
+      "netProfitVnd": -62500,
+      "netUnits": -0.125,
+      "settledAt": "2026-07-30T17:54:00Z",
+      "finalStats": {
+        "possession": "FC Noah 59%-41% Zimbru Chisinau",
+        "shots": "FC Noah 13-4 Zimbru Chisinau",
+        "shotsOnTarget": "FC Noah 4-1 Zimbru Chisinau",
+        "shotsOffTarget": "FC Noah 6-2 Zimbru Chisinau",
+        "blockedShots": "FC Noah 3-1 Zimbru Chisinau",
+        "corners": "FC Noah 7-2 Zimbru Chisinau",
+        "offsides": "FC Noah 2-0 Zimbru Chisinau",
+        "freeKicks": "FC Noah 17-13 Zimbru Chisinau",
+        "throwIns": "FC Noah 30-19 Zimbru Chisinau",
+        "fouls": "FC Noah 7-18 Zimbru Chisinau",
+        "yellowCards": "FC Noah 1-3 Zimbru Chisinau"
+      },
+      "review": {
+        "resultAssessment": "The wager produced a half loss because the match finished with exactly three total goals.",
+        "processAssessment": "The protected Under 2.75 line limited the loss at the exact three-goal boundary. The final match remained modest in shot volume at 17 total attempts and five shots on target, but Zimbru scored once and Noah added a second goal, pushing the total to three. The line-selection logic was useful, while the edge estimate appears slightly overstated because the knockout state and Noah strength still supported a meaningful three-goal branch.",
+        "lineSelectionAssessment": "Under 2.75 was materially better than Under 2.5 for the realized outcome: Under 2.75 lost half the stake, while Under 2.5 would have lost the full stake. Under 3 would have pushed but was priced substantially shorter."
+      }
     },
     {
       "syncId": "eval-20260730-jdg-tt-g3-tt-plus-6-5-kills",
