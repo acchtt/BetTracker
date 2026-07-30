@@ -1,6 +1,85 @@
 {
-  "version": "2026-07-30T18:14:00Z",
+  "version": "2026-07-30T18:22:00Z",
   "bets": [
+    {
+      "syncId": "eval-20260731-ferencvaros-twente-under-3",
+      "updatedAt": "2026-07-30T18:22:00Z",
+      "event": "Ferencvaros vs FC Twente — Second Leg",
+      "league": "UEFA Europa League Qualifying",
+      "competitionStage": "Second qualifying round, second leg",
+      "venue": "Ferencvaros Stadium, Budapest",
+      "format": "Two-legged knockout tie; pre-match full-match total settles after 90 minutes plus regulation stoppage time; extra time and penalties excluded",
+      "bet": "Under 3 total goals",
+      "odds": 1.93,
+      "stakeVnd": 125000,
+      "stakeUnits": 0.25,
+      "potentialPayoutVnd": 241250,
+      "potentialProfitVnd": 116250,
+      "status": "pending",
+      "result": "Pending",
+      "eventDate": "2026-07-31",
+      "marketType": "Totals",
+      "timing": "prematch",
+      "bookmaker": "BK8",
+      "slipId": "870732932078288896",
+      "entryScore": "0-0 before kickoff",
+      "entryAggregateScore": "Ferencvaros led 2-1 on aggregate",
+      "entryMinute": "Pre-match, approximately 8 minutes before scheduled kickoff",
+      "settlementBasis": "Full-match Asian total Under 3; 90 minutes plus regulation stoppage time; extra time excluded. Final total 0-2 goals is a full win; exactly 3 goals is a push; 4 or more goals is a full loss.",
+      "modelRecommendation": {
+        "recommendationType": "lean",
+        "modelVersion": "football-v0.2.7",
+        "market": "Under 3 total goals",
+        "quotedOdds": 1.92,
+        "minimumAcceptableOddsForOfficialBet": 2.0,
+        "stakeUnitsIfUpgraded": 0.25,
+        "state": "Pre-match with confirmed lineups; Ferencvaros led 2-1 on aggregate.",
+        "reasoning": "The model projected approximately 2.85-3.05 goals versus a market closer to 3.1-3.2 and preferred whole-goal protection. Twente were single-goal-to-level, so an opening Twente goal could create an aggregate reset rather than a continuous chase. The edge was not strong enough for an official model upgrade at the available price."
+      },
+      "execution": {
+        "odds": 1.93,
+        "stakeUnits": 0.25,
+        "stakeVnd": 125000,
+        "potentialPayoutVnd": 241250,
+        "sameMarketAndLine": true,
+        "withinStakeCap": true,
+        "priceBetterThanQuoted": true,
+        "priceAboveOfficialCutoff": false,
+        "stateSynchronized": true,
+        "priceMoveClassification": "minor favorable move from lean price",
+        "deviations": [
+          "user placed a LEAN rather than an OFFICIAL BET recommendation",
+          "accepted odds 1.93 remained below the 2.00 official-bet cutoff"
+        ]
+      },
+      "tags": [
+        "evaluation",
+        "official-after-user-confirmation",
+        "football",
+        "uefa-europa-league",
+        "knockout-second-leg",
+        "prematch",
+        "totals",
+        "whole-goal-protection",
+        "under-3",
+        "lineup-confirmed",
+        "competition-context",
+        "aggregate-state",
+        "single-goal-to-level",
+        "aggregate-reset-risk",
+        "user-executed",
+        "model-lean",
+        "within-stake-cap",
+        "price-better-than-quoted",
+        "below-official-cutoff",
+        "pending"
+      ],
+      "notes": "User confirmed sportsbook acceptance of Ferencvaros vs FC Twente full-match Under 3 at 1.93 for 0.25u (125,000 VND), slip #870732932078288896. Potential full-win payout is 241,250 VND and potential profit is 116,250 VND (+0.2325u). Exactly three total goals returns the stake; zero to two goals wins; four or more loses. The model classified the market as LEAN at 1.92 with a 2.00 official-upgrade cutoff. Execution at 1.93 was slightly better than the observed lean price and respected the 0.25u cap, but it remains separate from model-approved OFFICIAL BET performance because it was placed from a lean below the official cutoff.",
+      "placedAt": "2026-07-31T01:22:00+07:00",
+      "userConfirmedAt": "2026-07-31T01:22:00+07:00",
+      "addedAt": "2026-07-30T18:22:00Z",
+      "createdAt": "2026-07-30T18:22:00Z"
+    },
     {
       "syncId": "eval-20260731-paok-dynamo-under-2-25",
       "updatedAt": "2026-07-30T18:14:00Z",
@@ -2703,7 +2782,7 @@
       "pending/2026-07-30-reconcile-all-unverified-bets.json",
       "pending/2026-07-30-t1a-vs-dkc-game1-dkc-plus-6-5-kills-settlement.json"
     ],
-    "officialRecordsAdded": 2,
+    "officialRecordsAdded": 3,
     "officialRecordsUpdated": 15
   }
 }
