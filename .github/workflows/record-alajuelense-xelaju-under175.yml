@@ -1,0 +1,114 @@
+name: Record Alajuelense Xelaju Under 1.75
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/record-alajuelense-xelaju-under175.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Record confirmed bet
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          path = Path("ledger.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          sync_id = "eval-20260730-alajuelense-xelaju-under-1-75"
+
+          if not any(item.get("syncId") == sync_id for item in data.get("bets", [])):
+              timestamp = "2026-07-30T02:26:00Z"
+              entry = {
+                  "syncId": sync_id,
+                  "updatedAt": timestamp,
+                  "event": "LD Alajuelense vs CSD Xelaju MC",
+                  "league": "CONCACAF Central American Cup",
+                  "competitionStage": "Group A, Matchday 1",
+                  "venue": "Estadio Alejandro Morera Soto, Alajuela",
+                  "format": "Group-stage match; live full-match total settles after 90 minutes plus regulation stoppage time",
+                  "bet": "Under 1.75 total goals",
+                  "odds": 1.87,
+                  "stakeVnd": 125000,
+                  "stakeUnits": 0.25,
+                  "potentialPayoutVnd": 233750,
+                  "potentialProfitVnd": 108750,
+                  "status": "pending",
+                  "result": "Pending",
+                  "eventDate": "2026-07-30",
+                  "marketType": "Totals",
+                  "timing": "live-first-half-stoppage-time",
+                  "bookmaker": "BK8",
+                  "slipId": "870492276965715968",
+                  "entryScore": "Alajuelense 0-0 Xelaju",
+                  "entryMinute": "46:51 first half",
+                  "settlementBasis": "Full-match Asian total Under 1.75 including the existing 0-0 score; 90 minutes plus regulation stoppage time. Final total 0 or 1 goal is a full win; exactly 2 goals is a half loss; 3 or more goals is a full loss.",
+                  "modelRecommendation": {
+                      "recommendationType": "official bet",
+                      "modelVersion": "football-v0.2.6",
+                      "market": "Under 1.75 total goals",
+                      "quotedOdds": 1.94,
+                      "minimumAcceptableOdds": 1.85,
+                      "stakeUnits": 0.25,
+                      "state": "0-0 at 46:51 of the first half. Live indicators: xG 0.00-0.12, xGOT 0.00-0.03, shots 0-2, shots on target 0-1, big chances 0-0, inside-box shots 0-0, opposition-box touches 2-1 and corners 0-3.",
+                      "reasoning": "Nearly the entire first half passed without a clear chance. Alajuelense had possession but no shot or inside-box attempt, while both Xelaju shots came from outside the box. The opening group-stage context contained no forced multi-goal chase, and the Under 1.75 line provided protection through a half loss if exactly two goals were scored."
+                  },
+                  "execution": {
+                      "odds": 1.87,
+                      "stakeUnits": 0.25,
+                      "stakeVnd": 125000,
+                      "potentialPayoutVnd": 233750,
+                      "sameMarketAndLine": True,
+                      "priceAboveMinimum": True,
+                      "withinStakeCap": True,
+                      "deviations": [],
+                      "priceMoveClassification": "normal live price drift"
+                  },
+                  "tags": [
+                      "evaluation",
+                      "official",
+                      "official-after-user-confirmation",
+                      "live-read",
+                      "football",
+                      "totals",
+                      "asian-total",
+                      "under-1-75",
+                      "lineup-confirmed",
+                      "competition-context",
+                      "group-stage",
+                      "first-half-stoppage-time",
+                      "low-chance-profile",
+                      "stoppage-time-risk",
+                      "model-generated",
+                      "user-executed",
+                      "within-stake-cap",
+                      "normal-price-drift"
+                  ],
+                  "notes": "User confirmed placement of Alajuelense vs Xelaju full-match Under 1.75 at 1.87 for 0.25u (125,000 VND), sportsbook slip #870492276965715968. Entry was 0-0 at 46:51 of the first half. Final total 0-1 goals is a full win; exactly 2 goals is a half loss with 62,500 VND returned; 3 or more goals is a full loss. Full-win payout is 233,750 VND and full-win profit is 108,750 VND (+0.2175u). The execution price remained above the 1.85 minimum cutoff and was treated as normal live price drift from the quoted 1.94. Main evidence: no Alajuelense shot, no inside-box attempts by either side, combined xG 0.12, combined xGOT 0.03, no big chances and a group-stage state without a forced chase. Main risks: an early second-half goal opening the match, attacking substitutions, and regulation stoppage-time exposure.",
+                  "placedAt": "2026-07-30T09:26:00+07:00",
+                  "userConfirmedAt": "2026-07-30T09:26:00+07:00",
+                  "addedAt": timestamp,
+                  "createdAt": timestamp
+              }
+              data["version"] = timestamp
+              data.setdefault("bets", []).insert(0, entry)
+              path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+      - name: Commit ledger update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ledger.json
+          git commit -m "Record Alajuelense Xelaju Under 1.75 bet" || exit 0
+          git push
