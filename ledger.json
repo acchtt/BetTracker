@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-30T18:22:00Z",
+  "version": "2026-07-30T19:47:00Z",
   "bets": [
     {
       "syncId": "eval-20260731-ferencvaros-twente-under-3",
@@ -82,7 +82,7 @@
     },
     {
       "syncId": "eval-20260731-paok-dynamo-under-2-25",
-      "updatedAt": "2026-07-30T18:14:00Z",
+      "updatedAt": "2026-07-30T19:47:00Z",
       "event": "PAOK Saloniki vs Dynamo Kyiv — Second Leg",
       "league": "UEFA Europa League Qualifying",
       "competitionStage": "Second qualifying round, second leg",
@@ -94,8 +94,8 @@
       "stakeUnits": 0.25,
       "potentialPayoutVnd": 242500,
       "potentialProfitVnd": 117500,
-      "status": "pending",
-      "result": "Pending",
+      "status": "half-win",
+      "result": "PAOK Saloniki 2-0 Dynamo Kyiv after 90 minutes (Half win; Under 2.25 total goals)",
       "eventDate": "2026-07-31",
       "marketType": "Totals",
       "timing": "live-first-half",
@@ -149,16 +149,57 @@
         "user-executed",
         "within-stake-cap",
         "price-below-cutoff",
-        "pending",
         "assistant-response-delay",
-        "timing-process-failure"
+        "timing-process-failure",
+        "half-win",
+        "settled",
+        "final-stats-verified",
+        "boundary-protection-worked"
       ],
-      "notes": "User confirmed sportsbook acceptance of PAOK Saloniki vs Dynamo Kyiv full-match Under 2.25 at 1.94 for 0.25u (125,000 VND), slip #870729998544359424. Entry score was 0-0, with PAOK leading 3-2 on aggregate. Potential full-win payout is 242,500 VND and potential profit is 117,500 VND (+0.235u). Exactly two total goals produces a half win; zero or one is a full win; three or more is a full loss. The market, line, stake and score state matched the recommendation. The accepted 1.94 price was below the 2.00 cutoff because the assistant response took too long and the line moved from 2.08 before the recommendation became actionable. This is recorded as a model timing failure rather than a user execution-discipline error. The wager remains official/open after user confirmation and is separated from fully cutoff-compliant performance.",
+      "notes": "User confirmed sportsbook acceptance of PAOK Saloniki vs Dynamo Kyiv full-match Under 2.25 at 1.94 for 0.25u (125,000 VND), slip #870729998544359424. Entry score was 0-0, with PAOK leading 3-2 on aggregate. Potential full-win payout is 242,500 VND and potential profit is 117,500 VND (+0.235u). Exactly two total goals produces a half win; zero or one is a full win; three or more is a full loss. The market, line, stake and score state matched the recommendation. The accepted 1.94 price was below the 2.00 cutoff because the assistant response took too long and the line moved from 2.08 before the recommendation became actionable. This is recorded as a model timing failure rather than a user execution-discipline error. The wager remains official/open after user confirmation and is separated from fully cutoff-compliant performance. Settlement confirmed from the supplied full-time screenshot: PAOK won 2-0. Under 2.25 split into Under 2.0 (push) and Under 2.5 (win), producing a half win. Return 183,750 VND; net profit 58,750 VND (+0.1175u). Final statistics were transcribed from the supplied full-time match-statistics screen.",
       "placedAt": "2026-07-31T01:10:00+07:00",
       "userConfirmedAt": "2026-07-31T01:10:00+07:00",
       "addedAt": "2026-07-30T18:10:00Z",
       "createdAt": "2026-07-30T18:10:00Z",
-      "processIssue": "The live recommendation took too long to deliver. By the time it was actionable, the same Under 2.25 line had moved from 2.08 to 1.94, below the stated 2.00 cutoff. This is a model timing failure, not a user execution error."
+      "processIssue": "The live recommendation took too long to deliver. By the time it was actionable, the same Under 2.25 line had moved from 2.08 to 1.94, below the stated 2.00 cutoff. This is a model timing failure, not a user execution error.",
+      "finalScore": "PAOK Saloniki 2-0 Dynamo Kyiv",
+      "finalAggregateAfter90": "PAOK Saloniki won 5-2 on aggregate and advanced",
+      "finalTotalGoals": 2,
+      "settlementType": "half_win",
+      "payoutVnd": 183750,
+      "profitVnd": 58750,
+      "profitUnits": 0.1175,
+      "netProfitVnd": 58750,
+      "netUnits": 0.1175,
+      "settledAt": "2026-07-30T19:47:00Z",
+      "finalStats": {
+        "xG": "PAOK Saloniki 0.63-0.53 Dynamo Kyiv",
+        "possession": "PAOK Saloniki 47%-53% Dynamo Kyiv",
+        "shots": "PAOK Saloniki 13-13 Dynamo Kyiv",
+        "shotsOnTarget": "PAOK Saloniki 6-4 Dynamo Kyiv",
+        "bigChances": "PAOK Saloniki 0-1 Dynamo Kyiv",
+        "corners": "PAOK Saloniki 2-6 Dynamo Kyiv",
+        "xGOT": "PAOK Saloniki 1.22-0.67 Dynamo Kyiv",
+        "shotsOffTarget": "PAOK Saloniki 4-7 Dynamo Kyiv",
+        "blockedShots": "PAOK Saloniki 3-2 Dynamo Kyiv",
+        "insideBoxShots": "PAOK Saloniki 7-5 Dynamo Kyiv",
+        "outsideBoxShots": "PAOK Saloniki 6-8 Dynamo Kyiv",
+        "woodwork": "PAOK Saloniki 0-2 Dynamo Kyiv",
+        "oppositionBoxTouches": "PAOK Saloniki 24-16 Dynamo Kyiv",
+        "offsides": "PAOK Saloniki 4-1 Dynamo Kyiv",
+        "freeKicks": "PAOK Saloniki 18-13 Dynamo Kyiv",
+        "expectedAssists": "PAOK Saloniki 0.65-0.62 Dynamo Kyiv",
+        "throwIns": "PAOK Saloniki 22-22 Dynamo Kyiv",
+        "fouls": "PAOK Saloniki 13-18 Dynamo Kyiv",
+        "yellowCards": "PAOK Saloniki 1-2 Dynamo Kyiv",
+        "clearances": "PAOK Saloniki 26-25 Dynamo Kyiv",
+        "interceptions": "PAOK Saloniki 9-7 Dynamo Kyiv"
+      },
+      "review": {
+        "resultAssessment": "The wager produced a half win because the match finished with exactly two total goals.",
+        "processAssessment": "The low-chance first-half read was directionally correct. PAOK scored at 45+1 and then again early in the second half, but no third goal arrived despite Dynamo entering a multi-goal chase. The accepted price was below the stated cutoff because of assistant response latency, which remains a separate process failure.",
+        "lineSelectionAssessment": "Under 2.25 protected the exact two-goal boundary: half the stake won at Under 2.5 and half pushed at Under 2.0."
+      }
     },
     {
       "syncId": "eval-20260730-noah-zimbru-under-2-75",
