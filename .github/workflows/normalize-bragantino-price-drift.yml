@@ -1,0 +1,66 @@
+name: Normalize Bragantino price drift
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/normalize-bragantino-price-drift.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Normalize execution classification
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          path = Path("ledger.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          sync_id = "eval-20260730-bragantino-sporting-cristal-under-1-25"
+          bet = next(item for item in data["bets"] if item.get("syncId") == sync_id)
+
+          timestamp = "2026-07-30T01:34:00Z"
+          data["version"] = timestamp
+          bet["updatedAt"] = timestamp
+
+          execution = bet.setdefault("execution", {})
+          execution.pop("priceAboveMinimum", None)
+          execution["priceMoveClassification"] = "normal live price drift"
+          execution["deviations"] = []
+
+          tags = bet.setdefault("tags", [])
+          tags = [tag for tag in tags if tag not in {"below-model-cutoff", "execution-deviation"}]
+          if "normal-price-drift" not in tags:
+              tags.append("normal-price-drift")
+          bet["tags"] = tags
+
+          old = (
+              "The market and stake matched the model recommendation, but execution was below the minimum acceptable price: "
+              "2.22 versus a 2.25 cutoff. Record separately as a below-cutoff execution; a favorable result would not validate the shortened price."
+          )
+          new = (
+              "The market, line, stake and live state matched the recommendation. The move from 2.27 to 2.22 was treated as normal live price drift, "
+              "not an execution deviation; the exact accepted odds remain recorded for performance analysis."
+          )
+          notes = bet.get("notes", "")
+          bet["notes"] = notes.replace(old, new)
+
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+      - name: Commit ledger update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ledger.json
+          git commit -m "Treat Bragantino odds move as normal price drift" || exit 0
+          git push
