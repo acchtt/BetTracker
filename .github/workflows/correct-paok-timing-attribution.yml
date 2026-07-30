@@ -1,0 +1,56 @@
+name: Correct PAOK Timing Attribution
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/correct-paok-timing-attribution.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Correct timing attribution
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          path = Path('ledger.json')
+          data = json.loads(path.read_text(encoding='utf-8'))
+          now = '2026-07-30T18:14:00Z'
+          target = 'eval-20260731-paok-dynamo-under-2-25'
+
+          for bet in data.get('bets', []):
+              if bet.get('syncId') != target:
+                  continue
+              bet['updatedAt'] = now
+              execution = bet.setdefault('execution', {})
+              execution['priceAboveMinimum'] = False
+              execution['priceMoveClassification'] = 'assistant-response delay caused cutoff miss'
+              execution['deviations'] = []
+              execution['timingAttribution'] = 'The line moved from 2.08 to 1.94 while the assistant was still assessing the live state. The below-cutoff execution is attributed to model response latency, not user execution discipline.'
+              tags = [t for t in bet.get('tags', []) if t not in {'execution-deviation'}]
+              for tag in ['price-below-cutoff', 'assistant-response-delay', 'timing-process-failure']:
+                  if tag not in tags:
+                      tags.append(tag)
+              bet['tags'] = tags
+              bet['processIssue'] = 'The live recommendation took too long to deliver. By the time it was actionable, the same Under 2.25 line had moved from 2.08 to 1.94, below the stated 2.00 cutoff. This is a model timing failure, not a user execution error.'
+              bet['notes'] = bet.get('notes', '').replace('The market and line matched the recommendation and the score remained synchronized, but execution at 1.94 was below the stated 2.00 minimum after a material move from 2.08. The wager is official/open after user confirmation but must be separated from fully cutoff-compliant model performance.', 'The market, line, stake and score state matched the recommendation. The accepted 1.94 price was below the 2.00 cutoff because the assistant response took too long and the line moved from 2.08 before the recommendation became actionable. This is recorded as a model timing failure rather than a user execution-discipline error. The wager remains official/open after user confirmation and is separated from fully cutoff-compliant performance.')
+              break
+
+          data['version'] = now
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+      - name: Commit ledger correction
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add ledger.json
+          git commit -m 'Correct PAOK timing attribution' || exit 0
+          git push
