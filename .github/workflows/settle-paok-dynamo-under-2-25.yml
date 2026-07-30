@@ -1,0 +1,90 @@
+name: Settle PAOK Dynamo Under 2.25
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/settle-paok-dynamo-under-2-25.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Settle PAOK wager
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          path = Path('ledger.json')
+          data = json.loads(path.read_text(encoding='utf-8'))
+          now = '2026-07-30T19:47:00Z'
+          target = 'eval-20260731-paok-dynamo-under-2-25'
+
+          for bet in data.get('bets', []):
+              if bet.get('syncId') != target:
+                  continue
+              bet['updatedAt'] = now
+              bet['status'] = 'half-win'
+              bet['result'] = 'PAOK Saloniki 2-0 Dynamo Kyiv after 90 minutes (Half win; Under 2.25 total goals)'
+              bet['finalScore'] = 'PAOK Saloniki 2-0 Dynamo Kyiv'
+              bet['finalAggregateAfter90'] = 'PAOK Saloniki won 5-2 on aggregate and advanced'
+              bet['finalTotalGoals'] = 2
+              bet['settlementType'] = 'half_win'
+              bet['payoutVnd'] = 183750
+              bet['profitVnd'] = 58750
+              bet['profitUnits'] = 0.1175
+              bet['netProfitVnd'] = 58750
+              bet['netUnits'] = 0.1175
+              bet['settledAt'] = now
+              bet['finalStats'] = {
+                  'xG': 'PAOK Saloniki 0.63-0.53 Dynamo Kyiv',
+                  'possession': 'PAOK Saloniki 47%-53% Dynamo Kyiv',
+                  'shots': 'PAOK Saloniki 13-13 Dynamo Kyiv',
+                  'shotsOnTarget': 'PAOK Saloniki 6-4 Dynamo Kyiv',
+                  'bigChances': 'PAOK Saloniki 0-1 Dynamo Kyiv',
+                  'corners': 'PAOK Saloniki 2-6 Dynamo Kyiv',
+                  'xGOT': 'PAOK Saloniki 1.22-0.67 Dynamo Kyiv',
+                  'shotsOffTarget': 'PAOK Saloniki 4-7 Dynamo Kyiv',
+                  'blockedShots': 'PAOK Saloniki 3-2 Dynamo Kyiv',
+                  'insideBoxShots': 'PAOK Saloniki 7-5 Dynamo Kyiv',
+                  'outsideBoxShots': 'PAOK Saloniki 6-8 Dynamo Kyiv',
+                  'woodwork': 'PAOK Saloniki 0-2 Dynamo Kyiv',
+                  'oppositionBoxTouches': 'PAOK Saloniki 24-16 Dynamo Kyiv',
+                  'offsides': 'PAOK Saloniki 4-1 Dynamo Kyiv',
+                  'freeKicks': 'PAOK Saloniki 18-13 Dynamo Kyiv',
+                  'expectedAssists': 'PAOK Saloniki 0.65-0.62 Dynamo Kyiv',
+                  'throwIns': 'PAOK Saloniki 22-22 Dynamo Kyiv',
+                  'fouls': 'PAOK Saloniki 13-18 Dynamo Kyiv',
+                  'yellowCards': 'PAOK Saloniki 1-2 Dynamo Kyiv',
+                  'clearances': 'PAOK Saloniki 26-25 Dynamo Kyiv',
+                  'interceptions': 'PAOK Saloniki 9-7 Dynamo Kyiv'
+              }
+              tags = [t for t in bet.get('tags', []) if t != 'pending']
+              for tag in ['half-win', 'settled', 'final-stats-verified', 'boundary-protection-worked']:
+                  if tag not in tags:
+                      tags.append(tag)
+              bet['tags'] = tags
+              bet['notes'] = bet.get('notes', '') + ' Settlement confirmed from the supplied full-time screenshot: PAOK won 2-0. Under 2.25 split into Under 2.0 (push) and Under 2.5 (win), producing a half win. Return 183,750 VND; net profit 58,750 VND (+0.1175u). Final statistics were transcribed from the supplied full-time match-statistics screen.'
+              bet['review'] = {
+                  'resultAssessment': 'The wager produced a half win because the match finished with exactly two total goals.',
+                  'processAssessment': 'The low-chance first-half read was directionally correct. PAOK scored at 45+1 and then again early in the second half, but no third goal arrived despite Dynamo entering a multi-goal chase. The accepted price was below the stated cutoff because of assistant response latency, which remains a separate process failure.',
+                  'lineSelectionAssessment': 'Under 2.25 protected the exact two-goal boundary: half the stake won at Under 2.5 and half pushed at Under 2.0.'
+              }
+              break
+
+          data['version'] = now
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+      - name: Commit ledger update
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add ledger.json
+          git commit -m 'Settle PAOK Dynamo Under 2.25' || exit 0
+          git push
