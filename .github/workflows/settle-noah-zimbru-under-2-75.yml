@@ -1,0 +1,74 @@
+name: Settle Noah Zimbru Under 2.75
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/settle-noah-zimbru-under-2-75.yml
+
+permissions:
+  contents: write
+
+jobs:
+  settle-ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Settle wager and add final stats
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          path = Path('ledger.json')
+          data = json.loads(path.read_text(encoding='utf-8'))
+          now = '2026-07-30T17:54:00Z'
+          data['version'] = now
+          bet = next(b for b in data['bets'] if b.get('syncId') == 'eval-20260730-noah-zimbru-under-2-75')
+          bet.update({
+              'updatedAt': now,
+              'status': 'half-loss',
+              'result': 'FC Noah 2-1 Zimbru Chisinau after 90 minutes (Half loss; Under 2.75 total goals)',
+              'finalScore': 'FC Noah 2-1 Zimbru Chisinau',
+              'finalAggregateAfter90': 'FC Noah won 3-2 on aggregate and advanced',
+              'finalTotalGoals': 3,
+              'settlementType': 'half_loss',
+              'payoutVnd': 62500,
+              'profitVnd': -62500,
+              'profitUnits': -0.125,
+              'netProfitVnd': -62500,
+              'netUnits': -0.125,
+              'settledAt': now,
+              'finalStats': {
+                  'possession': 'FC Noah 59%-41% Zimbru Chisinau',
+                  'shots': 'FC Noah 13-4 Zimbru Chisinau',
+                  'shotsOnTarget': 'FC Noah 4-1 Zimbru Chisinau',
+                  'shotsOffTarget': 'FC Noah 6-2 Zimbru Chisinau',
+                  'blockedShots': 'FC Noah 3-1 Zimbru Chisinau',
+                  'corners': 'FC Noah 7-2 Zimbru Chisinau',
+                  'offsides': 'FC Noah 2-0 Zimbru Chisinau',
+                  'freeKicks': 'FC Noah 17-13 Zimbru Chisinau',
+                  'throwIns': 'FC Noah 30-19 Zimbru Chisinau',
+                  'fouls': 'FC Noah 7-18 Zimbru Chisinau',
+                  'yellowCards': 'FC Noah 1-3 Zimbru Chisinau'
+              },
+              'review': {
+                  'resultAssessment': 'The wager produced a half loss because the match finished with exactly three total goals.',
+                  'processAssessment': 'The protected Under 2.75 line limited the loss at the exact three-goal boundary. The final match remained modest in shot volume at 17 total attempts and five shots on target, but Zimbru scored once and Noah added a second goal, pushing the total to three. The line-selection logic was useful, while the edge estimate appears slightly overstated because the knockout state and Noah strength still supported a meaningful three-goal branch.',
+                  'lineSelectionAssessment': 'Under 2.75 was materially better than Under 2.5 for the realized outcome: Under 2.75 lost half the stake, while Under 2.5 would have lost the full stake. Under 3 would have pushed but was priced substantially shorter.'
+              }
+          })
+          for tag in ['user-confirmed-result','half-loss','settled','final-stats-verified','model-review','boundary-protection-worked']:
+              if tag not in bet['tags']:
+                  bet['tags'].append(tag)
+          bet['notes'] += ' Settlement confirmed by the user: FC Noah won 2-1, producing exactly three total goals and a half loss on Under 2.75. Return 62,500 VND; net loss 62,500 VND (-0.125u). Final statistics supplied by the user: possession 59%-41%, shots 13-4, shots on target 4-1, shots off target 6-2, blocked shots 3-1, corners 7-2, offsides 2-0, free kicks 17-13, throw-ins 30-19, fouls 7-18 and yellow cards 1-3. The quarter-line protection worked at the exact boundary: Under 2.5 would have lost in full, while Under 2.75 lost only half.'
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+      - name: Commit settlement
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add ledger.json
+          git commit -m 'Settle Noah Zimbru Under 2.75 half loss' || exit 0
+          git push
