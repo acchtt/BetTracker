@@ -1,0 +1,117 @@
+name: Record Bragantino Cristal Under 1.25
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/record-bragantino-cristal-under125.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Record confirmed bet
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          path = Path("ledger.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          sync_id = "eval-20260730-bragantino-sporting-cristal-under-1-25"
+
+          if not any(item.get("syncId") == sync_id for item in data.get("bets", [])):
+              timestamp = "2026-07-30T01:27:00Z"
+              entry = {
+                  "syncId": sync_id,
+                  "updatedAt": timestamp,
+                  "event": "RB Bragantino vs Sporting Cristal — Second Leg",
+                  "league": "CONMEBOL Sudamericana",
+                  "competitionStage": "Round-of-16 playoff, second leg",
+                  "venue": "Estadio Municipal Cicero de Souza Marques, Braganca Paulista",
+                  "format": "Two-legged knockout tie; live full-match total settles after 90 minutes plus regulation stoppage time; extra time and penalties excluded",
+                  "bet": "Under 1.25 total goals",
+                  "odds": 2.22,
+                  "stakeVnd": 125000,
+                  "stakeUnits": 0.25,
+                  "potentialPayoutVnd": 277500,
+                  "potentialProfitVnd": 152500,
+                  "status": "pending",
+                  "result": "Pending",
+                  "eventDate": "2026-07-30",
+                  "marketType": "Totals",
+                  "timing": "live-halftime",
+                  "bookmaker": "BK8",
+                  "slipId": "870477512701517824",
+                  "entryScore": "RB Bragantino 0-0 Sporting Cristal",
+                  "entryAggregateScore": "0-0",
+                  "entryMinute": "Halftime",
+                  "settlementBasis": "Full-match Asian total Under 1.25 including the existing 0-0 score; 90 minutes plus regulation stoppage time; extra time excluded. Final total 0 goals is a full win; exactly 1 goal is a half win; 2 or more goals is a full loss.",
+                  "modelRecommendation": {
+                      "recommendationType": "official bet",
+                      "market": "Under 1.25 total goals",
+                      "quotedOdds": 2.27,
+                      "minimumAcceptableOdds": 2.25,
+                      "stakeUnits": 0.25,
+                      "fairOddsRange": [1.95, 2.10],
+                      "state": "Halftime, score and aggregate 0-0. Halftime indicators: xG 0.41-0.32, xGOT 0.00-0.68, shots 12-3, shots on target 0-1, big chances 0-1, inside-box shots 3-2, box touches 6-2 and corners 5-0.",
+                      "reasoning": "Bragantino's 12 first-half shots were mostly low quality, with nine from outside the box, no shots on target and no big chances. Sporting Cristal's shot on target, big chance and xGOT were treated as one correlated chance cluster. Aggregate parity and single-goal-to-qualify incentives supported a controlled second-half branch, with whole/quarter-line protection if exactly one goal was scored."
+                  },
+                  "execution": {
+                      "odds": 2.22,
+                      "stakeUnits": 0.25,
+                      "stakeVnd": 125000,
+                      "potentialPayoutVnd": 277500,
+                      "sameMarketAndLine": True,
+                      "priceAboveMinimum": False,
+                      "withinStakeCap": True,
+                      "deviations": [
+                          "execution odds 2.22 were below the model minimum acceptable odds of 2.25"
+                      ]
+                  },
+                  "tags": [
+                      "evaluation",
+                      "official",
+                      "official-after-user-confirmation",
+                      "live-read",
+                      "football",
+                      "totals",
+                      "asian-total",
+                      "under-1-25",
+                      "lineup-confirmed",
+                      "competition-context",
+                      "aggregate-state",
+                      "single-goal-to-qualify",
+                      "chance-cluster-adjusted",
+                      "stoppage-time-risk",
+                      "model-generated",
+                      "user-executed",
+                      "below-model-cutoff",
+                      "execution-deviation",
+                      "within-stake-cap"
+                  ],
+                  "notes": "User confirmed placement of RB Bragantino vs Sporting Cristal full-match Under 1.25 at 2.22 for 0.25u (125,000 VND), sportsbook slip #870477512701517824. Entry was halftime at 0-0, aggregate 0-0. Final total 0 goals is a full win; exactly 1 goal is a half win; 2 or more goals is a full loss. Full-win payout is 277,500 VND and full-win profit is 152,500 VND (+0.305u). The market and stake matched the model recommendation, but execution was below the minimum acceptable price: 2.22 versus a 2.25 cutoff. Record separately as a below-cutoff execution; a favorable result would not validate the shortened price. Main evidence: low combined xG, no Bragantino shot on target, no Bragantino big chance, mostly outside-box attempts, and correlated treatment of Sporting Cristal's single major chance. Main risks: an early second-half goal creating a chase branch, attacking substitutions including Pitta, home pressure, and regulation stoppage-time exposure.",
+                  "placedAt": "2026-07-30T08:27:00+07:00",
+                  "userConfirmedAt": "2026-07-30T08:27:00+07:00",
+                  "addedAt": timestamp,
+                  "createdAt": timestamp
+              }
+              data["version"] = timestamp
+              data.setdefault("bets", []).insert(0, entry)
+              path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+      - name: Commit ledger update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ledger.json
+          git commit -m "Record Bragantino Sporting Cristal Under 1.25 bet" || exit 0
+          git push
