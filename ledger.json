@@ -1,6 +1,87 @@
 {
-  "version": "2026-07-30T17:54:00Z",
+  "version": "2026-07-30T18:10:00Z",
   "bets": [
+    {
+      "syncId": "eval-20260731-paok-dynamo-under-2-25",
+      "updatedAt": "2026-07-30T18:10:00Z",
+      "event": "PAOK Saloniki vs Dynamo Kyiv — Second Leg",
+      "league": "UEFA Europa League Qualifying",
+      "competitionStage": "Second qualifying round, second leg",
+      "venue": "Toumba Stadium, Thessaloniki",
+      "format": "Two-legged knockout tie; live full-match total settles after 90 minutes plus regulation stoppage time; extra time and penalties excluded",
+      "bet": "Under 2.25 total goals",
+      "odds": 1.94,
+      "stakeVnd": 125000,
+      "stakeUnits": 0.25,
+      "potentialPayoutVnd": 242500,
+      "potentialProfitVnd": 117500,
+      "status": "pending",
+      "result": "Pending",
+      "eventDate": "2026-07-31",
+      "marketType": "Totals",
+      "timing": "live-first-half",
+      "bookmaker": "BK8",
+      "slipId": "870729998544359424",
+      "entryScore": "PAOK Saloniki 0-0 Dynamo Kyiv",
+      "entryAggregateScore": "PAOK Saloniki led 3-2 on aggregate",
+      "entryMinute": "Approximately 19:38 first half; accepted shortly afterward with score still 0-0",
+      "settlementBasis": "Full-match Asian total Under 2.25 including the existing 0-0 score; 90 minutes plus regulation stoppage time; extra time excluded. Final total 0-1 goals is a full win; exactly 2 goals is a half win; 3 or more goals is a full loss.",
+      "modelRecommendation": {
+        "recommendationType": "official bet",
+        "modelVersion": "football-v0.2.7",
+        "market": "Under 2.25 total goals",
+        "quotedOdds": 2.08,
+        "minimumAcceptableOdds": 2.0,
+        "stakeUnits": 0.25,
+        "state": "0-0 at 19:38 of the first half; PAOK led 3-2 on aggregate. Live indicators: xG 0.10-0.06, xGOT 0.23-0.00, shots 2-1, shots on target 1-0, big chances 0-0, inside-box shots 2-0, opposition-box touches 6-3 and corners 1-2.",
+        "reasoning": "The match showed genuine chance suppression rather than merely low possession or low shot volume. Dynamo were only single-goal-to-level, while a Dynamo opening goal could create an aggregate reset. Under 2.25 retained a half win at exactly two total goals."
+      },
+      "execution": {
+        "odds": 1.94,
+        "stakeUnits": 0.25,
+        "stakeVnd": 125000,
+        "potentialPayoutVnd": 242500,
+        "sameMarketAndLine": true,
+        "withinStakeCap": true,
+        "scoreStateSynchronized": true,
+        "priceAboveMinimum": false,
+        "priceMoveClassification": "material adverse live price move below model cutoff",
+        "deviations": [
+          "accepted odds 1.94 were below the stated 2.00 minimum",
+          "price fell 0.14 from the quoted 2.08",
+          "break-even probability increased from approximately 48.1% to 51.5% without a fresh price reassessment"
+        ]
+      },
+      "tags": [
+        "evaluation",
+        "official-after-user-confirmation",
+        "football",
+        "uefa-europa-league",
+        "knockout-second-leg",
+        "live-read",
+        "totals",
+        "asian-total",
+        "under-2-25",
+        "lineup-confirmed",
+        "competition-context",
+        "aggregate-state",
+        "single-goal-to-level",
+        "aggregate-reset-risk",
+        "low-chance-profile",
+        "stoppage-time-risk",
+        "model-generated",
+        "user-executed",
+        "within-stake-cap",
+        "price-below-cutoff",
+        "execution-deviation",
+        "pending"
+      ],
+      "notes": "User confirmed sportsbook acceptance of PAOK Saloniki vs Dynamo Kyiv full-match Under 2.25 at 1.94 for 0.25u (125,000 VND), slip #870729998544359424. Entry score was 0-0, with PAOK leading 3-2 on aggregate. Potential full-win payout is 242,500 VND and potential profit is 117,500 VND (+0.235u). Exactly two total goals produces a half win; zero or one is a full win; three or more is a full loss. The market and line matched the recommendation and the score remained synchronized, but execution at 1.94 was below the stated 2.00 minimum after a material move from 2.08. The wager is official/open after user confirmation but must be separated from fully cutoff-compliant model performance.",
+      "placedAt": "2026-07-31T01:10:00+07:00",
+      "userConfirmedAt": "2026-07-31T01:10:00+07:00",
+      "addedAt": "2026-07-30T18:10:00Z",
+      "createdAt": "2026-07-30T18:10:00Z"
+    },
     {
       "syncId": "eval-20260730-noah-zimbru-under-2-75",
       "updatedAt": "2026-07-30T17:54:00Z",
@@ -2623,7 +2704,7 @@
       "pending/2026-07-30-reconcile-all-unverified-bets.json",
       "pending/2026-07-30-t1a-vs-dkc-game1-dkc-plus-6-5-kills-settlement.json"
     ],
-    "officialRecordsAdded": 1,
+    "officialRecordsAdded": 2,
     "officialRecordsUpdated": 15
   }
 }
