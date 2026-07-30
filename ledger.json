@@ -1,9 +1,9 @@
 {
-  "version": "2026-07-30T13:25:00Z",
+  "version": "2026-07-30T15:33:00Z",
   "bets": [
     {
       "syncId": "eval-20260730-jdg-tt-g3-tt-plus-6-5-kills",
-      "updatedAt": "2026-07-30T13:25:00Z",
+      "updatedAt": "2026-07-30T15:33:00Z",
       "event": "JD Gaming vs Thunder Talk Gaming — Game 3",
       "league": "LPL 2026 Split 3",
       "format": "Best-of-three series; deciding Game 3",
@@ -14,14 +14,14 @@
       "stakeUnits": 0.25,
       "potentialPayoutVnd": 228375,
       "potentialProfitVnd": 103375,
-      "status": "pending",
-      "result": "Pending",
+      "status": "loss",
+      "result": "JD Gaming won Game 3 with a final kill score of 23-5; Thunder Talk Gaming +6.5 kills lost by an adjusted margin of 11.5 kills",
       "eventDate": "2026-07-30",
       "marketType": "Kill handicap",
       "timing": "post-draft/pre-game",
       "slipId": "1148100443",
       "sportsbookDisplayedTime": "07/30 21:09",
-      "seriesState": "Series tied 1-1 before deciding Game 3",
+      "seriesState": "Series tied 1-1 before deciding Game 3; JD Gaming won Game 3 and the series 2-1",
       "entryState": "Post-draft, before the first meaningful Game 3 event",
       "patch": "26.14",
       "rosterStatus": "confirmed",
@@ -68,7 +68,7 @@
         "minimumAcceptableOdds": 1.8,
         "stakeUnits": 0.25,
         "confidence": 6,
-        "reasoning": "TT's Vayne-Cassiopeia-Kai'Sa damage profile offered strong tank shredding and realistic kill-trading against JDG's utility-heavy Malphite-Trundle-Galio-Ezreal-Seraphine composition. JDG retained easier engage and map execution, so the position remained a lean rather than a model-approved official bet."
+        "reasoning": "TT's Vayne-Cassiopeia-Kai'Sa damage profile offered theoretical tank shredding and kill-trading against JDG's utility-heavy composition. The model retained the position as a lean because JDG had easier engage and map execution."
       },
       "execution": {
         "odds": 1.827,
@@ -90,13 +90,34 @@
         "model-lean",
         "user-executed",
         "within-stake-cap",
-        "pending"
+        "user-confirmed-result",
+        "loss",
+        "settled",
+        "market-selection-error",
+        "team-strength-underweighted",
+        "shadow-market-under-30-5"
       ],
-      "notes": "User confirmed placement via sportsbook slip #1148100443. Exact wager: Thunder Talk Gaming +6.5 kills in Game 3 at 1.827 for 0.25u (125,000 VND). Potential payout 228,375 VND and potential profit 103,375 VND (+0.20675u). The model issued a LEAN at 1.828 with a minimum acceptable price of 1.80; execution at 1.827 was negligible price drift and remained above cutoff. Confidence at recommendation: 6/10. Result pending.",
+      "notes": "User confirmed the final result: JD Gaming won Game 3, 23-5 in kills. Thunder Talk Gaming +6.5 kills at 1.827 for 0.25u (125,000 VND), slip #1148100443, lost. Payout 0 VND and net loss 125,000 VND (-0.25u). Under 30.5 total kills was not placed and is recorded only as a shadow-market comparison; it would have won at a final total of 28. The process review triggered LoL model v0.3.1.",
       "placedAt": "2026-07-30T20:25:00+07:00",
       "userConfirmedAt": "2026-07-30T20:25:00+07:00",
       "addedAt": "2026-07-30T13:25:00Z",
-      "createdAt": "2026-07-30T13:25:00Z"
+      "createdAt": "2026-07-30T13:25:00Z",
+      "payoutVnd": 0,
+      "netProfitVnd": -125000,
+      "netUnits": -0.25,
+      "settledAt": "2026-07-30T15:33:00Z",
+      "shadowMarketReview": {
+        "market": "Under 30.5 total kills",
+        "status": "unselected; not a wager",
+        "realizedResult": "would have won because the final total was 28 kills",
+        "processComparison": "Under 30.5 better expressed JDG's stronger-team, clean-conversion path than TT +6.5, which required the weaker team to trade kills."
+      },
+      "review": {
+        "resultAssessment": "The wager lost because JD Gaming won the kill count 23-5, an 18-kill margin.",
+        "processAssessment": "Market-selection error. The model overweighted TT's theoretical tank shredding and late kill-trading while underweighting JDG's superior team strength, laning, coordination, easier execution and clean-conversion probability.",
+        "ruleUpdate": "LoL model v0.3.1 now retains the team-strength prior after draft, classifies the favorite's win path, scans moneyline, kill handicap, total kills and duration in parallel, and compares every underdog positive kill handicap against the total-kills alternative."
+      },
+      "resultConfirmedAt": "2026-07-30T22:33:00+07:00"
     },
     {
       "syncId": "eval-20260730-hle-dk-g3-dk-ml",
@@ -2487,11 +2508,12 @@
       "pending/2026-07-30-hle-vs-dk-game1-dk-plus-6-5-kills.json",
       "pending/2026-07-30-hle-vs-dk-game2-dk-ml.json",
       "pending/2026-07-30-hle-vs-dk-game3-dk-ml-settlement.json",
+      "pending/2026-07-30-jdg-vs-tt-game3-tt-plus-6-5-kills-settlement.json",
       "pending/2026-07-30-jdg-vs-tt-game3-tt-plus-6-5-kills.json",
       "pending/2026-07-30-reconcile-all-unverified-bets.json",
       "pending/2026-07-30-t1a-vs-dkc-game1-dkc-plus-6-5-kills-settlement.json"
     ],
-    "officialRecordsAdded": 1,
-    "officialRecordsUpdated": 14
+    "officialRecordsAdded": 0,
+    "officialRecordsUpdated": 15
   }
 }
