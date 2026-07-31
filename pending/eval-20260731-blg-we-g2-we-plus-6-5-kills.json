@@ -1,0 +1,33 @@
+{
+  "syncId": "eval-20260731-blg-we-g2-we-plus-6-5-kills",
+  "event": "Bilibili Gaming vs Team WE",
+  "competition": "LPL 2026 Split 3",
+  "map": "Game 2",
+  "market": "Team WE +6.5 kills",
+  "odds": 1.816,
+  "stakeVnd": 125000,
+  "stakeUnits": 0.25,
+  "status": "open",
+  "result": null,
+  "eventDate": "2026-07-31",
+  "timing": "live",
+  "slipId": "1148520845",
+  "potentialPayoutVnd": 227000,
+  "bookmaker": "BK8",
+  "seriesScoreAtEntry": "BLG 1-0 WE",
+  "gameTimeAtAnalysis": "19:07",
+  "liveStateAtAnalysis": "BLG 12-11 WE kills; BLG 39.4k-35.6k gold; BLG 3-1 towers",
+  "lineup": {
+    "BLG": "Wenbo / Xun / knight / Viper / ON",
+    "WE": "Cube / Monki / Karis / About / Erha"
+  },
+  "draft": {
+    "BLG_blue": "Jayce / Lee Sin / Vex / Mel / Pyke",
+    "WE_red": "Malphite / Trundle / Akali / Caitlyn / Nautilus"
+  },
+  "modelRecommendedOdds": 1.979,
+  "modelMinimumOdds": 1.60,
+  "executionDeviation": "Odds moved from recommended 1.979 to 1.816 before placement; line unchanged and state not re-synchronized after move.",
+  "reasoning": "WE retained reliable Malphite-Nautilus engage and sufficient damage to trade kills despite BLG's gold and tower lead.",
+  "tags": ["official","model-generated","live-read","kill-handicap","changed-odds","below-recommended-price"]
+}
