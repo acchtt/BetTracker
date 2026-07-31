@@ -1,0 +1,131 @@
+{
+  "syncId": "eval-20260801-mkoi-shft-g3-shft-plus-10-5-kills",
+  "updatedAt": "2026-08-01T01:57:00+07:00",
+  "event": "Movistar KOI vs Shifters — Game 3",
+  "league": "LEC 2026 Summer",
+  "competitionStage": "Best-of-three series; deciding Game 3",
+  "format": "Best-of-three series; Game 3",
+  "bet": "Shifters +10.5 kills",
+  "settlementBasis": "Shifters' final kill total plus 10.5 must exceed Movistar KOI's final kill total.",
+  "odds": 1.903,
+  "stakeVnd": 250000,
+  "stakeUnits": 0.25,
+  "unitValueVndAtPlacement": 1000000,
+  "potentialPayoutVnd": 475750,
+  "potentialProfitVnd": 225750,
+  "payoutVnd": null,
+  "netProfitVnd": null,
+  "netUnits": null,
+  "status": "open",
+  "result": "pending",
+  "eventDate": "2026-08-01",
+  "marketType": "Kill handicap",
+  "timing": "live",
+  "bookmaker": "BK8",
+  "slipId": null,
+  "slipIdStatus": "not supplied",
+  "seriesState": "Series tied 1-1 before Game 3.",
+  "entryStateAtRecommendation": "At 3:19, Movistar KOI led 1-0 in kills and 5,888-5,677 in gold, a 211-gold lead. Towers and neutral objectives were 0-0.",
+  "placementState": "Not freshly synchronized. User confirmed placement at 1.903 after the displayed recommendation price of 2.086 had moved materially.",
+  "sides": {
+    "Movistar KOI": "blue",
+    "Shifters": "red"
+  },
+  "draft": {
+    "MKOI_blue": [
+      "Rumble",
+      "Trundle",
+      "Taliyah",
+      "Sivir",
+      "Nautilus"
+    ],
+    "SHFT_red": [
+      "Varus",
+      "Wukong",
+      "Ryze",
+      "Kalista",
+      "Thresh"
+    ]
+  },
+  "teamStrengthPrior": "MKOI held a modest player-quality edge, but the series was tied and SHFT had demonstrated competitive macro in the first two games.",
+  "modelRecommendation": {
+    "recommendationType": "official bet",
+    "modelVersion": "lol-v0.3.7",
+    "market": "Shifters +10.5 kills",
+    "quotedOdds": 2.086,
+    "minimumAcceptableOdds": 1.6,
+    "stakeUnits": 0.25,
+    "stakeVnd": 250000,
+    "confidence": 7,
+    "reasoning": "At the synchronized 3:19 snapshot, the 211-gold MKOI lead was noise, no structures or objectives had been converted, and SHFT had two current functional damage sources through Kalista and Varus, with Ryze and Wukong adding further scaling and follow-up. The repeated-error functional-damage veto was not active, and an 11-kill MKOI margin lacked structural support."
+  },
+  "functionalDamageAssessment": {
+    "functionalNow": [
+      "Kalista",
+      "Varus"
+    ],
+    "conditionalOrFuture": [
+      "Ryze",
+      "Wukong"
+    ],
+    "utility": [
+      "Thresh"
+    ],
+    "firstReachableTargets": [
+      "Trundle",
+      "Nautilus",
+      "Rumble"
+    ],
+    "frontlineKillSpeed": "Credible through Kalista sustained damage and Varus; improves with Ryze levels and items.",
+    "carryProtection": "Thresh lantern and peel, plus Wukong disruption.",
+    "objectiveTimerVsItemTiming": "No forced major objective before SHFT's first useful breakpoints at the recommendation snapshot.",
+    "observedConversionCount": 0,
+    "repeatedErrorVeto": false
+  },
+  "execution": {
+    "odds": 1.903,
+    "stakeUnits": 0.25,
+    "stakeVnd": 250000,
+    "unitValueVndAtPlacement": 1000000,
+    "sameMarketAndLine": true,
+    "withinStakeCap": true,
+    "priceAboveMinimum": true,
+    "priceBetterThanQuoted": false,
+    "stateSynchronized": false,
+    "quotedToAcceptedOddsMove": -0.183,
+    "impliedProbabilityAtQuotedPrice": 0.4794,
+    "impliedProbabilityAtAcceptedPrice": 0.5255,
+    "impliedProbabilityMovePercentagePoints": 4.61,
+    "mandatoryReassessmentTriggered": true,
+    "selectionAttribution": "model-generated market and line",
+    "stakeAttribution": "model-compliant",
+    "performanceAttribution": "official placed wager; accepted price and live state were not freshly reassessed after a material move",
+    "deviations": [
+      "Accepted odds moved from 2.086 to 1.903, a 0.183 adverse move.",
+      "Implied probability moved by approximately 4.61 percentage points.",
+      "The active model requires a fresh reassessment after an odds move of at least 0.10 or 3 implied-probability points.",
+      "No synchronized placement-state snapshot was supplied before execution."
+    ]
+  },
+  "tags": [
+    "evaluation",
+    "official-after-user-confirmation",
+    "lol",
+    "lec",
+    "game-3",
+    "live",
+    "kill-handicap",
+    "positive-handicap",
+    "model-v0-3-7",
+    "functional-damage-gate-passed-at-recommendation",
+    "model-compliant-stake",
+    "material-adverse-price-move",
+    "unsynchronized-execution",
+    "unit-basis-1000000-vnd",
+    "open"
+  ],
+  "notes": "User confirmed Shifters +10.5 kills at 1.903 for 0.25u (250,000 VND). The original synchronized recommendation was issued at 2.086. The accepted price remained above the 1.60 minimum, but the 0.183 adverse move and approximately 4.61 percentage-point implied-probability shift required a fresh reassessment under the active model. The wager is official and open after user confirmation, with model-compliant stake; slip ID remains to be supplied.",
+  "userConfirmedAt": "2026-08-01T01:57:00+07:00",
+  "addedAt": "2026-08-01T01:57:00+07:00",
+  "createdAt": "2026-08-01T01:57:00+07:00"
+}
