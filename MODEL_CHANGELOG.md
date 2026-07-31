@@ -6,7 +6,8 @@ Historical changelog entries through 2026-07-31 remain preserved in Git history.
 
 ## Active operational documents
 
-- League of Legends recommendations must follow `LOL_BETTING_PROCEDURE.md`, `MODEL_RULES_LOL_V0.3.8.md`, `MODEL_RULES_LOL_V0.3.7.md`, `MODEL_RULES_LOL_V0.3.6.md`, `STAKE_POLICY_V2.json`, and this changelog. Older LoL rules remain active where not superseded.
+- League of Legends recommendations must follow `LOL_BETTING_PROCEDURE.md`, `MODEL_RULES_LOL_V0.3.9.md`, `MODEL_RULES_LOL_V0.3.8.md`, `MODEL_RULES_LOL_V0.3.7.md`, `MODEL_RULES_LOL_V0.3.6.md`, `STAKE_POLICY_V2.json`, this changelog, and the current review restrictions. Older LoL rules remain active where not superseded.
+- The evidence for v0.3.9 is recorded in `reviews/LOL_TWO_DAY_REVIEW_2026-07-31_TO_2026-08-01.md`.
 - Football recommendations must follow `FOOTBALL_BETTING_PROCEDURE.md`, the latest active football model rules, `STAKE_POLICY_V2.json`, and this changelog. Older football rules remain active where not superseded.
 - When documents conflict, the newer dated rule controls.
 - Every future material model change must receive both a detailed rule file and an entry in this changelog.
@@ -29,11 +30,76 @@ Historical changelog entries through 2026-07-31 remain preserved in Git history.
 
 ---
 
+## v0.3.9 — 2026-08-01
+
+### LoL two-day drawdown controls, market probation, same-series lockout, and hard recommendation expiry
+
+**Status:** Active immediately  
+**Detailed implementation:** `MODEL_RULES_LOL_V0.3.9.md`  
+**Evidence review:** `reviews/LOL_TWO_DAY_REVIEW_2026-07-31_TO_2026-08-01.md`
+
+### Sport and markets affected
+
+League of Legends post-draft, pre-game, and live moneylines, kill handicaps, kill totals, duration, objectives, and correlated map exposure.
+
+### Triggering evidence
+
+The review window contained 12 settled LoL wagers:
+
+- record: 3 wins and 9 losses;
+- actual stake: 2,525,000 VND;
+- net result: -1,052,125 VND;
+- actual-stake ROI: -41.67%;
+- standardized model-stake result: approximately -1.56325u over 3.00u staked.
+
+Market results were:
+
+- positive underdog kill handicaps: 2-6, with repeated engage-to-damage, functional-damage, damage-delivery, champion-counter, structural-control, and execution-validity errors;
+- moneylines: 0-3, with repeated team-reputation, theoretical-composition, and current-series evidence errors;
+- duration: 1-0, with the winning pick supported by two independent stall indicators and synchronized execution.
+
+The Shifters Game 2 and Game 3 sequence also demonstrated same-series repetition: a newly identified damage-delivery error did not prevent another positive handicap on the same team in the next map.
+
+### Previous rule
+
+v0.3.7 and v0.3.8 strengthened functional-damage and champion-counter analysis. The model could still issue draft-based official positive handicaps, retain reputation-based moneylines from neutral states, repeat the same market thesis in the next map of a series, and treat a stale recommendation as broadly acceptable when the price remained above 1.60.
+
+### New rule
+
+- Start a 10-settled-wager LoL probation period.
+- During probation, cap total exposure at 0.25u per map and prohibit correlated add-ons.
+- Cap `OFFICIAL BET` confidence at 6/10 during probation.
+- Positive underdog kill handicaps may not be `OFFICIAL BET` post-draft or pre-game; the maximum is `LEAN — 0u watch`.
+- Live positive-handicap promotion requires two independent structured-fight conversions, two deliverable damage sources, demonstrated space creation, a cleared champion-counter gate, acceptable structural state, compatible objective timing, and synchronized execution.
+- Apply a structural-control veto when the favorite holds at least two material flags such as percentage gold lead, tower control, soul-point setup, Baron/Elder/inhibitor pressure, major item advantage, map compression, or repeated one-sided conversion.
+- Apply a same-series lockout after a draft, damage-delivery, champion-counter, team-strength, or macro model error. The same team and market thesis cannot become official in the next map without two new live conversions and independent confirmation.
+- Moneylines require two independent current-map confirmations. A neutral early state, attractive price, or generic reputation edge is insufficient.
+- Re-estimate the pre-series prior after every map. By a deciding map, current-series execution and the completed draft must receive at least equal consideration to generic reputation.
+- Recommendation expiry is a hard veto after an odds move of at least 0.10, an implied-probability move of at least three percentage points, or any material game-state change.
+- After expiry, the old recommendation is not actionable. A wager can be recorded after user confirmation but is not model-approved at execution without a fresh synchronized reassessment.
+- Retain the two-stall-indicator duration framework and add a fast-close veto for Baron/Elder, soul plus siege, exposed inhibitors, synchronized waves, major item advantage, or repeated uncontested setup.
+- Kill totals require both fight-frequency evidence and evidence that both teams can return meaningful damage.
+- Every actionable assessment must include series-prior update, counter matrix, functional damage, space creation, structured-fight conversion count, structural flags, objective timing, same-series lockout, expiry status, and market-specific veto status.
+
+### Expected benefit
+
+Reduce repeated wide-underdog handicap errors, prevent reputation-based moneylines without current-map confirmation, stop stale recommendations from being treated as approved executions, and prevent same-series repetition of a newly identified model error.
+
+### Possible downside
+
+The model will pass more early opportunities, may receive worse prices after waiting for live evidence, and may miss legitimate next-map draft corrections. The stricter execution contract will also classify more late placements as unsynchronized. These costs are acceptable during probation.
+
+### Review threshold
+
+Review after the next 10 settled, synchronized, model-approved LoL wagers. Do not count stale executions, user-only picks, unconfirmed bets, or wagers placed after recommendation expiry toward validation.
+
+---
+
 ## v0.3.8 — 2026-08-01
 
 ### LoL champion-counter matrix and damage-delivery architecture veto
 
-**Status:** Active immediately  
+**Status:** Active where not superseded by v0.3.9  
 **Detailed implementation:** `MODEL_RULES_LOL_V0.3.8.md`
 
 ### Sport and markets affected
@@ -85,7 +151,7 @@ Review after the next 10 settled synchronized LoL wagers. Track identified count
 
 ### LoL functional-damage gate and repeated positive-handicap veto
 
-**Status:** Active where not superseded by v0.3.8  
+**Status:** Active where not superseded by v0.3.8 or v0.3.9  
 **Detailed implementation:** `MODEL_RULES_LOL_V0.3.7.md`
 
 ### Sport and markets affected
@@ -134,7 +200,7 @@ Review after the next 10 settled synchronized LoL wagers. Track functional sourc
 
 ### LoL live comeback, normalized late-game gold, and unit-policy integration
 
-**Status:** Active where not superseded by v0.3.7 or v0.3.8  
+**Status:** Active where not superseded by v0.3.7, v0.3.8, or v0.3.9  
 **Detailed implementation:** `MODEL_RULES_LOL_V0.3.6.md`
 
 - Normalize gold leads after 25:00; under 3% is near-even unless tied to a decisive breakpoint.
