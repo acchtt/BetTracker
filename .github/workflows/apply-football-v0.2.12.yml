@@ -1,0 +1,100 @@
+name: Apply Football v0.2.12
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/apply-football-v0.2.12.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Update active football documents
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          changelog = Path('MODEL_CHANGELOG.md')
+          text = changelog.read_text(encoding='utf-8')
+          marker = '## v0.2.12 — 2026-07-31'
+          if marker not in text:
+              entry = '''## v0.2.12 — 2026-07-31
+
+### Football persistence, late-tail, protection, and classification correction
+
+**Status:** Active operational restriction and evaluation addendum  
+**Detailed implementation:** `MODEL_RULES_FOOTBALL_V0.2.12.md`
+
+**Triggering evidence**
+
+- Football review showed repeated over-extrapolation from quiet single snapshots.
+- Stoppage-time and late-game scoring tails were underpriced across several live unders and handicaps.
+- Knockout incentives were sometimes reduced to one narrative instead of controlled, chase, counterattack, aggregate-reset, and extra-time branches.
+- Correlated chance indicators were double-counted, brittle lines were selected too often, and placed leans were mixed with official-model performance.
+
+**New rule**
+
+- Require persistence evidence before treating live suppression or pressure as stable.
+- Restrict long-horizon Under 1.5 recommendations after any meaningful danger event.
+- Add an explicit late-goal and stoppage-time reserve to every live total and handicap.
+- Require an independently supported pathway for every additional goal needed by a wager.
+- Price knockout branches separately and retain aggregate-reset and extra-time acceptance states.
+- Control chance-cluster correlation and prefer protected quarter- or whole-goal lines when settlement-weighted value is comparable.
+- Tighten cross-league and regional-cup prematch side requirements.
+- Keep `LEAN — SMALL` at 0.125u and separate from official performance; `LEAN — WATCH` remains 0u.
+- Grade settled bets separately for result and process quality.
+
+**Expected benefit**
+
+Reduce false confidence from snapshots, improve late-tail calibration, preserve bankroll at common settlement boundaries, and produce cleaner performance attribution.
+
+**Possible downside**
+
+More opportunities will be passed, and waiting for persistence evidence may miss favorable live prices.
+
+**Review threshold**
+
+Review after 20 settled football wagers or 40 fully documented football scans.
+
+---
+
+'''
+              first_sep = text.find('---\n')
+              if first_sep == -1:
+                  text = text.rstrip() + '\n\n---\n\n' + entry
+              else:
+                  insert_at = first_sep + len('---\n')
+                  text = text[:insert_at] + '\n' + entry + text[insert_at:]
+
+          text = re.sub(
+              r'- Football recommendations must follow `FOOTBALL_BETTING_PROCEDURE\.md`[^\n]*',
+              '- Football recommendations must follow `FOOTBALL_BETTING_PROCEDURE.md`, `MODEL_RULES_FOOTBALL_V0.2.12.md`, `MODEL_RULES_FOOTBALL_V0.2.11.md`, `MODEL_RULES_FOOTBALL_V0.2.10.md`, `MODEL_RULES_FOOTBALL_V0.2.9.md`, and this changelog. Older football rules remain active where not superseded.',
+              text,
+              count=1,
+          )
+          changelog.write_text(text, encoding='utf-8')
+
+          procedure = Path('FOOTBALL_BETTING_PROCEDURE.md')
+          ptext = procedure.read_text(encoding='utf-8')
+          ptext = re.sub(
+              r'\*\*Related rules:\*\*[^\n]*',
+              '**Related rules:** `MODEL_CHANGELOG.md`, `MODEL_RULES_FOOTBALL_V0.2.12.md`, `MODEL_RULES_FOOTBALL_V0.2.11.md`, `MODEL_RULES_FOOTBALL_V0.2.10.md`, `MODEL_RULES_FOOTBALL_V0.2.9.md`, and `ledger.json`',
+              ptext,
+              count=1,
+          )
+          procedure.write_text(ptext, encoding='utf-8')
+      - name: Commit active-rule updates
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add MODEL_CHANGELOG.md FOOTBALL_BETTING_PROCEDURE.md
+          git commit -m 'Activate football model v0.2.12 corrections' || exit 0
+          git push
