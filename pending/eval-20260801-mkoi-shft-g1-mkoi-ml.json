@@ -1,6 +1,6 @@
 {
   "syncId": "eval-20260801-mkoi-shft-g1-mkoi-ml",
-  "updatedAt": "2026-08-01T00:17:00+07:00",
+  "updatedAt": "2026-08-01T00:42:00+07:00",
   "event": "Movistar KOI vs Shifters — Game 1",
   "league": "LEC 2026 Summer",
   "competitionStage": "Best-of-three series; Game 1",
@@ -12,8 +12,11 @@
   "stakeUnits": 1.0,
   "potentialPayoutVnd": 940000,
   "potentialProfitVnd": 440000,
-  "status": "open",
-  "result": null,
+  "payoutVnd": 0,
+  "netProfitVnd": -500000,
+  "netUnits": -1.0,
+  "status": "loss",
+  "result": "Shifters won Game 1. Exact final kill score was not supplied; the last confirmed live state was SHFT 18-12 MKOI at 40:07.",
   "eventDate": "2026-08-01",
   "marketType": "Moneyline",
   "timing": "live",
@@ -29,7 +32,7 @@
     "MKOI_blue": ["Ambessa", "Vi", "Viktor", "Ziggs", "Shen"],
     "SHFT_red": ["Gnar", "Olaf", "Cassiopeia", "Vladimir", "Rell"]
   },
-  "teamStrengthPrior": "Movistar KOI held a material team-strength edge, while Shifters had the stronger early macro execution at the first live snapshots.",
+  "teamStrengthPrior": "Movistar KOI held a material pre-series team-strength edge, while Shifters showed the stronger map-specific macro execution and long-fight draft in Game 1.",
   "modelRecommendation": {
     "recommendationType": "official bet",
     "modelVersion": "lol-v0.3.5",
@@ -51,11 +54,16 @@
     "priceMoveClassification": "minor favorable move of 0.089, below the 0.10 mandatory reassessment threshold",
     "selectionAttribution": "model-approved exact",
     "stakeAttribution": "user stake override above model cap",
-    "performanceAttribution": "split attribution: market selection model-approved; stake sizing excluded from model-approved ROI",
+    "performanceAttribution": "split attribution: market selection model-approved; actual stake sizing tracked separately",
     "withinStakeCap": false,
     "deviations": [
       "actual stake was 1.0u versus the model-recommended 0.25u"
     ]
+  },
+  "review": {
+    "resultAssessment": "MKOI lost Game 1 after Shifters converted the stronger objective, tower and late-game teamfight state.",
+    "processAssessment": "The model over-weighted MKOI's generic team-strength prior and the early 1-0 tower lead while under-weighting Shifters' demonstrated macro control and stronger extended-fight composition through Gnar, Olaf, Cassiopeia, Vladimir and Rell.",
+    "calibrationAction": "After 25 minutes, express gold leads as a percentage of team gold. Treat leads below about 3% as near-even unless concentrated on a decisive carry or tied to a major item breakpoint. Give current-map objective control, tower access and late-game composition at least equal weight to generic team reputation."
   },
   "tags": [
     "evaluation",
@@ -70,11 +78,17 @@
     "split-attribution",
     "stake-override",
     "above-model-cap",
-    "open"
+    "loss",
+    "settled",
+    "team-strength-overweighted",
+    "macro-control-underweighted",
+    "late-game-gold-percentage-rule"
   ],
-  "notes": "User confirmed Movistar KOI Game 1 moneyline at 1.880 for 1.0u (500,000 VND), slip #1148769469. The generic user-executed classification was removed. The market selection is recorded as model-approved exact because the same market remained synchronized and the accepted price improved by only 0.089. Stake sizing is tracked separately as a user override above the 0.25u model cap and is excluded from model-approved ROI.",
+  "notes": "User confirmed Movistar KOI Game 1 moneyline at 1.880 for 1.0u (500,000 VND), slip #1148769469, lost. Return 0 VND and net loss 500,000 VND (-1.0u). The generic user-executed classification remains removed. Market selection is recorded as model-approved exact; stake sizing is tracked separately as a 1.0u override above the model's 0.25u recommendation.",
   "placedAt": "2026-08-01T01:45:00+07:00",
   "userConfirmedAt": "2026-08-01T00:17:00+07:00",
+  "settledAt": "2026-08-01T00:42:00+07:00",
+  "resultConfirmedAt": "2026-08-01T00:42:00+07:00",
   "addedAt": "2026-08-01T00:17:00+07:00",
   "createdAt": "2026-08-01T00:17:00+07:00"
 }
