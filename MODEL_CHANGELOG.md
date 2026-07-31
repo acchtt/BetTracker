@@ -6,7 +6,7 @@ Historical changelog entries through 2026-07-31 remain preserved in Git history.
 
 ## Active operational documents
 
-- League of Legends recommendations must follow `LOL_BETTING_PROCEDURE.md`, `MODEL_RULES_LOL_V0.3.7.md`, `MODEL_RULES_LOL_V0.3.6.md`, `STAKE_POLICY_V2.json`, and this changelog. Older LoL rules remain active where not superseded.
+- League of Legends recommendations must follow `LOL_BETTING_PROCEDURE.md`, `MODEL_RULES_LOL_V0.3.8.md`, `MODEL_RULES_LOL_V0.3.7.md`, `MODEL_RULES_LOL_V0.3.6.md`, `STAKE_POLICY_V2.json`, and this changelog. Older LoL rules remain active where not superseded.
 - Football recommendations must follow `FOOTBALL_BETTING_PROCEDURE.md`, the latest active football model rules, `STAKE_POLICY_V2.json`, and this changelog. Older football rules remain active where not superseded.
 - When documents conflict, the newer dated rule controls.
 - Every future material model change must receive both a detailed rule file and an entry in this changelog.
@@ -29,11 +29,63 @@ Historical changelog entries through 2026-07-31 remain preserved in Git history.
 
 ---
 
+## v0.3.8 — 2026-08-01
+
+### LoL champion-counter matrix and damage-delivery architecture veto
+
+**Status:** Active immediately  
+**Detailed implementation:** `MODEL_RULES_LOL_V0.3.8.md`
+
+### Sport and markets affected
+
+League of Legends pre-draft, post-draft, and live moneylines, kill handicaps, kill totals, duration, objective, and tower markets.
+
+### Triggering evidence
+
+Movistar KOI vs Shifters Game 3: the model identified Varus, Ryze, and Kalista as multiple damage sources and recommended SHFT +10.5 kills, but failed to price the direct champion interactions that prevented those sources from delivering damage.
+
+Key missed counters included:
+
+- Taliyah anti-dash control against Wukong access and Kalista movement;
+- Trundle resistance theft against Wukong as SHFT's only meaningful frontline;
+- Nautilus lockdown, Trundle pillar, Rumble zoning, and Taliyah control compressing Kalista and Ryze uptime;
+- Sivir spell shield reducing the reliability of Thresh or Varus initiating a clean fight.
+
+### Previous rule
+
+v0.3.7 required functional damage, target access, frontline kill speed, carry uptime, and objective-timer checks. It did not force a complete champion-by-champion counter matrix, allowing nominally functional carries to be counted even when multiple opposing mechanics attacked the same delivery route.
+
+### New rule
+
+- Build a mandatory champion-interaction matrix for every completed draft.
+- Separate lane counters, direct mechanic counters, teamfight architecture counters, item-timing counters, range/access counters, and objective-geometry counters.
+- Explain the counter mechanism rather than using generic counter labels.
+- Apply a counter-cluster downgrade when two or more independent tools attack the same engage, frontline, or carry-delivery system.
+- Activate a hard `NO BET` veto for positive underdog kill handicaps when the underdog lacks durable space creation, must enter the opponent's strongest control range, faces at least two direct counters on the same delivery route, and has not shown two independent fight conversions.
+- Wide lines, attractive prices, nominal multi-carry drafts, and theoretical scaling cannot override the veto.
+- Reprice counter severity by patch, items, levels, summoner spells, side, terrain, objective timing, player proficiency, gold distribution, and observed interactions.
+- Every actionable assessment must state key lane counters, direct mechanic counters, counter clusters, primary engage path, primary damage-delivery path, alternative win condition, current severity, observed evidence, and veto status.
+- Missing counter information requires `NO BET`.
+
+### Expected benefit
+
+Prevent the model from mistaking theoretical damage for deliverable damage and improve draft accuracy when anti-dash, resistance manipulation, point-and-click lockdown, spell shields, terrain control, range, or zoning directly counter a composition's core mechanism.
+
+### Possible downside
+
+The matrix adds time to live analysis and may over-penalize a draft when player execution, role swaps, or unexpected itemization neutralize the theoretical counter.
+
+### Review threshold
+
+Review after the next 10 settled synchronized LoL wagers. Track identified counters, counter type and severity, counter clusters, whether the countered mechanism functioned, veto status, closing-line quality, final kill margin, map result, and net VND/units.
+
+---
+
 ## v0.3.7 — 2026-08-01
 
 ### LoL functional-damage gate and repeated positive-handicap veto
 
-**Status:** Active immediately  
+**Status:** Active where not superseded by v0.3.8  
 **Detailed implementation:** `MODEL_RULES_LOL_V0.3.7.md`
 
 ### Sport and markets affected
@@ -82,7 +134,7 @@ Review after the next 10 settled synchronized LoL wagers. Track functional sourc
 
 ### LoL live comeback, normalized late-game gold, and unit-policy integration
 
-**Status:** Active where not superseded by v0.3.7  
+**Status:** Active where not superseded by v0.3.7 or v0.3.8  
 **Detailed implementation:** `MODEL_RULES_LOL_V0.3.6.md`
 
 - Normalize gold leads after 25:00; under 3% is near-even unless tied to a decisive breakpoint.
