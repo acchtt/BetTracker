@@ -1,9 +1,9 @@
 {
-  "version": "2026-07-31T05:10:00Z",
+  "version": "2026-07-31T05:42:00Z",
   "bets": [
     {
       "syncId": "eval-20260731-ktc-dnsc-g1-dnsc-plus-4-5-kills",
-      "updatedAt": "2026-07-31T05:10:00Z",
+      "updatedAt": "2026-07-31T05:42:00Z",
       "event": "KT Rolster Challengers vs DN SOOPers Challengers — Game 1",
       "league": "LCK CL 2026 Rounds 3-4",
       "competitionStage": "Round 3 Match 99",
@@ -15,14 +15,14 @@
       "stakeUnits": 0.25,
       "potentialPayoutVnd": 225750,
       "potentialProfitVnd": 100750,
-      "status": "pending",
-      "result": "Pending",
+      "status": "loss",
+      "result": "KT Rolster Challengers won Game 1 with a final kill score of 26-7; DN SOOPers Challengers +4.5 kills lost by an adjusted margin of 14.5 kills.",
       "eventDate": "2026-07-31",
       "marketType": "Kill handicap",
       "timing": "post-draft/pre-game",
       "slipId": "1148296192",
       "sportsbookDisplayedTime": "07/31 13:00",
-      "seriesState": "Series 0-0 before Game 1",
+      "seriesState": "Series 0-0 before Game 1; KT Rolster Challengers led the series 1-0 after settlement.",
       "entryState": "Post-draft, before the first meaningful Game 1 event; no intervening game action reported between recommendation and execution.",
       "rosterStatus": "confirmed",
       "roster": {
@@ -69,7 +69,7 @@
         "minimumAcceptableOdds": 1.6,
         "stakeUnits": 0.25,
         "confidence": 6,
-        "reasoning": "Near-even team-strength prior. DNS had simpler Skarner-Alistar initiation, Rumble zone control and Sivir wave-clear, providing credible kill-trading and margin protection against KT's red-side composition."
+        "reasoning": "Near-even team-strength prior. DNS had simpler Skarner-Alistar initiation, Rumble zone control and Sivir wave-clear, which the model treated as credible kill-trading and margin protection against KT's red-side composition."
       },
       "execution": {
         "odds": 1.806,
@@ -96,13 +96,40 @@
         "price-better-than-quoted",
         "within-stake-cap",
         "user-executed",
-        "pending"
+        "user-confirmed-result",
+        "loss",
+        "settled",
+        "draft-evaluation-error",
+        "damage-follow-up-overrated",
+        "engage-without-conversion",
+        "model-v0-3-3-trigger"
       ],
-      "notes": "User confirmed placement via sportsbook slip #1148296192. Exact wager: DN SOOPers Challengers +4.5 kills in Game 1 at 1.806 for 0.25u (125,000 VND). Potential payout 225,750 VND and potential profit 100,750 VND (+0.2015u). The model issued a LEAN at 1.677 for 0.25u with Confidence 6/10. The accepted price improved materially on the same line, remained above the 1.60 minimum, and no intervening game action was reported, so the wager is classified as a synchronized lean execution under LoL v0.3.2. Result pending. This is confirmed LoL wager #15 since the dedicated chat began on 2026-07-29.",
+      "notes": "User confirmed the final Game 1 state: KT Rolster Challengers won 26-7 in kills in 33:35, with 70.5k-56.5k gold and 10-2 towers. DN SOOPers Challengers +4.5 kills at 1.806 for 0.25u (125,000 VND), slip #1148296192, lost. Payout 0 VND and net loss 125,000 VND (-0.25u). The user observed that DNS.C could create setups but lacked damage follow-up, including later stages. The review classifies this as a synchronized execution with a model draft-evaluation error, not an execution deviation. This is confirmed LoL wager #15 since the dedicated chat began on 2026-07-29.",
       "placedAt": "2026-07-31T12:10:00+07:00",
       "userConfirmedAt": "2026-07-31T12:10:00+07:00",
       "addedAt": "2026-07-31T05:10:00Z",
-      "createdAt": "2026-07-31T05:10:00Z"
+      "createdAt": "2026-07-31T05:10:00Z",
+      "payoutVnd": 0,
+      "netProfitVnd": -125000,
+      "netUnits": -0.25,
+      "settledAt": "2026-07-31T05:42:00Z",
+      "finalState": {
+        "duration": "33:35",
+        "kills": "KT.C 26-7 DNS.C",
+        "gold": "KT.C 70.5k-56.5k DNS.C",
+        "towers": "KT.C 10-2 DNS.C",
+        "firstBlood": "DNS.C",
+        "firstDragon": "DNS.C",
+        "firstTower": "KT.C",
+        "firstBaron": "KT.C",
+        "firstInhibitor": "KT.C"
+      },
+      "review": {
+        "resultAssessment": "The wager lost because KT.C won the final kill score 26-7, a 19-kill margin. DNS.C finished 14,000 gold behind and lost towers 10-2.",
+        "processAssessment": "Draft-evaluation error. The model correctly identified DNS.C's initiation tools but incorrectly treated initiation quality as sufficient evidence of kill-trading. DNS.C repeatedly produced setups without reliable follow-up damage, while KT.C had durable frontline, protection, disruption and superior sustained damage through Cassiopeia. Sivir wave-clear improved map survival but did not guarantee champion damage conversion into K'Sante-Shen frontline or during separated engages.",
+        "ruleUpdate": "LoL model v0.3.3 adds an engage-to-damage conversion gate. Positive kill handicaps now require verified follow-up timing, at least two credible damage sources, target access, frontline kill speed and sustained damage after the initial control chain. Engage and wave-clear alone cannot qualify as kill-trading evidence."
+      },
+      "resultConfirmedAt": "2026-07-31T12:42:00+07:00"
     },
     {
       "syncId": "eval-20260731-municipal-cartagines-moneyline",
@@ -3276,9 +3303,10 @@
       "pending/2026-07-30-jdg-vs-tt-game3-tt-plus-6-5-kills.json",
       "pending/2026-07-30-reconcile-all-unverified-bets.json",
       "pending/2026-07-30-t1a-vs-dkc-game1-dkc-plus-6-5-kills-settlement.json",
+      "pending/2026-07-31-ktc-vs-dnsc-game1-dnsc-plus-4-5-kills-settlement.json",
       "pending/2026-07-31-ktc-vs-dnsc-game1-dnsc-plus-4-5-kills.json"
     ],
-    "officialRecordsAdded": 1,
-    "officialRecordsUpdated": 15
+    "officialRecordsAdded": 0,
+    "officialRecordsUpdated": 16
   }
 }
