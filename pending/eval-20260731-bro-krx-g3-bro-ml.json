@@ -7,8 +7,10 @@
   "odds": 1.943,
   "stakeVnd": 125000,
   "stakeUnits": 0.25,
-  "status": "open",
-  "result": null,
+  "status": "settled",
+  "result": "loss",
+  "profitLossVnd": -125000,
+  "profitLossUnits": -0.25,
   "eventDate": "2026-07-31",
   "timing": "live",
   "slipId": "1148615228",
@@ -28,6 +30,8 @@
   "modelRecommendedStakeUnits": 0.25,
   "executionDeviation": "Odds moved from recommended 2.000 to 1.943 before placement; line unchanged and stake matched the 0.25u cap.",
   "reasoning": "BRO retained the stronger team-strength prior and the live trigger was met with an even early state and no KRX structural advantage.",
+  "settlementReasoning": "KRX executed the Nocturne-Shen global setup cleanly, controlled objectives and tempo, and converted its early lead through superior macro and map control. The pregame BRO strength prior was overweighted relative to KRX's actual coordination and control in this deciding map.",
+  "modelReview": "For deciding maps, require stronger live confirmation before backing the pregame-rated stronger team when the opponent's composition has superior global pressure and coordinated map-control tools.",
   "risks": "KRX Nocturne-Shen global pressure and Ryze-Sivir scaling.",
-  "tags": ["official","model-generated","live-read","map-moneyline","team-strength-prior","changed-odds"]
+  "tags": ["official","model-generated","live-read","map-moneyline","team-strength-prior","changed-odds","settled-loss","macro-control-miss"]
 }
