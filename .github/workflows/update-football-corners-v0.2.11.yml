@@ -88,3 +88,5 @@ Review after 20 settled corner wagers or 40 fully documented corner-market scans
           git add MODEL_CHANGELOG.md
           git commit -m 'Document football corner-market scan v0.2.11' || exit 0
           git push
+
+# Triggered for v0.2.11 registration.
