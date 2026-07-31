@@ -4,7 +4,7 @@ This file records betting-model rules, evidence, and approved changes. `ledger.j
 
 ## Active operational documents
 
-- Football recommendations must follow `FOOTBALL_BETTING_PROCEDURE.md`, `MODEL_RULES_FOOTBALL_V0.2.6.md`, and this changelog. `MODEL_RULES_FOOTBALL_V0.2.5.md` remains the base aggregate-state rule where v0.2.6 does not override it.
+- Football recommendations must follow `FOOTBALL_BETTING_PROCEDURE.md`, `MODEL_RULES_FOOTBALL_V0.2.12.md`, `MODEL_RULES_FOOTBALL_V0.2.11.md`, `MODEL_RULES_FOOTBALL_V0.2.10.md`, `MODEL_RULES_FOOTBALL_V0.2.9.md`, and this changelog. Older football rules remain active where not superseded.
 - League of Legends recommendations must follow `LOL_BETTING_PROCEDURE.md` and this changelog.
 - When a procedure and an older changelog interpretation conflict, the newer dated rule or procedure controls until formally reviewed.
 - Every future material procedure change must also receive a dated entry in `MODEL_CHANGELOG.md`; editing a procedure file alone is not sufficient.
@@ -31,6 +31,90 @@ Each rule change must include:
 5. New rule.
 6. Expected benefit and possible downside.
 7. Review threshold.
+
+---
+
+## v0.2.12 — 2026-07-31
+
+### Football persistence, late-tail, protection, and classification correction
+
+**Status:** Active operational restriction and evaluation addendum  
+**Detailed implementation:** `MODEL_RULES_FOOTBALL_V0.2.12.md`
+
+**Triggering evidence**
+
+- Football review showed repeated over-extrapolation from quiet single snapshots.
+- Stoppage-time and late-game scoring tails were underpriced across several live unders and handicaps.
+- Knockout incentives were sometimes reduced to one narrative instead of controlled, chase, counterattack, aggregate-reset, and extra-time branches.
+- Correlated chance indicators were double-counted, brittle lines were selected too often, and placed leans were mixed with official-model performance.
+
+**Previous rule**
+
+The model had persistence, aggregate-state, and stoppage-time concepts, but they were not strict enough to prevent a single snapshot from carrying too much weight, a next-goal case from being treated as a multi-goal case, or a lean from functioning like an official recommendation.
+
+**New rule**
+
+- Require two synchronized snapshots, a documented 8–15 minute trend, or reliable event-sequence evidence before treating live pressure or suppression as persistent.
+- Restrict long-horizon Under 1.5 recommendations after a big chance, penalty/VAR event, red card, material attacking change, high-tempo phase, or uncertain stoppage-time exposure.
+- Add an explicit late-goal and stoppage-time reserve to every live total and handicap.
+- Require an independently supported pathway for every additional goal needed by a wager.
+- Price controlled, chase, counterattack, aggregate-reset, and extra-time-acceptance branches separately in knockout matches.
+- Treat xG, xGOT, big chances, shots on target, box shots, box touches, and corners as correlated chance-cluster evidence.
+- Prefer protected quarter- or whole-goal lines when settlement-weighted value is comparable.
+- Tighten cross-league and regional-cup prematch side requirements.
+- Keep `LEAN — SMALL` at a maximum 0.125u and separate from official performance; `LEAN — WATCH` remains 0u.
+- Grade settled bets separately for result and process quality.
+
+**Expected benefit**
+
+Reduce false confidence from snapshots, improve late-tail calibration, preserve bankroll at common settlement boundaries, and produce cleaner performance attribution.
+
+**Possible downside**
+
+More opportunities will be passed, and waiting for persistence evidence may miss favorable live prices.
+
+**Review threshold**
+
+Review after 20 settled football wagers or 40 fully documented football scans.
+
+---
+
+## v0.2.11 — 2026-07-31
+
+### Mandatory football corner-market scan
+
+**Status:** Active evaluation rule  
+**Detailed implementation:** `MODEL_RULES_FOOTBALL_V0.2.11.md`
+
+**Triggering evidence**
+
+- The user requested that corner markets be evaluated across all football matches rather than only when a specific match happened to show a corner angle.
+- Existing analysis used corners mainly as supporting evidence for goal markets instead of pricing corner markets independently.
+
+**Previous rule**
+
+Corners appeared in the live evidence hierarchy, but previews and reassessments were not required to scan the bookmaker's corner markets.
+
+**New rule**
+
+- Scan available full-match, half, team, handicap, and remaining-match corner markets in every football preview and material live reassessment.
+- Price corners independently from match-result and goal-total opinions.
+- Use direct corner-generation evidence: current count, recent rate, crosses, blocked shots, byline entries, defensive clearances, width, score incentives, substitutions, and exact settlement basis.
+- Possession, xG, shots, and box touches cannot substitute for direct corner evidence.
+- Treat short corner sequences as correlated clusters and require persistence before live-over upgrades.
+- During initial calibration, maximum recommended corner exposure is normally 0.125u per match.
+
+**Expected benefit**
+
+Broaden market coverage while grounding recommendations in evidence specific to corner generation.
+
+**Possible downside**
+
+Corner rates are volatile, settlement definitions vary, and short live samples can be misleading.
+
+**Review threshold**
+
+Review after 20 settled corner wagers or 40 fully documented corner-market scans.
 
 ---
 
