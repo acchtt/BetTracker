@@ -1,6 +1,6 @@
 {
   "syncId": "eval-20260731-th-vitality-g2-th-plus-7-5-kills",
-  "updatedAt": "2026-07-31T16:18:00Z",
+  "updatedAt": "2026-07-31T16:32:00Z",
   "event": "Team Heretics vs Team Vitality — Game 2",
   "league": "LEC 2026",
   "competitionStage": "Best-of-three series; Game 2",
@@ -12,8 +12,11 @@
   "stakeUnits": 0.25,
   "potentialPayoutVnd": 233625,
   "potentialProfitVnd": 108625,
-  "status": "open",
-  "result": null,
+  "payoutVnd": 0,
+  "netProfitVnd": -125000,
+  "netUnits": -0.25,
+  "status": "loss",
+  "result": "User confirmed the wager lost. Team Vitality led 16-6 in kills at the reported settlement state, a 10-kill margin, so Team Heretics +7.5 kills was already losing by 2.5 adjusted kills. Exact final kill score was not supplied.",
   "eventDate": "2026-07-31",
   "marketType": "Kill handicap",
   "timing": "post-draft/pre-game",
@@ -34,7 +37,7 @@
     "Team Vitality_blue": ["Akali", "Lee Sin", "Aatrox", "Cassiopeia", "Nautilus"],
     "Team Heretics_red": ["Gnar", "Jarvan IV", "Galio", "Orianna", "Shen"]
   },
-  "teamStrengthPrior": "Team Vitality held a slight-to-moderate overall team-strength edge. Team Heretics' Game 2 global engage and counter-engage structure narrowed the kill-margin gap but did not erase Vitality's individual-damage advantage.",
+  "teamStrengthPrior": "Team Vitality held a slight-to-moderate overall team-strength edge. Team Heretics' Game 2 global engage and counter-engage structure narrowed the projected kill-margin gap but did not erase Vitality's individual-damage advantage.",
   "modelRecommendation": {
     "recommendationType": "lean",
     "modelVersion": "lol-v0.3.5",
@@ -58,6 +61,11 @@
     "attributionTier": "synchronized lean execution",
     "deviations": []
   },
+  "review": {
+    "resultAssessment": "At the reported 16-6 kill state, Vitality led by 10 kills and Team Heretics +7.5 was outside the winning margin. The user confirmed the bet lost.",
+    "processAssessment": "The model overvalued Team Heretics' engage layering and global response while overestimating practical damage conversion. Jarvan IV, Galio and Shen supplied setup and protection, but Team Heretics depended too heavily on Gnar and Orianna to deliver damage into Vitality's Aatrox, Akali and Cassiopeia. Once behind in gold and structures, the engage tools created entry without enough frontline kill speed or sustained carry output, leading to one-sided fight chains.",
+    "calibrationAction": "A composition with three utility or engage-focused champions should not pass the positive-handicap damage gate merely because it has layered initiation. Require two independent, high-uptime damage sources with realistic item access and frontline kill speed. When one source is conditional on transformation or setup and the other is a single control mage, cap the positive handicap at NO BET against a stronger multi-carry composition."
+  },
   "tags": [
     "evaluation",
     "official-after-user-confirmation",
@@ -71,11 +79,18 @@
     "synchronized-lean-execution",
     "price-improved",
     "within-stake-cap",
-    "open"
+    "damage-conversion-overestimated",
+    "utility-heavy-composition",
+    "insufficient-sustained-damage",
+    "user-confirmed-result",
+    "loss",
+    "settled"
   ],
-  "notes": "User confirmed Team Heretics +7.5 kills at 1.869 for 0.25u (125,000 VND), slip #1148732376. Potential payout is 233,625 VND and potential profit is 108,625 VND (+0.21725u). The odds moved immediately after the lean with no meaningful event, so the wager is classified as a synchronized lean execution rather than a stale-state deviation.",
+  "notes": "User confirmed Team Heretics +7.5 kills at 1.869 for 0.25u (125,000 VND), slip #1148732376, lost. At the reported settlement state Vitality led 16-6 in kills. Payout 0 VND; net loss 125,000 VND (-0.25u). Execution remained a synchronized lean execution; the loss is attributed to model draft and damage-conversion assessment rather than execution discipline.",
   "placedAt": "2026-07-31T23:18:00+07:00",
   "userConfirmedAt": "2026-07-31T23:18:00+07:00",
+  "settledAt": "2026-07-31T16:32:00Z",
+  "resultConfirmedAt": "2026-07-31T23:32:00+07:00",
   "addedAt": "2026-07-31T16:18:00Z",
   "createdAt": "2026-07-31T16:18:00Z"
 }
