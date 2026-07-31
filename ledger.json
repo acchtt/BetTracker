@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-31T19:25:00Z",
+  "version": "2026-07-31T19:34:00Z",
   "bets": [
     {
       "syncId": "football-20260731-vietnam-singapore-btts-no-175",
@@ -156,6 +156,376 @@
       "createdAt": "2026-07-31T19:25:00Z"
     },
     {
+      "syncId": "eval-20260801-mkoi-shft-g3-shft-plus-10-5-kills",
+      "updatedAt": "2026-08-01T02:34:00+07:00",
+      "event": "Movistar KOI vs Shifters — Game 3",
+      "league": "LEC 2026 Summer",
+      "competitionStage": "Best-of-three series; deciding Game 3",
+      "format": "Best-of-three series; Game 3",
+      "bet": "Shifters +10.5 kills",
+      "settlementBasis": "Shifters' final kill total plus 10.5 must exceed Movistar KOI's final kill total.",
+      "odds": 1.903,
+      "stakeVnd": 250000,
+      "stakeUnits": 0.25,
+      "unitValueVndAtPlacement": 1000000,
+      "potentialPayoutVnd": 475750,
+      "potentialProfitVnd": 225750,
+      "payoutVnd": 0,
+      "netProfitVnd": -250000,
+      "netUnits": -0.25,
+      "status": "loss",
+      "result": "User confirmed Shifters +10.5 kills lost. Exact final kill score was not supplied.",
+      "eventDate": "2026-08-01",
+      "marketType": "Kill handicap",
+      "timing": "live",
+      "bookmaker": "BK8",
+      "slipId": null,
+      "slipIdStatus": "not supplied",
+      "seriesState": "Series tied 1-1 before Game 3.",
+      "entryStateAtRecommendation": "At 3:19, Movistar KOI led 1-0 in kills and 5,888-5,677 in gold, a 211-gold lead. Towers and neutral objectives were 0-0.",
+      "placementState": "Not freshly synchronized. User confirmed placement at 1.903 after the displayed recommendation price of 2.086 had moved materially.",
+      "settlementEvidence": "User confirmed the wager lost at 2026-08-01 02:34 UTC+7. Exact final kills were not supplied.",
+      "sides": {
+        "Movistar KOI": "blue",
+        "Shifters": "red"
+      },
+      "draft": {
+        "MKOI_blue": [
+          "Rumble",
+          "Trundle",
+          "Taliyah",
+          "Sivir",
+          "Nautilus"
+        ],
+        "SHFT_red": [
+          "Varus",
+          "Wukong",
+          "Ryze",
+          "Kalista",
+          "Thresh"
+        ]
+      },
+      "teamStrengthPrior": "MKOI held a modest player-quality edge, but the series was tied and SHFT had demonstrated competitive macro in the first two games.",
+      "modelRecommendation": {
+        "recommendationType": "official bet",
+        "modelVersion": "lol-v0.3.7",
+        "market": "Shifters +10.5 kills",
+        "quotedOdds": 2.086,
+        "minimumAcceptableOdds": 1.6,
+        "stakeUnits": 0.25,
+        "stakeVnd": 250000,
+        "confidence": 7,
+        "reasoning": "At the synchronized 3:19 snapshot, the 211-gold MKOI lead was noise, no structures or objectives had been converted, and SHFT had two current functional damage sources through Kalista and Varus, with Ryze and Wukong adding further scaling and follow-up. The repeated-error functional-damage veto was not active, and an 11-kill MKOI margin lacked structural support."
+      },
+      "functionalDamageAssessment": {
+        "functionalNow": [
+          "Kalista",
+          "Varus"
+        ],
+        "conditionalOrFuture": [
+          "Ryze",
+          "Wukong"
+        ],
+        "utility": [
+          "Thresh"
+        ],
+        "firstReachableTargets": [
+          "Trundle",
+          "Nautilus",
+          "Rumble"
+        ],
+        "frontlineKillSpeed": "Initially rated credible through Kalista sustained damage and Varus, but this assessment failed to account for opposing champion counters and SHFT's weak space creation.",
+        "carryProtection": "Thresh lantern and peel, plus Wukong disruption, were insufficient against MKOI's layered control and zoning.",
+        "objectiveTimerVsItemTiming": "No forced major objective before SHFT's first useful breakpoints at the recommendation snapshot, but the draft's counter architecture prevented reliable damage delivery even when items became available.",
+        "observedConversionCount": 0,
+        "repeatedErrorVeto": false,
+        "correctedVetoUnderV038": true
+      },
+      "championCounterPostmortem": {
+        "classification": "model-selection and draft-counter error",
+        "activeRuleResponse": "LoL v0.3.8 champion-counter matrix and damage-delivery architecture veto",
+        "counterCluster": [
+          "Taliyah anti-dash control disrupted Wukong access and Kalista movement.",
+          "Trundle resistance theft punished Wukong as SHFT's only meaningful frontline and space creator.",
+          "Nautilus lockdown, Trundle pillar, Rumble zoning and Taliyah control compressed Kalista and Ryze uptime.",
+          "Sivir spell shield reduced the reliability of Thresh or Varus starting a clean fight."
+        ],
+        "correctDraftLabel": "Multiple nominal damage sources, weak space creation, one vulnerable engager, direct anti-dash and frontline counters, poor carry uptime and high one-sided-fight risk.",
+        "counterfactualDecision": "Under LoL v0.3.8, Shifters +10.5 kills would have been NO BET at draft unless two independent structured-fight conversions were observed."
+      },
+      "execution": {
+        "odds": 1.903,
+        "stakeUnits": 0.25,
+        "stakeVnd": 250000,
+        "unitValueVndAtPlacement": 1000000,
+        "sameMarketAndLine": true,
+        "withinStakeCap": true,
+        "priceAboveMinimum": true,
+        "priceBetterThanQuoted": false,
+        "stateSynchronized": false,
+        "quotedToAcceptedOddsMove": -0.183,
+        "impliedProbabilityAtQuotedPrice": 0.4794,
+        "impliedProbabilityAtAcceptedPrice": 0.5255,
+        "impliedProbabilityMovePercentagePoints": 4.61,
+        "mandatoryReassessmentTriggered": true,
+        "selectionAttribution": "model-generated market and line",
+        "stakeAttribution": "model-compliant",
+        "performanceAttribution": "official placed wager; model-selection error plus unsynchronized execution after a material adverse price move",
+        "deviations": [
+          "Accepted odds moved from 2.086 to 1.903, a 0.183 adverse move.",
+          "Implied probability moved by approximately 4.61 percentage points.",
+          "The active model required a fresh reassessment after an odds move of at least 0.10 or 3 implied-probability points.",
+          "No synchronized placement-state snapshot was supplied before execution."
+        ]
+      },
+      "review": {
+        "resultAssessment": "The positive kill handicap lost; exact final kills were not supplied.",
+        "processAssessment": "The model correctly checked nominal functional damage but failed to test whether SHFT could create space and deliver that damage through MKOI's champion-counter cluster. It also failed to enforce the mandatory fresh reassessment after the price moved materially from 2.086 to 1.903.",
+        "calibrationAction": "Apply LoL v0.3.8 before every actionable draft recommendation. Positive underdog kill handicaps are NO BET when the underdog lacks durable space creation, its carries must enter the opponent's strongest control range, and two or more counters attack the same engage or damage-delivery route without two observed structured-fight conversions."
+      },
+      "tags": [
+        "evaluation",
+        "official-after-user-confirmation",
+        "lol",
+        "lec",
+        "game-3",
+        "live",
+        "kill-handicap",
+        "positive-handicap",
+        "model-v0-3-7",
+        "model-v0-3-8-postmortem",
+        "model-compliant-stake",
+        "material-adverse-price-move",
+        "unsynchronized-execution",
+        "champion-counter-error",
+        "damage-delivery-architecture-error",
+        "model-selection-error",
+        "unit-basis-1000000-vnd",
+        "loss",
+        "settled"
+      ],
+      "notes": "User confirmed Shifters +10.5 kills at 1.903 for 0.25u (250,000 VND) lost. Return 0 VND; net loss 250,000 VND (-0.25u). The original synchronized recommendation was issued at 2.086. The 0.183 adverse move required a fresh reassessment, which did not occur. The deeper model error was failure to price MKOI's champion-counter cluster and SHFT's weak damage-delivery architecture. Under LoL v0.3.8, this market would have been NO BET at draft. Slip ID and exact final kill score remain unprovided.",
+      "userConfirmedAt": "2026-08-01T01:57:00+07:00",
+      "resultConfirmedAt": "2026-08-01T02:34:00+07:00",
+      "settledAt": "2026-08-01T02:34:00+07:00",
+      "addedAt": "2026-08-01T01:57:00+07:00",
+      "createdAt": "2026-08-01T01:57:00+07:00"
+    },
+    {
+      "syncId": "eval-20260801-mkoi-shft-g2-shft-plus-7-5-kills",
+      "updatedAt": "2026-08-01T01:37:00+07:00",
+      "event": "Movistar KOI vs Shifters — Game 2",
+      "league": "LEC 2026 Summer",
+      "competitionStage": "Best-of-three series; Game 2",
+      "format": "Best-of-three series; Game 2",
+      "bet": "Shifters +7.5 kills",
+      "settlementBasis": "Shifters' final kill total plus 7.5 must exceed Movistar KOI's final kill total.",
+      "odds": 1.927,
+      "stakeVnd": 250000,
+      "stakeUnits": 0.25,
+      "unitValueVndAtPlacement": 1000000,
+      "potentialPayoutVnd": 481750,
+      "potentialProfitVnd": 231750,
+      "payoutVnd": 0,
+      "netProfitVnd": -250000,
+      "netUnits": -0.25,
+      "status": "loss",
+      "result": "User confirmed the Shifters +7.5 kills wager lost; exact final kill score was not supplied.",
+      "profitLossVnd": -250000,
+      "profitLossUnits": -0.25,
+      "eventDate": "2026-08-01",
+      "marketType": "Kill handicap",
+      "timing": "live",
+      "bookmaker": "BK8",
+      "slipId": "1148791934",
+      "slipTimestampDisplayed": "08/01 02:15",
+      "entryState": "At 9:03, Movistar KOI led 3-2 in kills and approximately 16.3k to 15.1k in gold, with towers 0-0. MKOI had early objective progress but no tower conversion.",
+      "settlementEvidence": "User confirmed that the wager lost. Exact final kills were not supplied.",
+      "sides": {
+        "Shifters": "blue",
+        "Movistar KOI": "red"
+      },
+      "draft": {
+        "SHFT_blue": [
+          "K'Sante",
+          "Naafiri",
+          "Orianna",
+          "Ezreal",
+          "Alistar"
+        ],
+        "MKOI_red": [
+          "Jayce",
+          "Lee Sin",
+          "Galio",
+          "Lucian",
+          "Leona"
+        ]
+      },
+      "teamStrengthPrior": "Near-even live prior. MKOI retained the stronger individual roster, while Shifters' Game 1 macro reduced the original pre-series strength gap.",
+      "modelRecommendation": {
+        "recommendationType": "official bet",
+        "modelVersion": "lol-v0.3.6",
+        "market": "Shifters +7.5 kills",
+        "quotedOdds": 1.908,
+        "minimumAcceptableOdds": 1.6,
+        "stakeUnits": 0.25,
+        "stakeVnd": 250000,
+        "confidence": 6,
+        "reasoning": "The model incorrectly treated Naafiri, Orianna, and Ezreal as three credible current damage sources and overvalued the eight-kill protection."
+      },
+      "execution": {
+        "odds": 1.927,
+        "stakeUnits": 0.25,
+        "stakeVnd": 250000,
+        "unitValueVndAtPlacement": 1000000,
+        "sameMarketAndLine": true,
+        "priceAboveMinimum": true,
+        "priceBetterThanQuoted": true,
+        "stateSynchronized": true,
+        "priceMoveClassification": "minor favorable move of 0.019, below the 0.10 mandatory reassessment threshold",
+        "selectionAttribution": "model-approved exact",
+        "stakeAttribution": "model-compliant",
+        "performanceAttribution": "model-approved selection and stake",
+        "withinStakeCap": true,
+        "deviations": []
+      },
+      "postmortem": {
+        "classification": "model-selection error",
+        "repeatedPattern": true,
+        "priorAnalog": "Team Heretics vs Vitality Game 2",
+        "error": "The model counted nominal champion damage rather than functional damage against the opposing frontline, peel, access denial, item timings, and forced objective schedule.",
+        "ruleResponse": "Superseded by LoL v0.3.7 functional-damage and positive-handicap veto rules."
+      },
+      "tags": [
+        "evaluation",
+        "official-after-user-confirmation",
+        "lol",
+        "lec",
+        "game-2",
+        "live",
+        "kill-handicap",
+        "model-v0-3-6",
+        "model-approved-selection",
+        "model-compliant-stake",
+        "model-selection-error",
+        "repeated-damage-conversion-error",
+        "unit-basis-1000000-vnd",
+        "settled",
+        "loss"
+      ],
+      "notes": "User confirmed Shifters +7.5 kills at 1.927 for 0.25u (250,000 VND), slip #1148791934, and later confirmed the wager lost. The loss is recorded as a model-selection error and triggered LoL v0.3.7.",
+      "userConfirmedAt": "2026-08-01T01:15:00+07:00",
+      "settledAt": "2026-08-01T01:30:00+07:00",
+      "addedAt": "2026-08-01T01:15:00+07:00",
+      "createdAt": "2026-08-01T01:15:00+07:00"
+    },
+    {
+      "syncId": "eval-20260801-mkoi-shft-g1-mkoi-ml",
+      "updatedAt": "2026-08-01T00:42:00+07:00",
+      "event": "Movistar KOI vs Shifters — Game 1",
+      "league": "LEC 2026 Summer",
+      "competitionStage": "Best-of-three series; Game 1",
+      "format": "Best-of-three series; Game 1",
+      "bet": "Movistar KOI Game 1 moneyline",
+      "settlementBasis": "Movistar KOI must win Game 1.",
+      "odds": 1.88,
+      "stakeVnd": 500000,
+      "stakeUnits": 1.0,
+      "potentialPayoutVnd": 940000,
+      "potentialProfitVnd": 440000,
+      "payoutVnd": 0,
+      "netProfitVnd": -500000,
+      "netUnits": -1.0,
+      "status": "loss",
+      "result": "Shifters won Game 1. Exact final kill score was not supplied; the last confirmed live state was SHFT 18-12 MKOI at 40:07.",
+      "eventDate": "2026-08-01",
+      "marketType": "Moneyline",
+      "timing": "live",
+      "bookmaker": "BK8",
+      "slipId": "1148769469",
+      "entryState": "At 14:34, Shifters led 4-2 in kills, gold was nearly even at approximately SHFT 25.4k to MKOI 25.1k, and MKOI led towers 1-0. The recommendation was based on MKOI's structural conversion despite the kill deficit.",
+      "rosterStatus": "user-confirmed",
+      "sides": {
+        "Movistar KOI": "blue",
+        "Shifters": "red"
+      },
+      "draft": {
+        "MKOI_blue": [
+          "Ambessa",
+          "Vi",
+          "Viktor",
+          "Ziggs",
+          "Shen"
+        ],
+        "SHFT_red": [
+          "Gnar",
+          "Olaf",
+          "Cassiopeia",
+          "Vladimir",
+          "Rell"
+        ]
+      },
+      "teamStrengthPrior": "Movistar KOI held a material pre-series team-strength edge, while Shifters showed the stronger map-specific macro execution and long-fight draft in Game 1.",
+      "modelRecommendation": {
+        "recommendationType": "official bet",
+        "modelVersion": "lol-v0.3.5",
+        "market": "Movistar KOI Game 1 moneyline",
+        "quotedOdds": 1.791,
+        "minimumAcceptableOdds": 1.6,
+        "stakeUnits": 0.25,
+        "confidence": 6,
+        "reasoning": "MKOI had structural confirmation through a 1-0 tower lead and nearly even gold despite trailing 4-2 in kills. Ziggs tower pressure, Viktor wave-clear, Vi-Shen pick tools, and the stronger team-strength prior created a credible conversion path."
+      },
+      "execution": {
+        "odds": 1.88,
+        "stakeUnits": 1.0,
+        "stakeVnd": 500000,
+        "sameMarketAndLine": true,
+        "priceAboveMinimum": true,
+        "priceBetterThanQuoted": true,
+        "stateSynchronized": true,
+        "priceMoveClassification": "minor favorable move of 0.089, below the 0.10 mandatory reassessment threshold",
+        "selectionAttribution": "model-approved exact",
+        "stakeAttribution": "user stake override above model cap",
+        "performanceAttribution": "split attribution: market selection model-approved; actual stake sizing tracked separately",
+        "withinStakeCap": false,
+        "deviations": [
+          "actual stake was 1.0u versus the model-recommended 0.25u"
+        ]
+      },
+      "review": {
+        "resultAssessment": "MKOI lost Game 1 after Shifters converted the stronger objective, tower and late-game teamfight state.",
+        "processAssessment": "The model over-weighted MKOI's generic team-strength prior and the early 1-0 tower lead while under-weighting Shifters' demonstrated macro control and stronger extended-fight composition through Gnar, Olaf, Cassiopeia, Vladimir and Rell.",
+        "calibrationAction": "After 25 minutes, express gold leads as a percentage of team gold. Treat leads below about 3% as near-even unless concentrated on a decisive carry or tied to a major item breakpoint. Give current-map objective control, tower access and late-game composition at least equal weight to generic team reputation."
+      },
+      "tags": [
+        "evaluation",
+        "official-after-user-confirmation",
+        "lol",
+        "lec",
+        "game-1",
+        "live",
+        "moneyline",
+        "model-v0-3-5",
+        "model-approved-selection",
+        "split-attribution",
+        "stake-override",
+        "above-model-cap",
+        "loss",
+        "settled",
+        "team-strength-overweighted",
+        "macro-control-underweighted",
+        "late-game-gold-percentage-rule"
+      ],
+      "notes": "User confirmed Movistar KOI Game 1 moneyline at 1.880 for 1.0u (500,000 VND), slip #1148769469, lost. Return 0 VND and net loss 500,000 VND (-1.0u). The generic user-executed classification remains removed. Market selection is recorded as model-approved exact; stake sizing is tracked separately as a 1.0u override above the model's 0.25u recommendation.",
+      "placedAt": "2026-08-01T01:45:00+07:00",
+      "userConfirmedAt": "2026-08-01T00:17:00+07:00",
+      "settledAt": "2026-08-01T00:42:00+07:00",
+      "resultConfirmedAt": "2026-08-01T00:42:00+07:00",
+      "addedAt": "2026-08-01T00:17:00+07:00",
+      "createdAt": "2026-08-01T00:17:00+07:00"
+    },
+    {
       "syncId": "football-20260801-valerenga-hamkam-under-3-210",
       "updatedAt": "2026-07-31T19:03:00Z",
       "event": "Valerenga vs HamKam",
@@ -259,6 +629,251 @@
       "finalScore": "Valerenga 0-3 HamKam",
       "finalTotalGoals": 3,
       "settlementType": "push"
+    },
+    {
+      "syncId": "eval-20260731-th-vitality-g2-th-plus-7-5-kills",
+      "updatedAt": "2026-07-31T16:32:00Z",
+      "event": "Team Heretics vs Team Vitality — Game 2",
+      "league": "LEC 2026",
+      "competitionStage": "Best-of-three series; Game 2",
+      "format": "Best-of-three series; Game 2 after Team Vitality won Game 1",
+      "bet": "Team Heretics +7.5 kills",
+      "settlementBasis": "Team Heretics wins if its final kill total is no more than 7 below Team Vitality; loses if Team Vitality finishes at least 8 kills ahead.",
+      "odds": 1.869,
+      "stakeVnd": 125000,
+      "stakeUnits": 0.25,
+      "potentialPayoutVnd": 233625,
+      "potentialProfitVnd": 108625,
+      "payoutVnd": 0,
+      "netProfitVnd": -125000,
+      "netUnits": -0.25,
+      "status": "loss",
+      "result": "User confirmed the wager lost. Team Vitality led 16-6 in kills at the reported settlement state, a 10-kill margin, so Team Heretics +7.5 kills was already losing by 2.5 adjusted kills. Exact final kill score was not supplied.",
+      "eventDate": "2026-07-31",
+      "marketType": "Kill handicap",
+      "timing": "post-draft/pre-game",
+      "bookmaker": "BK8",
+      "slipId": "1148732376",
+      "seriesState": "Team Vitality led the series 1-0 after Game 1.",
+      "entryState": "Post-draft before any reported meaningful Game 2 event. The price moved immediately from 1.719 to 1.869 with the same draft, side selection, market and line, and no intervening meaningful game event.",
+      "rosterStatus": "user-confirmed",
+      "roster": {
+        "Team Heretics": [
+          "Tracyn",
+          "Daglas",
+          "Serin",
+          "Hype",
+          "Way"
+        ],
+        "Team Vitality": [
+          "Naak Nako",
+          "Lyncas",
+          "FIESTA",
+          "Carzzy",
+          "Fleshy"
+        ]
+      },
+      "sides": {
+        "Team Vitality": "blue",
+        "Team Heretics": "red"
+      },
+      "draft": {
+        "Team Vitality_blue": [
+          "Akali",
+          "Lee Sin",
+          "Aatrox",
+          "Cassiopeia",
+          "Nautilus"
+        ],
+        "Team Heretics_red": [
+          "Gnar",
+          "Jarvan IV",
+          "Galio",
+          "Orianna",
+          "Shen"
+        ]
+      },
+      "teamStrengthPrior": "Team Vitality held a slight-to-moderate overall team-strength edge. Team Heretics' Game 2 global engage and counter-engage structure narrowed the projected kill-margin gap but did not erase Vitality's individual-damage advantage.",
+      "modelRecommendation": {
+        "recommendationType": "lean",
+        "modelVersion": "lol-v0.3.5",
+        "market": "Team Heretics +7.5 kills",
+        "quotedOdds": 1.719,
+        "minimumAcceptableOdds": 1.6,
+        "stakeUnits": 0.25,
+        "confidence": 6,
+        "reasoning": "Team Heretics had a coherent Jarvan IV-Galio-Shen engage and global system, with Gnar and Orianna supplying layered follow-up. Vitality had the stronger individual damage profile through Akali, Aatrox and Cassiopeia, so the protected +7.5 line was preferred over the moneyline."
+      },
+      "execution": {
+        "odds": 1.869,
+        "stakeUnits": 0.25,
+        "stakeVnd": 125000,
+        "sameMarketAndLine": true,
+        "withinStakeCap": true,
+        "priceAboveMinimum": true,
+        "priceBetterThanQuoted": true,
+        "stateSynchronized": true,
+        "priceMoveClassification": "material favorable price move immediately after recommendation with no reported meaningful intervening event; same state revalidated",
+        "attributionTier": "synchronized lean execution",
+        "deviations": []
+      },
+      "review": {
+        "resultAssessment": "At the reported 16-6 kill state, Vitality led by 10 kills and Team Heretics +7.5 was outside the winning margin. The user confirmed the bet lost.",
+        "processAssessment": "The model overvalued Team Heretics' engage layering and global response while overestimating practical damage conversion. Jarvan IV, Galio and Shen supplied setup and protection, but Team Heretics depended too heavily on Gnar and Orianna to deliver damage into Vitality's Aatrox, Akali and Cassiopeia. Once behind in gold and structures, the engage tools created entry without enough frontline kill speed or sustained carry output, leading to one-sided fight chains.",
+        "calibrationAction": "A composition with three utility or engage-focused champions should not pass the positive-handicap damage gate merely because it has layered initiation. Require two independent, high-uptime damage sources with realistic item access and frontline kill speed. When one source is conditional on transformation or setup and the other is a single control mage, cap the positive handicap at NO BET against a stronger multi-carry composition."
+      },
+      "tags": [
+        "evaluation",
+        "official-after-user-confirmation",
+        "lol",
+        "lec",
+        "game-2",
+        "post-draft",
+        "kill-handicap",
+        "positive-handicap",
+        "model-v0-3-5",
+        "synchronized-lean-execution",
+        "price-improved",
+        "within-stake-cap",
+        "damage-conversion-overestimated",
+        "utility-heavy-composition",
+        "insufficient-sustained-damage",
+        "user-confirmed-result",
+        "loss",
+        "settled"
+      ],
+      "notes": "User confirmed Team Heretics +7.5 kills at 1.869 for 0.25u (125,000 VND), slip #1148732376, lost. At the reported settlement state Vitality led 16-6 in kills. Payout 0 VND; net loss 125,000 VND (-0.25u). Execution remained a synchronized lean execution; the loss is attributed to model draft and damage-conversion assessment rather than execution discipline.",
+      "placedAt": "2026-07-31T23:18:00+07:00",
+      "userConfirmedAt": "2026-07-31T23:18:00+07:00",
+      "settledAt": "2026-07-31T16:32:00Z",
+      "resultConfirmedAt": "2026-07-31T23:32:00+07:00",
+      "addedAt": "2026-07-31T16:18:00Z",
+      "createdAt": "2026-07-31T16:18:00Z"
+    },
+    {
+      "syncId": "eval-20260731-th-vitality-g1-th-plus-7-5-kills",
+      "updatedAt": "2026-07-31T15:53:00Z",
+      "event": "Team Heretics vs Team Vitality — Game 1",
+      "league": "LEC 2026",
+      "competitionStage": "Best-of-three series; Game 1",
+      "format": "Best-of-three series; Game 1",
+      "bet": "Team Heretics +7.5 kills",
+      "settlementBasis": "Team Heretics wins if its final kill total is no more than 7 below Team Vitality; loses if Team Vitality finishes at least 8 kills ahead.",
+      "odds": 2.012,
+      "stakeVnd": 500000,
+      "stakeUnits": 1.0,
+      "potentialPayoutVnd": 1006000,
+      "potentialProfitVnd": 506000,
+      "payoutVnd": 1006000,
+      "netProfitVnd": 506000,
+      "netUnits": 1.012,
+      "status": "win",
+      "result": "Team Heretics finished 9-10 in kills against Team Vitality; Team Heretics +7.5 kills won by 6.5 adjusted kills.",
+      "eventDate": "2026-07-31",
+      "marketType": "Kill handicap",
+      "timing": "post-draft/pre-game",
+      "bookmaker": "BK8",
+      "slipId": null,
+      "entryState": "Post-draft before any reported meaningful Game 1 event.",
+      "finalKills": {
+        "Team Heretics": 9,
+        "Team Vitality": 10,
+        "rawMarginAgainstTeamHeretics": 1,
+        "adjustedMarginForTeamHeretics": 6.5
+      },
+      "rosterStatus": "user-confirmed",
+      "roster": {
+        "Team Heretics": [
+          "Tracyn",
+          "Daglas",
+          "Serin",
+          "Hype",
+          "Way"
+        ],
+        "Team Vitality": [
+          "Naak Nako",
+          "Lyncas",
+          "FIESTA",
+          "Carzzy",
+          "Fleshy"
+        ]
+      },
+      "sides": {
+        "Team Heretics": "blue",
+        "Team Vitality": "red"
+      },
+      "draft": {
+        "Team Heretics_blue": [
+          "K'Sante",
+          "Xin Zhao",
+          "Jayce",
+          "Ziggs",
+          "Leona"
+        ],
+        "Team Vitality_red": [
+          "Yorick",
+          "Pantheon",
+          "Syndra",
+          "Sivir",
+          "Rell"
+        ]
+      },
+      "teamStrengthPrior": "Team Vitality held a slight-to-moderate overall team-strength edge, while the completed draft narrowed the gap for structured fights.",
+      "modelRecommendation": {
+        "recommendationType": "official bet",
+        "modelVersion": "lol-v0.3.5",
+        "market": "Team Heretics +7.5 kills",
+        "quotedOdds": 2.03,
+        "minimumAcceptableOdds": 1.6,
+        "stakeUnits": 0.25,
+        "confidence": 6,
+        "reasoning": "Team Heretics passed the damage-conversion gate through Jayce and Ziggs as two credible damage sources, with K'Sante-Xin Zhao-Leona providing frontline, engage and carry protection. Vitality had strong initiation and side-lane pressure, but only Rell as a durable conventional frontline. The +7.5 line offered protection against a Vitality macro win without a large kill margin."
+      },
+      "execution": {
+        "odds": 2.012,
+        "stakeUnits": 1.0,
+        "stakeVnd": 500000,
+        "sameMarketAndLine": true,
+        "withinStakeCap": false,
+        "priceAboveMinimum": true,
+        "priceBetterThanQuoted": false,
+        "stateSynchronized": true,
+        "priceMoveClassification": "minor adverse price drift of 0.018 with no reported meaningful intervening event",
+        "attributionTier": "user-executed deviation",
+        "deviations": [
+          "actual stake was 1.0u, four times the 0.25u model recommendation and above the active 0.25u evaluation cap"
+        ]
+      },
+      "review": {
+        "resultAssessment": "Team Heretics lost the raw kill score by only one, 9-10, so the +7.5 handicap won comfortably.",
+        "processAssessment": "The market-selection thesis was correct: Team Heretics had enough damage access and fight structure to remain close in kills, while Vitality's composition did not create a large kill-margin outcome.",
+        "attributionAssessment": "The market and state were model-approved, but the actual 1.0u stake exceeded the 0.25u evaluation cap. The wager is therefore recorded as a user-executed deviation for performance attribution despite the winning selection.",
+        "calibrationAction": "Retain the v0.3.5 damage-conversion and market-selection gates. Do not use this oversized win to justify increasing the evaluation stake cap."
+      },
+      "tags": [
+        "evaluation",
+        "official-after-user-confirmation",
+        "lol",
+        "lec",
+        "game-1",
+        "post-draft",
+        "kill-handicap",
+        "positive-handicap",
+        "model-v0-3-5",
+        "damage-conversion-gate-passed",
+        "user-executed-deviation",
+        "stake-above-cap",
+        "user-confirmed-result",
+        "win",
+        "settled"
+      ],
+      "notes": "User corrected the actual stake to 1.0u (500,000 VND) and confirmed the bet won with final kills Team Heretics 9-10 Team Vitality. At odds 2.012, payout was 1,006,000 VND and net profit was 506,000 VND (+1.012u). The model recommendation was 0.25u, so the execution is classified as a user-executed deviation due to stake size. Slip ID remains unprovided.",
+      "placedAt": "2026-07-31T22:10:00+07:00",
+      "userConfirmedAt": "2026-07-31T22:10:00+07:00",
+      "resultConfirmedAt": "2026-07-31T22:53:00+07:00",
+      "settledAt": "2026-07-31T15:53:00Z",
+      "addedAt": "2026-07-31T15:10:00Z",
+      "createdAt": "2026-07-31T15:10:00Z"
     },
     {
       "syncId": "eval-20260731-blg-we-g2-we-plus-6-5-kills",
@@ -4260,15 +4875,21 @@
       "pending/2026-07-31-ktc-vs-dnsc-game2-dnsc-plus-5-5-kills-settlement.json",
       "pending/2026-07-31-ktc-vs-dnsc-game2-dnsc-plus-5-5-kills.json",
       "pending/2026-07-31-ktc-vs-dnsc-game3-dnsc-ml-settlement.json",
+      "pending/2026-08-01-mkoi-shft-g2-shft-plus7-5-settlement-sync.json",
       "pending/2026-08-01-valerenga-hamkam-red-card-minute-correction.json",
       "pending/2026-08-01-valerenga-hamkam-under3-correction.json",
       "pending/2026-08-01-valerenga-hamkam-under3-settlement.json",
       "pending/eval-20260731-blg-we-g2-we-plus-6-5-kills.json",
       "pending/eval-20260731-bro-krx-g1-krx-plus-7-5-kills.json",
       "pending/eval-20260731-bro-krx-g2-over-33-minutes.json",
-      "pending/eval-20260731-bro-krx-g3-bro-ml.json"
+      "pending/eval-20260731-bro-krx-g3-bro-ml.json",
+      "pending/eval-20260731-th-vitality-g1-th-plus-7-5-kills.json",
+      "pending/eval-20260731-th-vitality-g2-th-plus-7-5-kills.json",
+      "pending/eval-20260801-mkoi-shft-g1-mkoi-ml.json",
+      "pending/eval-20260801-mkoi-shft-g2-shft-plus-7-5-kills.json",
+      "pending/eval-20260801-mkoi-shft-g3-shft-plus-10-5-kills.json"
     ],
-    "officialRecordsAdded": 0,
+    "officialRecordsAdded": 5,
     "officialRecordsUpdated": 23
   }
 }
