@@ -7,8 +7,10 @@
   "odds": 1.72,
   "stakeVnd": 125000,
   "stakeUnits": 0.25,
-  "status": "open",
-  "result": null,
+  "status": "settled",
+  "result": "win",
+  "profitLossVnd": 90000,
+  "profitLossUnits": 0.18,
   "eventDate": "2026-07-31",
   "timing": "live",
   "slipId": "1148586794",
@@ -17,6 +19,7 @@
   "seriesScoreAtEntry": "BRO 1-0 KRX",
   "gameTimeAtAnalysis": "19:30",
   "liveStateAtAnalysis": "KRX 5-4 BRO kills; KRX 35.0k-33.6k gold; KRX 1-0 towers; KRX first blood, first dragon, first Rift Herald",
+  "settlementBasis": "Game duration exceeded 33:00; final score and winner were not relevant to settlement.",
   "lineup": {
     "KRX": "confirmed lineup with Aiming replacing LazyFeel",
     "BRO": "confirmed"
@@ -30,5 +33,5 @@
   "modelRecommendedStakeUnits": 0.25,
   "executionDeviation": "None; user executed at improved odds 1.720 and the recommended 0.25u stake.",
   "reasoning": "BRO had the stronger team-strength prior, while Anivia wave-clear and a close gold state with only one tower down provided two independent stall indicators for the duration over.",
-  "tags": ["official","model-generated","live-read","duration-market","team-strength-prior","execution-at-or-above-recommended-price"]
+  "tags": ["official","model-generated","live-read","duration-market","team-strength-prior","execution-at-or-above-recommended-price","settled-win"]
 }
