@@ -74,7 +74,9 @@
         "win",
         "settled"
       ],
-      "notes": "User supplied sportsbook settlement for Vietnam vs Singapore BTTS No at 1.75. Stake display 500.00 is recorded under the project convention as 500,000 VND = 0.50u. Return 875,000 VND; net profit 375,000 VND (+0.375u). Bet slip #871012901484904449; settlement slip #871012901484904448."
+      "notes": "User supplied sportsbook settlement for Vietnam vs Singapore BTTS No at 1.75. Stake display 500.00 is recorded under the project convention as 500,000 VND = 0.50u. Return 875,000 VND; net profit 375,000 VND (+0.375u). Bet slip #871012901484904449; settlement slip #871012901484904448.",
+      "addedAt": "2026-07-31T19:25:00Z",
+      "createdAt": "2026-07-31T19:25:00Z"
     },
     {
       "syncId": "football-20260731-vietnam-singapore-under-3-75-187",
@@ -149,7 +151,9 @@
         "win",
         "settled"
       ],
-      "notes": "User supplied sportsbook settlement for Vietnam vs Singapore Under 3.75 at 1.87. Stake display 1,000.00 is recorded under the project convention as 1,000,000 VND = 1.00u. Return 1,870,000 VND; net profit 870,000 VND (+0.87u). Bet slip #871012441969049601; settlement slip #871012441969049600. The sportsbook result field displayed 0-0."
+      "notes": "User supplied sportsbook settlement for Vietnam vs Singapore Under 3.75 at 1.87. Stake display 1,000.00 is recorded under the project convention as 1,000,000 VND = 1.00u. Return 1,870,000 VND; net profit 870,000 VND (+0.87u). Bet slip #871012441969049601; settlement slip #871012441969049600. The sportsbook result field displayed 0-0.",
+      "addedAt": "2026-07-31T19:25:00Z",
+      "createdAt": "2026-07-31T19:25:00Z"
     },
     {
       "syncId": "football-20260801-valerenga-hamkam-under-3-210",
@@ -4262,10 +4266,9 @@
       "pending/eval-20260731-blg-we-g2-we-plus-6-5-kills.json",
       "pending/eval-20260731-bro-krx-g1-krx-plus-7-5-kills.json",
       "pending/eval-20260731-bro-krx-g2-over-33-minutes.json",
-      "pending/eval-20260731-bro-krx-g3-bro-ml.json",
-      "pending/2026-08-01-vietnam-singapore-two-settled-bets.json"
+      "pending/eval-20260731-bro-krx-g3-bro-ml.json"
     ],
-    "officialRecordsAdded": 2,
+    "officialRecordsAdded": 0,
     "officialRecordsUpdated": 23
   }
 }
