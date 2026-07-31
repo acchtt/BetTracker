@@ -38,3 +38,5 @@ jobs:
           git add ledger.json
           git commit -m "Merge pending bets into authoritative ledger"
           git push
+
+# Manual refresh: 2026-08-01T01:45:00+07:00
