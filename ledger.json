@@ -1,9 +1,9 @@
 {
-  "version": "2026-07-31T18:55:00Z",
+  "version": "2026-07-31T19:03:00Z",
   "bets": [
     {
       "syncId": "football-20260801-valerenga-hamkam-under-3-210",
-      "updatedAt": "2026-07-31T18:55:00Z",
+      "updatedAt": "2026-07-31T19:03:00Z",
       "event": "Valerenga vs HamKam",
       "league": "Norway Eliteserien 2026",
       "competitionStage": "Round 16",
@@ -60,9 +60,9 @@
         "reviewAfterSettlement": true,
         "timingAttribution": "Model delivery failure: the recommendation arrived after kickoff without a fresh synchronized live-state assessment.",
         "resultAssessment": "The match finished with exactly three total goals, so Under 3 returned the full stake.",
-        "processAssessment": "The whole-goal line protection worked at the exact boundary and prevented a full loss. However, the recommendation was delivered after kickoff without synchronized live data, so the execution cannot be treated as a clean model sample. Valerenga's red card at 44 minutes and HamKam's goal at 45+3 materially increased the second-half scoring tail.",
+        "processAssessment": "The whole-goal line protection worked at the exact boundary and prevented a full loss. The user corrected the Valerenga red-card minute to 15, not 44. By the 44:29 screenshot, Valerenga had already played roughly 29 minutes with ten players while the score remained 0-0. That created a distinct post-red-card over-watch state that the model failed to recognize because it misread the event timing.",
         "lineSelectionAssessment": "Under 3 was materially safer than Under 2.5 for the realized outcome; Under 2.5 would have lost while Under 3 pushed.",
-        "calibrationAction": "No new model rule from this result. Enforce the existing kickoff-status gate: once a match has started, require current score, minute, odds and live state before issuing an actionable recommendation."
+        "calibrationAction": "Deterministic data correction: verify the exact card minute from the event timeline rather than inferring it from the lineup panel. For red cards before minute 30, open a separate over-watch branch after 10-15 minutes of post-card stabilization and reprice the live total as the line decays. Do not automatically bet the over; require current score, minute, odds, post-card chance quality and settlement-weighted edge."
       },
       "tags": [
         "football",
@@ -81,19 +81,22 @@
         "stake-above-lean-recommendation",
         "within-football-cap",
         "unit-basis-1000000-vnd",
-        "red-card-state-change",
+        "red-card-15th-minute",
+        "early-red-card",
+        "red-card-minute-correction",
+        "post-red-card-over-watch",
         "first-half-stoppage-time-goal",
         "boundary-protection-worked",
         "user-confirmed-result",
         "push",
         "settled"
       ],
-      "notes": "User confirmed final score Valerenga 0-3 HamKam. Under 3 at 2.10 for 250,000 VND (0.25u under the 1,000,000 VND unit convention), slip #871076012434309120, pushed. Payout 250,000 VND; net profit/loss 0 VND (0.00u). The whole-goal line protected the exact three-goal outcome. The pick arrived after kickoff without synchronized live state, so the record retains model-timing-failure attribution. Valerenga received a red card at 44 minutes and HamKam scored at 45+3.",
+      "notes": "User confirmed final score Valerenga 0-3 HamKam. Under 3 at 2.10 for 250,000 VND (0.25u under the 1,000,000 VND unit convention), slip #871076012434309120, pushed. Payout 250,000 VND; net profit/loss 0 VND (0.00u). The user corrected the Valerenga red card to the 15th minute, not the 44th minute. HamKam scored at 45+3. At 44:29, the available live totals included Over 1.5 at 1.76, Over 1.75 at 2.05 and Over 2 at 2.49; this should have triggered a separate post-red-card over reassessment, though the existing Under 3 position and 0.25u exposure cap would still have constrained any additional bet.",
       "addedAt": "2026-07-31T17:05:00Z",
       "createdAt": "2026-07-31T17:05:00Z",
       "unitValueVndAtPlacement": 1000000,
       "matchEvents": {
-        "valerengaRedCard": "44th minute",
+        "valerengaRedCard": "15th minute",
         "hamKamFirstGoal": "45+3",
         "finalScore": "Valerenga 0-3 HamKam"
       },
@@ -4103,6 +4106,7 @@
       "pending/2026-07-31-ktc-vs-dnsc-game2-dnsc-plus-5-5-kills-settlement.json",
       "pending/2026-07-31-ktc-vs-dnsc-game2-dnsc-plus-5-5-kills.json",
       "pending/2026-07-31-ktc-vs-dnsc-game3-dnsc-ml-settlement.json",
+      "pending/2026-08-01-valerenga-hamkam-red-card-minute-correction.json",
       "pending/2026-08-01-valerenga-hamkam-under3-correction.json",
       "pending/2026-08-01-valerenga-hamkam-under3-settlement.json",
       "pending/eval-20260731-blg-we-g2-we-plus-6-5-kills.json",
