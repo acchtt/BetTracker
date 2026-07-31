@@ -1,9 +1,9 @@
 {
-  "version": "2026-07-31T02:47:00Z",
+  "version": "2026-07-31T05:01:00Z",
   "bets": [
     {
       "syncId": "eval-20260731-municipal-cartagines-moneyline",
-      "updatedAt": "2026-07-31T02:47:00Z",
+      "updatedAt": "2026-07-31T05:01:00Z",
       "event": "Municipal vs Cartagines",
       "league": "CONCACAF Central American Cup",
       "competitionStage": "Group stage, Matchday 1",
@@ -14,8 +14,8 @@
       "stakeUnits": 0.126,
       "potentialPayoutVnd": 120960,
       "potentialProfitVnd": 57960,
-      "status": "pending",
-      "result": "Pending",
+      "status": "loss",
+      "result": "Municipal 1-1 Cartagines after 90 minutes (Loss; Municipal moneyline)",
       "eventDate": "2026-07-31",
       "marketType": "1X2",
       "timing": "prematch",
@@ -67,13 +67,30 @@
         "price-better-than-quoted",
         "within-stake-cap",
         "user-execution-clean",
-        "pending"
+        "loss",
+        "settled",
+        "full-loss",
+        "user-confirmed-result",
+        "final-score-confirmed"
       ],
-      "notes": "User confirmed sportsbook acceptance of Municipal 1X2 at 1.92 for 63,000 VND (0.126u), slip #870860089261707264. The model recommendation was LEAN — SMALL Municipal -0.5 at 1.91, executable at 1.88+, for 0.125u. Municipal moneyline and Municipal -0.5 are settlement-equivalent in regulation time, and the accepted price was better. The 500 VND stake difference is normal rounding. Potential payout is 120,960 VND and potential profit is 57,960 VND (+0.11592u).",
+      "notes": "User confirmed sportsbook acceptance of Municipal 1X2 at 1.92 for 63,000 VND (0.126u), slip #870860089261707264. The model recommendation was LEAN — SMALL Municipal -0.5 at 1.91, executable at 1.88+, for 0.125u. Municipal moneyline and Municipal -0.5 are settlement-equivalent in regulation time, and the accepted price was better. The 500 VND stake difference is normal rounding. Potential payout is 120,960 VND and potential profit is 57,960 VND (+0.11592u). Settlement confirmed by the user: Municipal 1-1 Cartagines after 90 minutes. Municipal moneyline lost. Return 0 VND; net loss 63,000 VND (-0.126u).",
       "placedAt": "2026-07-31T09:47:00+07:00",
       "userConfirmedAt": "2026-07-31T09:47:00+07:00",
       "addedAt": "2026-07-31T02:47:00Z",
-      "createdAt": "2026-07-31T02:47:00Z"
+      "createdAt": "2026-07-31T02:47:00Z",
+      "settlementType": "full_loss",
+      "payoutVnd": 0,
+      "profitVnd": -63000,
+      "profitUnits": -0.126,
+      "netProfitVnd": -63000,
+      "netUnits": -0.126,
+      "settledAt": "2026-07-31T05:01:00Z",
+      "finalScore": "Municipal 1-1 Cartagines",
+      "review": {
+        "resultAssessment": "Municipal moneyline lost because the match finished 1-1 after 90 minutes plus stoppage time.",
+        "processAssessment": "The wager was a LEAN — SMALL rather than an OFFICIAL BET because the estimated edge was modest and cross-league regional-cup uncertainty was material. The draw outcome falls inside that uncertainty and does not by itself invalidate the reduced-stake classification.",
+        "executionAssessment": "Execution was clean: Municipal 1X2 was settlement-equivalent to Municipal -0.5, the accepted odds improved from 1.91 to 1.92, and the 63,000 VND stake was normal rounding from 0.125u."
+      }
     },
     {
       "syncId": "eval-20260731-ohiggins-boca-under-1-25",
