@@ -1,0 +1,29 @@
+{
+  "syncId": "eval-20260731-bro-krx-g1-krx-plus-7-5-kills",
+  "event": "HANJIN BRION vs Kiwoom DRX",
+  "competition": "LCK 2026 Rounds 3-4",
+  "map": "Game 1",
+  "market": "Kiwoom DRX +7.5 kills",
+  "odds": 2.132,
+  "stakeVnd": 150000,
+  "stakeUnits": 0.30,
+  "status": "open",
+  "result": null,
+  "eventDate": "2026-07-31",
+  "timing": "live",
+  "slipId": "1148540773",
+  "potentialPayoutVnd": 319800,
+  "bookmaker": "BK8",
+  "gameTimeAtAnalysis": "14:23",
+  "liveStateAtAnalysis": "BRO 4-3 KRX kills; BRO 26.1k-24.1k gold; KRX 1 dragon; no towers shown",
+  "draft": {
+    "KRX_blue": "Ambessa / Naafiri / Cassiopeia / Jhin / Nautilus",
+    "BRO_red": "Rumble / Jarvan IV / Syndra / Corki / Camille"
+  },
+  "modelRecommendedOdds": 1.869,
+  "modelMinimumOdds": 1.60,
+  "modelRecommendedStakeUnits": 0.25,
+  "executionDeviation": "Odds improved to 2.132, but stake was 0.30u, above the active 0.25u evaluation cap; execution occurred after the analyzed snapshot without a fresh synchronized state.",
+  "reasoning": "KRX retained strong Nautilus-Ambessa initiation with Cassiopeia follow-up, and +7.5 provided protection against BRO's moderate gold lead.",
+  "tags": ["official","model-generated","live-read","kill-handicap","stake-above-model-cap","state-not-resynchronized"]
+}
