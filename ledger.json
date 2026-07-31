@@ -18,7 +18,7 @@
       "payoutVnd": null,
       "netProfitVnd": null,
       "netUnits": null,
-      "status": "open",
+      "status": "pending",
       "result": "pending",
       "eventDate": "2026-08-01",
       "marketType": "Total goals",
@@ -77,7 +77,9 @@
         "unsynchronized-execution",
         "open"
       ],
-      "notes": "User confirmed accepted slip #871076012434309120: live Under 3 at 2.10, entry score 0-0. Bookmaker display 250.00/525.00 recorded as 250,000/525,000 VND under the project ledger convention. The wager is official/open after user confirmation, but remains classified as a placed LEAN — SMALL with oversized and unsynchronized execution deviations."
+      "notes": "User confirmed accepted slip #871076012434309120: live Under 3 at 2.10, entry score 0-0. Bookmaker display 250.00/525.00 recorded as 250,000/525,000 VND under the project ledger convention. The wager is official/open after user confirmation, but remains classified as a placed LEAN — SMALL with oversized and unsynchronized execution deviations.",
+      "addedAt": "2026-07-31T17:05:00Z",
+      "createdAt": "2026-07-31T17:05:00Z"
     },
     {
       "syncId": "eval-20260731-blg-we-g2-we-plus-6-5-kills",
