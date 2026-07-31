@@ -1,6 +1,6 @@
 {
   "syncId": "eval-20260801-mkoi-shft-g2-shft-plus-7-5-kills",
-  "updatedAt": "2026-08-01T01:15:00+07:00",
+  "updatedAt": "2026-08-01T01:30:00+07:00",
   "event": "Movistar KOI vs Shifters — Game 2",
   "league": "LEC 2026 Summer",
   "competitionStage": "Best-of-three series; Game 2",
@@ -13,10 +13,10 @@
   "unitValueVndAtPlacement": 1000000,
   "potentialPayoutVnd": 481750,
   "potentialProfitVnd": 231750,
-  "status": "open",
-  "result": null,
-  "profitLossVnd": null,
-  "profitLossUnits": null,
+  "status": "settled",
+  "result": "loss",
+  "profitLossVnd": -250000,
+  "profitLossUnits": -0.25,
   "eventDate": "2026-08-01",
   "marketType": "Kill handicap",
   "timing": "live",
@@ -24,6 +24,7 @@
   "slipId": "1148791934",
   "slipTimestampDisplayed": "08/01 02:15",
   "entryState": "At 9:03, Movistar KOI led 3-2 in kills and approximately 16.3k to 15.1k in gold, with towers still 0-0. MKOI had early objective progress but no structural conversion.",
+  "settlementEvidence": "User confirmed that the wager lost. Exact final kills were not supplied.",
   "sides": {
     "Shifters": "blue",
     "Movistar KOI": "red"
@@ -42,7 +43,7 @@
     "stakeUnits": 0.25,
     "stakeVnd": 250000,
     "confidence": 6,
-    "reasoning": "The eight-kill protection remained generous relative to a 3-2 kill score and no tower conversion. Shifters had three credible damage sources through Naafiri, Orianna, and Ezreal, with K'Sante and Alistar providing frontline and disengage."
+    "reasoning": "The eight-kill protection remained generous relative to a 3-2 kill score and no tower conversion. Shifters were credited with three damage sources through Naafiri, Orianna, and Ezreal, with K'Sante and Alistar providing frontline and disengage."
   },
   "execution": {
     "odds": 1.927,
@@ -60,6 +61,20 @@
     "withinStakeCap": true,
     "deviations": []
   },
+  "postmortem": {
+    "classification": "model-selection error",
+    "repeatedPattern": true,
+    "priorAnalog": "Team Heretics vs Vitality Game 2: utility and engage were misclassified as adequate damage conversion against a stronger multi-carry composition.",
+    "error": "The model counted nominal champion damage sources instead of functional damage against the opposing frontline, peel, access denial, item timings, and forced objective schedule.",
+    "specificFailures": [
+      "Naafiri was a conditional burst threat rather than reliable sustained damage.",
+      "Orianna and Ezreal had not reached demonstrated damage breakpoints at entry.",
+      "K'Sante and Alistar added control and durability but little frontline kill speed.",
+      "MKOI's Galio, Lee Sin, and Leona disrupted access while Jayce and Lucian applied earlier, more reliable damage.",
+      "MKOI's objective tempo and later soul-point state forced SHFT to fight before its damage system matured."
+    ],
+    "ruleResponse": "Superseded by LoL v0.3.7 functional-damage and positive-handicap veto rules."
+  },
   "tags": [
     "evaluation",
     "official-after-user-confirmation",
@@ -71,10 +86,14 @@
     "model-v0-3-6",
     "model-approved-selection",
     "model-compliant-stake",
-    "open"
+    "model-selection-error",
+    "repeated-damage-conversion-error",
+    "settled",
+    "loss"
   ],
-  "notes": "User confirmed Shifters +7.5 kills at 1.927 for 0.25u (250,000 VND), slip #1148791934. This uses the active conversion of 1u = 1,000,000 VND.",
+  "notes": "User confirmed Shifters +7.5 kills at 1.927 for 0.25u (250,000 VND), slip #1148791934, and later confirmed the wager lost. The loss is recorded as a model-selection error. This repeated the TH vs VIT Game 2 mistake: nominal engage and champion count were treated as functional damage without verifying frontline kill speed, target access, carry uptime, current items, and objective-timer pressure.",
   "userConfirmedAt": "2026-08-01T01:15:00+07:00",
+  "settledAt": "2026-08-01T01:30:00+07:00",
   "addedAt": "2026-08-01T01:15:00+07:00",
   "createdAt": "2026-08-01T01:15:00+07:00"
 }
