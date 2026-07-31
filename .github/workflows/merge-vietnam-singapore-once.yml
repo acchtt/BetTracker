@@ -1,0 +1,71 @@
+name: Merge Vietnam Singapore bets once
+
+on:
+  push:
+    paths:
+      - '.github/workflows/merge-vietnam-singapore-once.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Merge pending records into ledger
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          ledger_path = Path('ledger.json')
+          pending_path = Path('pending/2026-08-01-vietnam-singapore-two-settled-bets.json')
+
+          ledger = json.loads(ledger_path.read_text(encoding='utf-8'))
+          pending = json.loads(pending_path.read_text(encoding='utf-8'))
+
+          existing = {bet.get('syncId'): bet for bet in ledger.get('bets', [])}
+          new_ids = []
+          for bet in pending.get('bets', []):
+              sync_id = bet['syncId']
+              current = existing.get(sync_id)
+              if current is None or bet.get('updatedAt', '') >= current.get('updatedAt', ''):
+                  existing[sync_id] = bet
+              new_ids.append(sync_id)
+
+          ordered = [existing[sid] for sid in new_ids]
+          ordered.extend(
+              bet for bet in ledger.get('bets', [])
+              if bet.get('syncId') not in set(new_ids)
+          )
+
+          ledger['version'] = pending.get('updatedAt', ledger.get('version'))
+          ledger['bets'] = ordered
+          metadata = ledger.setdefault('mergeMetadata', {})
+          sources = metadata.setdefault('pendingSources', [])
+          source_name = str(pending_path)
+          if source_name not in sources:
+              sources.append(source_name)
+          metadata['strategy'] = 'syncId-latest-update'
+          metadata['officialRecordsAdded'] = metadata.get('officialRecordsAdded', 0) + sum(
+              1 for sid in new_ids if not any(b.get('syncId') == sid for b in ledger.get('bets', [])[len(new_ids):])
+          )
+          metadata['officialRecordsUpdated'] = metadata.get('officialRecordsUpdated', 0)
+
+          ledger_path.write_text(json.dumps(ledger, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+
+      - name: Commit authoritative ledger update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ledger.json
+          git rm pending/2026-08-01-vietnam-singapore-two-settled-bets.json
+          git rm .github/workflows/merge-vietnam-singapore-once.yml
+          git commit -m "Record Vietnam Singapore settled bets"
+          git push
