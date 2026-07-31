@@ -1,9 +1,9 @@
 {
-  "version": "2026-07-31T17:05:00Z",
+  "version": "2026-07-31T17:20:00Z",
   "bets": [
     {
       "syncId": "football-20260801-valerenga-hamkam-under-3-210",
-      "updatedAt": "2026-07-31T17:05:00Z",
+      "updatedAt": "2026-07-31T17:20:00Z",
       "event": "Valerenga vs HamKam",
       "league": "Norway Eliteserien 2026",
       "competitionStage": "Round 16",
@@ -12,7 +12,7 @@
       "settlementBasis": "Full win with 0-2 total goals; push with exactly 3; full loss with 4 or more. Regulation time plus stoppage time only.",
       "odds": 2.1,
       "stakeVnd": 250000,
-      "stakeUnits": 0.5,
+      "stakeUnits": 0.25,
       "potentialPayoutVnd": 525000,
       "potentialProfitVnd": 275000,
       "payoutVnd": null,
@@ -26,7 +26,7 @@
       "slipId": "871076012434309120",
       "bookmaker": "BK8",
       "entryScore": "0-0",
-      "entryMinute": "not supplied; early live entry",
+      "entryMinute": "not supplied; match already started when recommendation arrived",
       "lineupStatus": "confirmed from user-provided lineup screen",
       "modelRecommendation": {
         "recommendationType": "lean-small",
@@ -39,25 +39,26 @@
       },
       "execution": {
         "odds": 2.1,
-        "stakeUnits": 0.5,
+        "stakeUnits": 0.25,
         "stakeVnd": 250000,
         "sameMarketAndLine": true,
         "withinModelStakeRecommendation": false,
-        "withinFootballStakeCap": false,
+        "withinFootballStakeCap": true,
         "priceAboveMinimum": true,
         "priceBetterThanQuoted": true,
         "stateSynchronized": false,
-        "attributionTier": "user-executed deviation",
+        "attributionTier": "model-timing-failure-with-stake-deviation",
         "deviations": [
-          "Placed 0.5u versus the model LEAN — SMALL recommendation of 0.125u",
-          "Placed above the active 0.25u football exposure cap",
-          "Executed live at 0-0 after a prematch recommendation without a fresh synchronized live-state reassessment"
+          "Model recommendation arrived after kickoff; the match had already started before the pick was delivered",
+          "No fresh synchronized live-state snapshot was available at the time of execution",
+          "Placed 0.25u versus the LEAN — SMALL recommendation of 0.125u"
         ]
       },
       "review": {
         "resultGrade": "pending",
         "processGrade": "pending",
-        "reviewAfterSettlement": true
+        "reviewAfterSettlement": true,
+        "timingAttribution": "Model delivery failure: the recommendation was presented too late and arrived after kickoff without a fresh live-state assessment."
       },
       "tags": [
         "football",
@@ -71,15 +72,17 @@
         "official-after-user-confirmation",
         "lineup-confirmed",
         "model-v0-2-12",
-        "user-executed-deviation",
-        "stake-above-model-recommendation",
-        "stake-above-football-cap",
-        "unsynchronized-execution",
+        "model-timing-failure",
+        "late-recommendation",
+        "stake-above-lean-recommendation",
+        "within-football-cap",
+        "unit-basis-1000000-vnd",
         "open"
       ],
-      "notes": "User confirmed accepted slip #871076012434309120: live Under 3 at 2.10, entry score 0-0. Bookmaker display 250.00/525.00 recorded as 250,000/525,000 VND under the project ledger convention. The wager is official/open after user confirmation, but remains classified as a placed LEAN — SMALL with oversized and unsynchronized execution deviations.",
+      "notes": "User confirmed accepted slip #871076012434309120: live Under 3 at 2.10, entry score 0-0, stake 250,000 VND and potential return 525,000 VND. Under the unit convention effective 2026-08-01, 1u = 1,000,000 VND, so the stake is 0.25u. The model pick arrived after kickoff without a fresh synchronized live-state snapshot; this is attributed as a model timing failure. The stake was above the LEAN — SMALL recommendation of 0.125u but did not exceed the 0.25u football cap.",
       "addedAt": "2026-07-31T17:05:00Z",
-      "createdAt": "2026-07-31T17:05:00Z"
+      "createdAt": "2026-07-31T17:05:00Z",
+      "unitValueVndAtPlacement": 1000000
     },
     {
       "syncId": "eval-20260731-blg-we-g2-we-plus-6-5-kills",
@@ -4081,12 +4084,13 @@
       "pending/2026-07-31-ktc-vs-dnsc-game2-dnsc-plus-5-5-kills-settlement.json",
       "pending/2026-07-31-ktc-vs-dnsc-game2-dnsc-plus-5-5-kills.json",
       "pending/2026-07-31-ktc-vs-dnsc-game3-dnsc-ml-settlement.json",
+      "pending/2026-08-01-valerenga-hamkam-under3-correction.json",
       "pending/eval-20260731-blg-we-g2-we-plus-6-5-kills.json",
       "pending/eval-20260731-bro-krx-g1-krx-plus-7-5-kills.json",
       "pending/eval-20260731-bro-krx-g2-over-33-minutes.json",
       "pending/eval-20260731-bro-krx-g3-bro-ml.json"
     ],
     "officialRecordsAdded": 0,
-    "officialRecordsUpdated": 22
+    "officialRecordsUpdated": 23
   }
 }
