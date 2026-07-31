@@ -1,0 +1,81 @@
+{
+  "syncId": "eval-20260731-th-vitality-g2-th-plus-7-5-kills",
+  "updatedAt": "2026-07-31T16:18:00Z",
+  "event": "Team Heretics vs Team Vitality — Game 2",
+  "league": "LEC 2026",
+  "competitionStage": "Best-of-three series; Game 2",
+  "format": "Best-of-three series; Game 2 after Team Vitality won Game 1",
+  "bet": "Team Heretics +7.5 kills",
+  "settlementBasis": "Team Heretics wins if its final kill total is no more than 7 below Team Vitality; loses if Team Vitality finishes at least 8 kills ahead.",
+  "odds": 1.869,
+  "stakeVnd": 125000,
+  "stakeUnits": 0.25,
+  "potentialPayoutVnd": 233625,
+  "potentialProfitVnd": 108625,
+  "status": "open",
+  "result": null,
+  "eventDate": "2026-07-31",
+  "marketType": "Kill handicap",
+  "timing": "post-draft/pre-game",
+  "bookmaker": "BK8",
+  "slipId": "1148732376",
+  "seriesState": "Team Vitality led the series 1-0 after Game 1.",
+  "entryState": "Post-draft before any reported meaningful Game 2 event. The price moved immediately from 1.719 to 1.869 with the same draft, side selection, market and line, and no intervening meaningful game event.",
+  "rosterStatus": "user-confirmed",
+  "roster": {
+    "Team Heretics": ["Tracyn", "Daglas", "Serin", "Hype", "Way"],
+    "Team Vitality": ["Naak Nako", "Lyncas", "FIESTA", "Carzzy", "Fleshy"]
+  },
+  "sides": {
+    "Team Vitality": "blue",
+    "Team Heretics": "red"
+  },
+  "draft": {
+    "Team Vitality_blue": ["Akali", "Lee Sin", "Aatrox", "Cassiopeia", "Nautilus"],
+    "Team Heretics_red": ["Gnar", "Jarvan IV", "Galio", "Orianna", "Shen"]
+  },
+  "teamStrengthPrior": "Team Vitality held a slight-to-moderate overall team-strength edge. Team Heretics' Game 2 global engage and counter-engage structure narrowed the kill-margin gap but did not erase Vitality's individual-damage advantage.",
+  "modelRecommendation": {
+    "recommendationType": "lean",
+    "modelVersion": "lol-v0.3.5",
+    "market": "Team Heretics +7.5 kills",
+    "quotedOdds": 1.719,
+    "minimumAcceptableOdds": 1.6,
+    "stakeUnits": 0.25,
+    "confidence": 6,
+    "reasoning": "Team Heretics had a coherent Jarvan IV-Galio-Shen engage and global system, with Gnar and Orianna supplying layered follow-up. Vitality had the stronger individual damage profile through Akali, Aatrox and Cassiopeia, so the protected +7.5 line was preferred over the moneyline."
+  },
+  "execution": {
+    "odds": 1.869,
+    "stakeUnits": 0.25,
+    "stakeVnd": 125000,
+    "sameMarketAndLine": true,
+    "withinStakeCap": true,
+    "priceAboveMinimum": true,
+    "priceBetterThanQuoted": true,
+    "stateSynchronized": true,
+    "priceMoveClassification": "material favorable price move immediately after recommendation with no reported meaningful intervening event; same state revalidated",
+    "attributionTier": "synchronized lean execution",
+    "deviations": []
+  },
+  "tags": [
+    "evaluation",
+    "official-after-user-confirmation",
+    "lol",
+    "lec",
+    "game-2",
+    "post-draft",
+    "kill-handicap",
+    "positive-handicap",
+    "model-v0-3-5",
+    "synchronized-lean-execution",
+    "price-improved",
+    "within-stake-cap",
+    "open"
+  ],
+  "notes": "User confirmed Team Heretics +7.5 kills at 1.869 for 0.25u (125,000 VND), slip #1148732376. Potential payout is 233,625 VND and potential profit is 108,625 VND (+0.21725u). The odds moved immediately after the lean with no meaningful event, so the wager is classified as a synchronized lean execution rather than a stale-state deviation.",
+  "placedAt": "2026-07-31T23:18:00+07:00",
+  "userConfirmedAt": "2026-07-31T23:18:00+07:00",
+  "addedAt": "2026-07-31T16:18:00Z",
+  "createdAt": "2026-07-31T16:18:00Z"
+}
