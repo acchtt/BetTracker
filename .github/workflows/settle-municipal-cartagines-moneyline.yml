@@ -1,0 +1,70 @@
+name: Settle Municipal Cartagines Moneyline
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/settle-municipal-cartagines-moneyline.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Settle wager
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          path = Path('ledger.json')
+          data = json.loads(path.read_text(encoding='utf-8'))
+          now = '2026-07-31T05:01:00Z'
+          sync_id = 'eval-20260731-municipal-cartagines-moneyline'
+          bet = next((b for b in data.get('bets', []) if b.get('syncId') == sync_id), None)
+          if bet is None:
+              raise SystemExit('Target wager not found')
+
+          bet.update({
+              'updatedAt': now,
+              'status': 'loss',
+              'result': 'Municipal 1-1 Cartagines after 90 minutes (Loss; Municipal moneyline)',
+              'settlementType': 'full_loss',
+              'payoutVnd': 0,
+              'profitVnd': -63000,
+              'profitUnits': -0.126,
+              'netProfitVnd': -63000,
+              'netUnits': -0.126,
+              'settledAt': now,
+              'finalScore': 'Municipal 1-1 Cartagines',
+              'review': {
+                  'resultAssessment': 'Municipal moneyline lost because the match finished 1-1 after 90 minutes plus stoppage time.',
+                  'processAssessment': 'The wager was a LEAN — SMALL rather than an OFFICIAL BET because the estimated edge was modest and cross-league regional-cup uncertainty was material. The draw outcome falls inside that uncertainty and does not by itself invalidate the reduced-stake classification.',
+                  'executionAssessment': 'Execution was clean: Municipal 1X2 was settlement-equivalent to Municipal -0.5, the accepted odds improved from 1.91 to 1.92, and the 63,000 VND stake was normal rounding from 0.125u.'
+              }
+          })
+
+          tags = [t for t in bet.get('tags', []) if t != 'pending']
+          for tag in ['loss', 'settled', 'full-loss', 'user-confirmed-result', 'final-score-confirmed']:
+              if tag not in tags:
+                  tags.append(tag)
+          bet['tags'] = tags
+
+          note = ' Settlement confirmed by the user: Municipal 1-1 Cartagines after 90 minutes. Municipal moneyline lost. Return 0 VND; net loss 63,000 VND (-0.126u).'
+          if note.strip() not in bet.get('notes', ''):
+              bet['notes'] = bet.get('notes', '') + note
+
+          data['version'] = now
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+      - name: Commit ledger settlement
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add ledger.json
+          git commit -m 'Settle Municipal Cartagines moneyline loss' || exit 0
+          git push
