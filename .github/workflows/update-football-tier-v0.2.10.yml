@@ -90,3 +90,5 @@ Review after 20 settled `LEAN — SMALL` wagers and 20 settled model-approved of
           git add MODEL_CHANGELOG.md
           git commit -m 'Document football recommendation tiers v0.2.10' || exit 0
           git push
+
+# trigger after workflow existed on default branch
