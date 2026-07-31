@@ -7,8 +7,11 @@
   "odds": 2.132,
   "stakeVnd": 150000,
   "stakeUnits": 0.30,
-  "status": "open",
-  "result": null,
+  "status": "settled",
+  "result": "loss",
+  "profitLossVnd": -150000,
+  "profitLossUnits": -0.30,
+  "finalScore": "BRO 24-10 KRX",
   "eventDate": "2026-07-31",
   "timing": "live",
   "slipId": "1148540773",
@@ -25,5 +28,6 @@
   "modelRecommendedStakeUnits": 0.25,
   "executionDeviation": "Odds improved to 2.132, but stake was 0.30u, above the active 0.25u evaluation cap; execution occurred after the analyzed snapshot without a fresh synchronized state.",
   "reasoning": "KRX retained strong Nautilus-Ambessa initiation with Cassiopeia follow-up, and +7.5 provided protection against BRO's moderate gold lead.",
-  "tags": ["official","model-generated","live-read","kill-handicap","stake-above-model-cap","state-not-resynchronized"]
+  "review": "The handicap failed by 6 kills: BRO won 24-10, a 14-kill margin. The model overestimated KRX's ability to convert engage into sustained damage and underweighted BRO's superior lead conversion. Oversized execution increased the loss beyond the model cap.",
+  "tags": ["official","model-generated","live-read","kill-handicap","stake-above-model-cap","state-not-resynchronized","settled-loss","model-review"]
 }
