@@ -1,9 +1,9 @@
 {
-  "version": "2026-07-31T02:12:00Z",
+  "version": "2026-07-31T02:32:00Z",
   "bets": [
     {
       "syncId": "eval-20260731-ohiggins-boca-under-1-25",
-      "updatedAt": "2026-07-31T01:22:00Z",
+      "updatedAt": "2026-07-31T02:32:00Z",
       "event": "O'Higgins vs Boca Juniors — Second Leg",
       "league": "CONMEBOL Copa Sudamericana",
       "competitionStage": "Knockout playoff, second leg",
@@ -15,8 +15,8 @@
       "stakeUnits": 0.25,
       "potentialPayoutVnd": 231250,
       "potentialProfitVnd": 106250,
-      "status": "pending",
-      "result": "Pending",
+      "status": "win",
+      "result": "O'Higgins 1-0 Boca Juniors after 90 minutes (Half win; Under 1.25 total goals)",
       "eventDate": "2026-07-31",
       "marketType": "Totals",
       "timing": "live-halftime",
@@ -84,13 +84,32 @@
         "same-state-execution",
         "at-executable-floor",
         "user-execution-clean",
-        "pending"
+        "win",
+        "settled",
+        "half-win",
+        "user-confirmed-result",
+        "final-score-confirmed"
       ],
-      "notes": "User confirmed sportsbook acceptance of O'Higgins vs Boca Juniors full-match Under 1.25 at 1.85 for 0.25u (125,000 VND), slip #870838684642070528. Potential full-win payout is 231,250 VND and potential full-win profit is 106,250 VND (+0.2125u). Exactly one total goal produces a half win with return 178,125 VND and profit 53,125 VND (+0.10625u). The accepted price matched the stated minimum executable odds, with the same 0-0 halftime score, market and line; no execution deviation.",
+      "notes": "User confirmed sportsbook acceptance of O'Higgins vs Boca Juniors full-match Under 1.25 at 1.85 for 0.25u (125,000 VND), slip #870838684642070528. Potential full-win payout is 231,250 VND and potential full-win profit is 106,250 VND (+0.2125u). Exactly one total goal produces a half win with return 178,125 VND and profit 53,125 VND (+0.10625u). The accepted price matched the stated minimum executable odds, with the same 0-0 halftime score, market and line; no execution deviation. Settlement confirmed by the user: final score O'Higgins 1-0 Boca Juniors after 90 minutes. Exactly one goal makes Under 1.25 a half win. Return 178,125 VND; net profit 53,125 VND (+0.10625u).",
       "placedAt": "2026-07-31T08:22:00+07:00",
       "userConfirmedAt": "2026-07-31T08:22:00+07:00",
       "addedAt": "2026-07-31T01:22:00Z",
-      "createdAt": "2026-07-31T01:22:00Z"
+      "createdAt": "2026-07-31T01:22:00Z",
+      "settlementType": "half_win",
+      "payoutVnd": 178125,
+      "profitVnd": 53125,
+      "profitUnits": 0.10625,
+      "netProfitVnd": 53125,
+      "netUnits": 0.10625,
+      "settledAt": "2026-07-31T02:32:00Z",
+      "finalScore": "O'Higgins 1-0 Boca Juniors",
+      "finalAggregateAfter90": "1-1 on aggregate after 90 minutes",
+      "finalTotalGoals": 1,
+      "review": {
+        "resultAssessment": "Under 1.25 produced a half win because exactly one regulation-time goal was scored. Half of the stake on Under 1 pushed and half on Under 1.5 won.",
+        "processAssessment": "The low-event halftime read was directionally correct. The match produced only one regulation-time goal, while the quarter-line protected half the stake from a full-win requirement.",
+        "lineSelectionAssessment": "Under 1.25 was preferable to Under 1.0 because it converted a one-goal match into a half win rather than a full push, while still offering better protection than Under 1.5 at a materially shorter price."
+      }
     },
     {
       "syncId": "eval-20260731-central-cordoba-atletico-tucuman-under-1-5",
