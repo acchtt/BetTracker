@@ -26,7 +26,6 @@ jobs:
           effective = '2026-08-01'
           updated_at = '2026-07-31T17:12:00Z'
 
-          # Update authoritative ledger record for the confirmed Valerenga wager.
           ledger_path = Path('ledger.json')
           data = json.loads(ledger_path.read_text(encoding='utf-8'))
           slip_id = '871076012434309120'
@@ -74,7 +73,6 @@ jobs:
           data['version'] = updated_at
           ledger_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
-          # Update active football procedure.
           football = Path('FOOTBALL_BETTING_PROCEDURE.md')
           if football.exists():
               text = football.read_text(encoding='utf-8')
@@ -86,7 +84,6 @@ jobs:
                   text = text.replace(marker, replacement, 1)
               football.write_text(text, encoding='utf-8')
 
-          # Update LoL procedure if the shared project still uses it.
           lol = Path('LOL_BETTING_PROCEDURE.md')
           if lol.exists():
               text = lol.read_text(encoding='utf-8')
@@ -94,7 +91,6 @@ jobs:
               text = text.replace('0.25u = 125,000 VND', '0.25u = 250,000 VND')
               lol.write_text(text, encoding='utf-8')
 
-          # Update changelog baseline and add an operational entry.
           changelog = Path('MODEL_CHANGELOG.md')
           if changelog.exists():
               text = changelog.read_text(encoding='utf-8')
@@ -131,3 +127,5 @@ jobs:
           if [ -f LOL_BETTING_PROCEDURE.md ]; then git add LOL_BETTING_PROCEDURE.md; fi
           git commit -m 'Set 1u to 1m VND and correct Valerenga timing attribution' || exit 0
           git push
+
+# trigger: 2026-08-01T00:12+07:00
