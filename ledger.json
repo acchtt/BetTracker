@@ -1,9 +1,9 @@
 {
-  "version": "2026-07-31T17:20:00Z",
+  "version": "2026-07-31T18:55:00Z",
   "bets": [
     {
       "syncId": "football-20260801-valerenga-hamkam-under-3-210",
-      "updatedAt": "2026-07-31T17:20:00Z",
+      "updatedAt": "2026-07-31T18:55:00Z",
       "event": "Valerenga vs HamKam",
       "league": "Norway Eliteserien 2026",
       "competitionStage": "Round 16",
@@ -15,11 +15,11 @@
       "stakeUnits": 0.25,
       "potentialPayoutVnd": 525000,
       "potentialProfitVnd": 275000,
-      "payoutVnd": null,
-      "netProfitVnd": null,
-      "netUnits": null,
-      "status": "pending",
-      "result": "pending",
+      "payoutVnd": 250000,
+      "netProfitVnd": 0,
+      "netUnits": 0.0,
+      "status": "push",
+      "result": "Valerenga 0-3 HamKam after 90 minutes; Under 3 total goals pushed.",
       "eventDate": "2026-08-01",
       "marketType": "Total goals",
       "timing": "live",
@@ -55,10 +55,14 @@
         ]
       },
       "review": {
-        "resultGrade": "pending",
-        "processGrade": "pending",
+        "resultGrade": "push",
+        "processGrade": "mixed",
         "reviewAfterSettlement": true,
-        "timingAttribution": "Model delivery failure: the recommendation was presented too late and arrived after kickoff without a fresh live-state assessment."
+        "timingAttribution": "Model delivery failure: the recommendation arrived after kickoff without a fresh synchronized live-state assessment.",
+        "resultAssessment": "The match finished with exactly three total goals, so Under 3 returned the full stake.",
+        "processAssessment": "The whole-goal line protection worked at the exact boundary and prevented a full loss. However, the recommendation was delivered after kickoff without synchronized live data, so the execution cannot be treated as a clean model sample. Valerenga's red card at 44 minutes and HamKam's goal at 45+3 materially increased the second-half scoring tail.",
+        "lineSelectionAssessment": "Under 3 was materially safer than Under 2.5 for the realized outcome; Under 2.5 would have lost while Under 3 pushed.",
+        "calibrationAction": "No new model rule from this result. Enforce the existing kickoff-status gate: once a match has started, require current score, minute, odds and live state before issuing an actionable recommendation."
       },
       "tags": [
         "football",
@@ -77,12 +81,27 @@
         "stake-above-lean-recommendation",
         "within-football-cap",
         "unit-basis-1000000-vnd",
-        "open"
+        "red-card-state-change",
+        "first-half-stoppage-time-goal",
+        "boundary-protection-worked",
+        "user-confirmed-result",
+        "push",
+        "settled"
       ],
-      "notes": "User confirmed accepted slip #871076012434309120: live Under 3 at 2.10, entry score 0-0, stake 250,000 VND and potential return 525,000 VND. Under the unit convention effective 2026-08-01, 1u = 1,000,000 VND, so the stake is 0.25u. The model pick arrived after kickoff without a fresh synchronized live-state snapshot; this is attributed as a model timing failure. The stake was above the LEAN — SMALL recommendation of 0.125u but did not exceed the 0.25u football cap.",
+      "notes": "User confirmed final score Valerenga 0-3 HamKam. Under 3 at 2.10 for 250,000 VND (0.25u under the 1,000,000 VND unit convention), slip #871076012434309120, pushed. Payout 250,000 VND; net profit/loss 0 VND (0.00u). The whole-goal line protected the exact three-goal outcome. The pick arrived after kickoff without synchronized live state, so the record retains model-timing-failure attribution. Valerenga received a red card at 44 minutes and HamKam scored at 45+3.",
       "addedAt": "2026-07-31T17:05:00Z",
       "createdAt": "2026-07-31T17:05:00Z",
-      "unitValueVndAtPlacement": 1000000
+      "unitValueVndAtPlacement": 1000000,
+      "matchEvents": {
+        "valerengaRedCard": "44th minute",
+        "hamKamFirstGoal": "45+3",
+        "finalScore": "Valerenga 0-3 HamKam"
+      },
+      "settledAt": "2026-07-31T18:55:00Z",
+      "resultConfirmedAt": "2026-08-01T01:55:00+07:00",
+      "finalScore": "Valerenga 0-3 HamKam",
+      "finalTotalGoals": 3,
+      "settlementType": "push"
     },
     {
       "syncId": "eval-20260731-blg-we-g2-we-plus-6-5-kills",
@@ -4085,12 +4104,13 @@
       "pending/2026-07-31-ktc-vs-dnsc-game2-dnsc-plus-5-5-kills.json",
       "pending/2026-07-31-ktc-vs-dnsc-game3-dnsc-ml-settlement.json",
       "pending/2026-08-01-valerenga-hamkam-under3-correction.json",
+      "pending/2026-08-01-valerenga-hamkam-under3-settlement.json",
       "pending/eval-20260731-blg-we-g2-we-plus-6-5-kills.json",
       "pending/eval-20260731-bro-krx-g1-krx-plus-7-5-kills.json",
       "pending/eval-20260731-bro-krx-g2-over-33-minutes.json",
       "pending/eval-20260731-bro-krx-g3-bro-ml.json"
     ],
     "officialRecordsAdded": 0,
-    "officialRecordsUpdated": 23
+    "officialRecordsUpdated": 24
   }
 }
