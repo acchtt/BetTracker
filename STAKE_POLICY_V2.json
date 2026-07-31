@@ -1,0 +1,21 @@
+{
+  "policyVersion": "2.0",
+  "status": "active",
+  "effectiveAt": "2026-08-01T00:48:00+07:00",
+  "unitValueVnd": 1000000,
+  "standardEvaluationStakeUnits": 0.25,
+  "standardEvaluationStakeVnd": 250000,
+  "normalMaximumStakeUnits": 0.5,
+  "normalMaximumStakeVnd": 500000,
+  "minimumAcceptedOdds": 1.6,
+  "historicalTreatment": {
+    "retroactiveRenormalization": false,
+    "rule": "Bets placed before the effective timestamp retain the unit value and stakeUnits used at placement. Future ledger entries must include unitValueVndAtPlacement so results across unit regimes remain auditable."
+  },
+  "ledgerRequirements": [
+    "Record stakeVnd and stakeUnits separately.",
+    "Record unitValueVndAtPlacement on every new bet.",
+    "Report actual VND profit and loss independently from normalized model stake performance.",
+    "Do not rewrite historical VND amounts or historical unit labels solely because the active unit value changed."
+  ]
+}
