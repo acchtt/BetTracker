@@ -1,0 +1,72 @@
+name: Settle O'Higgins Boca Under 1.25
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/settle-ohiggins-boca-under-1-25.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Settle wager
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          path = Path('ledger.json')
+          data = json.loads(path.read_text(encoding='utf-8'))
+          now = '2026-07-31T02:32:00Z'
+          sync_id = 'eval-20260731-ohiggins-boca-under-1-25'
+          bet = next((b for b in data.get('bets', []) if b.get('syncId') == sync_id), None)
+          if bet is None:
+              raise SystemExit('Target wager not found')
+
+          bet.update({
+              'updatedAt': now,
+              'status': 'win',
+              'result': "O'Higgins 1-0 Boca Juniors after 90 minutes (Half win; Under 1.25 total goals)",
+              'settlementType': 'half_win',
+              'payoutVnd': 178125,
+              'profitVnd': 53125,
+              'profitUnits': 0.10625,
+              'netProfitVnd': 53125,
+              'netUnits': 0.10625,
+              'settledAt': now,
+              'finalScore': "O'Higgins 1-0 Boca Juniors",
+              'finalAggregateAfter90': '1-1 on aggregate after 90 minutes',
+              'finalTotalGoals': 1,
+              'review': {
+                  'resultAssessment': 'Under 1.25 produced a half win because exactly one regulation-time goal was scored. Half of the stake on Under 1 pushed and half on Under 1.5 won.',
+                  'processAssessment': 'The low-event halftime read was directionally correct. The match produced only one regulation-time goal, while the quarter-line protected half the stake from a full-win requirement.',
+                  'lineSelectionAssessment': 'Under 1.25 was preferable to Under 1.0 because it converted a one-goal match into a half win rather than a full push, while still offering better protection than Under 1.5 at a materially shorter price.'
+              }
+          })
+
+          tags = [t for t in bet.get('tags', []) if t != 'pending']
+          for tag in ['win', 'settled', 'half-win', 'user-confirmed-result', 'final-score-confirmed']:
+              if tag not in tags:
+                  tags.append(tag)
+          bet['tags'] = tags
+
+          note = " Settlement confirmed by the user: final score O'Higgins 1-0 Boca Juniors after 90 minutes. Exactly one goal makes Under 1.25 a half win. Return 178,125 VND; net profit 53,125 VND (+0.10625u)."
+          if note.strip() not in bet.get('notes', ''):
+              bet['notes'] = bet.get('notes', '') + note
+
+          data['version'] = now
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+      - name: Commit ledger settlement
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add ledger.json
+          git commit -m "Settle O'Higgins Boca Under 1.25 half win" || exit 0
+          git push
