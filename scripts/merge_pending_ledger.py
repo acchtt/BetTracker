@@ -77,6 +77,24 @@ def normalize_record(record: dict[str, Any], container_created_at: str | None) -
     return normalized
 
 
+def is_single_bet_record(payload: Any) -> bool:
+    """Accept a root-level record only when it clearly represents a wager.
+
+    This keeps review-only, reconciliation, and model metadata JSON files out of
+    the authoritative ledger while supporting the repository's newer
+    one-record-per-file pending format.
+    """
+    if not isinstance(payload, dict):
+        return False
+
+    required = ("syncId", "event", "bet", "status")
+    if any(not str(payload.get(key) or "").strip() for key in required):
+        return False
+
+    has_price_or_stake = payload.get("odds") is not None or payload.get("stakeVnd") is not None
+    return has_price_or_stake
+
+
 def main() -> None:
     ledger = json.loads(LEDGER_PATH.read_text(encoding="utf-8"))
     existing_bets = ledger.get("bets")
@@ -87,7 +105,7 @@ def main() -> None:
     by_sync_id: dict[str, dict[str, Any]] = {}
     without_sync_id: list[dict[str, Any]] = []
 
-    for index, raw in enumerate(existing_bets):
+    for raw in existing_bets:
         if not isinstance(raw, dict):
             continue
         record = normalize_record(raw, None)
@@ -111,12 +129,20 @@ def main() -> None:
         except (OSError, json.JSONDecodeError) as exc:
             raise ValueError(f"Could not read {path.relative_to(ROOT)}: {exc}") from exc
 
-        records = payload.get("bets") if isinstance(payload, dict) else None
-        if not isinstance(records, list):
+        records: list[Any] | None = None
+        container_created_at: str | None = None
+
+        if isinstance(payload, dict) and isinstance(payload.get("bets"), list):
+            records = payload["bets"]
+            container_created_at = payload.get("createdAt")
+        elif is_single_bet_record(payload):
+            records = [payload]
+            container_created_at = payload.get("createdAt")
+
+        if records is None:
             continue
 
         source_files.append(str(path.relative_to(ROOT)))
-        container_created_at = payload.get("createdAt") if isinstance(payload, dict) else None
 
         for raw in records:
             if not isinstance(raw, dict):
