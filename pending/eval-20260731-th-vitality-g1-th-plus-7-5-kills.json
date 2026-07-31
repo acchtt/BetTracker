@@ -1,0 +1,80 @@
+{
+  "syncId": "eval-20260731-th-vitality-g1-th-plus-7-5-kills",
+  "updatedAt": "2026-07-31T15:10:00Z",
+  "event": "Team Heretics vs Team Vitality — Game 1",
+  "league": "LEC 2026",
+  "competitionStage": "Best-of-three series; Game 1",
+  "format": "Best-of-three series; Game 1",
+  "bet": "Team Heretics +7.5 kills",
+  "settlementBasis": "Team Heretics wins if its final kill total is no more than 7 below Team Vitality; loses if Team Vitality finishes at least 8 kills ahead.",
+  "odds": 2.012,
+  "stakeVnd": 125000,
+  "stakeUnits": 0.25,
+  "potentialPayoutVnd": 251500,
+  "potentialProfitVnd": 126500,
+  "status": "open",
+  "result": null,
+  "eventDate": "2026-07-31",
+  "marketType": "Kill handicap",
+  "timing": "post-draft/pre-game",
+  "bookmaker": "BK8",
+  "slipId": null,
+  "entryState": "Post-draft before any reported meaningful Game 1 event.",
+  "rosterStatus": "user-confirmed",
+  "roster": {
+    "Team Heretics": ["Tracyn", "Daglas", "Serin", "Hype", "Way"],
+    "Team Vitality": ["Naak Nako", "Lyncas", "FIESTA", "Carzzy", "Fleshy"]
+  },
+  "sides": {
+    "Team Heretics": "blue",
+    "Team Vitality": "red"
+  },
+  "draft": {
+    "Team Heretics_blue": ["K'Sante", "Xin Zhao", "Jayce", "Ziggs", "Leona"],
+    "Team Vitality_red": ["Yorick", "Pantheon", "Syndra", "Sivir", "Rell"]
+  },
+  "teamStrengthPrior": "Team Vitality held a slight-to-moderate overall team-strength edge, while the completed draft narrowed the gap for structured fights.",
+  "modelRecommendation": {
+    "recommendationType": "official bet",
+    "modelVersion": "lol-v0.3.5",
+    "market": "Team Heretics +7.5 kills",
+    "quotedOdds": 2.03,
+    "minimumAcceptableOdds": 1.6,
+    "stakeUnits": 0.25,
+    "confidence": 6,
+    "reasoning": "Team Heretics passed the damage-conversion gate through Jayce and Ziggs as two credible damage sources, with K'Sante-Xin Zhao-Leona providing frontline, engage and carry protection. Vitality had strong initiation and side-lane pressure, but only Rell as a durable conventional frontline. The +7.5 line offered protection against a Vitality macro win without a large kill margin."
+  },
+  "execution": {
+    "odds": 2.012,
+    "stakeUnits": 0.25,
+    "stakeVnd": 125000,
+    "sameMarketAndLine": true,
+    "withinStakeCap": true,
+    "priceAboveMinimum": true,
+    "priceBetterThanQuoted": false,
+    "stateSynchronized": true,
+    "priceMoveClassification": "minor adverse price drift of 0.018 with no reported meaningful intervening event",
+    "attributionTier": "model-approved exact",
+    "deviations": []
+  },
+  "tags": [
+    "evaluation",
+    "official-after-user-confirmation",
+    "lol",
+    "lec",
+    "game-1",
+    "post-draft",
+    "kill-handicap",
+    "positive-handicap",
+    "model-v0-3-5",
+    "damage-conversion-gate-passed",
+    "model-approved-exact",
+    "within-stake-cap",
+    "open"
+  ],
+  "notes": "User confirmed placement of Team Heretics +7.5 kills at 2.012 for 0.25u (125,000 VND). Potential payout is 251,500 VND and potential profit is 126,500 VND (+0.253u). Slip ID not yet provided.",
+  "placedAt": "2026-07-31T22:10:00+07:00",
+  "userConfirmedAt": "2026-07-31T22:10:00+07:00",
+  "addedAt": "2026-07-31T15:10:00Z",
+  "createdAt": "2026-07-31T15:10:00Z"
+}
