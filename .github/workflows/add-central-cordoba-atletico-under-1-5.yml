@@ -1,0 +1,117 @@
+name: Add Central Cordoba Atletico Under 1.5
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/add-central-cordoba-atletico-under-1-5.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Add wager to ledger
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          path = Path('ledger.json')
+          data = json.loads(path.read_text(encoding='utf-8'))
+          now = '2026-07-31T00:51:00Z'
+          sync_id = 'eval-20260731-central-cordoba-atletico-tucuman-under-1-5'
+
+          existing = next((b for b in data.get('bets', []) if b.get('syncId') == sync_id), None)
+          if existing is None:
+              bet = {
+                  'syncId': sync_id,
+                  'updatedAt': now,
+                  'event': 'Central Cordoba SdE vs Atletico Tucuman',
+                  'league': 'Argentina Liga Profesional — Clausura',
+                  'competitionStage': 'Matchday 2',
+                  'format': 'League match; live full-match total settles after 90 minutes plus regulation stoppage time',
+                  'bet': 'Under 1.5 total goals',
+                  'odds': 1.88,
+                  'stakeVnd': 125000,
+                  'stakeUnits': 0.25,
+                  'potentialPayoutVnd': 235000,
+                  'potentialProfitVnd': 110000,
+                  'status': 'pending',
+                  'result': 'Pending',
+                  'eventDate': '2026-07-31',
+                  'marketType': 'Totals',
+                  'timing': 'live-first-half',
+                  'bookmaker': 'BK8',
+                  'slipId': '870830469917396992',
+                  'entryScore': 'Central Cordoba SdE 0-0 Atletico Tucuman',
+                  'entryMinute': 'Accepted with score 0-0 after the recommendation based on the 24:27 first-half snapshot; exact accepted match minute not shown on the slip',
+                  'settlementBasis': 'Full-match Asian total Under 1.5 including the existing 0-0 score; 90 minutes plus regulation stoppage time. Final total 0 or 1 goal is a full win; 2 or more goals is a full loss.',
+                  'modelRecommendation': {
+                      'recommendationType': 'official bet',
+                      'modelVersion': 'football-v0.2.8',
+                      'market': 'Under 1.5 total goals',
+                      'quotedOdds': 1.96,
+                      'minimumAcceptableOdds': 1.90,
+                      'stakeUnits': 0.25,
+                      'state': '0-0 at 24:27 of the first half. Live indicators: xG 0.10-0.27, xGOT 0.00-0.00, shots 3-1, shots on target 0-0, big chances 0-1, inside-box shots 2-1, opposition-box touches 3-2 and corners 1-0.',
+                      'reasoning': 'Nearly 25 minutes produced only 0.37 combined xG, four shots and no shot on target. Under 1.5 was preferred over Under 1.25 and Under 1.75 on settlement-weighted value.'
+                  },
+                  'execution': {
+                      'odds': 1.88,
+                      'stakeUnits': 0.25,
+                      'stakeVnd': 125000,
+                      'potentialPayoutVnd': 235000,
+                      'sameMarketAndLine': True,
+                      'withinStakeCap': True,
+                      'scoreStateSynchronized': True,
+                      'priceAboveOriginalMinimum': False,
+                      'priceMoveClassification': 'assistant-response latency plus same-state live price drift',
+                      'executionAssessment': 'At the prior 55%-57% win-probability range, 1.88 implies approximately +3.4% to +7.2% expected ROI, with about +5.3% at the midpoint. The edge is thinner than at 1.96 but remains positive at the midpoint.',
+                      'deviations': [],
+                      'timingAttribution': 'The assistant took approximately 1.4 minutes to deliver the assessment. The accepted same-line price moved from 1.96 to 1.88 while the score remained 0-0. This is an assistant timing and quote-contract issue, not a user execution error.',
+                      'processRule': 'football-v0.2.9 timing attribution applied after execution review'
+                  },
+                  'tags': [
+                      'evaluation',
+                      'official-after-user-confirmation',
+                      'football',
+                      'argentina-liga-profesional',
+                      'clausura',
+                      'live-first-half',
+                      'totals',
+                      'under-1-5',
+                      'lineup-confirmed',
+                      'low-chance-profile',
+                      'model-generated',
+                      'user-executed',
+                      'within-stake-cap',
+                      'same-state-execution',
+                      'assistant-response-delay',
+                      'timing-affected-marginal-edge',
+                      'user-execution-clean',
+                      'pending'
+                  ],
+                  'notes': 'User confirmed sportsbook acceptance of Central Cordoba SdE vs Atletico Tucuman full-match Under 1.5 at 1.88 for 0.25u (125,000 VND), slip #870830469917396992. Potential payout is 235,000 VND and potential profit is 110,000 VND (+0.22u). The recommendation was displayed at 1.96 with a 1.90 minimum, but the assistant took approximately 1.4 minutes to assess the live screen and the same-line price moved to 1.88 while the score remained 0-0. The execution is recorded as timing-affected same-state drift with no user deviation. Based on the prior 55%-57% probability range, expected ROI at 1.88 is approximately +3.4% to +7.2%, but the lower-bound margin is thinner than at the target price.',
+                  'placedAt': '2026-07-31T07:51:00+07:00',
+                  'userConfirmedAt': '2026-07-31T07:51:00+07:00',
+                  'addedAt': now,
+                  'createdAt': now
+              }
+              data.setdefault('bets', []).insert(0, bet)
+          else:
+              existing['updatedAt'] = now
+          data['version'] = now
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+      - name: Commit ledger update
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add ledger.json
+          git commit -m 'Record Central Cordoba Atletico Under 1.5 wager' || exit 0
+          git push
