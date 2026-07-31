@@ -1,9 +1,9 @@
 {
-  "version": "2026-07-31T07:02:00Z",
+  "version": "2026-07-31T07:37:00Z",
   "bets": [
     {
       "syncId": "eval-20260731-ktc-dnsc-g3-dnsc-ml",
-      "updatedAt": "2026-07-31T07:02:00Z",
+      "updatedAt": "2026-07-31T07:37:00Z",
       "event": "KT Rolster Challengers vs DN SOOPers Challengers — Game 3",
       "league": "LCK CL 2026 Rounds 3-4",
       "competitionStage": "Round 3 Match 99",
@@ -15,14 +15,14 @@
       "stakeUnits": 0.25,
       "potentialPayoutVnd": 281750,
       "potentialProfitVnd": 156750,
-      "status": "pending",
-      "result": "Pending",
+      "status": "loss",
+      "result": "KT Rolster Challengers won Game 3 and the series 2-1; DN SOOPers Challengers moneyline lost. Final map statistics were not provided.",
       "eventDate": "2026-07-31",
       "marketType": "Moneyline",
       "timing": "post-draft/pre-game or early live; exact intervening state not synchronized",
       "slipId": "1148344870",
       "sportsbookDisplayedTime": "07/31 15:30",
-      "seriesState": "Series tied 1-1 before deciding Game 3.",
+      "seriesState": "Series tied 1-1 before deciding Game 3; KT.C won Game 3 and the series 2-1.",
       "entryState": "Exact execution state was not freshly synchronized after the observed 2.004 price; no new kills, towers, objectives or gold state were supplied at the accepted 2.254 price.",
       "patch": "26.14",
       "rosterStatus": "confirmed",
@@ -70,7 +70,7 @@
         "minimumAcceptableOdds": 1.6,
         "stakeUnits": 0.25,
         "confidence": 7,
-        "reasoning": "DNS.C had the stronger front-to-back teamfight through Olaf-Wukong-Orianna-Ezreal-Neeko, while KT.C relied more on pick and burst without a durable conventional frontline."
+        "reasoning": "DNS.C had the stronger theoretical front-to-back teamfight, while KT.C relied more on pick and burst without a durable conventional frontline."
       },
       "execution": {
         "odds": 2.254,
@@ -103,14 +103,28 @@
         "user-executed-deviation",
         "material-price-move",
         "unsynchronized-execution",
+        "player-strength-underweighted",
+        "composition-overweighted",
         "within-stake-cap",
-        "pending"
+        "user-confirmed-result",
+        "loss",
+        "settled"
       ],
-      "notes": "User confirmed sportsbook acceptance via successful-bet screenshot. Exact wager: DN SOOPers Challengers Game 3 moneyline at 2.254 for 0.25u (125,000 VND), slip #1148344870, placed at 14:02 ICT. Potential payout 281,750 VND and potential profit 156,750 VND (+0.3135u). The prior model output was LEAN at 2.004 with Confidence 7/10. Although the accepted price was better and the market/line were unchanged, the 0.250 odds move exceeded the mandatory reassessment threshold and no fresh state was supplied, so this is recorded as a user-executed deviation rather than a synchronized model execution. Result pending. This is confirmed LoL wager #17 since the dedicated chat began on 2026-07-29.",
+      "notes": "User confirmed DNS.C lost Game 3 and described the result as a player-difference outcome. DNS.C Game 3 moneyline at 2.254 for 0.25u (125,000 VND), slip #1148344870, lost. Payout 0 VND and net loss 125,000 VND (-0.25u). Final map statistics were not provided. This remains classified as a user-executed deviation because the accepted odds moved from 2.004 to 2.254 without a fresh synchronized state. This is confirmed LoL wager #17 since the dedicated chat began on 2026-07-29.",
       "placedAt": "2026-07-31T14:02:00+07:00",
       "userConfirmedAt": "2026-07-31T14:02:00+07:00",
       "addedAt": "2026-07-31T07:02:00Z",
-      "createdAt": "2026-07-31T07:02:00Z"
+      "createdAt": "2026-07-31T07:02:00Z",
+      "payoutVnd": 0,
+      "netProfitVnd": -125000,
+      "netUnits": -0.25,
+      "settledAt": "2026-07-31T07:37:00Z",
+      "resultConfirmedAt": "2026-07-31T14:37:00+07:00",
+      "review": {
+        "resultAssessment": "DNS.C lost Game 3; no final kill, gold, tower or objective statistics were supplied.",
+        "processAssessment": "The model overweighted composition shape and underweighted the player-strength and execution gap. A theoretically superior front-to-back composition is not sufficient when the weaker roster may fail lane control, setup timing, target selection, mechanical execution or objective conversion.",
+        "calibrationAction": "Do not promote a weaker-team moneyline solely from draft structure. Require a quantified player-strength adjustment by lane and role, champion proficiency evidence, and a realistic execution path. Preserve the user-executed-deviation classification because the accepted price moved materially without a fresh synchronized state."
+      }
     },
     {
       "syncId": "eval-20260731-ktc-dnsc-g2-dnsc-plus-5-5-kills",
@@ -3541,9 +3555,10 @@
       "pending/2026-07-31-ktc-vs-dnsc-game1-dnsc-plus-4-5-kills-settlement.json",
       "pending/2026-07-31-ktc-vs-dnsc-game1-dnsc-plus-4-5-kills.json",
       "pending/2026-07-31-ktc-vs-dnsc-game2-dnsc-plus-5-5-kills-settlement.json",
-      "pending/2026-07-31-ktc-vs-dnsc-game2-dnsc-plus-5-5-kills.json"
+      "pending/2026-07-31-ktc-vs-dnsc-game2-dnsc-plus-5-5-kills.json",
+      "pending/2026-07-31-ktc-vs-dnsc-game3-dnsc-ml-settlement.json"
     ],
-    "officialRecordsAdded": 1,
-    "officialRecordsUpdated": 17
+    "officialRecordsAdded": 0,
+    "officialRecordsUpdated": 19
   }
 }
