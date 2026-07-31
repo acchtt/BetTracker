@@ -1,0 +1,134 @@
+name: Add O'Higgins Boca Under 1.25
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/add-ohiggins-boca-under-1-25.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Add wager to ledger
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          path = Path('ledger.json')
+          data = json.loads(path.read_text(encoding='utf-8'))
+          now = '2026-07-31T01:22:00Z'
+          sync_id = 'eval-20260731-ohiggins-boca-under-1-25'
+
+          existing = next((b for b in data.get('bets', []) if b.get('syncId') == sync_id), None)
+          if existing is None:
+              bet = {
+                  'syncId': sync_id,
+                  'updatedAt': now,
+                  'event': "O'Higgins vs Boca Juniors — Second Leg",
+                  'league': 'CONMEBOL Copa Sudamericana',
+                  'competitionStage': 'Knockout playoff, second leg',
+                  'venue': 'Estadio Codelco El Teniente, Rancagua',
+                  'format': 'Two-legged knockout tie; live full-match total settles after 90 minutes plus regulation stoppage time; extra time and penalties excluded',
+                  'bet': 'Under 1.25 total goals',
+                  'odds': 1.85,
+                  'stakeVnd': 125000,
+                  'stakeUnits': 0.25,
+                  'potentialPayoutVnd': 231250,
+                  'potentialProfitVnd': 106250,
+                  'status': 'pending',
+                  'result': 'Pending',
+                  'eventDate': '2026-07-31',
+                  'marketType': 'Totals',
+                  'timing': 'live-halftime',
+                  'bookmaker': 'BK8',
+                  'slipId': '870838684642070528',
+                  'entryScore': "O'Higgins 0-0 Boca Juniors",
+                  'entryAggregateScore': 'Boca Juniors led 1-0 on aggregate',
+                  'entryMinute': 'Halftime',
+                  'settlementBasis': 'Full-match Asian total Under 1.25 including the existing 0-0 score; 90 minutes plus regulation stoppage time. Final total 0 goals is a full win; exactly 1 goal is a half win; 2 or more goals is a full loss.',
+                  'modelRecommendation': {
+                      'recommendationType': 'official bet',
+                      'modelVersion': 'football-v0.2.9',
+                      'market': 'Under 1.25 total goals',
+                      'targetOdds': 1.90,
+                      'minimumExecutableOdds': 1.85,
+                      'noBetBelow': 1.85,
+                      'stakeUnits': 0.25,
+                      'state': "0-0 at halftime, with Boca Juniors leading 1-0 on aggregate.",
+                      'reasoning': 'The first half remained low event: xG 0.24-0.16, xGOT 0.03-0.00, shots 7-6, shots on target 1-0, no big chances, inside-box shots 1-2 and box touches 8-6. O’Higgins were single-goal-to-level, so their first goal could create an aggregate reset rather than a continued two-goal chase.'
+                  },
+                  'execution': {
+                      'odds': 1.85,
+                      'stakeUnits': 0.25,
+                      'stakeVnd': 125000,
+                      'potentialPayoutVnd': 231250,
+                      'sameMarketAndLine': True,
+                      'withinStakeCap': True,
+                      'stateSynchronized': True,
+                      'atMinimumExecutableOdds': True,
+                      'priceMoveClassification': 'acceptable same-state drift to stated executable floor',
+                      'deviations': [],
+                      'timingAttribution': 'User executed at the explicit minimum executable price with the same line, score and halftime state.',
+                      'processRule': 'football-v0.2.9 price ladder and delivery-time validity'
+                  },
+                  'entryStats': {
+                      'xG': "O'Higgins 0.24-0.16 Boca Juniors",
+                      'possession': "O'Higgins 49%-51% Boca Juniors",
+                      'shots': "O'Higgins 7-6 Boca Juniors",
+                      'shotsOnTarget': "O'Higgins 1-0 Boca Juniors",
+                      'bigChances': "O'Higgins 0-0 Boca Juniors",
+                      'corners': "O'Higgins 2-0 Boca Juniors",
+                      'xGOT': "O'Higgins 0.03-0.00 Boca Juniors",
+                      'insideBoxShots': "O'Higgins 1-2 Boca Juniors",
+                      'oppositionBoxTouches': "O'Higgins 8-6 Boca Juniors"
+                  },
+                  'tags': [
+                      'evaluation',
+                      'official-after-user-confirmation',
+                      'football',
+                      'copa-sudamericana',
+                      'knockout-second-leg',
+                      'live-halftime',
+                      'totals',
+                      'under-1-25',
+                      'quarter-line',
+                      'whole-line-half-protection',
+                      'lineup-confirmed',
+                      'aggregate-state',
+                      'single-goal-to-level',
+                      'aggregate-reset-risk',
+                      'low-chance-profile',
+                      'model-approved-official',
+                      'user-executed',
+                      'within-stake-cap',
+                      'same-state-execution',
+                      'at-executable-floor',
+                      'user-execution-clean',
+                      'pending'
+                  ],
+                  'notes': "User confirmed sportsbook acceptance of O'Higgins vs Boca Juniors full-match Under 1.25 at 1.85 for 0.25u (125,000 VND), slip #870838684642070528. Potential full-win payout is 231,250 VND and potential full-win profit is 106,250 VND (+0.2125u). Exactly one total goal produces a half win with return 178,125 VND and profit 53,125 VND (+0.10625u). The accepted price matched the stated minimum executable odds, with the same 0-0 halftime score, market and line; no execution deviation.",
+                  'placedAt': '2026-07-31T08:22:00+07:00',
+                  'userConfirmedAt': '2026-07-31T08:22:00+07:00',
+                  'addedAt': now,
+                  'createdAt': now
+              }
+              data.setdefault('bets', []).insert(0, bet)
+          else:
+              existing['updatedAt'] = now
+          data['version'] = now
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+      - name: Commit ledger update
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add ledger.json
+          git commit -m "Record O'Higgins Boca Under 1.25 wager" || exit 0
+          git push
