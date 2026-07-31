@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-31T01:22:00Z",
+  "version": "2026-07-31T02:12:00Z",
   "bets": [
     {
       "syncId": "eval-20260731-ohiggins-boca-under-1-25",
@@ -94,7 +94,7 @@
     },
     {
       "syncId": "eval-20260731-central-cordoba-atletico-tucuman-under-1-5",
-      "updatedAt": "2026-07-31T00:51:00Z",
+      "updatedAt": "2026-07-31T02:12:00Z",
       "event": "Central Cordoba SdE vs Atletico Tucuman",
       "league": "Argentina Liga Profesional — Clausura",
       "competitionStage": "Matchday 2",
@@ -105,8 +105,8 @@
       "stakeUnits": 0.25,
       "potentialPayoutVnd": 235000,
       "potentialProfitVnd": 110000,
-      "status": "pending",
-      "result": "Pending",
+      "status": "loss",
+      "result": "Loss; match reached at least 2 total goals, with the decisive second goal scored in stoppage time. Exact final score pending confirmation.",
       "eventDate": "2026-07-31",
       "marketType": "Totals",
       "timing": "live-first-half",
@@ -158,13 +158,34 @@
         "assistant-response-delay",
         "timing-affected-marginal-edge",
         "user-execution-clean",
-        "pending"
+        "pending",
+        "loss",
+        "settled",
+        "stoppage-time-goal",
+        "late-goal-tail-underestimated",
+        "model-calibration-review",
+        "user-confirmed-result"
       ],
-      "notes": "User confirmed sportsbook acceptance of Central Cordoba SdE vs Atletico Tucuman full-match Under 1.5 at 1.88 for 0.25u (125,000 VND), slip #870830469917396992. Potential payout is 235,000 VND and potential profit is 110,000 VND (+0.22u). The recommendation was displayed at 1.96 with a 1.90 minimum, but the assistant took approximately 1.4 minutes to assess the live screen and the same-line price moved to 1.88 while the score remained 0-0. The execution is recorded as timing-affected same-state drift with no user deviation. Based on the prior 55%-57% probability range, expected ROI at 1.88 is approximately +3.4% to +7.2%, but the lower-bound margin is thinner than at the target price.",
+      "notes": "User confirmed sportsbook acceptance of Central Cordoba SdE vs Atletico Tucuman full-match Under 1.5 at 1.88 for 0.25u (125,000 VND), slip #870830469917396992. Potential payout is 235,000 VND and potential profit is 110,000 VND (+0.22u). The recommendation was displayed at 1.96 with a 1.90 minimum, but the assistant took approximately 1.4 minutes to assess the live screen and the same-line price moved to 1.88 while the score remained 0-0. The execution is recorded as timing-affected same-state drift with no user deviation. Based on the prior 55%-57% probability range, expected ROI at 1.88 is approximately +3.4% to +7.2%, but the lower-bound margin is thinner than at the target price. Settlement update: user confirmed the wager lost after the decisive second goal was scored in stoppage time. Return 0 VND; net loss 125,000 VND (-0.25u). Exact final score and full-time statistics remain pending.",
       "placedAt": "2026-07-31T07:51:00+07:00",
       "userConfirmedAt": "2026-07-31T07:51:00+07:00",
       "addedAt": "2026-07-31T00:51:00Z",
-      "createdAt": "2026-07-31T00:51:00Z"
+      "createdAt": "2026-07-31T00:51:00Z",
+      "settlementType": "full_loss",
+      "payoutVnd": 0,
+      "profitVnd": -125000,
+      "profitUnits": -0.25,
+      "netProfitVnd": -125000,
+      "netUnits": -0.25,
+      "settledAt": "2026-07-31T02:12:00Z",
+      "finalScore": "Unconfirmed; at least 2 total goals",
+      "finalTotalGoalsMinimum": 2,
+      "review": {
+        "resultAssessment": "Under 1.5 lost in full because the match produced at least two goals. The user confirmed the decisive second goal arrived in stoppage time.",
+        "processAssessment": "The entry was based on a low-event 0-0 state around 24-25 minutes, but the market required no more than one goal over roughly 65 minutes plus stoppage time. The existing model probability range did not leave enough reserve for late-game and stoppage-time scoring risk. This is a model calibration issue, not a user execution error.",
+        "timingAssessment": "Execution at 1.88 followed assistant latency while the line, market and score remained synchronized. The loss is not attributed to execution timing; it is attributed to the modeled goal-tail being too narrow.",
+        "nextAdjustment": "For live league unders with a one-goal full-loss boundary and more than 55 regulation minutes remaining, apply an explicit stoppage-time reserve and require stronger robust edge when any big chance has already occurred. Final calibration update awaits verified final statistics."
+      }
     },
     {
       "syncId": "eval-20260731-ferencvaros-twente-under-3",
