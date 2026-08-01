@@ -1,6 +1,44 @@
 {
-  "version": "2026-08-01T08:31:00Z",
+  "version": "2026-08-01T10:34:00Z",
   "bets": [
+    {
+      "syncId": "eval-20260801-laos-philippines-under-3-5",
+      "updatedAt": "2026-08-01T17:34:00+07:00",
+      "event": "Laos vs Philippines",
+      "league": "ASEAN Championship",
+      "bet": "Under 3.5 goals",
+      "odds": 1.87,
+      "stakeVnd": 300000,
+      "stakeUnits": 0.3,
+      "unitValueVndAtPlacement": 1000000,
+      "potentialPayoutVnd": 561000,
+      "potentialProfitVnd": 261000,
+      "status": "pending",
+      "timing": "live",
+      "entryMinute": 33,
+      "entryScore": "Laos 1-0 Philippines",
+      "modelRecommendation": {
+        "recommendationType": "official bet",
+        "modelVersion": "football-v0.2.16",
+        "quotedOdds": 1.89,
+        "minimumAcceptableOdds": 1.7,
+        "recommendedStakeUnits": 0.25,
+        "recommendedStakeVnd": 250000
+      },
+      "execution": {
+        "acceptedOdds": 1.87,
+        "actualStakeUnits": 0.3,
+        "actualStakeVnd": 300000,
+        "withinFootballStakeCap": false,
+        "stakeDeviationUnits": 0.05,
+        "stakeDeviationVnd": 50000,
+        "selectionAttribution": "model-approved market and price",
+        "stakeAttribution": "user execution above model cap"
+      },
+      "notes": "User corrected the placed stake from 250,000 VND to 300,000 VND. The accepted odds remained above the football minimum, but the actual 0.30u stake exceeded the official football cap and recommended stake of 0.25u.",
+      "addedAt": "2026-08-01T10:34:00Z",
+      "createdAt": "2026-08-01T10:34:00Z"
+    },
     {
       "syncId": "eval-20260801-al-tt-g2-under-29-5-kills",
       "updatedAt": "2026-08-01T15:31:00+07:00",
@@ -5337,6 +5375,7 @@
       "pending/2026-08-01-al-tt-game1-over-32-minutes-execution-correction.json",
       "pending/2026-08-01-al-tt-game1-over-32-minutes-open.json",
       "pending/2026-08-01-al-tt-game2-under-29-5-kills-open.json",
+      "pending/2026-08-01-laos-philippines-under-3-5-open.json",
       "pending/2026-08-01-mkoi-shft-g2-shft-plus7-5-settlement-sync.json",
       "pending/2026-08-01-puebla-chivas-chivas-minus-0-5-settlement.json",
       "pending/2026-08-01-valerenga-hamkam-red-card-minute-correction.json",
@@ -5352,7 +5391,7 @@
       "pending/eval-20260801-mkoi-shft-g2-shft-plus-7-5-kills.json",
       "pending/eval-20260801-mkoi-shft-g3-shft-plus-10-5-kills.json"
     ],
-    "officialRecordsAdded": 0,
+    "officialRecordsAdded": 1,
     "officialRecordsUpdated": 31
   }
 }
