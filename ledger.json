@@ -16,7 +16,11 @@
       "unitValueVndAtPlacement": 1000000,
       "potentialPayoutVnd": 529250,
       "potentialProfitVnd": 279250,
+      "payoutVnd": 0,
+      "netProfitVnd": -250000,
+      "netUnits": -0.25,
       "status": "loss",
+      "result": "User confirmed the duration wager lost. The official sportsbook ticket was Over 33 minutes; the exact final duration was not supplied.",
       "eventDate": "2026-08-01",
       "marketType": "Duration total",
       "timing": "live",
@@ -102,6 +106,13 @@
         "correlatedAddOnsPlaced": false,
         "additionalSameMapBetsAllowed": false
       },
+      "review": {
+        "resultGrade": "loss",
+        "processGrade": "poor",
+        "resultAssessment": "Over 33 minutes lost in full for -250,000 VND (-0.25u). The exact final duration was not supplied.",
+        "processAssessment": "The model promoted a duration over from a 16:43 state that showed anti-conversion and low tower progression, but it underpriced the probability of a decisive midgame fight creating a rapid close. It also allowed the wager to be executed after a material favorable price move without a synchronized state check.",
+        "calibrationAction": "Maintain the existing v0.3.11 execution-expiry rule. For duration overs, distinguish temporary recovery from durable resistance and require explicit evidence that the trailing composition can defend structures after losing the next major objective fight."
+      },
       "tags": [
         "evaluation",
         "official-after-user-confirmation",
@@ -125,21 +136,10 @@
       "notes": "User confirmed Top Esports vs LGD Gaming Game 3 Over 33 minutes at 2.117 for 0.25u (250,000 VND), slip #1149131470, lost. Payout 0 VND; net loss 250,000 VND (-0.25u). The user referred to Over 33.5 when reporting the result, but the supplied ticket and official record show Over 33. The exact final duration was not supplied. The bet remains excluded from the qualifying probation sample because the accepted price moved materially from 1.827 to 2.117 without a fresh synchronized execution state.",
       "placedAt": "2026-08-01T18:13:00+07:00",
       "userConfirmedAt": "2026-08-01T18:13:00+07:00",
-      "addedAt": "2026-08-01T18:13:00+07:00",
-      "createdAt": "2026-08-01T18:13:00+07:00",
-      "payoutVnd": 0,
-      "netProfitVnd": -250000,
-      "netUnits": -0.25,
-      "result": "User confirmed the duration wager lost. The official sportsbook ticket was Over 33 minutes; the exact final duration was not supplied.",
-      "review": {
-        "resultGrade": "loss",
-        "processGrade": "poor",
-        "resultAssessment": "Over 33 minutes lost in full for -250,000 VND (-0.25u). The exact final duration was not supplied.",
-        "processAssessment": "The model promoted a duration over from a 16:43 state that showed anti-conversion and low tower progression, but it underpriced the probability of a decisive midgame fight creating a rapid close. It also allowed the wager to be executed after a material favorable price move without a synchronized state check.",
-        "calibrationAction": "Maintain the existing v0.3.11 execution-expiry rule. For duration overs, distinguish temporary recovery from durable resistance and require explicit evidence that the trailing composition can defend structures after losing the next major objective fight."
-      },
       "resultConfirmedAt": "2026-08-01T18:27:00+07:00",
-      "settledAt": "2026-08-01T18:27:00+07:00"
+      "settledAt": "2026-08-01T18:27:00+07:00",
+      "addedAt": "2026-08-01T18:13:00+07:00",
+      "createdAt": "2026-08-01T18:13:00+07:00"
     },
     {
       "syncId": "eval-20260801-laos-philippines-under-3-5",
@@ -5533,6 +5533,6 @@
       "pending/eval-20260801-mkoi-shft-g3-shft-plus-10-5-kills.json"
     ],
     "officialRecordsAdded": 0,
-    "officialRecordsUpdated": 33
+    "officialRecordsUpdated": 34
   }
 }
