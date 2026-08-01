@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-01T12:35:00Z",
+  "version": "2026-08-01T12:44:00Z",
   "bets": [
     {
       "syncId": "football-20260801-shanghai-port-shandong-taishan-shanghai-minus-0-5-live",
@@ -83,7 +83,7 @@
     },
     {
       "syncId": "eval-20260801-dk-geng-g2-over-33-minutes",
-      "updatedAt": "2026-08-01T19:35:00+07:00",
+      "updatedAt": "2026-08-01T19:44:00+07:00",
       "event": "Dplus KIA vs Gen.G — Game 2",
       "league": "LCK 2026 Rounds 3-4",
       "competitionStage": "Best-of-three series; Game 2",
@@ -164,7 +164,7 @@
         "executionValidityGatePassed": false,
         "selectionAttribution": "model-generated exact market and line",
         "stakeAttribution": "user execution above the 0.25u recommendation and active map cap",
-        "performanceAttribution": "official settled loss; excluded from qualifying probation because the 0.101 price move triggered mandatory reassessment and the 0.30u stake exceeded the active 0.25u map cap",
+        "performanceAttribution": "official settled wager included in probation by explicit user-directed exception; all execution-validity, price-move, and stake-cap deviations remain recorded",
         "deviations": [
           "Accepted odds improved from 1.920 to 2.021, an absolute move of 0.101 that triggered the v0.3.11 material-move threshold.",
           "No fresh synchronized map state was supplied at the accepted price.",
@@ -173,10 +173,16 @@
       },
       "probationEligibility": {
         "probationActive": true,
-        "countsTowardTenWagerValidation": false,
-        "status": "not qualified",
+        "countsTowardTenWagerValidation": true,
+        "status": "included by explicit user-directed exception",
         "result": "loss",
-        "reason": "The accepted price moved by 0.101, triggering mandatory reassessment, and the actual 0.30u stake exceeded the active 0.25u per-map exposure cap."
+        "reason": "Included by explicit user instruction. The 0.101 material price move and 0.30u stake-cap breach remain documented; this exception changes probation inclusion only.",
+        "probationSequenceNumber": 4,
+        "probationRecordAfterSettlement": "1-3",
+        "probationNetVndAfterSettlement": -601250,
+        "probationNetUnitsAfterSettlement": -0.60125,
+        "inclusionBasis": "User explicitly requested inclusion in the active ten-wager probation despite recorded execution-validity or stake-cap deviations.",
+        "deviationsPreserved": true
       },
       "sameMapExposure": {
         "maximumExposureUnits": 0.25,
@@ -201,19 +207,21 @@
         "model-v0-3-12",
         "material-favorable-price-move",
         "stake-cap-deviation",
-        "excluded-from-probation",
         "no-correlated-add-ons",
         "unit-basis-1000000-vnd",
         "loss",
-        "settled"
+        "settled",
+        "probation-user-override",
+        "probation-wager-4",
+        "execution-deviations-preserved"
       ],
-      "notes": "User confirmed Dplus KIA vs Gen.G Game 2 Over 33 minutes at 2.021 for 300,000 VND (0.30u), slip #1149213315, lost. Payout 0 VND; net loss 300,000 VND (-0.30u). The exact final duration was not supplied. The wager remains excluded from qualifying probation because the accepted price moved materially and the actual stake exceeded the 0.25u map cap.",
+      "notes": "User confirmed Dplus KIA vs Gen.G Game 2 Over 33 minutes at 2.021 for 300,000 VND (0.30u), slip #1149213315, lost. Payout 0 VND; net loss 300,000 VND (-0.30u). The exact final duration was not supplied. The wager remains excluded from qualifying probation because the accepted price moved materially and the actual stake exceeded the 0.25u map cap. User later explicitly requested that this official wager be included in the active ten-wager probation. Inclusion is a user-directed exception and does not erase the recorded execution or stake deviations.",
       "addedAt": "2026-08-01T12:24:00Z",
       "createdAt": "2026-08-01T12:24:00Z"
     },
     {
       "syncId": "eval-20260801-tes-lgd-g3-over-33-minutes",
-      "updatedAt": "2026-08-01T19:29:00+07:00",
+      "updatedAt": "2026-08-01T19:44:00+07:00",
       "event": "Top Esports vs LGD Gaming — Game 3",
       "league": "LPL 2026 Split 3",
       "competitionStage": "Best-of-three series; deciding Game 3",
@@ -300,7 +308,7 @@
         "executionValidityGatePassed": false,
         "selectionAttribution": "model-generated exact market and line",
         "stakeAttribution": "model-compliant",
-        "performanceAttribution": "official placed wager; immediate same-state favorable move reported, but both material-move thresholds were exceeded and no fresh reassessment was completed; excluded from qualifying probation",
+        "performanceAttribution": "official settled wager included in probation by explicit user-directed exception; all execution-validity, price-move, and stake-cap deviations remain recorded",
         "deviations": [
           "Accepted odds improved immediately after the verdict from 1.827 to 2.117, a material 0.290 move.",
           "Implied probability moved by approximately 7.49 percentage points, above the three-point reassessment threshold.",
@@ -309,10 +317,16 @@
       },
       "probationEligibility": {
         "probationActive": true,
-        "countsTowardTenWagerValidation": false,
-        "status": "not qualified",
+        "countsTowardTenWagerValidation": true,
+        "status": "included by explicit user-directed exception",
         "result": "loss",
-        "reason": "The user reported an immediate same-state odds jump, but the 0.290 decimal move and approximately 7.49-point implied-probability move exceeded both v0.3.11 material thresholds. Immediate timing does not waive mandatory reassessment, so the official loss remains outside the qualifying probation sample."
+        "reason": "Included by explicit user instruction. The immediate same-state price jump and material-move rule breach remain documented; this exception changes probation inclusion only.",
+        "probationSequenceNumber": 3,
+        "probationRecordAfterSettlement": "1-2",
+        "probationNetVndAfterSettlement": -301250,
+        "probationNetUnitsAfterSettlement": -0.30125,
+        "inclusionBasis": "User explicitly requested inclusion in the active ten-wager probation despite recorded execution-validity or stake-cap deviations.",
+        "deviationsPreserved": true
       },
       "sameMapExposure": {
         "maximumExposureUnits": 0.25,
@@ -343,13 +357,15 @@
         "fresh-reassessment-required",
         "model-compliant-stake",
         "within-per-map-cap",
-        "excluded-from-probation",
         "no-correlated-add-ons",
         "unit-basis-1000000-vnd",
         "loss",
-        "settled"
+        "settled",
+        "probation-user-override",
+        "probation-wager-3",
+        "execution-deviations-preserved"
       ],
-      "notes": "User confirmed Top Esports vs LGD Gaming Game 3 Over 33 minutes at 2.117 for 0.25u (250,000 VND), slip #1149131470, lost. Payout 0 VND; net loss 250,000 VND (-0.25u). The user referred to Over 33.5 when reporting the result, but the supplied ticket and official record show Over 33. The exact final duration was not supplied. The user later clarified that the odds jumped immediately after the verdict with no intervening meaningful state event reported. This corrects the timing basis but does not restore probation eligibility because the move from 1.827 to 2.117 exceeded both v0.3.11 material thresholds and required a fresh reassessment.",
+      "notes": "User confirmed Top Esports vs LGD Gaming Game 3 Over 33 minutes at 2.117 for 0.25u (250,000 VND), slip #1149131470, lost. Payout 0 VND; net loss 250,000 VND (-0.25u). The user referred to Over 33.5 when reporting the result, but the supplied ticket and official record show Over 33. The exact final duration was not supplied. The user later clarified that the odds jumped immediately after the verdict with no intervening meaningful state event reported. This corrects the timing basis but does not restore probation eligibility because the move from 1.827 to 2.117 exceeded both v0.3.11 material thresholds and required a fresh reassessment. User later explicitly requested that this official wager be included in the active ten-wager probation. Inclusion is a user-directed exception and does not erase the recorded execution or stake deviations.",
       "placedAt": "2026-08-01T18:13:00+07:00",
       "userConfirmedAt": "2026-08-01T18:13:00+07:00",
       "resultConfirmedAt": "2026-08-01T18:27:00+07:00",
