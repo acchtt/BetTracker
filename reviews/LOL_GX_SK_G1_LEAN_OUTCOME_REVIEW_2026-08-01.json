@@ -1,0 +1,136 @@
+{
+  "version": "2026-08-01T22:52:00+07:00",
+  "event": "GIANTX vs SK Gaming — Game 1",
+  "reviewType": "unplaced lean outcome review",
+  "officialBet": false,
+  "officialPnlVnd": 0,
+  "probationEligible": false,
+  "source": "user-confirmed outcome grading",
+  "policy": {
+    "doNotAddHypotheticalPnlToLedger": true,
+    "doNotCountTowardProbation": true,
+    "repeatedLiveSnapshotsAreCorrelated": true,
+    "changedLinesRemainIndependentAssessments": true
+  },
+  "summary": {
+    "leanSnapshots": 11,
+    "wins": 8,
+    "losses": 3,
+    "record": "8-3",
+    "hypotheticalStakePerSnapshotUnits": 0.25,
+    "hypotheticalTotalStakedUnits": 2.75,
+    "hypotheticalNetUnits": 1.08475,
+    "hypotheticalRoiPercent": 39.45,
+    "warning": "These are unplaced shadow outcomes. The snapshot count overstates independent evidence because multiple handicap and kill-total entries came from the same evolving map."
+  },
+  "records": [
+    {
+      "state": "pre-game draft",
+      "market": "GX moneyline",
+      "odds": 1.686,
+      "result": "loss",
+      "hypotheticalNetUnits": -0.25
+    },
+    {
+      "state": "pre-game revised price",
+      "market": "GX moneyline",
+      "odds": 1.850,
+      "result": "loss",
+      "hypotheticalNetUnits": -0.25
+    },
+    {
+      "gameTime": "7:24",
+      "market": "SK +3.5 kills",
+      "odds": 1.621,
+      "result": "win",
+      "hypotheticalNetUnits": 0.15525
+    },
+    {
+      "gameTime": "10:24",
+      "market": "GX +6.5 kills",
+      "odds": 2.063,
+      "result": "win",
+      "hypotheticalNetUnits": 0.26575
+    },
+    {
+      "gameTime": "12:22",
+      "market": "GX +8.5 kills",
+      "odds": 1.854,
+      "result": "win",
+      "hypotheticalNetUnits": 0.2135
+    },
+    {
+      "gameTime": "14:38",
+      "market": "GX +9.5 kills",
+      "odds": 2.408,
+      "result": "win",
+      "hypotheticalNetUnits": 0.352
+    },
+    {
+      "gameTime": "20:41",
+      "market": "GX +6.5 kills",
+      "odds": 1.953,
+      "result": "win",
+      "hypotheticalNetUnits": 0.23825
+    },
+    {
+      "gameTime": "23:09",
+      "market": "GX +5.5 kills",
+      "odds": 1.686,
+      "result": "win",
+      "hypotheticalNetUnits": 0.1715
+    },
+    {
+      "gameTime": "26:45",
+      "market": "GX +3.5 kills",
+      "odds": 1.782,
+      "result": "loss",
+      "hypotheticalNetUnits": -0.25
+    },
+    {
+      "gameTime": "32:42",
+      "market": "Over 28.5 kills",
+      "odds": 1.860,
+      "result": "win",
+      "hypotheticalNetUnits": 0.215
+    },
+    {
+      "gameTime": "35:52",
+      "market": "Over 30.5 kills",
+      "odds": 1.894,
+      "result": "win",
+      "hypotheticalNetUnits": 0.2235
+    }
+  ],
+  "marketBreakdown": {
+    "moneyline": {
+      "record": "0-2",
+      "hypotheticalNetUnits": -0.5,
+      "assessment": "The pre-game GX edge was overstated. Blue side and draft structure did not compensate for SK's stronger lane and objective development."
+    },
+    "killHandicap": {
+      "record": "6-1",
+      "hypotheticalNetUnits": 1.14625,
+      "assessment": "Large positive cushions were robust while the compressed GX +3.5 failed. This reinforces line sensitivity and independent reassessment of each handicap move."
+    },
+    "killTotalOver": {
+      "record": "2-0",
+      "hypotheticalNetUnits": 0.4385,
+      "assessment": "The late Overs were supported by observed high kill velocity and completed damage items, unlike earlier draft-only kill-Over leans in other matches."
+    }
+  },
+  "modelReview": {
+    "positiveFindings": [
+      "Item-strength concentration improved the late read.",
+      "Observed fight velocity appropriately distinguished late kill Overs from draft-only Over speculation.",
+      "Large handicap cushions captured a close, volatile map better than the moneyline."
+    ],
+    "negativeFindings": [
+      "Pre-game GX moneyline confidence was too high relative to roster uncertainty and lane matchup risk.",
+      "GX +3.5 was too compressed given SK soul-point and carry-strength concentration.",
+      "Repeated winning handicap snapshots must not be counted as independent model proof."
+    ],
+    "hardRuleChange": null,
+    "operationalAdjustment": "Prefer wide live kill-handicap cushions over marginal pre-game moneylines when map state is close but objective and item advantages create asymmetric win probability. Continue requiring independent reassessment as the cushion compresses."
+  }
+}
