@@ -1,9 +1,9 @@
 {
-  "version": "2026-08-01T07:25:00Z",
+  "version": "2026-08-01T07:39:00Z",
   "bets": [
     {
       "syncId": "eval-20260801-al-tt-g1-over-32-minutes",
-      "updatedAt": "2026-08-01T14:25:00+07:00",
+      "updatedAt": "2026-08-01T14:39:00+07:00",
       "event": "Anyone's Legend vs ThunderTalk Gaming — Game 1",
       "league": "LPL 2026 Split 3",
       "competitionStage": "Best-of-three series; Game 1",
@@ -30,7 +30,7 @@
       "sportsbookDisplayedEventTime": "2026-08-01T15:00:00+07:00",
       "seriesState": "Series 0-0; Game 1.",
       "entryStateAtRecommendation": "At 4:58, kills were 0-0, gold was approximately 8.2k-8.2k, towers were 0-0 and neutral objectives were 0-0. No meaningful completed-item advantage was visible.",
-      "placementState": "Not freshly synchronized. The wager was confirmed at 14:25, approximately two minutes after the 4:58 state and recommendation screenshot, without a new scoreboard snapshot. The accepted price improved from 1.907 to 1.999.",
+      "placementState": "User clarified that the accepted 1.999 price appeared immediately after the 1.907 verdict and that no meaningful map event occurred between recommendation and execution. This is treated as a synchronized price-only move on the same market and line.",
       "rosterStatus": "user-confirmed",
       "sides": {
         "TT": "blue",
@@ -52,7 +52,7 @@
           "Shen"
         ]
       },
-      "teamStrengthPrior": "AL held the stronger overall team-strength prior, but the neutral opening and both drafts' wave-clear reduced the probability of a rapid clean close.",
+      "teamStrengthPrior": "AL held the stronger overall team-strength prior, but the neutral opening and both drafts' wave-clear reduced the probability of a rapid clean close at entry.",
       "modelRecommendation": {
         "recommendationType": "official bet",
         "modelVersion": "lol-v0.3.9",
@@ -100,22 +100,18 @@
         "impliedProbabilityMovePercentagePoints": -2.41,
         "oddsMoveThresholdTriggered": false,
         "impliedProbabilityThresholdTriggered": false,
-        "stateSynchronized": false,
-        "mandatoryReassessmentTriggered": true,
-        "recommendationExpiredBeforePlacement": true,
-        "selectionAttribution": "model-generated market and line; execution-state model approval not established because the recommendation expired before placement",
+        "stateSynchronized": true,
+        "mandatoryReassessmentTriggered": false,
+        "recommendationExpiredBeforePlacement": false,
+        "selectionAttribution": "model-approved exact market and line at a better execution price with no intervening meaningful state change",
         "stakeAttribution": "model-compliant",
-        "performanceAttribution": "official open real wager with unsynchronized execution; excluded from v0.3.9 probation validation",
-        "deviations": [
-          "No fresh synchronized scoreboard was supplied at the 14:25 placement time.",
-          "The recommendation explicitly expired when the game clock materially advanced without a new snapshot.",
-          "The favorable odds move from 1.907 to 1.999 was below the standalone 0.10 and three-percentage-point price thresholds, but price improvement did not preserve approval after state expiry."
-        ]
+        "performanceAttribution": "model-approved official open wager",
+        "deviations": []
       },
       "probationEligibility": {
         "v039ProbationActive": true,
-        "countsTowardTenWagerValidationIfSettled": false,
-        "reason": "Execution was not freshly synchronized after recommendation expiry."
+        "countsTowardTenWagerValidationIfSettled": true,
+        "reason": "Same market and line, price remained above cutoff, price movement stayed below mandatory reassessment thresholds, and the user confirmed no intervening meaningful map event."
       },
       "sameMapExposure": {
         "currentExposureUnits": 0.25,
@@ -137,18 +133,24 @@
         "model-compliant-stake",
         "within-per-map-cap",
         "price-better-than-quoted",
-        "unsynchronized-execution",
-        "recommendation-expired",
-        "excluded-v0-3-9-probation-validation",
+        "synchronized-price-only-move",
+        "probation-eligible-if-settled",
+        "material-adverse-live-development",
         "no-correlated-add-ons",
         "unit-basis-1000000-vnd",
         "open"
       ],
-      "notes": "User confirmed Anyone's Legend vs ThunderTalk Gaming Game 1 Over 32 minutes at 1.999 for 0.25u (250,000 VND), slip #1148901032. Potential payout is 499,750 VND and potential profit is 249,750 VND. The model recommendation was issued at 1.907 from the synchronized 4:58 neutral state with a minimum price of 1.82. The accepted price improved by 0.092 and remained above cutoff, but the game clock advanced without a fresh scoreboard before placement. Under LoL v0.3.9, the recommendation had expired; this remains an official open real wager after user confirmation but is not model-approved at execution and will not count toward the ten-wager probation sample. Total exposure on Game 1 is now 0.25u, so no correlated same-map add-on is permitted.",
+      "notes": "User confirmed Anyone's Legend vs ThunderTalk Gaming Game 1 Over 32 minutes at 1.999 for 0.25u (250,000 VND), slip #1148901032. The accepted price appeared immediately after the 1.907 model verdict with no meaningful intervening event. The 0.092 favorable move and approximately 2.41-point decrease in implied probability were below mandatory reassessment thresholds. Execution is therefore corrected to model-approved and probation-eligible if settled. At approximately 21 minutes, AL were reported to lead by about 6,000 gold, materially worsening the duration-over position by opening an accelerated close path. No additional same-map exposure is permitted.",
       "placedAt": "2026-08-01T14:25:00+07:00",
       "userConfirmedAt": "2026-08-01T14:25:00+07:00",
       "addedAt": "2026-08-01T14:25:00+07:00",
-      "createdAt": "2026-08-01T14:25:00+07:00"
+      "createdAt": "2026-08-01T14:25:00+07:00",
+      "currentLiveState": {
+        "observedAt": "2026-08-01T14:39:00+07:00",
+        "gameMinute": "approximately 21:00",
+        "goldState": "AL leading by approximately 6,000 gold",
+        "assessment": "Material adverse development for the Over 32 position because AL now have a credible accelerated close path. Exact towers, objectives, kills, item distribution and current duration price were not supplied."
+      }
     },
     {
       "syncId": "football-20260801-puebla-chivas-chivas-minus-0-5-live",
@@ -5124,6 +5126,7 @@
       "pending/2026-07-31-ktc-vs-dnsc-game2-dnsc-plus-5-5-kills-settlement.json",
       "pending/2026-07-31-ktc-vs-dnsc-game2-dnsc-plus-5-5-kills.json",
       "pending/2026-07-31-ktc-vs-dnsc-game3-dnsc-ml-settlement.json",
+      "pending/2026-08-01-al-tt-game1-over-32-minutes-execution-correction.json",
       "pending/2026-08-01-al-tt-game1-over-32-minutes-open.json",
       "pending/2026-08-01-mkoi-shft-g2-shft-plus7-5-settlement-sync.json",
       "pending/2026-08-01-puebla-chivas-chivas-minus-0-5-settlement.json",
@@ -5140,7 +5143,7 @@
       "pending/eval-20260801-mkoi-shft-g2-shft-plus-7-5-kills.json",
       "pending/eval-20260801-mkoi-shft-g3-shft-plus-10-5-kills.json"
     ],
-    "officialRecordsAdded": 1,
-    "officialRecordsUpdated": 29
+    "officialRecordsAdded": 0,
+    "officialRecordsUpdated": 30
   }
 }
