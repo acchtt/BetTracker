@@ -1,6 +1,6 @@
 {
   "syncId": "lol-20260802-kc-navi-g1-navi-moneyline-live",
-  "updatedAt": "2026-08-02T01:58:00+07:00",
+  "updatedAt": "2026-08-02T02:22:00+07:00",
   "event": "Karmine Corp vs Natus Vincere — Game 1",
   "league": "LEC 2026 Summer",
   "competitionStage": "Best-of-three series; Game 1",
@@ -12,8 +12,12 @@
   "potentialPayoutVnd": 538250,
   "potentialProfitVnd": 288250,
   "potentialProfitUnits": 0.28825,
-  "status": "pending",
-  "result": null,
+  "payoutVnd": 0,
+  "netProfitVnd": -250000,
+  "netUnits": -0.25,
+  "status": "loss",
+  "result": "Karmine Corp won Game 1. The user reported that NAVI failed to convert its early advantage and threw the game, with player execution being the decisive difference.",
+  "resultSource": "user-confirmed",
   "eventDate": "2026-08-02",
   "marketType": "Game moneyline",
   "timing": "live",
@@ -78,8 +82,18 @@
     "probationActive": true,
     "countsTowardTenWagerValidation": true,
     "probationSequenceNumber": 5,
-    "status": "pending settlement",
+    "status": "settled loss",
+    "probationRecordAfterSettlement": "1-4",
+    "probationNetVndAfterSettlement": -851250,
+    "probationNetUnitsAfterSettlement": -0.85125,
     "note": "Official after user confirmation. Selection, price and stake execution complied with the active 1,000,000 VND unit basis and 0.25u per-map cap."
+  },
+  "review": {
+    "resultGrade": "loss",
+    "resultAssessment": "NAVI moneyline lost in full for 250,000 VND (-0.25u).",
+    "processAssessment": "The entry had two valid current-map confirmations, but both represented an early and still modest advantage: a 2-0 kill lead, approximately 0.6k gold and three Void Grubs with no tower or dragon conversion. The model gave insufficient weight to the possibility that KC's stronger player execution and conversion quality would reverse that lead.",
+    "userAssessment": "NAVI threw the game; player difference decided the result.",
+    "calibrationAction": "For underdog live moneylines, do not treat kills plus Void Grubs as sufficient high-confidence conversion when the gold lead is small and there is no tower or dragon lead. Add a team/player execution and lead-conversion reliability check before official promotion, especially against a materially stronger favorite."
   },
   "tags": [
     "official-after-user-confirmation",
@@ -92,9 +106,13 @@
     "price-tolerance-passed",
     "stake-model-compliant",
     "unit-basis-1000000-vnd",
-    "open"
+    "user-confirmed-result",
+    "loss",
+    "settled"
   ],
-  "notes": "User supplied a successful-bet screenshot confirming NAVI Game 1 moneyline at 2.153 for 250,000 VND, slip #1149434459. Under the active 1,000,000 VND unit basis, the stake is 0.25u. Potential payout is 538,250 VND and potential profit is 288,250 VND (+0.28825u).",
+  "notes": "User supplied a successful-bet screenshot confirming NAVI Game 1 moneyline at 2.153 for 250,000 VND, slip #1149434459. The wager was model-compliant at 0.25u. User later confirmed the bet lost and assessed that NAVI threw the game due to player difference.",
   "userConfirmedAt": "2026-08-02T01:49:00+07:00",
+  "resultConfirmedAt": "2026-08-02T02:22:00+07:00",
+  "settledAt": "2026-08-02T02:22:00+07:00",
   "createdAt": "2026-08-01T18:49:00Z"
 }
