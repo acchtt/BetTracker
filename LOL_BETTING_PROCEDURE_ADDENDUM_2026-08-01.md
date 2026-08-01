@@ -62,12 +62,12 @@ A failed over does not automatically justify an under. Every changed line and st
 
 ## 6. Late-game kill-total unders
 
-Under v0.3.12, every live kill-total under must calculate current kills, the market line, remaining kill headroom, expected remaining mandatory contests, a conservative additional-kill budget, and a safety buffer.
+Under v0.3.12, every live kill-total under must calculate current kills, the market line, numerical headroom, the additional whole kills required for the Under to lose, expected remaining mandatory contests, a conservative additional-kill budget, and a safety buffer.
 
 At or after 24:00:
 
 - ten kills or less of remaining headroom is normally `NO BET` unless the game is already in a verified immediate ending sequence;
-- eleven or twelve kills of headroom with two-sided functional damage or layered engage is at most `LEAN — 0u watch` unless the one-fight close gate is fully passed;
+- more than ten but no more than thirteen kills of headroom with two-sided functional damage or layered engage is at most `LEAN — 0u watch` unless the one-fight close gate is fully passed;
 - an `OFFICIAL BET` requires remaining headroom to exceed the conservative expected kill budget by at least three kills;
 - a gold, tower, or objective lead is not evidence of kill suppression by itself;
 - two or more likely full contests before the Nexus create a hard `NO BET` when either team can force them;
@@ -77,7 +77,7 @@ At or after 24:00:
 
 A verified one-fight close requires at least three current confirmations, including either a secured ending buff or exposed/inhibited base state. A 5-2 tower lead alone is insufficient.
 
-Every actionable late under must display current kills, line, headroom, contest count, expected kill budget, safety buffer, close-gate status, functional-damage status, recent kill velocity, quoted odds, target floor, hard floor, stake, and placement status.
+Every actionable late under must display current kills, line, numerical headroom, whole kills required to lose, contest count, expected kill budget, safety buffer, close-gate status, functional-damage status, recent kill velocity, quoted odds, target floor, hard floor, stake, and placement status.
 
 The DK vs Gen.G Game 1 process miss activates a same-series lockout on late kill unders based mainly on leader control. The next map requires a verified one-fight close, a passed fight budget with three-kill cushion, and two independent fight-suppression confirmations.
 
