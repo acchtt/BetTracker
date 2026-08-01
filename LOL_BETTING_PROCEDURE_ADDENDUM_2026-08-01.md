@@ -2,7 +2,7 @@
 
 **Status:** Active immediately  
 **Effective date:** 2026-08-01 02:44 UTC+7  
-**Last updated:** 2026-08-01 14:50 UTC+7  
+**Last updated:** 2026-08-01 15:31 UTC+7  
 **Purpose:** Supersede conflicting fixed values and operational rules in `LOL_BETTING_PROCEDURE.md` without deleting its source, verification, roster, patch, draft, and market-analysis procedures.
 
 When this addendum conflicts with `LOL_BETTING_PROCEDURE.md`, this addendum and the latest dated model rule control.
@@ -21,13 +21,14 @@ When this addendum conflicts with `LOL_BETTING_PROCEDURE.md`, this addendum and 
 
 LoL analysis must apply the following in descending precedence:
 
-1. `MODEL_RULES_LOL_V0.3.10.md`;
-2. `MODEL_RULES_LOL_V0.3.9.md` where not superseded;
-3. `MODEL_RULES_LOL_V0.3.8.md` where not superseded;
-4. `MODEL_RULES_LOL_V0.3.7.md` where not superseded;
-5. `MODEL_RULES_LOL_V0.3.6.md` where not superseded;
-6. `LOL_BETTING_PROCEDURE.md` for remaining operational steps;
-7. `MODEL_CHANGELOG.md` and `STAKE_POLICY_V2.json`.
+1. `MODEL_RULES_LOL_V0.3.11.md`;
+2. `MODEL_RULES_LOL_V0.3.10.md` where not superseded;
+3. `MODEL_RULES_LOL_V0.3.9.md` where not superseded;
+4. `MODEL_RULES_LOL_V0.3.8.md` where not superseded;
+5. `MODEL_RULES_LOL_V0.3.7.md` where not superseded;
+6. `MODEL_RULES_LOL_V0.3.6.md` where not superseded;
+7. `LOL_BETTING_PROCEDURE.md` for remaining operational steps;
+8. `MODEL_CHANGELOG.md` and `STAKE_POLICY_V2.json`.
 
 ## 3. Positive underdog kill handicaps
 
@@ -58,7 +59,7 @@ Under v0.3.10:
 
 A failed over does not automatically justify an under. Every changed line and state must be priced independently.
 
-## 6. Hard recommendation expiry
+## 6. Recommendation expiry and immediate price-only execution
 
 A recommendation expires after:
 
@@ -69,7 +70,26 @@ A recommendation expires after:
 
 After expiry, the exact words `EXPIRED — REASSESSMENT REQUIRED` must be used before a fresh analysis. The old recommendation is not model-approved at execution merely because the accepted odds remain above 1.60.
 
-An immediate price-only move with no reported meaningful state change may remain synchronized when it does not cross the stated material-move threshold and the exact market and line remain unchanged. Record the accepted price and the timing basis explicitly.
+Under v0.3.11, an immediate price-only move may remain synchronized and model-approved when all of the following are true:
+
+- the exact event, map, market, selection, and line are unchanged;
+- no meaningful intervening game-state event occurred;
+- accepted odds remain at or above the stated hard execution floor and never below 1.60;
+- the odds move is less than 0.10;
+- the implied-probability move is less than three percentage points;
+- the stake and per-map exposure remain compliant;
+- the original recommendation was `OFFICIAL BET`;
+- the timing basis supports an immediate same-state move.
+
+Future actionable recommendations must distinguish:
+
+- quoted odds;
+- model target floor;
+- hard execution floor.
+
+A fill below the model target floor is recorded as adverse price slippage. It can still count as model-approved only under the complete v0.3.11 tolerance gate. Material favorable and adverse moves both require reassessment.
+
+The rule is outcome-neutral. A losing wager that satisfies the tolerance conditions counts in the same way as a winning wager.
 
 ## 7. Required status language
 
@@ -80,6 +100,11 @@ An immediate price-only move with no reported meaningful state change may remain
 
 ## 8. Review basis
 
-The current restrictions are supported by `reviews/LOL_TWO_DAY_REVIEW_2026-07-31_TO_2026-08-01.md`, the settled AL vs TT Game 1 duration record in `ledger.json`, and `MODEL_RULES_LOL_V0.3.10.md`.
+The current restrictions are supported by `reviews/LOL_TWO_DAY_REVIEW_2026-07-31_TO_2026-08-01.md`, the settled AL vs TT Game 1 duration record in `ledger.json`, `MODEL_RULES_LOL_V0.3.10.md`, and the AL vs TT Game 2 execution-policy record under `MODEL_RULES_LOL_V0.3.11.md`.
 
-The ten-wager probation continues without reset. The AL vs TT Game 1 Over 32 loss is qualifying wager **1 of 10**, leaving nine qualifying settled wagers before the formal review.
+The ten-wager probation continues without reset:
+
+- qualifying wager 1: AL vs TT Game 1 Over 32 minutes, loss, -250,000 VND (-0.25u);
+- qualifying wager 2: AL vs TT Game 2 Under 29.5 kills, win, +198,750 VND (+0.19875u);
+- current probation record: **1-1, -51,250 VND, -0.05125u**;
+- eight qualifying settled wagers remain before the formal review.
