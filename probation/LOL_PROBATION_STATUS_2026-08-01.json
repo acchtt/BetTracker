@@ -1,39 +1,107 @@
 {
-  "version": "2026-08-01T19:44:00+07:00",
+  "version": "2026-08-01T19:47:00+07:00",
   "sport": "League of Legends",
+  "activeModelVersion": "lol-v0.3.13",
   "probationTarget": 10,
   "completed": 4,
   "remaining": 6,
   "record": "1-3",
   "netVnd": -601250,
   "netUnits": -0.60125,
-  "inclusionPolicy": "All four official LoL wagers placed on 2026-08-01 are included. Wagers 3 and 4 are explicit user-directed exceptions; their execution deviations remain preserved.",
+  "inclusionPolicy": "All four official LoL wagers placed on 2026-08-01 are included. Wagers 3 and 4 are explicit user-directed probation exceptions; their execution deviations remain preserved.",
+  "strictModelApprovedExecutionView": {
+    "completed": 2,
+    "record": "1-1",
+    "netVnd": -51250,
+    "netUnits": -0.05125,
+    "includedSyncIds": [
+      "eval-20260801-al-tt-g1-over-32-minutes",
+      "eval-20260801-al-tt-g2-under-29-5-kills"
+    ],
+    "note": "This view is retained for clean model attribution. It does not override the user's instruction to count all four official wagers in the main probation view."
+  },
+  "marketBreakdown": {
+    "durationOvers": {
+      "bets": 3,
+      "record": "0-3",
+      "stakedVnd": 800000,
+      "stakedUnits": 0.8,
+      "netVnd": -800000,
+      "netUnits": -0.8
+    },
+    "killTotals": {
+      "bets": 1,
+      "record": "1-0",
+      "stakedVnd": 250000,
+      "stakedUnits": 0.25,
+      "netVnd": 198750,
+      "netUnits": 0.19875
+    }
+  },
   "wagers": [
+    {
+      "syncId": "eval-20260801-al-tt-g1-over-32-minutes",
+      "probationSequenceNumber": 1,
+      "event": "Anyone's Legend vs ThunderTalk Gaming — Game 1",
+      "market": "Over 32 minutes",
+      "odds": 1.999,
+      "stakeVnd": 250000,
+      "stakeUnits": 0.25,
+      "result": "loss",
+      "netVnd": -250000,
+      "netUnits": -0.25,
+      "executionClassification": "model-approved",
+      "primaryError": "Early neutrality and nominal waveclear were incorrectly treated as demonstrated stall evidence; stronger-team and structure-acceleration risk was underpriced."
+    },
+    {
+      "syncId": "eval-20260801-al-tt-g2-under-29-5-kills",
+      "probationSequenceNumber": 2,
+      "event": "Anyone's Legend vs ThunderTalk Gaming — Game 2",
+      "market": "Under 29.5 kills",
+      "odds": 1.795,
+      "stakeVnd": 250000,
+      "stakeUnits": 0.25,
+      "result": "win",
+      "netVnd": 198750,
+      "netUnits": 0.19875,
+      "executionClassification": "model-approved under immediate price-only tolerance",
+      "primaryCaution": "The wager won narrowly at 28 kills; the result supports the clean-close branch but does not validate the original probability range by itself."
+    },
     {
       "syncId": "eval-20260801-tes-lgd-g3-over-33-minutes",
       "probationSequenceNumber": 3,
       "event": "Top Esports vs LGD Gaming — Game 3",
       "market": "Over 33 minutes",
+      "odds": 2.117,
+      "stakeVnd": 250000,
+      "stakeUnits": 0.25,
       "result": "loss",
       "netVnd": -250000,
       "netUnits": -0.25,
-      "probationRecordAfterSettlement": "1-2",
-      "probationNetVndAfterSettlement": -301250,
-      "probationNetUnitsAfterSettlement": -0.30125,
-      "reason": "Included by explicit user instruction. The immediate same-state price jump and material-move rule breach remain documented; this exception changes probation inclusion only."
+      "executionClassification": "user-directed probation exception",
+      "primaryError": "Temporary recovery and low tower progression were treated as durable resistance without proving that LGD could survive the next major objective-loss branch.",
+      "executionDeviation": "Immediate same-state odds move from 1.827 to 2.117 exceeded both material reassessment thresholds."
     },
     {
       "syncId": "eval-20260801-dk-geng-g2-over-33-minutes",
       "probationSequenceNumber": 4,
       "event": "Dplus KIA vs Gen.G — Game 2",
       "market": "Over 33 minutes",
+      "odds": 2.021,
+      "stakeVnd": 300000,
+      "stakeUnits": 0.3,
       "result": "loss",
       "netVnd": -300000,
       "netUnits": -0.3,
-      "probationRecordAfterSettlement": "1-3",
-      "probationNetVndAfterSettlement": -601250,
-      "probationNetUnitsAfterSettlement": -0.60125,
-      "reason": "Included by explicit user instruction. The 0.101 material price move and 0.30u stake-cap breach remain documented; this exception changes probation inclusion only."
+      "executionClassification": "user-directed probation exception",
+      "primaryError": "An official duration over was issued without completing the existing required duration block or establishing a conservative earliest finish safely beyond the line.",
+      "executionDeviation": "Odds moved by 0.101 and stake exceeded the 0.25u map cap by 0.05u."
     }
-  ]
+  ],
+  "reviewConclusion": {
+    "primaryModelIssue": "Duration-over promotion from correlated quiet-state evidence without a fastest-finish-path inventory.",
+    "primaryProcedureIssue": "Required duration evidence was not fully captured before the TES and DK official verdicts.",
+    "primaryExecutionIssue": "Two wagers crossed material price thresholds and one exceeded the map stake cap.",
+    "action": "Activated lol-v0.3.13 with a same-day duration-over suspension, complete synchronized-state requirement, two durable anti-conversion events, fastest-finish-path inventory, three-minute finish-window margin, and one-fight compression veto."
+  }
 }
