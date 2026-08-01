@@ -1,7 +1,7 @@
 {
-  "version": "2026-08-02T02:22:00+07:00",
+  "version": "2026-08-02T02:33:00+07:00",
   "sport": "League of Legends",
-  "activeModelVersion": "lol-v0.3.16",
+  "activeModelVersion": "lol-v0.3.17",
   "probationTarget": 10,
   "completed": 5,
   "remaining": 5,
@@ -126,14 +126,14 @@
   ],
   "reviewConclusion": {
     "primaryModelIssue": "Duration-over promotion from correlated quiet-state evidence remains the largest historical issue; the latest loss also exposed overconfidence in an underdog moneyline from low-commitment early confirmations.",
-    "primaryProcedureIssue": "Required duration and post-15 item-strength evidence must be captured without delaying early live verdicts. Live moneylines also need a conversion-quality and team-strength check when the underdog lead is small.",
+    "primaryProcedureIssue": "Required duration and post-15 item-strength evidence must be captured without delaying early live verdicts. Underdog moneylines now require hard conversion evidence and a lead-conversion reliability check.",
     "primaryExecutionIssue": "Two wagers crossed material price thresholds and one exceeded the map stake cap; wager 5 was execution-compliant.",
     "actions": [
       "Activated lol-v0.3.13 with a same-day duration-over suspension, complete synchronized-state requirement, two durable anti-conversion events, fastest-finish-path inventory, three-minute finish-window margin, and one-fight compression veto.",
       "Activated lol-v0.3.14 with item inventory, usable-strength classification, damage-versus-durability comparison, unknown-item veto, and item-completion expiry triggers.",
       "Activated lol-v0.3.15: item snapshots are optional before 15:00 and mandatory at or after 15:00 when decision-critical.",
       "Activated lol-v0.3.16: draft evaluation now scores damage delivery, carry protection, execution burden and single-point-of-failure risk.",
-      "For underdog live moneylines, require stronger conversion evidence than kills plus Void Grubs when the gold lead is small and towers and dragons remain neutral; explicitly price team and player lead-conversion reliability."
+      "Activated lol-v0.3.17: underdog live moneylines require at least one hard conversion confirmation, explicit next-two-sequence analysis, favorite comeback pricing, and team/player lead-conversion reliability checks. Kills plus small gold plus Void Grubs cannot complete the official gate."
     ]
   }
 }
