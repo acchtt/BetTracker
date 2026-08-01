@@ -113,9 +113,7 @@
         "unit-basis-1000000-vnd",
         "pending"
       ],
-      "notes": "User confirmed Dplus KIA vs Gen.G Game 2 Over 33 minutes at 2.021 for 300,000 VND (0.30u), slip #1149213315. The bet is official and open. The exact market and line match the model recommendation, but the price move of 0.101 triggered mandatory reassessment and the actual stake exceeded the 0.25u map cap, so the wager is excluded from qualifying probation performance.",
-      "addedAt": "2026-08-01T12:24:00Z",
-      "createdAt": "2026-08-01T12:24:00Z"
+      "notes": "User confirmed Dplus KIA vs Gen.G Game 2 Over 33 minutes at 2.021 for 300,000 VND (0.30u), slip #1149213315. The bet is official and open. The exact market and line match the model recommendation, but the price move of 0.101 triggered mandatory reassessment and the actual stake exceeded the 0.25u map cap, so the wager is excluded from qualifying probation performance."
     },
     {
       "syncId": "eval-20260801-tes-lgd-g3-over-33-minutes",
@@ -5650,6 +5648,6 @@
       "pending/eval-20260801-mkoi-shft-g3-shft-plus-10-5-kills.json"
     ],
     "officialRecordsAdded": 1,
-    "officialRecordsUpdated": 33
+    "officialRecordsUpdated": 34
   }
 }
