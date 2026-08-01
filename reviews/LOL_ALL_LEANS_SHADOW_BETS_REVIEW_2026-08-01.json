@@ -1,0 +1,199 @@
+{
+  "version": "2026-08-01T20:49:00+07:00",
+  "sport": "League of Legends",
+  "reviewScope": "All recorded or explicitly stated LoL leans, shadow markets, and unplaced official recommendations from 2026-08-01.",
+  "officialBet": false,
+  "officialPnlVnd": 0,
+  "probationEligible": false,
+  "policy": {
+    "doNotAddHypotheticalPnlToLedger": true,
+    "doNotCountTowardProbation": true,
+    "changedLinesAreIndependentAssessments": true,
+    "repeatedSnapshotsOfTheSameThesisAreCorrelated": true,
+    "unknownOutcomesRemainUngraded": true
+  },
+  "gradedSnapshotSummary": {
+    "snapshots": 10,
+    "wins": 5,
+    "losses": 5,
+    "record": "5-5",
+    "hypotheticalEqualStakeUnitsPerSnapshot": 0.25,
+    "hypotheticalNetUnits": -0.197,
+    "hypotheticalTotalStakedUnits": 2.5,
+    "hypotheticalRoiPercent": -7.88,
+    "warning": "This snapshot view overstates sample size because several BLG-JDG entries are repeated observations of the same evolving thesis."
+  },
+  "unplacedOfficialRecommendationSummary": {
+    "snapshots": 3,
+    "record": "2-1",
+    "hypotheticalNetUnits": 0.16575,
+    "hypotheticalRoiPercent": 22.1,
+    "assessment": "Selection quality was positive, but both winning moneylines were missed because of live movement or immediate state change. The correct improvement is faster verdict delivery, not weaker expiry gates."
+  },
+  "leanOnlyGradedSummary": {
+    "snapshots": 7,
+    "record": "3-4",
+    "hypotheticalNetUnits": -0.36275,
+    "hypotheticalRoiPercent": -20.73,
+    "assessment": "The lean-only sample was negative. Kill-total Overs were the weakest group, while the large positive-underdog kill cushion and one duration Over were directionally correct."
+  },
+  "ungradedLeanSummary": {
+    "snapshots": 2,
+    "reason": "Exact final kill total for DK vs Gen.G Game 2 was not supplied, so Over 27.5 and Under 24.5 cannot be graded honestly."
+  },
+  "records": [
+    {
+      "event": "Nongshim RedForce vs BNK FEARX — Game 2",
+      "market": "BFX moneyline",
+      "odds": 1.781,
+      "recommendationType": "unplaced OFFICIAL BET",
+      "result": "win",
+      "hypotheticalNetUnitsAt0_25u": 0.19525,
+      "processReview": "The model had valid current-map confirmations: kill lead, objective control, structure edge, and an active Olaf breakpoint. The main failure was response and execution latency; the market moved materially before placement."
+    },
+    {
+      "event": "LGD Gaming vs Top Esports — Game 1",
+      "market": "LGD moneyline",
+      "odds": 1.882,
+      "recommendationType": "unplaced OFFICIAL BET",
+      "result": "win",
+      "hypotheticalNetUnitsAt0_25u": 0.2205,
+      "processReview": "The selection was supported by gold, structures, objectives, and a live Naafiri breakpoint. TES then secured two immediate kills, correctly expiring the recommendation. The model read was useful; the no-placement decision was also correct."
+    },
+    {
+      "event": "Gen.G vs Dplus KIA — Game 1",
+      "market": "Under 32.5 kills",
+      "odds": 1.712,
+      "recommendationType": "unplaced OFFICIAL BET",
+      "result": "loss",
+      "hypotheticalNetUnitsAt0_25u": -0.25,
+      "processReview": "The model confused structural control with kill suppression and failed to budget remaining Baron, dragon, inhibitor, and base-defense fights. This was addressed by v0.3.12."
+    },
+    {
+      "event": "Dplus KIA vs Gen.G — Game 2",
+      "market": "Over 27.5 kills",
+      "odds": 2.279,
+      "recommendationType": "LEAN — 0u watch",
+      "result": "ungraded",
+      "processReview": "Post-draft volatility was noted, but no exact final kill total was supplied. The later market and state changed materially, so this cannot be merged with subsequent kill-total assessments."
+    },
+    {
+      "event": "Dplus KIA vs Gen.G — Game 2",
+      "market": "Under 24.5 kills",
+      "odds": 1.872,
+      "recommendationType": "LEAN — 0u watch",
+      "result": "ungraded",
+      "processReview": "At 14:09 the map was low-kill, but both teams retained functional damage and layered engage. Exact final kills were not supplied, so no outcome grade is assigned."
+    },
+    {
+      "event": "Bilibili Gaming vs Beijing JDG Esports — Game 2",
+      "market": "Over 30.5 kills",
+      "odds": 2.720,
+      "recommendationType": "LEAN — 0u watch",
+      "result": "loss",
+      "hypotheticalNetUnitsAt0_25u": -0.25,
+      "processReview": "Draft engage density was over-weighted before any current-map fight-frequency evidence existed."
+    },
+    {
+      "event": "Bilibili Gaming vs Beijing JDG Esports — Game 2",
+      "gameTime": "5:20",
+      "market": "Over 27.5 kills",
+      "odds": 1.732,
+      "recommendationType": "LEAN — 0u watch",
+      "result": "loss",
+      "hypotheticalNetUnitsAt0_25u": -0.25,
+      "processReview": "The remaining requirement of 25 additional kills was too large for a lean after only one meaningful skirmish."
+    },
+    {
+      "event": "Bilibili Gaming vs Beijing JDG Esports — Game 2",
+      "gameTime": "8:53",
+      "market": "Over 27.5 kills",
+      "odds": 1.724,
+      "recommendationType": "LEAN — 0u watch",
+      "result": "loss",
+      "hypotheticalNetUnitsAt0_25u": -0.25,
+      "processReview": "The model continued to equate two-sided engage tools with future kill volume despite BLG showing a controlled-close branch."
+    },
+    {
+      "event": "Bilibili Gaming vs Beijing JDG Esports — Game 2",
+      "gameTime": "13:32",
+      "market": "JDG +10.5 kills",
+      "odds": 1.935,
+      "recommendationType": "LEAN — 0u watch",
+      "result": "win",
+      "hypotheticalNetUnitsAt0_25u": 0.23375,
+      "processReview": "The large cushion correctly reflected that JDG were close in gold and structures despite trailing in kills. The official gate remained correctly closed because JDG lacked two structured-fight conversions."
+    },
+    {
+      "event": "Bilibili Gaming vs Beijing JDG Esports — Game 2",
+      "gameTime": "after 13:32, one dragon each",
+      "market": "Over 31 minutes",
+      "odds": 1.660,
+      "recommendationType": "LEAN — 0u watch",
+      "result": "win",
+      "hypotheticalNetUnitsAt0_25u": 0.165,
+      "processReview": "Split dragons, no towers, and limited fighting supported the direction. The v0.3.13 same-day duration-over suspension still correctly prevented promotion after three earlier duration-over losses."
+    },
+    {
+      "event": "Bilibili Gaming vs Beijing JDG Esports — Game 2",
+      "gameTime": "17:32",
+      "market": "JDG +10.5 kills",
+      "odds": 1.954,
+      "recommendationType": "LEAN — 0u watch",
+      "result": "win",
+      "hypotheticalNetUnitsAt0_25u": 0.2385,
+      "processReview": "This was the same evolving +10.5 cushion thesis as 13:32, not an independent sample."
+    },
+    {
+      "event": "Bilibili Gaming vs Beijing JDG Esports — Game 2",
+      "gameTime": "21:37",
+      "market": "JDG +8.5 kills",
+      "odds": 2.363,
+      "recommendationType": "LEAN — 0u watch",
+      "result": "loss",
+      "hypotheticalNetUnitsAt0_25u": -0.25,
+      "processReview": "The two-kill reduction in cushion materially changed the wager. BLG's expanding gold and structure control increased late clean-margin risk, and the smaller handicap failed."
+    }
+  ],
+  "independentThesisReview": {
+    "gradedTheses": 7,
+    "successful": 4,
+    "failed": 3,
+    "unresolved": 2,
+    "successfulTheses": [
+      "BFX live moneyline",
+      "LGD live moneyline",
+      "BLG-JDG Over 31 minutes",
+      "JDG +10.5 kill handicap"
+    ],
+    "failedTheses": [
+      "DK-Gen.G late kill Under 32.5",
+      "BLG-JDG kill-total Over thesis",
+      "JDG +8.5 kill handicap after line compression"
+    ],
+    "unresolvedTheses": [
+      "DK-Gen.G Game 2 Over 27.5 kills",
+      "DK-Gen.G Game 2 Under 24.5 kills"
+    ],
+    "warning": "The thesis count is descriptive, not statistically reliable. Markets, matches, and repeated live states are correlated and selectively observed."
+  },
+  "marketConclusions": {
+    "moneylines": "Best shadow category so far. Two valid live reads won. Preserve the two-confirmation and expiry rules; improve verdict speed.",
+    "killTotalOvers": "Weakest lean category. Do not use draft engage density alone. A future kill-Over lean should require observed two-sided structured-fight conversion or a clearly demonstrated high kill-velocity window.",
+    "killTotalUnders": "The late DK-Gen.G miss exposed a fight-budget failure already addressed by v0.3.12. The ungraded Game 2 Under 24.5 cannot be used as evidence.",
+    "positiveUnderdogKillHandicaps": "Strongly line-sensitive. +10.5 survived; +8.5 did not. Every line change must be independently reassessed, and a shrinking cushion plus widening structural deficit is a material downgrade.",
+    "durationOvers": "One lean won while three official duration Overs lost. Do not relax v0.3.13 from one winning shadow result; the lean had a different, more developed slow-state basis."
+  },
+  "modelActions": {
+    "newHardRuleVersion": null,
+    "reason": "The main negative lean evidence comes from one correlated BLG-JDG map, so a new hard version would overfit.",
+    "operationalChanges": [
+      "Do not classify a kill-total Over as LEAN from champion engage density alone.",
+      "Require at least one observed two-sided structured-fight conversion or a high-velocity kill window before a kill-Over lean.",
+      "Front-load moneyline verdicts once all gates pass, while retaining state and price expiry.",
+      "Treat a two-kill handicap movement as a materially different risk profile.",
+      "Continue reporting shadow outcomes separately from official P/L and probation.",
+      "Keep the v0.3.13 duration-over restrictions unchanged."
+    ]
+  }
+}
