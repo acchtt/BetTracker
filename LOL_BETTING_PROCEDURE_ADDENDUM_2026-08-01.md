@@ -2,7 +2,7 @@
 
 **Status:** Active immediately  
 **Effective date:** 2026-08-01 02:44 UTC+7  
-**Last updated:** 2026-08-01 22:38 UTC+7  
+**Last updated:** 2026-08-01 23:05 UTC+7  
 **Purpose:** Supersede conflicting fixed values and operational rules in `LOL_BETTING_PROCEDURE.md` without deleting its source, verification, roster, patch, draft, and market-analysis procedures.
 
 When this addendum conflicts with `LOL_BETTING_PROCEDURE.md`, this addendum and the latest dated model rule control.
@@ -21,17 +21,18 @@ When this addendum conflicts with `LOL_BETTING_PROCEDURE.md`, this addendum and 
 
 LoL analysis must apply the following in descending precedence:
 
-1. `MODEL_RULES_LOL_V0.3.14.md`;
-2. `MODEL_RULES_LOL_V0.3.13.md` where not superseded;
-3. `MODEL_RULES_LOL_V0.3.12.md` where not superseded;
-4. `MODEL_RULES_LOL_V0.3.11.md` where not superseded;
-5. `MODEL_RULES_LOL_V0.3.10.md` where not superseded;
-6. `MODEL_RULES_LOL_V0.3.9.md` where not superseded;
-7. `MODEL_RULES_LOL_V0.3.8.md` where not superseded;
-8. `MODEL_RULES_LOL_V0.3.7.md` where not superseded;
-9. `MODEL_RULES_LOL_V0.3.6.md` where not superseded;
-10. `LOL_BETTING_PROCEDURE.md` for remaining operational steps;
-11. model changelogs and `STAKE_POLICY_V2.json`.
+1. `MODEL_RULES_LOL_V0.3.15.md`;
+2. `MODEL_RULES_LOL_V0.3.14.md` where not superseded;
+3. `MODEL_RULES_LOL_V0.3.13.md` where not superseded;
+4. `MODEL_RULES_LOL_V0.3.12.md` where not superseded;
+5. `MODEL_RULES_LOL_V0.3.11.md` where not superseded;
+6. `MODEL_RULES_LOL_V0.3.10.md` where not superseded;
+7. `MODEL_RULES_LOL_V0.3.9.md` where not superseded;
+8. `MODEL_RULES_LOL_V0.3.8.md` where not superseded;
+9. `MODEL_RULES_LOL_V0.3.7.md` where not superseded;
+10. `MODEL_RULES_LOL_V0.3.6.md` where not superseded;
+11. `LOL_BETTING_PROCEDURE.md` for remaining operational steps;
+12. model changelogs and `STAKE_POLICY_V2.json`.
 
 ## 3. Positive underdog kill handicaps
 
@@ -39,26 +40,44 @@ During probation:
 
 - post-draft or pre-game positive underdog kill handicaps cannot be `OFFICIAL BET`;
 - the maximum classification is `LEAN — 0u watch`;
-- live promotion requires two independent structured-fight conversions and all functional-damage, item-strength, space-creation, champion-counter, structural-state, objective-timing, and execution-validity gates;
+- live promotion requires two independent structured-fight conversions and all functional-damage, item-strength when required by clock, space-creation, champion-counter, structural-state, objective-timing, and execution-validity gates;
 - same-series lockout applies after a relevant model error.
 
 ## 4. Moneylines
 
 A neutral early state, generic team reputation, or attractive price does not qualify as current-map confirmation.
 
-An actionable moneyline requires two independent confirmations from current usable gold or completed-item distribution, structures, objectives, wave or side-lane control, vision and terrain, observed fight conversion, or a currently active composition breakpoint.
+An actionable moneyline requires two independent confirmations from current economy or completed-item distribution, structures, objectives, wave or side-lane control, vision and terrain, observed fight conversion, or a currently active composition breakpoint.
 
-Raw gold counts only when converted into relevant items, levels, or map tempo.
+Before 15:00, a raw-gold lead may be described as an economy or tempo advantage only when supported by concrete conversion such as CS, levels, objectives, structures, waves, recalls, or observed fights. It must not be called a completed-item advantage unless the items are visible.
 
-## 5. Mandatory item-strength and usability gate
+At or after 15:00, raw gold counts as current combat strength only when converted into relevant items, levels, or map tempo.
 
-Under v0.3.14, every live assessment after the first meaningful recall cycle must record visible items for both teams in fixed role order:
+## 5. Item-strength and usability timing gate
+
+Under v0.3.15, the mandatory item-snapshot threshold is **15:00 game time**.
+
+### Before 15:00
+
+For a synchronized state strictly before 15:00:
+
+- a separate item-panel screenshot is not required;
+- a complete Top / Jungle / Mid / ADC / Support item inventory is not required;
+- missing or unreadable items do not independently block an `OFFICIAL BET`;
+- visible completed items or meaningful components may still be used when clear;
+- do not delay a verdict solely to obtain or decode item icons.
+
+The early assessment should use the synchronized clock, kills, gold, CS, levels, towers, dragons, Void Grubs, Herald, wave state, observed fight conversion, recalls, positioning, and current odds.
+
+### At or after 15:00
+
+At 15:00 or later, v0.3.14 applies in full. Record visible items for both teams in fixed role order:
 
 `Top / Jungle / Mid / ADC / Support`.
 
 Record completed major items, meaningful components, boots tier, defensive or utility purchases, relevant levels, and recall or unspent-gold risk when visible.
 
-Every assessment must state whether the economy lead is concentrated on:
+Every post-15 assessment must state whether the economy lead is concentrated on:
 
 - primary sustained damage;
 - burst or pick damage;
@@ -68,13 +87,13 @@ Every assessment must state whether the economy lead is concentrated on:
 - incomplete components;
 - unspent gold.
 
-The model may not describe damage, waveclear, frontline, engage, disengage, sustain, scaling, objective damage, tower pressure, or one-fight close potential as functional without current item evidence.
+At or after 15:00, the model may not describe damage, waveclear, frontline, engage, disengage, sustain, scaling, objective damage, tower pressure, or one-fight close potential as functional without current item evidence when that evidence is decision-critical.
 
-Before projecting fight lethality, compare completed offensive items and penetration with opposing frontline durability, defensive actives, shields, sustain, stasis, cleanse, and safe damage delivery.
+Before projecting post-15 fight lethality, compare completed offensive items and penetration with opposing frontline durability, defensive actives, shields, sustain, stasis, cleanse, and safe damage delivery.
 
-After the first meaningful recall cycle:
+At or after 15:00:
 
-- an `OFFICIAL BET` requires readable current items for both teams' primary damage sources and relevant frontline or engage champions;
+- an `OFFICIAL BET` requires readable current items for both teams' primary damage sources and relevant frontline or engage champions when item strength is decision-critical;
 - if the item panel is unavailable or unreadable and item strength is decision-critical, output `NO BET`;
 - `LEAN — 0u watch` is allowed only when the remaining gates pass and item uncertainty cannot plausibly reverse the directional read;
 - do not guess item names from team gold, champion identity, or unclear icon colors.
@@ -83,13 +102,13 @@ A completed major item, substantial recall purchase, decisive defensive active, 
 
 ### Market-specific item use
 
-- **Moneyline:** an item breakpoint may count as one independent confirmation only when it is completed, relevant, and usable in the next fight, objective, siege, or side-lane sequence.
-- **Kill Over:** draft engage density alone is insufficient. Require observed two-sided structured-fight conversion or a high kill-velocity window, plus item damage capable of overcoming current durability.
-- **Kill Under:** include upcoming item spikes in the fight budget; a slow window is not protective when both teams are one recall from major damage completion.
-- **Kill handicap:** verify whether the favorite's item distribution supports clean wipes and margin expansion, or whether the underdog's items support return damage.
-- **Duration:** include item state in functional defense, waveclear access, one-fight compression, objective conversion, and the earliest credible finish.
+- **Moneyline:** before 15:00, the normal two-confirmation gate applies without a mandatory item panel. At or after 15:00, an item breakpoint may count as one independent confirmation only when completed, relevant, and usable.
+- **Kill Over:** before 15:00, item snapshots are optional, but draft engage density alone remains insufficient; require observed two-sided structured-fight conversion or a high kill-velocity window. At or after 15:00, require item damage capable of overcoming current durability when decision-critical.
+- **Kill Under:** before 15:00, item snapshots are optional; objective schedule, pace, and remaining fight routes remain mandatory. At or after 15:00, include upcoming item spikes in the fight budget.
+- **Kill handicap:** before 15:00, item snapshots are optional, but all structured-fight conversion gates remain. At or after 15:00, verify whether the favorite's item distribution supports clean wipes and margin expansion or whether the underdog's items support return damage.
+- **Duration:** before 15:00, item snapshots are optional, but every v0.3.10 and v0.3.13 anti-conversion and finish-path gate remains. At or after 15:00, include item state in functional defense, waveclear access, one-fight compression, objective conversion, and earliest credible finish.
 
-Every actionable post-recall recommendation must include the synchronized item inventory, item concentration, damage-versus-durability read, item unknowns, odds, floors, stake, status, and expiry triggers.
+At the first new assessment at or after 15:00, apply the full item gate and reassess the current line independently.
 
 ## 6. Duration markets
 
@@ -100,15 +119,15 @@ Under v0.3.10 and v0.3.13:
 - 0-0 kills, approximately even early gold, zero towers, and zero objectives before 8:00 do not count as stall indicators;
 - an actionable duration over requires at least two independent observed anti-conversion events after the first objective cycle, including one during approximately the previous five minutes;
 - low kills, stable gold, low tower progression, and nominal waveclear are one correlated quiet-state cluster rather than multiple indicators;
-- waveclear counts only when current items, mana, cooldowns, safe wave access, and structure depth make it functional under pressure;
+- waveclear counts only when current levels, mana, cooldowns, safe wave access, structure depth, and post-15 items when required make it functional under pressure;
 - the assessment must inventory the fastest realistic closing branches for both teams, including one-fight objective, pick, structure-compression, inhibitor, and direct-base paths;
 - if either team has a realistic single-fight branch that can end at or before the line, the Over is `NO BET` unless the defending team has already resisted that exact route;
 - an `OFFICIAL BET` duration over requires a conservative earliest credible finish at least three minutes later than the offered line;
 - a finish-window margin greater than one minute but less than three minutes is at most `LEAN — 0u watch`;
 - a margin of one minute or less is `NO BET`;
 - a duration over is `NO BET` when one won fight can plausibly create a major objective plus two structures, an inhibitor, or direct Nexus access before the line;
-- stronger-team conversion, early engage, Grub or Herald conversion, completed item spikes, death timers, wave state, and composition-specific tower acceleration must be priced explicitly;
-- the complete synchronized duration block must include clock, kills, gold, items, towers, objectives, wave state, structure depth, anti-conversion events, functional defense, fastest finish branches, conservative finish time, finish-window margin, odds, floors, stake, and expiry triggers;
+- stronger-team conversion, early engage, Grub or Herald conversion, completed item spikes when required, death timers, wave state, and composition-specific tower acceleration must be priced explicitly;
+- the complete synchronized duration block must include clock, kills, gold, towers, objectives, wave state, structure depth, anti-conversion events, functional defense, fastest finish branches, conservative finish time, finish-window margin, odds, floors, stake, and expiry triggers, plus items at or after 15:00;
 - if any required field is unavailable, output `NO BET`.
 
 A failed Over does not automatically justify an Under. Every changed line and state must be priced independently.
@@ -184,7 +203,7 @@ When one hard veto is already decisive, return the verdict immediately rather th
 
 - odds below 1.60;
 - material state or line change without synchronized reassessment;
-- unreadable decision-critical items;
+- unreadable decision-critical items at or after 15:00;
 - missing two-confirmation moneyline gate;
 - missing two-conversion positive-underdog handicap gate;
 - failed late-Under safety buffer;
@@ -199,4 +218,4 @@ Secondary markets should be summarized in one compact line unless one is indepen
 
 Then provide no more than three decisive reasons before any optional audit detail.
 
-This protocol changes presentation and execution speed only. It does not waive item-strength, model, pricing, expiry, stake, or confirmation gates.
+This protocol changes presentation and execution speed only. It does not waive model, pricing, expiry, stake, confirmation, objective-reading, or post-15 item-strength gates.
