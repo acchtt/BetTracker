@@ -1,5 +1,6 @@
 {
   "syncId": "football-20260801-thailand-malaysia-under-2-live-871395071109582848",
+  "updatedAt": "2026-08-01T21:52:00+07:00",
   "event": "Thailand vs Malaysia",
   "league": "ASEAN Championship",
   "eventDate": "2026-08-01",
@@ -14,7 +15,12 @@
   "unitValueVndAtPlacement": 1000000,
   "potentialPayoutVnd": 535000,
   "potentialProfitVnd": 285000,
-  "status": "pending",
+  "payoutVnd": 250000,
+  "netProfitVnd": 0,
+  "netUnits": 0,
+  "status": "push",
+  "result": "Thailand defeated Malaysia 2-0. The Asian total Under 2 settled as a push because the match finished with exactly 2 goals.",
+  "finalScore": "Thailand 2-0 Malaysia",
   "bookmaker": "BK8",
   "slipId": "871395071109582848",
   "settlementBasis": "Full win if the match finishes with fewer than 2 total goals; push if exactly 2 total goals; full loss if 3 or more total goals.",
@@ -40,6 +46,12 @@
     "stakeAttribution": "model-compliant",
     "deviations": []
   },
+  "review": {
+    "resultGrade": "push",
+    "resultAssessment": "Thailand scored once after entry and the match finished 2-0, so Under 2 returned the full 250,000 VND stake with no profit or loss.",
+    "processAssessment": "The entry was protected by the whole-goal line, but the recommendation underweighted Thailand's attacking halftime substitution. The short quiet restart sample was insufficient evidence that Thailand had shifted fully into game management.",
+    "calibrationAction": "Apply football-v0.2.19's halftime-substitution gate: classify personnel changes before early-second-half unders and require two synchronized post-substitution snapshots over roughly 8-12 minutes before overriding an attacking refresh."
+  },
   "tags": [
     "official-after-user-confirmation",
     "football",
@@ -49,12 +61,16 @@
     "under-2",
     "whole-line-push-protection",
     "model-compliant-execution",
+    "process-error",
     "unit-basis-1000000-vnd",
-    "open"
+    "push",
+    "settled"
   ],
-  "notes": "User confirmed Under 2 at 2.14 for 250,000 VND (0.25u), slip #871395071109582848. Potential payout is 535,000 VND and potential profit is 285,000 VND (+0.285u). Accepted price was 0.01 below the quoted 2.15 but remained far above the 1.70 football minimum and did not require repricing under the material-change threshold.",
+  "notes": "User confirmed Under 2 at 2.14 for 250,000 VND (0.25u), slip #871395071109582848. Thailand won 2-0, so the wager pushed and the full stake was returned. Accepted price was 0.01 below the quoted 2.15. The result was neutral, but the entry process was later downgraded because Thailand's attacking 46th-minute substitution was not sufficiently weighted.",
   "placedAt": "2026-08-01T20:43:00+07:00",
   "userConfirmedAt": "2026-08-01T20:43:00+07:00",
+  "resultConfirmedAt": "2026-08-01T21:52:00+07:00",
+  "settledAt": "2026-08-01T21:52:00+07:00",
   "addedAt": "2026-08-01T13:43:00Z",
   "createdAt": "2026-08-01T13:43:00Z"
 }
