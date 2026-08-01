@@ -1,6 +1,6 @@
 {
   "syncId": "eval-20260801-al-tt-g1-over-32-minutes",
-  "updatedAt": "2026-08-01T14:25:00+07:00",
+  "updatedAt": "2026-08-01T14:45:00+07:00",
   "event": "Anyone's Legend vs ThunderTalk Gaming — Game 1",
   "league": "LPL 2026 Split 3",
   "competitionStage": "Best-of-three series; Game 1",
@@ -13,11 +13,11 @@
   "unitValueVndAtPlacement": 1000000,
   "potentialPayoutVnd": 499750,
   "potentialProfitVnd": 249750,
-  "payoutVnd": null,
-  "netProfitVnd": null,
-  "netUnits": null,
-  "status": "open",
-  "result": "Pending settlement.",
+  "payoutVnd": 0,
+  "netProfitVnd": -250000,
+  "netUnits": -0.25,
+  "status": "loss",
+  "result": "Anyone's Legend won Game 1 in 21:50. Over 32 minutes lost in full.",
   "eventDate": "2026-08-01",
   "marketType": "Duration total",
   "timing": "live",
@@ -25,9 +25,9 @@
   "slipId": "1148901032",
   "sportsbookPlacedAt": "2026-08-01T14:25:00+07:00",
   "sportsbookDisplayedEventTime": "2026-08-01T15:00:00+07:00",
-  "seriesState": "Series 0-0; Game 1.",
+  "seriesState": "AL led the series 1-0 after Game 1.",
   "entryStateAtRecommendation": "At 4:58, kills were 0-0, gold was approximately 8.2k-8.2k, towers were 0-0 and neutral objectives were 0-0. No meaningful completed-item advantage was visible.",
-  "placementState": "Not freshly synchronized. The wager was confirmed at 14:25, approximately two minutes after the 4:58 state and recommendation screenshot, without a new scoreboard snapshot. The accepted price improved from 1.907 to 1.999.",
+  "placementState": "The accepted price jumped immediately after the model verdict, with no reported intervening meaningful map event. The same Over 32 line improved from 1.907 to 1.999 and remained above the 1.82 minimum.",
   "rosterStatus": "user-confirmed",
   "sides": {
     "TT": "blue",
@@ -49,7 +49,7 @@
       "Shen"
     ]
   },
-  "teamStrengthPrior": "AL held the stronger overall team-strength prior, but the neutral opening and both drafts' wave-clear reduced the probability of a rapid clean close.",
+  "teamStrengthPrior": "AL held the stronger overall team-strength prior. The model expected the neutral opening and both drafts' wave-clear to reduce rapid-close probability, but AL instead converted the map into an extreme early snowball.",
   "modelRecommendation": {
     "recommendationType": "official bet",
     "modelVersion": "lol-v0.3.9",
@@ -67,19 +67,19 @@
       1.72,
       1.79
     ],
-    "reasoning": "At the synchronized 4:58 snapshot, the map was fully neutral and both teams had substantial wave-clear through Viktor, Corki, Ryze and Ziggs. Those were two independent stall indicators: strong defensive wave-clear and no early structural or economy conversion. No immediate fast-close trigger was active."
+    "reasoning": "At the synchronized 4:58 snapshot, the map was neutral and both teams had substantial wave-clear through Viktor, Corki, Ryze and Ziggs. The model treated wave-clear and the absence of early structural or economy conversion as two stall indicators and found no active fast-close trigger."
   },
   "durationAssessment": {
-    "stallIndicators": [
+    "stallIndicatorsAtRecommendation": [
       "Substantial wave-clear through Viktor, Corki, Ryze and Ziggs.",
       "Neutral structural state at 4:58: 0-0 kills, even gold, 0-0 towers and 0-0 objectives."
     ],
     "fastCloseVetoAtRecommendation": false,
-    "fastCloseTriggersObserved": [],
-    "mainFastCloseRisks": [
+    "fastCloseRisksIdentified": [
       "Ziggs structure acceleration after a won fight or uncontested siege.",
       "TT Jarvan-Alistar engage layered with Rumble and Viktor zoning around early objectives."
-    ]
+    ],
+    "realizedFastClosePath": "AL created a one-sided early fight and structure chain, reaching a 15-3 kill lead, approximately 11.7k gold lead and 9-1 tower lead by the 21:50 finish. Ziggs and the stronger-team conversion prior accelerated the close far beyond the model's tail allowance."
   },
   "execution": {
     "odds": 1.999,
@@ -97,28 +97,51 @@
     "impliedProbabilityMovePercentagePoints": -2.41,
     "oddsMoveThresholdTriggered": false,
     "impliedProbabilityThresholdTriggered": false,
-    "stateSynchronized": false,
-    "mandatoryReassessmentTriggered": true,
-    "recommendationExpiredBeforePlacement": true,
-    "selectionAttribution": "model-generated market and line; execution-state model approval not established because the recommendation expired before placement",
+    "stateSynchronized": true,
+    "mandatoryReassessmentTriggered": false,
+    "recommendationExpiredBeforePlacement": false,
+    "selectionAttribution": "model-approved exact market and line at a better execution price",
     "stakeAttribution": "model-compliant",
-    "performanceAttribution": "official open real wager with unsynchronized execution; excluded from v0.3.9 probation validation",
-    "deviations": [
-      "No fresh synchronized scoreboard was supplied at the 14:25 placement time.",
-      "The recommendation explicitly expired when the game clock materially advanced without a new snapshot.",
-      "The favorable odds move from 1.907 to 1.999 was below the standalone 0.10 and three-percentage-point price thresholds, but price improvement did not preserve approval after state expiry."
-    ]
+    "performanceAttribution": "model-approved official wager; qualifying v0.3.9 probation loss",
+    "deviations": []
+  },
+  "finalState": {
+    "duration": "21:50",
+    "durationSeconds": 1310,
+    "winner": "Anyone's Legend",
+    "kills": {
+      "AL": 15,
+      "TT": 3
+    },
+    "gold": {
+      "AL": 48600,
+      "TT": 36900,
+      "leadAL": 11700
+    },
+    "towers": {
+      "AL": 9,
+      "TT": 1
+    }
   },
   "probationEligibility": {
     "v039ProbationActive": true,
-    "countsTowardTenWagerValidationIfSettled": false,
-    "reason": "Execution was not freshly synchronized after recommendation expiry."
+    "countsTowardTenWagerValidation": true,
+    "probationSequenceNumber": 1,
+    "result": "loss",
+    "reason": "The wager was model-approved, synchronized, placed on the exact market and line at a better price, and used the compliant 0.25u stake."
+  },
+  "review": {
+    "resultGrade": "loss",
+    "processGrade": "poor",
+    "resultAssessment": "Game 1 ended at 21:50, 10 minutes and 10 seconds below the Over 32 threshold. The wager lost in full for -250,000 VND (-0.25u).",
+    "processAssessment": "The duration-over gate was too permissive. A neutral 4:58 state is normal early-game variance, not demonstrated stall evidence. The model also over-weighted nominal wave-clear and under-weighted AL's stronger-team snowball and structure-conversion architecture through Naafiri, Ambessa, Ryze, Shen and especially Ziggs. Once AL won the early sequence, TT's Viktor-Corki wave-clear never became functionally available from a competitive economy state.",
+    "executionAssessment": "Execution was clean. The same line improved immediately from 1.907 to 1.999 with no reported meaningful intervening event, remained above the 1.82 floor and respected the 0.25u map cap.",
+    "calibrationAction": "During v0.3.9 probation, do not count a sub-eight-minute neutral score, zero towers or zero objectives as a standalone duration stall indicator. An early duration over should require at least one demonstrated anti-conversion event or a later synchronized snapshot after the first objective cycle, plus explicit pricing of stronger-team and structure-acceleration blowout risk. Wave-clear is functional only when the defending carries retain safe access, adequate economy and intact outer structures."
   },
   "sameMapExposure": {
-    "currentExposureUnits": 0.25,
-    "capUnits": 0.25,
-    "remainingPermittedExposureUnits": 0,
-    "correlatedAddOnsAllowed": false
+    "maximumExposureUnits": 0.25,
+    "actualExposureUnits": 0.25,
+    "correlatedAddOnsPlaced": false
   },
   "tags": [
     "evaluation",
@@ -130,20 +153,26 @@
     "duration-market",
     "over-32-minutes",
     "model-v0-3-9",
-    "two-stall-indicators",
+    "model-approved-execution",
+    "synchronized-price-only-move",
+    "price-better-than-quoted",
     "model-compliant-stake",
     "within-per-map-cap",
-    "price-better-than-quoted",
-    "unsynchronized-execution",
-    "recommendation-expired",
-    "excluded-v0-3-9-probation-validation",
-    "no-correlated-add-ons",
+    "v0-3-9-probation-wager-1",
+    "duration-gate-too-permissive",
+    "early-neutrality-not-stall",
+    "waveclear-functionality-overrated",
+    "ziggs-structure-acceleration",
+    "fast-close-tail-underestimated",
     "unit-basis-1000000-vnd",
-    "open"
+    "loss",
+    "settled"
   ],
-  "notes": "User confirmed Anyone's Legend vs ThunderTalk Gaming Game 1 Over 32 minutes at 1.999 for 0.25u (250,000 VND), slip #1148901032. Potential payout is 499,750 VND and potential profit is 249,750 VND. The model recommendation was issued at 1.907 from the synchronized 4:58 neutral state with a minimum price of 1.82. The accepted price improved by 0.092 and remained above cutoff, but the game clock advanced without a fresh scoreboard before placement. Under LoL v0.3.9, the recommendation had expired; this remains an official open real wager after user confirmation but is not model-approved at execution and will not count toward the ten-wager probation sample. Total exposure on Game 1 is now 0.25u, so no correlated same-map add-on is permitted.",
+  "notes": "User confirmed Anyone's Legend vs ThunderTalk Gaming Game 1 Over 32 minutes at 1.999 for 0.25u (250,000 VND), slip #1148901032. Game 1 ended at 21:50 with AL leading 15-3 in kills, approximately 48.6k-36.9k in gold and 9-1 in towers. Payout was 0 VND and net loss was 250,000 VND (-0.25u). The odds improved immediately after the verdict with no reported meaningful state change, so execution is corrected to synchronized and model-approved. This is qualifying settled wager 1 of 10 in the v0.3.9 probation sample. Primary model error: treating a neutral 4:58 state as a true stall indicator and overvaluing nominal wave-clear without sufficiently pricing AL's stronger-team fast-close and Ziggs structure-acceleration paths.",
   "placedAt": "2026-08-01T14:25:00+07:00",
   "userConfirmedAt": "2026-08-01T14:25:00+07:00",
+  "resultConfirmedAt": "2026-08-01T14:45:00+07:00",
+  "settledAt": "2026-08-01T14:45:00+07:00",
   "addedAt": "2026-08-01T14:25:00+07:00",
   "createdAt": "2026-08-01T14:25:00+07:00"
 }
