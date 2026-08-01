@@ -1,0 +1,125 @@
+{
+  "syncId": "eval-20260801-tes-lgd-g3-over-33-minutes",
+  "updatedAt": "2026-08-01T18:13:00+07:00",
+  "event": "Top Esports vs LGD Gaming — Game 3",
+  "league": "LPL 2026 Split 3",
+  "competitionStage": "Best-of-three series; deciding Game 3",
+  "format": "Best-of-three series; live Game 3 duration market",
+  "bet": "Over 33 minutes",
+  "settlementBasis": "Wins if the official Game 3 duration exceeds 33:00. Exact 33:00 is treated as a push unless the bookmaker's house rules specify otherwise.",
+  "odds": 2.117,
+  "stakeVnd": 250000,
+  "stakeUnits": 0.25,
+  "unitValueVndAtPlacement": 1000000,
+  "potentialPayoutVnd": 529250,
+  "potentialProfitVnd": 279250,
+  "status": "pending",
+  "eventDate": "2026-08-01",
+  "marketType": "Duration total",
+  "timing": "live",
+  "bookmaker": "BK8",
+  "slipId": "1149131470",
+  "sportsbookPlacedAt": "2026-08-01T18:13:00+07:00",
+  "entryStateAtRecommendation": "At 16:43, kills were tied 5-5, TES led approximately 30.1k-28.8k in gold, only one tower had been taken, LGD had recovered after TES secured first five kills, and the objective state was split rather than showing uncontested TES acceleration.",
+  "draft": {
+    "TES_blue": [
+      "K'Sante",
+      "Pantheon",
+      "Cassiopeia",
+      "Ashe",
+      "Seraphine"
+    ],
+    "LGD_red": [
+      "Jayce",
+      "Trundle",
+      "Galio",
+      "Mel",
+      "Rell"
+    ]
+  },
+  "modelRecommendation": {
+    "recommendationType": "official bet",
+    "modelVersion": "lol-v0.3.11",
+    "market": "Over 33 minutes",
+    "quotedOdds": 1.827,
+    "modelTargetFloor": 1.8,
+    "hardExecutionFloor": 1.74,
+    "stakeUnits": 0.25,
+    "stakeVnd": 250000,
+    "estimatedProbabilityRange": [
+      0.57,
+      0.59
+    ],
+    "fairOddsRange": [
+      1.69,
+      1.75
+    ],
+    "reasoning": "The 5-5 kill score, modest TES gold lead, low tower progression and LGD recovery after TES reached first five kills supplied observed anti-conversion evidence and a non-accelerated structural state."
+  },
+  "execution": {
+    "executionPolicyVersion": "lol-v0.3.11",
+    "acceptedOdds": 2.117,
+    "stakeUnits": 0.25,
+    "stakeVnd": 250000,
+    "unitValueVndAtPlacement": 1000000,
+    "sameMarketAndLine": true,
+    "withinStakeCap": true,
+    "withinPerMapExposureCap": true,
+    "priceAboveGeneralMinimum": true,
+    "priceAboveRecommendationMinimum": true,
+    "priceBetterThanQuoted": true,
+    "quotedToAcceptedOddsMove": 0.29,
+    "impliedProbabilityAtQuotedPrice": 0.5473,
+    "impliedProbabilityAtAcceptedPrice": 0.4724,
+    "impliedProbabilityMovePercentagePoints": -7.49,
+    "oddsMoveThresholdTriggered": true,
+    "impliedProbabilityThresholdTriggered": true,
+    "freshStateAtExecutionSupplied": false,
+    "mandatoryReassessmentTriggeredByMove": true,
+    "executionValidityGatePassed": false,
+    "selectionAttribution": "model-generated exact market and line",
+    "stakeAttribution": "model-compliant",
+    "performanceAttribution": "official placed wager; material favorable price move without a fresh synchronized state, excluded from qualifying probation until execution state is verified",
+    "deviations": [
+      "Accepted odds improved from 1.827 to 2.117, a material 0.290 move.",
+      "Implied probability moved by approximately 7.49 percentage points, above the three-point reassessment threshold.",
+      "No fresh synchronized map-state snapshot was supplied at the accepted price."
+    ]
+  },
+  "probationEligibility": {
+    "probationActive": true,
+    "countsTowardTenWagerValidation": false,
+    "status": "not qualified at placement",
+    "reason": "The official wager was placed on the recommended exact market and line at a compliant stake, but the material price move exceeded both v0.3.11 reassessment thresholds and no fresh synchronized execution state was supplied."
+  },
+  "sameMapExposure": {
+    "maximumExposureUnits": 0.25,
+    "actualExposureUnits": 0.25,
+    "correlatedAddOnsPlaced": false,
+    "additionalSameMapBetsAllowed": false
+  },
+  "tags": [
+    "evaluation",
+    "official-after-user-confirmation",
+    "lol",
+    "lpl",
+    "game-3",
+    "live",
+    "duration-market",
+    "over-33-minutes",
+    "model-v0-3-11",
+    "material-favorable-price-move",
+    "fresh-reassessment-required",
+    "model-compliant-stake",
+    "within-per-map-cap",
+    "excluded-from-probation-pending-state-verification",
+    "no-correlated-add-ons",
+    "unit-basis-1000000-vnd",
+    "open"
+  ],
+  "notes": "User confirmed Top Esports vs LGD Gaming Game 3 Over 33 minutes at 2.117 for 0.25u (250,000 VND), slip #1149131470. Potential payout is 529,250 VND and potential profit is 279,250 VND. The accepted odds were materially better than the 1.827 recommendation quote, but the 0.290 move and approximately 7.49 implied-probability-point change exceeded the v0.3.11 automatic price-only tolerance thresholds. The bet is official and open because placement was confirmed, but it is not counted as a qualifying probation wager unless a fresh synchronized execution state verifies that no meaningful event intervened.",
+  "placedAt": "2026-08-01T18:13:00+07:00",
+  "userConfirmedAt": "2026-08-01T18:13:00+07:00",
+  "addedAt": "2026-08-01T18:13:00+07:00",
+  "createdAt": "2026-08-01T18:13:00+07:00"
+}
