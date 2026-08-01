@@ -1,0 +1,99 @@
+{
+  "version": "2026-08-01T16:40:00+07:00",
+  "purpose": "Track winning unplaced LoL recommendations as model-improvement candidates without treating them as official bets, realized profit/loss, or probation wagers.",
+  "policy": {
+    "officialBet": false,
+    "ledgerProfitLossVnd": 0,
+    "probationEligible": false,
+    "selectionOutcomeMayBeRecorded": true,
+    "executionDisciplineMustRemainOutcomeNeutral": true,
+    "reviewUse": [
+      "recommendation latency",
+      "market movement after verdict",
+      "expiry-trigger frequency",
+      "snapshot-to-verdict workflow",
+      "whether concise verdict-first formatting can preserve all active model gates"
+    ],
+    "prohibitedUse": [
+      "adding hypothetical profit to ledger.json",
+      "counting the result toward v0.3.11 probation",
+      "retroactively treating an expired or unplaced recommendation as actionable",
+      "loosening hard model or expiry gates solely because the selection later won"
+    ]
+  },
+  "candidates": [
+    {
+      "candidateId": "lol-improve-20260801-ns-bfx-g2-bfx-ml",
+      "event": "Nongshim RedForce vs BNK FEARX — Game 2",
+      "league": "LCK 2026 Rounds 3-4",
+      "market": "BFX Game 2 moneyline",
+      "recommendationType": "OFFICIAL BET",
+      "modelVersion": "lol-v0.3.11",
+      "quotedOdds": 1.781,
+      "modelTargetFloor": 1.72,
+      "hardExecutionFloor": 1.67,
+      "stakeUnitsRecommended": 0.25,
+      "stakeVndRecommended": 250000,
+      "recommendationState": {
+        "gameTime": "16:31",
+        "kills": "BFX 11-8 NS",
+        "gold": "BFX 31.9k-31.5k NS",
+        "towers": "BFX 2-1 NS",
+        "objectives": "BFX held first dragon and five Grubs",
+        "activeBreakpoint": "BFX Olaf was 5/0/0 at level 13"
+      },
+      "placementStatus": "not placed",
+      "expiryReason": "Before placement, the state changed and the BFX moneyline moved materially from 1.781 to 1.531, exceeding the 0.10 hard expiry threshold.",
+      "finalOutcome": "BFX won Game 2",
+      "selectionGrade": "win",
+      "officialPnlVnd": 0,
+      "probationEligible": false,
+      "reviewClassification": "winning unplaced recommendation; missed execution opportunity",
+      "improvementHypotheses": [
+        "Front-load the verdict and execution block before detailed reasoning.",
+        "Reduce response latency after all mandatory moneyline gates are already cleared.",
+        "Preserve the two-confirmation, counter, functional-damage, expiry, and stake gates while compressing explanation."
+      ]
+    },
+    {
+      "candidateId": "lol-improve-20260801-lgd-tes-g1-lgd-ml",
+      "event": "LGD Gaming vs Top Esports — Game 1",
+      "league": "LPL 2026 Split 3",
+      "market": "LGD Game 1 moneyline",
+      "recommendationType": "OFFICIAL BET",
+      "modelVersion": "lol-v0.3.11",
+      "quotedOdds": 1.882,
+      "modelTargetFloor": 1.78,
+      "hardExecutionFloor": 1.70,
+      "stakeUnitsRecommended": 0.25,
+      "stakeVndRecommended": 250000,
+      "recommendationState": {
+        "gameTime": "19:40",
+        "kills": "LGD 6-2 TES",
+        "gold": "LGD 36.8k-33.2k TES",
+        "towers": "LGD 2-1 TES",
+        "objectives": "LGD held the stronger objective state",
+        "activeBreakpoint": "LGD Naafiri was 4/0/2"
+      },
+      "placementStatus": "not placed",
+      "expiryReason": "TES secured two kills immediately after the verdict, creating a material state change before placement. The user correctly did not execute the stale recommendation.",
+      "finalOutcome": "LGD won Game 1",
+      "selectionGrade": "win",
+      "officialPnlVnd": 0,
+      "probationEligible": false,
+      "reviewClassification": "winning unplaced recommendation; correct expiry discipline",
+      "improvementHypotheses": [
+        "Deliver the actionable verdict before the full explanatory block.",
+        "Measure the elapsed time from synchronized screenshot to recommendation.",
+        "Do not weaken material-event expiry; improve speed instead."
+      ]
+    }
+  ],
+  "summary": {
+    "candidateCount": 2,
+    "wins": 2,
+    "officialBets": 0,
+    "officialPnlVnd": 0,
+    "probationCount": 0
+  }
+}
