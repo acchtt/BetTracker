@@ -1,7 +1,7 @@
 {
-  "version": "2026-08-01T21:09:00+07:00",
+  "version": "2026-08-01T23:05:00+07:00",
   "sport": "League of Legends",
-  "activeModelVersion": "lol-v0.3.14",
+  "activeModelVersion": "lol-v0.3.15",
   "probationTarget": 10,
   "completed": 4,
   "remaining": 6,
@@ -100,11 +100,12 @@
   ],
   "reviewConclusion": {
     "primaryModelIssue": "Duration-over promotion from correlated quiet-state evidence without a fastest-finish-path inventory.",
-    "primaryProcedureIssue": "Required duration and item-strength evidence was not fully captured before several live verdicts.",
+    "primaryProcedureIssue": "Required duration and post-15 item-strength evidence must be captured without delaying early live verdicts.",
     "primaryExecutionIssue": "Two wagers crossed material price thresholds and one exceeded the map stake cap.",
     "actions": [
       "Activated lol-v0.3.13 with a same-day duration-over suspension, complete synchronized-state requirement, two durable anti-conversion events, fastest-finish-path inventory, three-minute finish-window margin, and one-fight compression veto.",
-      "Activated lol-v0.3.14 with mandatory post-recall item inventory, usable-strength classification, damage-versus-durability comparison, unknown-item veto, and item-completion expiry triggers."
+      "Activated lol-v0.3.14 with item inventory, usable-strength classification, damage-versus-durability comparison, unknown-item veto, and item-completion expiry triggers.",
+      "Activated lol-v0.3.15: item snapshots are optional before 15:00 and mandatory at or after 15:00 when decision-critical."
     ]
   }
 }
