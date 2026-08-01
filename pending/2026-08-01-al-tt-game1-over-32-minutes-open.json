@@ -1,0 +1,149 @@
+{
+  "syncId": "eval-20260801-al-tt-g1-over-32-minutes",
+  "updatedAt": "2026-08-01T14:25:00+07:00",
+  "event": "Anyone's Legend vs ThunderTalk Gaming — Game 1",
+  "league": "LPL 2026 Split 3",
+  "competitionStage": "Best-of-three series; Game 1",
+  "format": "Best-of-three series; live Game 1 duration market",
+  "bet": "Over 32 minutes",
+  "settlementBasis": "Wins if the official Game 1 duration exceeds 32:00. Exact 32:00 is treated as a push unless the bookmaker's house rules specify otherwise.",
+  "odds": 1.999,
+  "stakeVnd": 250000,
+  "stakeUnits": 0.25,
+  "unitValueVndAtPlacement": 1000000,
+  "potentialPayoutVnd": 499750,
+  "potentialProfitVnd": 249750,
+  "payoutVnd": null,
+  "netProfitVnd": null,
+  "netUnits": null,
+  "status": "open",
+  "result": "Pending settlement.",
+  "eventDate": "2026-08-01",
+  "marketType": "Duration total",
+  "timing": "live",
+  "bookmaker": "BK8",
+  "slipId": "1148901032",
+  "sportsbookPlacedAt": "2026-08-01T14:25:00+07:00",
+  "sportsbookDisplayedEventTime": "2026-08-01T15:00:00+07:00",
+  "seriesState": "Series 0-0; Game 1.",
+  "entryStateAtRecommendation": "At 4:58, kills were 0-0, gold was approximately 8.2k-8.2k, towers were 0-0 and neutral objectives were 0-0. No meaningful completed-item advantage was visible.",
+  "placementState": "Not freshly synchronized. The wager was confirmed at 14:25, approximately two minutes after the 4:58 state and recommendation screenshot, without a new scoreboard snapshot. The accepted price improved from 1.907 to 1.999.",
+  "rosterStatus": "user-confirmed",
+  "sides": {
+    "TT": "blue",
+    "AL": "red"
+  },
+  "draft": {
+    "TT_blue": [
+      "Rumble",
+      "Jarvan IV",
+      "Viktor",
+      "Corki",
+      "Alistar"
+    ],
+    "AL_red": [
+      "Ambessa",
+      "Naafiri",
+      "Ryze",
+      "Ziggs",
+      "Shen"
+    ]
+  },
+  "teamStrengthPrior": "AL held the stronger overall team-strength prior, but the neutral opening and both drafts' wave-clear reduced the probability of a rapid clean close.",
+  "modelRecommendation": {
+    "recommendationType": "official bet",
+    "modelVersion": "lol-v0.3.9",
+    "market": "Over 32 minutes",
+    "quotedOdds": 1.907,
+    "minimumAcceptableOdds": 1.82,
+    "stakeUnits": 0.25,
+    "stakeVnd": 250000,
+    "confidence": 6,
+    "estimatedProbabilityRange": [
+      0.56,
+      0.58
+    ],
+    "fairOddsRange": [
+      1.72,
+      1.79
+    ],
+    "reasoning": "At the synchronized 4:58 snapshot, the map was fully neutral and both teams had substantial wave-clear through Viktor, Corki, Ryze and Ziggs. Those were two independent stall indicators: strong defensive wave-clear and no early structural or economy conversion. No immediate fast-close trigger was active."
+  },
+  "durationAssessment": {
+    "stallIndicators": [
+      "Substantial wave-clear through Viktor, Corki, Ryze and Ziggs.",
+      "Neutral structural state at 4:58: 0-0 kills, even gold, 0-0 towers and 0-0 objectives."
+    ],
+    "fastCloseVetoAtRecommendation": false,
+    "fastCloseTriggersObserved": [],
+    "mainFastCloseRisks": [
+      "Ziggs structure acceleration after a won fight or uncontested siege.",
+      "TT Jarvan-Alistar engage layered with Rumble and Viktor zoning around early objectives."
+    ]
+  },
+  "execution": {
+    "odds": 1.999,
+    "stakeUnits": 0.25,
+    "stakeVnd": 250000,
+    "unitValueVndAtPlacement": 1000000,
+    "sameMarketAndLine": true,
+    "withinStakeCap": true,
+    "withinPerMapExposureCap": true,
+    "priceAboveMinimum": true,
+    "priceBetterThanQuoted": true,
+    "quotedToAcceptedOddsMove": 0.092,
+    "impliedProbabilityAtQuotedPrice": 0.5244,
+    "impliedProbabilityAtAcceptedPrice": 0.5003,
+    "impliedProbabilityMovePercentagePoints": -2.41,
+    "oddsMoveThresholdTriggered": false,
+    "impliedProbabilityThresholdTriggered": false,
+    "stateSynchronized": false,
+    "mandatoryReassessmentTriggered": true,
+    "recommendationExpiredBeforePlacement": true,
+    "selectionAttribution": "model-generated market and line; execution-state model approval not established because the recommendation expired before placement",
+    "stakeAttribution": "model-compliant",
+    "performanceAttribution": "official open real wager with unsynchronized execution; excluded from v0.3.9 probation validation",
+    "deviations": [
+      "No fresh synchronized scoreboard was supplied at the 14:25 placement time.",
+      "The recommendation explicitly expired when the game clock materially advanced without a new snapshot.",
+      "The favorable odds move from 1.907 to 1.999 was below the standalone 0.10 and three-percentage-point price thresholds, but price improvement did not preserve approval after state expiry."
+    ]
+  },
+  "probationEligibility": {
+    "v039ProbationActive": true,
+    "countsTowardTenWagerValidationIfSettled": false,
+    "reason": "Execution was not freshly synchronized after recommendation expiry."
+  },
+  "sameMapExposure": {
+    "currentExposureUnits": 0.25,
+    "capUnits": 0.25,
+    "remainingPermittedExposureUnits": 0,
+    "correlatedAddOnsAllowed": false
+  },
+  "tags": [
+    "evaluation",
+    "official-after-user-confirmation",
+    "lol",
+    "lpl",
+    "game-1",
+    "live",
+    "duration-market",
+    "over-32-minutes",
+    "model-v0-3-9",
+    "two-stall-indicators",
+    "model-compliant-stake",
+    "within-per-map-cap",
+    "price-better-than-quoted",
+    "unsynchronized-execution",
+    "recommendation-expired",
+    "excluded-v0-3-9-probation-validation",
+    "no-correlated-add-ons",
+    "unit-basis-1000000-vnd",
+    "open"
+  ],
+  "notes": "User confirmed Anyone's Legend vs ThunderTalk Gaming Game 1 Over 32 minutes at 1.999 for 0.25u (250,000 VND), slip #1148901032. Potential payout is 499,750 VND and potential profit is 249,750 VND. The model recommendation was issued at 1.907 from the synchronized 4:58 neutral state with a minimum price of 1.82. The accepted price improved by 0.092 and remained above cutoff, but the game clock advanced without a fresh scoreboard before placement. Under LoL v0.3.9, the recommendation had expired; this remains an official open real wager after user confirmation but is not model-approved at execution and will not count toward the ten-wager probation sample. Total exposure on Game 1 is now 0.25u, so no correlated same-map add-on is permitted.",
+  "placedAt": "2026-08-01T14:25:00+07:00",
+  "userConfirmedAt": "2026-08-01T14:25:00+07:00",
+  "addedAt": "2026-08-01T14:25:00+07:00",
+  "createdAt": "2026-08-01T14:25:00+07:00"
+}
