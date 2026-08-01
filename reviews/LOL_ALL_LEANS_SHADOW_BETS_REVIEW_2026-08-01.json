@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-01T20:49:00+07:00",
+  "version": "2026-08-01T20:58:00+07:00",
   "sport": "League of Legends",
   "reviewScope": "All recorded or explicitly stated LoL leans, shadow markets, and unplaced official recommendations from 2026-08-01.",
   "officialBet": false,
@@ -12,15 +12,35 @@
     "repeatedSnapshotsOfTheSameThesisAreCorrelated": true,
     "unknownOutcomesRemainUngraded": true
   },
+  "latestOutcomeCorrection": {
+    "event": "Dplus KIA vs Gen.G — Game 2",
+    "finalKillScore": "DK 7-2 Gen.G",
+    "finalTotalKills": 9,
+    "source": "user-confirmed",
+    "gradedMarkets": [
+      {
+        "market": "Over 27.5 kills",
+        "odds": 2.279,
+        "result": "loss",
+        "marginToLine": -18.5
+      },
+      {
+        "market": "Under 24.5 kills",
+        "odds": 1.872,
+        "result": "win",
+        "marginToLine": 15.5
+      }
+    ]
+  },
   "gradedSnapshotSummary": {
-    "snapshots": 10,
-    "wins": 5,
-    "losses": 5,
-    "record": "5-5",
+    "snapshots": 12,
+    "wins": 6,
+    "losses": 6,
+    "record": "6-6",
     "hypotheticalEqualStakeUnitsPerSnapshot": 0.25,
-    "hypotheticalNetUnits": -0.197,
-    "hypotheticalTotalStakedUnits": 2.5,
-    "hypotheticalRoiPercent": -7.88,
+    "hypotheticalNetUnits": -0.229,
+    "hypotheticalTotalStakedUnits": 3.0,
+    "hypotheticalRoiPercent": -7.63,
     "warning": "This snapshot view overstates sample size because several BLG-JDG entries are repeated observations of the same evolving thesis."
   },
   "unplacedOfficialRecommendationSummary": {
@@ -31,15 +51,15 @@
     "assessment": "Selection quality was positive, but both winning moneylines were missed because of live movement or immediate state change. The correct improvement is faster verdict delivery, not weaker expiry gates."
   },
   "leanOnlyGradedSummary": {
-    "snapshots": 7,
-    "record": "3-4",
-    "hypotheticalNetUnits": -0.36275,
-    "hypotheticalRoiPercent": -20.73,
-    "assessment": "The lean-only sample was negative. Kill-total Overs were the weakest group, while the large positive-underdog kill cushion and one duration Over were directionally correct."
+    "snapshots": 9,
+    "record": "4-5",
+    "hypotheticalNetUnits": -0.39475,
+    "hypotheticalRoiPercent": -17.54,
+    "assessment": "The lean-only sample remains negative. Kill-total Overs were the weakest group. The DK-Gen.G Game 2 Under 24.5 and BLG-JDG Over 31 were directionally correct, while large positive-underdog kill cushions were highly line-sensitive."
   },
   "ungradedLeanSummary": {
-    "snapshots": 2,
-    "reason": "Exact final kill total for DK vs Gen.G Game 2 was not supplied, so Over 27.5 and Under 24.5 cannot be graded honestly."
+    "snapshots": 0,
+    "reason": "All previously recorded lean outcomes now have sufficient user-confirmed result information for grading."
   },
   "records": [
     {
@@ -74,16 +94,23 @@
       "market": "Over 27.5 kills",
       "odds": 2.279,
       "recommendationType": "LEAN — 0u watch",
-      "result": "ungraded",
-      "processReview": "Post-draft volatility was noted, but no exact final kill total was supplied. The later market and state changed materially, so this cannot be merged with subsequent kill-total assessments."
+      "result": "loss",
+      "finalKillScore": "DK 7-2 Gen.G",
+      "finalTotalKills": 9,
+      "hypotheticalNetUnitsAt0_25u": -0.25,
+      "processReview": "The post-draft lean over-weighted theoretical engage and damage density before any observed two-sided fight conversion. The final total of nine kills confirms that draft volatility alone was not enough evidence for a kill Over lean."
     },
     {
       "event": "Dplus KIA vs Gen.G — Game 2",
+      "gameTime": "14:09",
       "market": "Under 24.5 kills",
       "odds": 1.872,
       "recommendationType": "LEAN — 0u watch",
-      "result": "ungraded",
-      "processReview": "At 14:09 the map was low-kill, but both teams retained functional damage and layered engage. Exact final kills were not supplied, so no outcome grade is assigned."
+      "result": "win",
+      "finalKillScore": "DK 7-2 Gen.G",
+      "finalTotalKills": 9,
+      "hypotheticalNetUnitsAt0_25u": 0.218,
+      "processReview": "The low-kill state and lack of structural conversion correctly identified a suppressed fight environment. The Under won by 15.5 kills, but the official gate appropriately remained closed because both drafts retained functional damage and layered engage and the remaining contest budget was uncertain."
     },
     {
       "event": "Bilibili Gaming vs Beijing JDG Esports — Game 2",
@@ -156,40 +183,40 @@
     }
   ],
   "independentThesisReview": {
-    "gradedTheses": 7,
-    "successful": 4,
-    "failed": 3,
-    "unresolved": 2,
+    "gradedTheses": 9,
+    "successful": 5,
+    "failed": 4,
+    "unresolved": 0,
     "successfulTheses": [
       "BFX live moneyline",
       "LGD live moneyline",
+      "DK-Gen.G Game 2 Under 24.5 kills",
       "BLG-JDG Over 31 minutes",
       "JDG +10.5 kill handicap"
     ],
     "failedTheses": [
-      "DK-Gen.G late kill Under 32.5",
+      "DK-Gen.G Game 1 late kill Under 32.5",
+      "DK-Gen.G Game 2 Over 27.5 kills",
       "BLG-JDG kill-total Over thesis",
       "JDG +8.5 kill handicap after line compression"
     ],
-    "unresolvedTheses": [
-      "DK-Gen.G Game 2 Over 27.5 kills",
-      "DK-Gen.G Game 2 Under 24.5 kills"
-    ],
+    "unresolvedTheses": [],
     "warning": "The thesis count is descriptive, not statistically reliable. Markets, matches, and repeated live states are correlated and selectively observed."
   },
   "marketConclusions": {
     "moneylines": "Best shadow category so far. Two valid live reads won. Preserve the two-confirmation and expiry rules; improve verdict speed.",
-    "killTotalOvers": "Weakest lean category. Do not use draft engage density alone. A future kill-Over lean should require observed two-sided structured-fight conversion or a clearly demonstrated high kill-velocity window.",
-    "killTotalUnders": "The late DK-Gen.G miss exposed a fight-budget failure already addressed by v0.3.12. The ungraded Game 2 Under 24.5 cannot be used as evidence.",
+    "killTotalOvers": "Weakest lean category. The DK-Gen.G Game 2 Over 27.5 also lost with only nine final kills. Do not use draft engage density alone. A future kill-Over lean should require observed two-sided structured-fight conversion or a clearly demonstrated high kill-velocity window.",
+    "killTotalUnders": "Mixed by state. The late DK-Gen.G Game 1 Under 32.5 failed because the fight budget and mandatory contests were mispriced, while the earlier Game 2 Under 24.5 lean won comfortably in a genuinely suppressed map. Continue using v0.3.12 and distinguish early realized fight suppression from late structural-control assumptions.",
     "positiveUnderdogKillHandicaps": "Strongly line-sensitive. +10.5 survived; +8.5 did not. Every line change must be independently reassessed, and a shrinking cushion plus widening structural deficit is a material downgrade.",
     "durationOvers": "One lean won while three official duration Overs lost. Do not relax v0.3.13 from one winning shadow result; the lean had a different, more developed slow-state basis."
   },
   "modelActions": {
     "newHardRuleVersion": null,
-    "reason": "The main negative lean evidence comes from one correlated BLG-JDG map, so a new hard version would overfit.",
+    "reason": "The corrected DK-Gen.G results reinforce existing v0.3.12 and kill-Over operating guidance but do not justify another hard-rule version from this small, correlated sample.",
     "operationalChanges": [
       "Do not classify a kill-total Over as LEAN from champion engage density alone.",
       "Require at least one observed two-sided structured-fight conversion or a high-velocity kill window before a kill-Over lean.",
+      "For kill Unders, distinguish observed low fight velocity from structural-control assumptions and retain the explicit remaining-contest budget.",
       "Front-load moneyline verdicts once all gates pass, while retaining state and price expiry.",
       "Treat a two-kill handicap movement as a materially different risk profile.",
       "Continue reporting shadow outcomes separately from official P/L and probation.",
