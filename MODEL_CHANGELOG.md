@@ -6,8 +6,9 @@ Historical changelog entries through 2026-07-31 remain preserved in Git history.
 
 ## Active operational documents
 
-- League of Legends recommendations must follow `LOL_BETTING_PROCEDURE.md`, `MODEL_RULES_LOL_V0.3.9.md`, `MODEL_RULES_LOL_V0.3.8.md`, `MODEL_RULES_LOL_V0.3.7.md`, `MODEL_RULES_LOL_V0.3.6.md`, `STAKE_POLICY_V2.json`, this changelog, and the current review restrictions. Older LoL rules remain active where not superseded.
+- League of Legends recommendations must follow `LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md`, `LOL_BETTING_PROCEDURE.md`, `MODEL_RULES_LOL_V0.3.10.md`, `MODEL_RULES_LOL_V0.3.9.md`, `MODEL_RULES_LOL_V0.3.8.md`, `MODEL_RULES_LOL_V0.3.7.md`, `MODEL_RULES_LOL_V0.3.6.md`, `STAKE_POLICY_V2.json`, this changelog, and the current review restrictions. Older LoL rules remain active where not superseded.
 - The evidence for v0.3.9 is recorded in `reviews/LOL_TWO_DAY_REVIEW_2026-07-31_TO_2026-08-01.md`.
+- The evidence for v0.3.10 is recorded in the authoritative `ledger.json` entry `eval-20260801-al-tt-g1-over-32-minutes`.
 - Football recommendations must follow `FOOTBALL_BETTING_PROCEDURE.md`, the latest active football model rules, `STAKE_POLICY_V2.json`, and this changelog. Older football rules remain active where not superseded.
 - When documents conflict, the newer dated rule controls.
 - Every future material model change must receive both a detailed rule file and an entry in this changelog.
@@ -30,11 +31,69 @@ Historical changelog entries through 2026-07-31 remain preserved in Git history.
 
 ---
 
+## v0.3.10 — 2026-08-01
+
+### LoL early-duration lock, realized-stall requirement, functional waveclear, and stronger-team fast-close veto
+
+**Status:** Active immediately  
+**Detailed implementation:** `MODEL_RULES_LOL_V0.3.10.md`  
+**Authoritative evidence:** `ledger.json` entry `eval-20260801-al-tt-g1-over-32-minutes`
+
+### Sport and markets affected
+
+League of Legends duration totals and the fast-close assessment used across map moneylines, kill markets, objective markets, and same-map exposure.
+
+### Triggering evidence
+
+Anyone's Legend vs ThunderTalk Gaming Game 1:
+
+- the model issued `OFFICIAL BET` on Over 32 minutes at 1.907 from a synchronized 4:58 state;
+- the user executed the exact line at 1.999 for 0.25u;
+- entry state was 0-0 kills, approximately even gold, 0-0 towers, and 0-0 objectives;
+- AL won in 21:50 with a 15-3 kill score, approximately 48.6k-36.9k gold, and a 9-1 tower score;
+- the wager lost 250,000 VND (-0.25u);
+- execution was clean and qualifies as probation wager 1 of 10;
+- the model error was treating normal sub-eight-minute neutrality and nominal Viktor-Corki waveclear as sufficient stall evidence while underpricing AL's stronger-team, engage, snowball, and Ziggs-assisted structure-conversion branch.
+
+### Previous rule
+
+v0.3.9 required two independent duration stall indicators and a fast-close veto. It still allowed a sub-eight-minute neutral opening to count as a stall indicator and allowed champion-based waveclear to count before current item readiness, safe wave access, structure depth, or observed resistance had been demonstrated.
+
+### New rule
+
+- Continue the existing ten-wager probation without reset. The AL vs TT loss is qualifying wager 1 of 10; the next nine qualifying wagers use v0.3.10 plus earlier unsuperseded rules.
+- During probation, a duration over before 8:00 game time cannot be `OFFICIAL BET`; the maximum is `LEAN — 0u watch`.
+- Before 8:00, 0-0 kills, approximately even gold, zero towers, zero objectives, no major items, and ordinary farming count as zero stall indicators.
+- At or after 8:00, early neutrality may count as at most one weak state cluster.
+- An actionable duration over still requires two independent stall indicators, and at least one must now be a realized anti-conversion event from the current map.
+- Qualifying realized stall evidence includes defended pressure, successful disengage, denied objective conversion, held siege, or a material side-lane response. No action, unpressured waveclear, harmless poke, and theoretical scaling do not qualify.
+- Waveclear counts only when current items, mana, cooldowns, safe wave access, and structure depth make it functional under actual pressure. Nominal champion names and future item windows are insufficient.
+- Identify fast-close flags before pricing an over: stronger-team conversion edge, reliable early engage or dive, two-lane priority, Grub or Herald conversion, composition-specific tower acceleration, future-only defender waveclear, weak space creation, major item spikes, map access, and drafts that become easier from ahead.
+- A duration over is `NO BET` when at least two fast-close flags are active and no realized stall event has occurred after those flags became relevant.
+- Explicitly price the clean-close branch: first structured fight, expected structure and objective conversion, tower acceleration, wave-access loss, and whether Baron is required to finish.
+- De-correlate evidence. Zero kills, even gold, zero towers, and zero objectives are one opening cluster; one defended fight that also saves a tower is normally one event, not two.
+- A duration-over miss caused by fast-close or waveclear-functionality error triggers same-series lockout on the same duration-over thesis in the next map.
+- A failed over does not automatically justify an under; the opposite side requires an independent synchronized thesis.
+
+### Expected benefit
+
+Prevent normal early states from being mislabeled as stall, require demonstrated current-map resistance, distinguish nominal from functional waveclear, and price stronger-team structure acceleration before the scoreboard already shows a runaway state.
+
+### Possible downside
+
+The model will miss some attractive early prices, may receive worse odds after waiting until 8:00 or the first objective cycle, and may reject genuinely slow games that have not yet produced a visible anti-conversion event.
+
+### Review threshold
+
+Continue the overall ten-wager probation. Review duration markets separately after the earlier of five qualifying v0.3.10 duration wagers or completion of the overall probation sample. Track entry minute, first objective-cycle status, realized stall count, functional waveclear, fast-close flags, stronger-team conversion prior, tower acceleration, offered line, final duration, closing-line quality, VND, and units.
+
+---
+
 ## v0.3.9 — 2026-08-01
 
 ### LoL two-day drawdown controls, market probation, same-series lockout, and hard recommendation expiry
 
-**Status:** Active immediately  
+**Status:** Active where not superseded by v0.3.10  
 **Detailed implementation:** `MODEL_RULES_LOL_V0.3.9.md`  
 **Evidence review:** `reviews/LOL_TWO_DAY_REVIEW_2026-07-31_TO_2026-08-01.md`
 
@@ -99,7 +158,7 @@ Review after the next 10 settled, synchronized, model-approved LoL wagers. Do no
 
 ### LoL champion-counter matrix and damage-delivery architecture veto
 
-**Status:** Active where not superseded by v0.3.9  
+**Status:** Active where not superseded by v0.3.9 or v0.3.10  
 **Detailed implementation:** `MODEL_RULES_LOL_V0.3.8.md`
 
 ### Sport and markets affected
@@ -151,7 +210,7 @@ Review after the next 10 settled synchronized LoL wagers. Track identified count
 
 ### LoL functional-damage gate and repeated positive-handicap veto
 
-**Status:** Active where not superseded by v0.3.8 or v0.3.9  
+**Status:** Active where not superseded by v0.3.8, v0.3.9, or v0.3.10  
 **Detailed implementation:** `MODEL_RULES_LOL_V0.3.7.md`
 
 ### Sport and markets affected
@@ -200,7 +259,7 @@ Review after the next 10 settled synchronized LoL wagers. Track functional sourc
 
 ### LoL live comeback, normalized late-game gold, and unit-policy integration
 
-**Status:** Active where not superseded by v0.3.7, v0.3.8, or v0.3.9  
+**Status:** Active where not superseded by v0.3.7, v0.3.8, v0.3.9, or v0.3.10  
 **Detailed implementation:** `MODEL_RULES_LOL_V0.3.6.md`
 
 - Normalize gold leads after 25:00; under 3% is near-even unless tied to a decisive breakpoint.
