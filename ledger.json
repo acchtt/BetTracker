@@ -1,9 +1,9 @@
 {
-  "version": "2026-08-01T11:13:00Z",
+  "version": "2026-08-01T11:27:00Z",
   "bets": [
     {
       "syncId": "eval-20260801-tes-lgd-g3-over-33-minutes",
-      "updatedAt": "2026-08-01T18:13:00+07:00",
+      "updatedAt": "2026-08-01T18:27:00+07:00",
       "event": "Top Esports vs LGD Gaming — Game 3",
       "league": "LPL 2026 Split 3",
       "competitionStage": "Best-of-three series; deciding Game 3",
@@ -16,7 +16,7 @@
       "unitValueVndAtPlacement": 1000000,
       "potentialPayoutVnd": 529250,
       "potentialProfitVnd": 279250,
-      "status": "pending",
+      "status": "loss",
       "eventDate": "2026-08-01",
       "marketType": "Duration total",
       "timing": "live",
@@ -82,7 +82,7 @@
         "executionValidityGatePassed": false,
         "selectionAttribution": "model-generated exact market and line",
         "stakeAttribution": "model-compliant",
-        "performanceAttribution": "official placed wager; material favorable price move without a fresh synchronized state, excluded from qualifying probation until execution state is verified",
+        "performanceAttribution": "official placed wager; material favorable price move without a fresh synchronized state; excluded from qualifying probation",
         "deviations": [
           "Accepted odds improved from 1.827 to 2.117, a material 0.290 move.",
           "Implied probability moved by approximately 7.49 percentage points, above the three-point reassessment threshold.",
@@ -92,8 +92,9 @@
       "probationEligibility": {
         "probationActive": true,
         "countsTowardTenWagerValidation": false,
-        "status": "not qualified at placement",
-        "reason": "The official wager was placed on the recommended exact market and line at a compliant stake, but the material price move exceeded both v0.3.11 reassessment thresholds and no fresh synchronized execution state was supplied."
+        "status": "not qualified",
+        "result": "loss",
+        "reason": "The material price move exceeded both v0.3.11 reassessment thresholds and no fresh synchronized execution state was supplied. The official loss is recorded in P/L but does not enter the qualifying probation sample."
       },
       "sameMapExposure": {
         "maximumExposureUnits": 0.25,
@@ -115,16 +116,30 @@
         "fresh-reassessment-required",
         "model-compliant-stake",
         "within-per-map-cap",
-        "excluded-from-probation-pending-state-verification",
+        "excluded-from-probation",
         "no-correlated-add-ons",
         "unit-basis-1000000-vnd",
-        "open"
+        "loss",
+        "settled"
       ],
-      "notes": "User confirmed Top Esports vs LGD Gaming Game 3 Over 33 minutes at 2.117 for 0.25u (250,000 VND), slip #1149131470. Potential payout is 529,250 VND and potential profit is 279,250 VND. The accepted odds were materially better than the 1.827 recommendation quote, but the 0.290 move and approximately 7.49 implied-probability-point change exceeded the v0.3.11 automatic price-only tolerance thresholds. The bet is official and open because placement was confirmed, but it is not counted as a qualifying probation wager unless a fresh synchronized execution state verifies that no meaningful event intervened.",
+      "notes": "User confirmed Top Esports vs LGD Gaming Game 3 Over 33 minutes at 2.117 for 0.25u (250,000 VND), slip #1149131470, lost. Payout 0 VND; net loss 250,000 VND (-0.25u). The user referred to Over 33.5 when reporting the result, but the supplied ticket and official record show Over 33. The exact final duration was not supplied. The bet remains excluded from the qualifying probation sample because the accepted price moved materially from 1.827 to 2.117 without a fresh synchronized execution state.",
       "placedAt": "2026-08-01T18:13:00+07:00",
       "userConfirmedAt": "2026-08-01T18:13:00+07:00",
       "addedAt": "2026-08-01T18:13:00+07:00",
-      "createdAt": "2026-08-01T18:13:00+07:00"
+      "createdAt": "2026-08-01T18:13:00+07:00",
+      "payoutVnd": 0,
+      "netProfitVnd": -250000,
+      "netUnits": -0.25,
+      "result": "User confirmed the duration wager lost. The official sportsbook ticket was Over 33 minutes; the exact final duration was not supplied.",
+      "review": {
+        "resultGrade": "loss",
+        "processGrade": "poor",
+        "resultAssessment": "Over 33 minutes lost in full for -250,000 VND (-0.25u). The exact final duration was not supplied.",
+        "processAssessment": "The model promoted a duration over from a 16:43 state that showed anti-conversion and low tower progression, but it underpriced the probability of a decisive midgame fight creating a rapid close. It also allowed the wager to be executed after a material favorable price move without a synchronized state check.",
+        "calibrationAction": "Maintain the existing v0.3.11 execution-expiry rule. For duration overs, distinguish temporary recovery from durable resistance and require explicit evidence that the trailing composition can defend structures after losing the next major objective fight."
+      },
+      "resultConfirmedAt": "2026-08-01T18:27:00+07:00",
+      "settledAt": "2026-08-01T18:27:00+07:00"
     },
     {
       "syncId": "eval-20260801-laos-philippines-under-3-5",
@@ -5517,7 +5532,7 @@
       "pending/eval-20260801-mkoi-shft-g2-shft-plus-7-5-kills.json",
       "pending/eval-20260801-mkoi-shft-g3-shft-plus-10-5-kills.json"
     ],
-    "officialRecordsAdded": 1,
-    "officialRecordsUpdated": 32
+    "officialRecordsAdded": 0,
+    "officialRecordsUpdated": 33
   }
 }
