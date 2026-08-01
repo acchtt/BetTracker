@@ -21,7 +21,7 @@ DK vs Gen.G Game 1:
 - the model issued `OFFICIAL BET` on Under 32.5 kills at 1.712 for a proposed 0.25u;
 - the selection was not placed;
 - the total later exceeded 32.5 and the hypothetical selection lost;
-- the state had only 12 kills of remaining headroom, two-sided functional damage, layered engage and target access, a trailing team forced to contest, and no verified one-fight ending window.
+- the state had 12.5 kills of numerical headroom, required 13 additional kills for the Under to lose, retained two-sided functional damage, layered engage and target access, a trailing team forced to contest, and no verified one-fight ending window.
 
 ## Previous rule
 
@@ -29,10 +29,10 @@ Earlier rules required fight-frequency and functional-damage analysis for kill t
 
 ## New rule
 
-- Calculate current kills, line, remaining headroom, remaining mandatory contests, conservative additional-kill budget, and safety buffer for every live kill under.
+- Calculate current kills, line, numerical headroom, whole kills required to lose, remaining mandatory contests, conservative additional-kill budget, and safety buffer for every live kill under.
 - Require at least a three-kill cushion between headroom and the conservative expected kill budget.
 - At 24:00+, default to `NO BET` with ten or fewer kills of headroom unless the game is already in an immediate ending sequence.
-- At 24:00+, cap at `LEAN — 0u watch` with eleven or twelve kills of headroom when both teams retain functional damage or layered engage unless the one-fight close gate is fully passed.
+- At 24:00+, cap at `LEAN — 0u watch` with more than ten but no more than thirteen kills of headroom when both teams retain functional damage or layered engage unless the one-fight close gate is fully passed.
 - Treat Baron, soul, Elder, inhibitor defense, base siege, and required side-lane collapse as explicit future contest events.
 - Price trailing-team desperation and contest incentives even when comeback probability is low.
 - Require at least three one-fight-close confirmations, including a secured ending buff or exposed/inhibited base condition.
