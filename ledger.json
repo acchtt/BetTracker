@@ -1,6 +1,143 @@
 {
-  "version": "2026-08-01T07:45:00Z",
+  "version": "2026-08-01T08:17:00Z",
   "bets": [
+    {
+      "syncId": "eval-20260801-al-tt-g2-under-29-5-kills",
+      "updatedAt": "2026-08-01T15:17:00+07:00",
+      "event": "Anyone's Legend vs ThunderTalk Gaming — Game 2",
+      "league": "LPL 2026 Split 3",
+      "competitionStage": "Best-of-three series; Game 2",
+      "format": "Best-of-three series; live Game 2 kill-total market",
+      "bet": "Under 29.5 kills",
+      "settlementBasis": "Wins if the official total number of champion kills in Game 2 is 29 or fewer. Loses at 30 or more.",
+      "odds": 1.795,
+      "stakeVnd": 250000,
+      "stakeUnits": 0.25,
+      "unitValueVndAtPlacement": 1000000,
+      "potentialPayoutVnd": 448750,
+      "potentialProfitVnd": 198750,
+      "payoutVnd": null,
+      "netProfitVnd": null,
+      "netUnits": null,
+      "status": "pending",
+      "result": "Pending settlement.",
+      "eventDate": "2026-08-01",
+      "marketType": "Kill total",
+      "timing": "live",
+      "bookmaker": "BK8",
+      "slipId": "1148943634",
+      "sportsbookPlacedAt": "2026-08-01T15:17:00+07:00",
+      "sportsbookDisplayedEventTime": "2026-08-01T16:50:00+07:00",
+      "seriesState": "AL led the series 1-0; Game 2 in progress.",
+      "entryStateAtRecommendation": "At 10:24, AL led 2-1 in kills, TT led approximately 17.6k-17.1k in gold, towers were 0-0, AL held the first dragon and three Grubs, and no clear major-item advantage was visible.",
+      "placementState": "User reported the price moved immediately after the verdict with no meaningful intervening map event. The exact Under 29.5 line shortened from 1.871 to 1.795 before acceptance.",
+      "rosterStatus": "user-confirmed",
+      "sides": {
+        "AL": "blue",
+        "TT": "red"
+      },
+      "draft": {
+        "AL_blue": [
+          "Gnar",
+          "Skarner",
+          "Sylas",
+          "Ezreal",
+          "Rell"
+        ],
+        "TT_red": [
+          "Jayce",
+          "Pantheon",
+          "Syndra",
+          "Varus",
+          "Nautilus"
+        ]
+      },
+      "modelRecommendation": {
+        "recommendationType": "official bet",
+        "modelVersion": "lol-v0.3.10",
+        "market": "Under 29.5 kills",
+        "quotedOdds": 1.871,
+        "minimumAcceptableOdds": 1.82,
+        "stakeUnits": 0.25,
+        "stakeVnd": 250000,
+        "confidence": 6,
+        "estimatedProbabilityRange": [
+          0.57,
+          0.59
+        ],
+        "fairOddsRange": [
+          1.69,
+          1.75
+        ],
+        "reasoning": "Only three kills had occurred through 10:24 with no tower conversion. AL could convert through objective and Grub-assisted structure pressure without requiring repeated high-kill fights, while TT's poke composition also retained a lower-kill defensive branch."
+      },
+      "execution": {
+        "odds": 1.795,
+        "stakeUnits": 0.25,
+        "stakeVnd": 250000,
+        "unitValueVndAtPlacement": 1000000,
+        "sameMarketAndLine": true,
+        "withinStakeCap": true,
+        "withinPerMapExposureCap": true,
+        "priceAboveGeneralMinimum": true,
+        "priceAboveRecommendationMinimum": false,
+        "priceBetterThanQuoted": false,
+        "quotedToAcceptedOddsMove": -0.076,
+        "impliedProbabilityAtQuotedPrice": 0.5345,
+        "impliedProbabilityAtAcceptedPrice": 0.5571,
+        "impliedProbabilityMovePercentagePoints": 2.26,
+        "oddsMoveThresholdTriggered": false,
+        "impliedProbabilityThresholdTriggered": false,
+        "stateSynchronized": true,
+        "mandatoryReassessmentTriggeredByMove": false,
+        "recommendationExpiredBeforePlacement": false,
+        "executionValidityGatePassed": false,
+        "selectionAttribution": "model-generated exact market and line, but accepted below the stated 1.82 minimum price",
+        "stakeAttribution": "model-compliant",
+        "performanceAttribution": "official open real wager with below-floor execution; excluded from v0.3.10 probation validation",
+        "deviations": [
+          "Accepted odds of 1.795 were below the model's minimum acceptable price of 1.82.",
+          "The line shortened by 0.076 immediately after the verdict; this did not cross the standalone material-move thresholds but removed the required value margin."
+        ]
+      },
+      "probationEligibility": {
+        "probationActive": true,
+        "countsTowardTenWagerValidationIfSettled": false,
+        "reason": "Execution did not pass the recommendation-specific minimum-price gate."
+      },
+      "sameMapExposure": {
+        "currentExposureUnits": 0.25,
+        "capUnits": 0.25,
+        "remainingPermittedExposureUnits": 0,
+        "correlatedAddOnsAllowed": false
+      },
+      "tags": [
+        "evaluation",
+        "official-after-user-confirmation",
+        "lol",
+        "lpl",
+        "game-2",
+        "live",
+        "kill-total",
+        "under-29-5-kills",
+        "model-v0-3-10",
+        "synchronized-price-only-move",
+        "price-worse-than-quoted",
+        "below-recommendation-minimum",
+        "execution-validity-gate-failed",
+        "model-compliant-stake",
+        "within-per-map-cap",
+        "excluded-probation-validation",
+        "no-correlated-add-ons",
+        "unit-basis-1000000-vnd",
+        "open"
+      ],
+      "notes": "User confirmed Anyone's Legend vs ThunderTalk Gaming Game 2 Under 29.5 kills at 1.795 for 0.25u (250,000 VND), slip #1148943634. Potential payout is 448,750 VND and potential profit is 198,750 VND. The model recommendation was issued at 1.871 with a minimum acceptable price of 1.82. The exact line shortened immediately after the verdict with no reported meaningful map event. The 0.076 odds move and 2.26 percentage-point implied-probability move did not independently trigger mandatory reassessment, but the accepted price fell below the recommendation-specific floor. The wager is official and open after user confirmation, but it is not model-approved at execution and will not count toward the active probation sample. Game 2 exposure is now 0.25u, so no correlated same-map add-on is permitted.",
+      "placedAt": "2026-08-01T15:17:00+07:00",
+      "userConfirmedAt": "2026-08-01T15:17:00+07:00",
+      "addedAt": "2026-08-01T15:17:00+07:00",
+      "createdAt": "2026-08-01T15:17:00+07:00"
+    },
     {
       "syncId": "eval-20260801-al-tt-g1-over-32-minutes",
       "updatedAt": "2026-08-01T14:45:00+07:00",
@@ -5161,6 +5298,7 @@
       "pending/2026-07-31-ktc-vs-dnsc-game3-dnsc-ml-settlement.json",
       "pending/2026-08-01-al-tt-game1-over-32-minutes-execution-correction.json",
       "pending/2026-08-01-al-tt-game1-over-32-minutes-open.json",
+      "pending/2026-08-01-al-tt-game2-under-29-5-kills-open.json",
       "pending/2026-08-01-mkoi-shft-g2-shft-plus7-5-settlement-sync.json",
       "pending/2026-08-01-puebla-chivas-chivas-minus-0-5-settlement.json",
       "pending/2026-08-01-valerenga-hamkam-red-card-minute-correction.json",
@@ -5176,7 +5314,7 @@
       "pending/eval-20260801-mkoi-shft-g2-shft-plus-7-5-kills.json",
       "pending/eval-20260801-mkoi-shft-g3-shft-plus-10-5-kills.json"
     ],
-    "officialRecordsAdded": 0,
-    "officialRecordsUpdated": 31
+    "officialRecordsAdded": 1,
+    "officialRecordsUpdated": 30
   }
 }
