@@ -2,7 +2,7 @@
 
 **Status:** Active immediately  
 **Effective date:** 2026-08-01 02:44 UTC+7  
-**Last updated:** 2026-08-01 15:31 UTC+7  
+**Last updated:** 2026-08-01 18:43 UTC+7  
 **Purpose:** Supersede conflicting fixed values and operational rules in `LOL_BETTING_PROCEDURE.md` without deleting its source, verification, roster, patch, draft, and market-analysis procedures.
 
 When this addendum conflicts with `LOL_BETTING_PROCEDURE.md`, this addendum and the latest dated model rule control.
@@ -21,14 +21,15 @@ When this addendum conflicts with `LOL_BETTING_PROCEDURE.md`, this addendum and 
 
 LoL analysis must apply the following in descending precedence:
 
-1. `MODEL_RULES_LOL_V0.3.11.md`;
-2. `MODEL_RULES_LOL_V0.3.10.md` where not superseded;
-3. `MODEL_RULES_LOL_V0.3.9.md` where not superseded;
-4. `MODEL_RULES_LOL_V0.3.8.md` where not superseded;
-5. `MODEL_RULES_LOL_V0.3.7.md` where not superseded;
-6. `MODEL_RULES_LOL_V0.3.6.md` where not superseded;
-7. `LOL_BETTING_PROCEDURE.md` for remaining operational steps;
-8. `MODEL_CHANGELOG.md` and `STAKE_POLICY_V2.json`.
+1. `MODEL_RULES_LOL_V0.3.12.md`;
+2. `MODEL_RULES_LOL_V0.3.11.md` where not superseded;
+3. `MODEL_RULES_LOL_V0.3.10.md` where not superseded;
+4. `MODEL_RULES_LOL_V0.3.9.md` where not superseded;
+5. `MODEL_RULES_LOL_V0.3.8.md` where not superseded;
+6. `MODEL_RULES_LOL_V0.3.7.md` where not superseded;
+7. `MODEL_RULES_LOL_V0.3.6.md` where not superseded;
+8. `LOL_BETTING_PROCEDURE.md` for remaining operational steps;
+9. `MODEL_CHANGELOG.md`, `MODEL_CHANGELOG_LOL_V0.3.12.md`, and `STAKE_POLICY_V2.json`.
 
 ## 3. Positive underdog kill handicaps
 
@@ -59,7 +60,28 @@ Under v0.3.10:
 
 A failed over does not automatically justify an under. Every changed line and state must be priced independently.
 
-## 6. Recommendation expiry and immediate price-only execution
+## 6. Late-game kill-total unders
+
+Under v0.3.12, every live kill-total under must calculate current kills, the market line, remaining kill headroom, expected remaining mandatory contests, a conservative additional-kill budget, and a safety buffer.
+
+At or after 24:00:
+
+- ten kills or less of remaining headroom is normally `NO BET` unless the game is already in a verified immediate ending sequence;
+- eleven or twelve kills of headroom with two-sided functional damage or layered engage is at most `LEAN — 0u watch` unless the one-fight close gate is fully passed;
+- an `OFFICIAL BET` requires remaining headroom to exceed the conservative expected kill budget by at least three kills;
+- a gold, tower, or objective lead is not evidence of kill suppression by itself;
+- two or more likely full contests before the Nexus create a hard `NO BET` when either team can force them;
+- trailing-team desperation around Baron, soul, Elder, inhibitor, or base defense must be priced explicitly;
+- two-sided functional damage, engage, target access, and recent two-sided conversion downgrade or veto an under;
+- a late under normally requires no more than four kills during the previous five minutes and no repeated two-sided conversion pattern, but those signals cannot override a failed contest or close gate.
+
+A verified one-fight close requires at least three current confirmations, including either a secured ending buff or exposed/inhibited base state. A 5-2 tower lead alone is insufficient.
+
+Every actionable late under must display current kills, line, headroom, contest count, expected kill budget, safety buffer, close-gate status, functional-damage status, recent kill velocity, quoted odds, target floor, hard floor, stake, and placement status.
+
+The DK vs Gen.G Game 1 process miss activates a same-series lockout on late kill unders based mainly on leader control. The next map requires a verified one-fight close, a passed fight budget with three-kill cushion, and two independent fight-suppression confirmations.
+
+## 7. Recommendation expiry and immediate price-only execution
 
 A recommendation expires after:
 
@@ -91,16 +113,16 @@ A fill below the model target floor is recorded as adverse price slippage. It ca
 
 The rule is outcome-neutral. A losing wager that satisfies the tolerance conditions counts in the same way as a winning wager.
 
-## 7. Required status language
+## 8. Required status language
 
 - Recommendations must begin with `OFFICIAL BET`, `LEAN`, or `NO BET`.
 - A recommended wager remains `not placed` until the user confirms execution.
 - A stale, unavailable, or unconfirmed wager must never be described as placed.
 - A user-confirmed stale execution can be recorded as an official real wager, but model-approval attribution must reflect the missing synchronized reassessment.
 
-## 8. Review basis
+## 9. Review basis
 
-The current restrictions are supported by `reviews/LOL_TWO_DAY_REVIEW_2026-07-31_TO_2026-08-01.md`, the settled AL vs TT Game 1 duration record in `ledger.json`, `MODEL_RULES_LOL_V0.3.10.md`, and the AL vs TT Game 2 execution-policy record under `MODEL_RULES_LOL_V0.3.11.md`.
+The current restrictions are supported by `reviews/LOL_TWO_DAY_REVIEW_2026-07-31_TO_2026-08-01.md`, the settled AL vs TT Game 1 duration record in `ledger.json`, `MODEL_RULES_LOL_V0.3.10.md`, the AL vs TT Game 2 execution-policy record under `MODEL_RULES_LOL_V0.3.11.md`, and `reviews/LOL_UNPLACED_LOSS_MODEL_REVIEW_CANDIDATES_2026-08-01.json` for the DK vs Gen.G late kill-under process miss.
 
 The ten-wager probation continues without reset:
 
