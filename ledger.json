@@ -16,7 +16,11 @@
       "unitValueVndAtPlacement": 1000000,
       "potentialPayoutVnd": 606300,
       "potentialProfitVnd": 306300,
+      "payoutVnd": 0,
+      "netProfitVnd": -300000,
+      "netUnits": -0.3,
       "status": "loss",
+      "result": "User confirmed that Dplus KIA vs Gen.G Game 2 ended before the Over 33 minutes condition was met. The exact official duration was not supplied.",
       "eventDate": "2026-08-01",
       "marketType": "Duration total",
       "timing": "live",
@@ -25,6 +29,8 @@
       "userConfirmedAt": "2026-08-01T19:24:00+07:00",
       "placedAt": "2026-08-01T19:24:00+07:00",
       "sportsbookDisplayedEventTime": "2026-08-01T20:10:00+07:00",
+      "resultConfirmedAt": "2026-08-01T19:35:00+07:00",
+      "settledAt": "2026-08-01T19:35:00+07:00",
       "entryStateAtRecommendation": "At 17:10, kills were tied 2-2 and DK led approximately 30.9k-29.0k in gold. The game had shown limited structural acceleration, DK retained functional Viktor-Caitlyn waveclear, and Gen.G's Rumble-Jarvan-Yone threat made an uncontested siege difficult.",
       "draft": {
         "DK_blue": [
@@ -98,6 +104,12 @@
         "correlatedAddOnsPlaced": false,
         "additionalSameMapBetsAllowed": false
       },
+      "review": {
+        "resultGrade": "loss",
+        "resultAssessment": "Over 33 minutes lost in full for 300,000 VND (-0.30u). The exact final duration was not supplied.",
+        "processAssessment": "The recommendation identified low conversion and functional defensive waveclear, but the game still ended before 33:00. Execution was also outside model approval because both the material price-move rule and the active map stake cap were breached.",
+        "calibrationAction": "Review whether low kill pace and modest gold separation were over-weighted relative to actual structure tempo, objective sequencing, and the probability that one decisive fight could end the map before the duration line."
+      },
       "tags": [
         "official-after-user-confirmation",
         "lol",
@@ -117,19 +129,7 @@
       ],
       "notes": "User confirmed Dplus KIA vs Gen.G Game 2 Over 33 minutes at 2.021 for 300,000 VND (0.30u), slip #1149213315, lost. Payout 0 VND; net loss 300,000 VND (-0.30u). The exact final duration was not supplied. The wager remains excluded from qualifying probation because the accepted price moved materially and the actual stake exceeded the 0.25u map cap.",
       "addedAt": "2026-08-01T12:24:00Z",
-      "createdAt": "2026-08-01T12:24:00Z",
-      "payoutVnd": 0,
-      "netProfitVnd": -300000,
-      "netUnits": -0.3,
-      "result": "User confirmed that Dplus KIA vs Gen.G Game 2 ended before the Over 33 minutes condition was met. The exact official duration was not supplied.",
-      "resultConfirmedAt": "2026-08-01T19:35:00+07:00",
-      "settledAt": "2026-08-01T19:35:00+07:00",
-      "review": {
-        "resultGrade": "loss",
-        "resultAssessment": "Over 33 minutes lost in full for 300,000 VND (-0.30u). The exact final duration was not supplied.",
-        "processAssessment": "The recommendation identified low conversion and functional defensive waveclear, but the game still ended before 33:00. Execution was also outside model approval because both the material price-move rule and the active map stake cap were breached.",
-        "calibrationAction": "Review whether low kill pace and modest gold separation were over-weighted relative to actual structure tempo, objective sequencing, and the probability that one decisive fight could end the map before the duration line."
-      }
+      "createdAt": "2026-08-01T12:24:00Z"
     },
     {
       "syncId": "eval-20260801-tes-lgd-g3-over-33-minutes",
