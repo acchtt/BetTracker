@@ -1,0 +1,42 @@
+{
+  "reviewId": "football-20260801-atletico-san-luis-tijuana-under-2-shadow-review",
+  "event": "Atletico San Luis vs Club Tijuana",
+  "league": "Mexico Liga MX Apertura 2026",
+  "eventDate": "2026-08-01",
+  "market": "Under 2 total goals",
+  "observedOdds": 1.99,
+  "recommendationStatus": "retrospective missed official bet",
+  "placementStatus": "not confirmed; no wager recorded",
+  "bankrollProfitLossVnd": 0,
+  "shadowStakeUnits": 0.25,
+  "unitValueVnd": 1000000,
+  "shadowResult": "win",
+  "shadowProfitVnd": 247500,
+  "shadowProfitUnits": 0.2475,
+  "finalScore": "Atletico San Luis 0-0 Club Tijuana",
+  "evidence": {
+    "lineups": "Confirmed starting lineups, benches and known absences were supplied before kickoff.",
+    "snapshotCount": 2,
+    "snapshotSeparationMinutes": 19,
+    "snapshotTimingBasis": "User confirmed two synchronized live-stat snapshots were supplied 19 minutes apart; the later visible snapshot was at 22:26 with the score 0-0.",
+    "laterSnapshot": {
+      "score": "0-0",
+      "minute": "22:26 first half",
+      "combinedXg": 0.2,
+      "shots": 5,
+      "shotsOnTarget": 0,
+      "bigChances": 0,
+      "combinedBoxTouches": 2,
+      "corners": 1
+    }
+  },
+  "settlementBasis": "Zero or one total goal wins; exactly two total goals pushes; three or more total goals loses.",
+  "processGrade": "good",
+  "review": {
+    "assessment": "The confirmed pre-match personnel information plus two synchronized snapshots 19 minutes apart satisfied the persistent-low-event gate. The later snapshot still showed only 0.20 combined xG, no shots on target, no big chances and two combined opposition-box touches. Whole-goal protection at exactly two goals improved robustness. The correct ex-ante model classification should have been OFFICIAL BET at 0.25u, provided the accepted price remained at least 1.70 and no material state change occurred before execution.",
+    "hindsightControl": "The upgrade is based on correcting the information set available at recommendation time, specifically the previously omitted second snapshot, not on the 0-0 final score.",
+    "ledgerTreatment": "Shadow-model review only. Do not add bankroll profit or describe the wager as placed without user confirmation."
+  },
+  "modelRule": "Two synchronized low-event snapshots separated by a meaningful interval, combined with confirmed personnel information and a protected whole-goal line, may qualify an early live under for official-bet review. Every score, line, price, card, substitution, injury or weather change still requires independent repricing.",
+  "createdAt": "2026-08-01T23:08:00+07:00"
+}
