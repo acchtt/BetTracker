@@ -1,6 +1,6 @@
 {
   "syncId": "lol-20260802-kc-navi-g1-navi-moneyline-live",
-  "updatedAt": "2026-08-02T02:22:00+07:00",
+  "updatedAt": "2026-08-02T02:27:00+07:00",
   "event": "Karmine Corp vs Natus Vincere — Game 1",
   "league": "LEC 2026 Summer",
   "competitionStage": "Best-of-three series; Game 1",
@@ -16,8 +16,8 @@
   "netProfitVnd": -250000,
   "netUnits": -0.25,
   "status": "loss",
-  "result": "Karmine Corp won Game 1. The user reported that NAVI failed to convert its early advantage and threw the game, with player execution being the decisive difference.",
-  "resultSource": "user-confirmed",
+  "result": "Karmine Corp won Game 1 after NAVI failed to convert a substantial mid-game advantage.",
+  "resultSource": "user-confirmed result plus user-supplied post-game win-probability graph",
   "eventDate": "2026-08-02",
   "marketType": "Game moneyline",
   "timing": "live",
@@ -91,9 +91,15 @@
   "review": {
     "resultGrade": "loss",
     "resultAssessment": "NAVI moneyline lost in full for 250,000 VND (-0.25u).",
-    "processAssessment": "The entry had two valid current-map confirmations, but both represented an early and still modest advantage: a 2-0 kill lead, approximately 0.6k gold and three Void Grubs with no tower or dragon conversion. The model gave insufficient weight to the possibility that KC's stronger player execution and conversion quality would reverse that lead.",
+    "processAssessment": "The entry had two valid early confirmations, but they had not yet become durable structure or dragon control. Post-game evidence shows NAVI later built a genuinely strong winning position and still failed to convert, so the loss contains both an entry-calibration issue and a major lead-conversion failure.",
     "userAssessment": "NAVI threw the game; player difference decided the result.",
-    "calibrationAction": "For underdog live moneylines, do not treat kills plus Void Grubs as sufficient high-confidence conversion when the gold lead is small and there is no tower or dragon lead. Add a team/player execution and lead-conversion reliability check before official promotion, especially against a materially stronger favorite."
+    "postGameEvidence": {
+      "source": "user-supplied win-probability graph",
+      "finding": "NAVI's estimated win probability reached roughly 70-75% during the late-20-minute phase before collapsing sharply after approximately 30 minutes.",
+      "finalVisibleCheckpoint": "At 40:00 the graph displayed KC at 76% win probability with a 9.2k gold lead.",
+      "classification": "Screenshot-supported throw pattern and failed lead conversion"
+    },
+    "calibrationAction": "For underdog live moneylines, require stronger evidence of durable conversion before entry and explicitly discount teams with weak lead-conversion reliability. Kills plus Grubs with a small gold lead are not enough by themselves; prefer tower, dragon, meaningful gold separation, repeated fight wins, or demonstrated map-state control."
   },
   "tags": [
     "official-after-user-confirmation",
@@ -107,12 +113,15 @@
     "stake-model-compliant",
     "unit-basis-1000000-vnd",
     "user-confirmed-result",
+    "win-probability-evidence",
+    "failed-lead-conversion",
     "loss",
     "settled"
   ],
-  "notes": "User supplied a successful-bet screenshot confirming NAVI Game 1 moneyline at 2.153 for 250,000 VND, slip #1149434459. The wager was model-compliant at 0.25u. User later confirmed the bet lost and assessed that NAVI threw the game due to player difference.",
+  "notes": "User confirmed NAVI Game 1 moneyline at 2.153 for 250,000 VND, slip #1149434459. The wager was model-compliant at 0.25u. The user later confirmed the loss and supplied a win-probability graph showing NAVI held roughly a 70-75% late-midgame position before KC reversed the game.",
   "userConfirmedAt": "2026-08-02T01:49:00+07:00",
   "resultConfirmedAt": "2026-08-02T02:22:00+07:00",
+  "evidenceUpdatedAt": "2026-08-02T02:27:00+07:00",
   "settledAt": "2026-08-02T02:22:00+07:00",
   "createdAt": "2026-08-01T18:49:00Z"
 }
