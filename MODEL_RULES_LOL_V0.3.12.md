@@ -7,7 +7,7 @@
 
 This revision follows the unplaced DK vs Gen.G Game 1 Under 32.5 kills recommendation. At 26:12, DK led 11-9 in kills, approximately 52.8k-47.8k in gold, and 5-2 in towers. The model promoted Under 32.5 at 1.712 because DK appeared structurally capable of closing. The selection later lost. No wager was placed, so the result does not affect official P/L or probation, but the process exposed a missing late-game fight-budget gate.
 
-The core error was treating a structural lead as kill suppression. The state still contained two functional damage systems, multiple reliable engage and target-access tools, a trailing Gen.G composition forced to contest, and no verified one-fight ending window. Twenty kills had already occurred, leaving only 12 kills of headroom.
+The core error was treating a structural lead as kill suppression. The state still contained two functional damage systems, multiple reliable engage and target-access tools, a trailing Gen.G composition forced to contest, and no verified one-fight ending window. Twenty kills had already occurred, leaving 12.5 kills of numerical headroom and requiring 13 additional kills for the Under to lose.
 
 ## 1. Probation continuity
 
@@ -24,6 +24,7 @@ For every live kill-total under, calculate and display:
 - current total kills;
 - market line;
 - remaining kill headroom: `line - current kills`;
+- additional whole kills required for the Under to lose;
 - estimated number of remaining mandatory contests;
 - conservative expected kills from those contests;
 - explicit safety buffer.
@@ -50,7 +51,7 @@ For an `OFFICIAL BET`, remaining kill headroom must exceed the conservative expe
 At or after 24:00:
 
 - If remaining headroom is **10 kills or fewer**, the default is `NO BET` unless the map is already in a verified immediate ending sequence.
-- If remaining headroom is **11-12 kills** and both teams retain at least two functional damage sources or reliable layered engage, the maximum is `LEAN — 0u watch` unless the one-fight close gate in Section 5 is fully satisfied.
+- If remaining headroom is **more than 10 but no more than 13 kills** and both teams retain at least two functional damage sources or reliable layered engage, the maximum is `LEAN — 0u watch` unless the one-fight close gate in Section 5 is fully satisfied.
 - A high current kill count is not neutralized by a leader holding a 4k-7k gold lead or a three-tower advantage.
 - A shortened price does not substitute for the missing fight-budget evidence.
 
@@ -113,7 +114,7 @@ A slower recent window may support the thesis but cannot override the mandatory-
 Every actionable late-game kill under must state, before reasoning:
 
 - exact line and quoted odds;
-- current kills and remaining headroom;
+- current kills, numerical headroom, and additional whole kills required to lose;
 - expected remaining full contests;
 - conservative additional-kill budget;
 - safety buffer;
@@ -165,4 +166,4 @@ Review this rule after the earlier of:
 - five settled, synchronized LoL kill-total unders assessed at or after 20:00; or
 - completion of the overall ten-wager probation.
 
-Track entry time, current kills, line, headroom, remaining contest count, expected kill budget, safety buffer, one-fight close status, functional damage, recent kill velocity, final kills, result, closing-line quality, VND, and units.
+Track entry time, current kills, line, headroom, whole kills required to lose, remaining contest count, expected kill budget, safety buffer, one-fight close status, functional damage, recent kill velocity, final kills, result, closing-line quality, VND, and units.
