@@ -1,0 +1,54 @@
+{
+  "version": "2026-08-01T23:59:00+07:00",
+  "event": "GIANTX vs SK Gaming — Game 2",
+  "reviewType": "unplaced lean outcome review",
+  "officialBet": false,
+  "officialPnlVnd": 0,
+  "probationEligible": false,
+  "source": "user-confirmed final score",
+  "finalResult": {
+    "winner": "GIANTX",
+    "finalKills": "GX 32-15 SK",
+    "totalKills": 47,
+    "finalKillMargin": 17
+  },
+  "summary": {
+    "leanSnapshots": 8,
+    "wins": 1,
+    "losses": 7,
+    "record": "1-7",
+    "hypotheticalStakePerSnapshotUnits": 0.25,
+    "hypotheticalTotalStakedUnits": 2.0,
+    "hypotheticalNetUnits": -1.58475,
+    "hypotheticalRoiPercent": -79.24,
+    "warning": "These are unplaced, correlated live snapshots and do not affect ledger.json, official P/L, or probation."
+  },
+  "records": [
+    {"state":"pre-game","market":"SK +5.5 kills","odds":1.857,"result":"loss","hypotheticalNetUnits":-0.25},
+    {"state":"post-draft repricing","market":"SK +4.5 kills","odds":1.689,"result":"loss","hypotheticalNetUnits":-0.25},
+    {"gameTime":"6:45","market":"SK +8.5 kills","odds":1.841,"result":"loss","hypotheticalNetUnits":-0.25},
+    {"gameTime":"8:46","market":"SK +11.5 kills","odds":2.120,"result":"loss","hypotheticalNetUnits":-0.25},
+    {"gameTime":"12:44","market":"SK +10.5 kills","odds":1.764,"result":"loss","hypotheticalNetUnits":-0.25,"note":"Later withdrawn after Sylas was identified as nonfunctional."},
+    {"gameTime":"15:30","market":"SK +10.5 kills","odds":2.382,"result":"loss","hypotheticalNetUnits":-0.25},
+    {"gameTime":"19:08","market":"SK +15.5 kills","odds":2.086,"result":"loss","hypotheticalNetUnits":-0.25,"margin":"lost by 1.5 kills"},
+    {"gameTime":"31:27","market":"Over 37.5 kills","odds":1.661,"result":"win","hypotheticalNetUnits":0.16525,"margin":"won by 9.5 kills"}
+  ],
+  "marketBreakdown": {
+    "positiveUnderdogKillHandicap": {
+      "record": "0-7",
+      "hypotheticalNetUnits": -1.75,
+      "assessment": "The cushion was repeatedly overvalued while SK's functional damage, objective position, and structured-fight conversion remained poor. The same thesis was re-entered after being correctly withdrawn for Sylas having zero impact."
+    },
+    "killTotalOver": {
+      "record": "1-0",
+      "hypotheticalNetUnits": 0.16525,
+      "assessment": "The late Over was supported by observed kill velocity, completed damage items, and continued two-sided fighting; it was materially different from draft-only Over speculation."
+    }
+  },
+  "modelReview": {
+    "primaryError": "Repeatedly treating a widening positive handicap as sufficient protection despite the underdog lacking functional mid-lane impact, objective control, and qualifying fight conversions.",
+    "processError": "After the SK handicap thesis was withdrawn because Sylas was nonfunctional, later SK handicap leans were issued without the required evidence of thesis repair.",
+    "operationalAdjustment": "Once a positive-underdog kill-handicap thesis is withdrawn for functional collapse, apply a same-map re-entry lockout. Re-entry requires two new qualifying structured-fight conversions plus clear structural stabilization and restored item-qualified return damage.",
+    "positiveFinding": "The late Over 37.5 correctly used observed fight velocity and item strength rather than draft engage density alone."
+  }
+}
