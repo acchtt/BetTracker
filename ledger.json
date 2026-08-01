@@ -1,9 +1,9 @@
 {
-  "version": "2026-08-01T12:31:44Z",
+  "version": "2026-08-01T12:35:00Z",
   "bets": [
     {
       "syncId": "eval-20260801-dk-geng-g2-over-33-minutes",
-      "updatedAt": "2026-08-01T19:24:00+07:00",
+      "updatedAt": "2026-08-01T19:35:00+07:00",
       "event": "Dplus KIA vs Gen.G — Game 2",
       "league": "LCK 2026 Rounds 3-4",
       "competitionStage": "Best-of-three series; Game 2",
@@ -16,7 +16,7 @@
       "unitValueVndAtPlacement": 1000000,
       "potentialPayoutVnd": 606300,
       "potentialProfitVnd": 306300,
-      "status": "pending",
+      "status": "loss",
       "eventDate": "2026-08-01",
       "marketType": "Duration total",
       "timing": "live",
@@ -78,7 +78,7 @@
         "executionValidityGatePassed": false,
         "selectionAttribution": "model-generated exact market and line",
         "stakeAttribution": "user execution above the 0.25u recommendation and active map cap",
-        "performanceAttribution": "official placed wager; excluded from qualifying probation because the 0.101 price move triggered mandatory reassessment and the 0.30u stake exceeded the active 0.25u map cap",
+        "performanceAttribution": "official settled loss; excluded from qualifying probation because the 0.101 price move triggered mandatory reassessment and the 0.30u stake exceeded the active 0.25u map cap",
         "deviations": [
           "Accepted odds improved from 1.920 to 2.021, an absolute move of 0.101 that triggered the v0.3.11 material-move threshold.",
           "No fresh synchronized map state was supplied at the accepted price.",
@@ -89,6 +89,7 @@
         "probationActive": true,
         "countsTowardTenWagerValidation": false,
         "status": "not qualified",
+        "result": "loss",
         "reason": "The accepted price moved by 0.101, triggering mandatory reassessment, and the actual 0.30u stake exceeded the active 0.25u per-map exposure cap."
       },
       "sameMapExposure": {
@@ -111,11 +112,24 @@
         "excluded-from-probation",
         "no-correlated-add-ons",
         "unit-basis-1000000-vnd",
-        "pending"
+        "loss",
+        "settled"
       ],
-      "notes": "User confirmed Dplus KIA vs Gen.G Game 2 Over 33 minutes at 2.021 for 300,000 VND (0.30u), slip #1149213315. The bet is official and open. The exact market and line match the model recommendation, but the price move of 0.101 triggered mandatory reassessment and the actual stake exceeded the 0.25u map cap, so the wager is excluded from qualifying probation performance.",
+      "notes": "User confirmed Dplus KIA vs Gen.G Game 2 Over 33 minutes at 2.021 for 300,000 VND (0.30u), slip #1149213315, lost. Payout 0 VND; net loss 300,000 VND (-0.30u). The exact final duration was not supplied. The wager remains excluded from qualifying probation because the accepted price moved materially and the actual stake exceeded the 0.25u map cap.",
       "addedAt": "2026-08-01T12:24:00Z",
-      "createdAt": "2026-08-01T12:24:00Z"
+      "createdAt": "2026-08-01T12:24:00Z",
+      "payoutVnd": 0,
+      "netProfitVnd": -300000,
+      "netUnits": -0.3,
+      "result": "User confirmed that Dplus KIA vs Gen.G Game 2 ended before the Over 33 minutes condition was met. The exact official duration was not supplied.",
+      "resultConfirmedAt": "2026-08-01T19:35:00+07:00",
+      "settledAt": "2026-08-01T19:35:00+07:00",
+      "review": {
+        "resultGrade": "loss",
+        "resultAssessment": "Over 33 minutes lost in full for 300,000 VND (-0.30u). The exact final duration was not supplied.",
+        "processAssessment": "The recommendation identified low conversion and functional defensive waveclear, but the game still ended before 33:00. Execution was also outside model approval because both the material price-move rule and the active map stake cap were breached.",
+        "calibrationAction": "Review whether low kill pace and modest gold separation were over-weighted relative to actual structure tempo, objective sequencing, and the probability that one decisive fight could end the map before the duration line."
+      }
     },
     {
       "syncId": "eval-20260801-tes-lgd-g3-over-33-minutes",
@@ -5639,6 +5653,7 @@
       "pending/2026-08-01-al-tt-game1-over-32-minutes-open.json",
       "pending/2026-08-01-al-tt-game2-under-29-5-kills-open.json",
       "pending/2026-08-01-dk-geng-game2-over-33-minutes-open.json",
+      "pending/2026-08-01-dk-geng-game2-over-33-minutes-settled.json",
       "pending/2026-08-01-laos-philippines-under-3-5-open.json",
       "pending/2026-08-01-mkoi-shft-g2-shft-plus7-5-settlement-sync.json",
       "pending/2026-08-01-puebla-chivas-chivas-minus-0-5-settlement.json",
@@ -5657,7 +5672,6 @@
       "pending/eval-20260801-mkoi-shft-g3-shft-plus-10-5-kills.json"
     ],
     "officialRecordsAdded": 0,
-    "officialRecordsUpdated": 34,
-    "lastCorrection": "TES vs LGD Game 3 execution timing clarified as immediate same-state price jump; material-move exclusion unchanged."
+    "officialRecordsUpdated": 35
   }
 }
