@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-01T12:29:00Z",
+  "version": "2026-08-01T12:31:44Z",
   "bets": [
     {
       "syncId": "eval-20260801-dk-geng-g2-over-33-minutes",
@@ -259,10 +259,10 @@
       "placedAt": "2026-08-01T18:13:00+07:00",
       "userConfirmedAt": "2026-08-01T18:13:00+07:00",
       "resultConfirmedAt": "2026-08-01T18:27:00+07:00",
+      "executionTimingCorrectedAt": "2026-08-01T19:29:00+07:00",
       "settledAt": "2026-08-01T18:27:00+07:00",
       "addedAt": "2026-08-01T18:13:00+07:00",
-      "createdAt": "2026-08-01T18:13:00+07:00",
-      "executionTimingCorrectedAt": "2026-08-01T19:29:00+07:00"
+      "createdAt": "2026-08-01T18:13:00+07:00"
     },
     {
       "syncId": "eval-20260801-laos-philippines-under-3-5",
@@ -5657,6 +5657,7 @@
       "pending/eval-20260801-mkoi-shft-g3-shft-plus-10-5-kills.json"
     ],
     "officialRecordsAdded": 0,
-    "officialRecordsUpdated": 34
+    "officialRecordsUpdated": 34,
+    "lastCorrection": "TES vs LGD Game 3 execution timing clarified as immediate same-state price jump; material-move exclusion unchanged."
   }
 }
