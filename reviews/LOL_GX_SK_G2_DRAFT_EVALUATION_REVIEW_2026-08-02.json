@@ -1,0 +1,54 @@
+{
+  "version": "2026-08-02T00:02:00+07:00",
+  "event": "GIANTX vs SK Gaming — Game 2",
+  "reviewType": "draft evaluation error review",
+  "draft": {
+    "GX": ["Renekton", "Xin Zhao", "Ryze", "Viktor", "Leona"],
+    "SK": ["Dr. Mundo", "Nocturne", "Sylas", "Varus", "Alistar"]
+  },
+  "originalRead": "Slight SK draft advantage based on Mundo frontline, Varus damage, and Nocturne-Alistar access.",
+  "correctedRead": "Material GX draft advantage because GX had simpler execution, layered access, two independent backline damage sources, stronger zone control, and multiple ways to punish Varus, while SK's damage delivery was concentrated and fragile.",
+  "expertDisagreementSignal": {
+    "source": "user-reported Caedrel commentary",
+    "reportedAssessment": "GX had a much better draft; SK Sylas and Varus were bad selections.",
+    "policy": "Use expert disagreement as a review trigger, not as automatic authority. Reconcile it with champion interactions, live evidence, and outcome."
+  },
+  "primaryErrors": [
+    "Generic frontline-plus-scaling labels replaced role-specific damage-delivery analysis.",
+    "Varus protection and damage uptime against Renekton, Xin Zhao, and Leona access were underpriced.",
+    "Sylas was treated as a reliable secondary threat without enough scrutiny of lane access, flank dependence, and layered crowd-control risk.",
+    "Nocturne-Alistar engage was credited without checking whether it separated SK's frontline from Varus.",
+    "Mundo durability was treated as composition stability even though it did not solve SK's damage-access problem.",
+    "GX's Ryze-Viktor damage redundancy and zone control were underweighted."
+  ],
+  "liveConfirmation": {
+    "finalResult": "GX won 32-15",
+    "observedFailure": "Sylas had low impact and SK repeatedly failed to produce reliable structured-fight conversions.",
+    "marketConsequence": "Seven SK positive kill-handicap lean snapshots lost."
+  },
+  "modelAction": {
+    "newVersion": "lol-v0.3.16",
+    "requiredDraftFields": [
+      "role and lane fit",
+      "lane priority and punishability",
+      "independent damage channels",
+      "damage delivery and uptime",
+      "frontline versus actual damage",
+      "engage-follow-up geometry",
+      "peel and carry protection",
+      "side-lane and waveclear",
+      "objective setup",
+      "execution burden",
+      "single-point-of-failure risk"
+    ],
+    "specificFlags": [
+      "carry isolation",
+      "immobile sole ranged carry",
+      "dive line disconnecting from backline",
+      "conditional Sylas value",
+      "nominal tankiness without damage delivery"
+    ]
+  },
+  "officialPnlImpact": 0,
+  "probationImpact": 0
+}
