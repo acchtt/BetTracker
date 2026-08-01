@@ -1,0 +1,53 @@
+{
+  "version": "2026-08-01T22:57:00+07:00",
+  "event": "GIANTX vs SK Gaming — Game 1",
+  "reviewType": "winning unplaced official recommendation and latency review",
+  "officialBet": false,
+  "officialPnlVnd": 0,
+  "probationEligible": false,
+  "recommendation": {
+    "market": "SK +3.5 kills",
+    "quotedOdds": 1.858,
+    "stakeUnitsRecommended": 0.25,
+    "status": "not placed",
+    "gameTime": "33:58",
+    "state": {
+      "kills": "11-11",
+      "gold": "SK approximately +1.3k",
+      "towers": "5-5",
+      "dragons": "SK 3-1 GX",
+      "baron": "SK had secured first Baron",
+      "itemStrength": "SK usable strength was concentrated on a 5/1/2 level-17 Gnar with 374 CS"
+    }
+  },
+  "executionOutcome": {
+    "reasonNotPlaced": "The handicap line became inactive before the user could execute after the verdict was delivered.",
+    "latencyClassification": "assistant verdict-delivery failure",
+    "marketAvailabilityAtUserResponse": "inactive"
+  },
+  "finalResult": {
+    "winner": "SK Gaming",
+    "finalKills": "SK 19-15 GX",
+    "finalKillMargin": 4,
+    "selectionGrade": "win",
+    "coverMarginKills": 0.5,
+    "finalGold": "SK 84.5k-79.3k GX",
+    "finalTowers": "SK 6-5 GX",
+    "finalDragons": "SK 4-2 GX",
+    "finalVoidGrubs": "GX 3-0 SK",
+    "finalBarons": "SK 1-0 GX"
+  },
+  "reviewConclusion": {
+    "selectionQuality": "The live handicap read was correct and won narrowly.",
+    "executionQuality": "No wager existed because the market was inactive before user confirmation.",
+    "modelAttribution": "Winning unplaced official recommendation; no official or probation P/L.",
+    "primaryFailure": "The full analysis preceded the actionable verdict long enough for a fast live market to suspend.",
+    "requiredAction": [
+      "Issue the first-line verdict immediately after extracting the synchronized state.",
+      "Do not delay an actionable handicap verdict for a complete narrative item audit when the decisive item concentration and required gates are already known.",
+      "Place stake, target floor, hard floor, and not-placed status on the second line.",
+      "Move secondary-market analysis and full audit detail after the actionable block.",
+      "Continue treating inactive or unconfirmed recommendations as not placed regardless of the final result."
+    ]
+  }
+}
