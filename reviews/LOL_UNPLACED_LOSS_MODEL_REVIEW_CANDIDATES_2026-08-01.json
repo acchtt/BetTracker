@@ -1,0 +1,75 @@
+{
+  "version": "2026-08-01T18:43:00+07:00",
+  "purpose": "Track losing unplaced LoL recommendations as model-process review candidates without treating them as official bets, realized profit/loss, or probation wagers.",
+  "policy": {
+    "officialBet": false,
+    "ledgerProfitLossVnd": 0,
+    "probationEligible": false,
+    "selectionOutcomeMayBeRecorded": true,
+    "executionDisciplineMustRemainOutcomeNeutral": true,
+    "prohibitedUse": [
+      "adding hypothetical losses to ledger.json",
+      "counting the result toward probation",
+      "using the result alone as proof that the recommendation process was wrong",
+      "retroactively claiming the wager was placed"
+    ]
+  },
+  "candidates": [
+    {
+      "candidateId": "lol-review-20260801-dk-geng-g1-under-32-5-kills",
+      "event": "Gen.G vs Dplus KIA — Game 1",
+      "league": "LCK 2026 Rounds 3-4",
+      "market": "Under 32.5 kills",
+      "recommendationType": "OFFICIAL BET",
+      "modelVersionAtRecommendation": "lol-v0.3.11",
+      "quotedOdds": 1.712,
+      "modelTargetFloor": 1.68,
+      "hardExecutionFloor": 1.60,
+      "stakeUnitsRecommended": 0.25,
+      "stakeVndRecommended": 250000,
+      "recommendationState": {
+        "gameTime": "26:12",
+        "kills": "DK 11-9 Gen.G",
+        "currentTotalKills": 20,
+        "marketLine": 32.5,
+        "remainingKillHeadroom": 12.5,
+        "gold": "DK 52.8k-47.8k Gen.G",
+        "towers": "DK 5-2 Gen.G",
+        "structuralRead": "DK held the stronger map and structure state, but no verified one-fight ending sequence was established.",
+        "draftRisk": "Both teams retained multiple functional damage sources and layered engage or target access. Gen.G remained incentivized to contest future major objectives and base pressure."
+      },
+      "placementStatus": "not placed",
+      "finalOutcome": "The final kill total exceeded 32.5",
+      "selectionGrade": "loss",
+      "officialPnlVnd": 0,
+      "probationEligible": false,
+      "reviewClassification": "losing unplaced recommendation; late kill-under process miss",
+      "processErrors": [
+        "Treated DK's gold and tower lead as evidence of kill suppression.",
+        "Did not calculate a conservative remaining-fight kill budget.",
+        "Did not inventory future Baron, dragon, inhibitor, and base-defense contests.",
+        "Did not require a verified one-fight close window.",
+        "Underweighted two-sided functional damage, engage density, and trailing-team forced-contest incentives."
+      ],
+      "modelAction": {
+        "newVersion": "lol-v0.3.12",
+        "ruleFile": "MODEL_RULES_LOL_V0.3.12.md",
+        "changes": [
+          "Mandatory remaining-kill budget and three-kill safety buffer.",
+          "Late-game headroom vetoes at 24:00+.",
+          "Mandatory-contest inventory.",
+          "One-fight-close confirmation gate.",
+          "Two-sided functional-damage and forced-fight vetoes.",
+          "Same-series late-under thesis lockout."
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "candidateCount": 1,
+    "losses": 1,
+    "officialBets": 0,
+    "officialPnlVnd": 0,
+    "probationCount": 0
+  }
+}
