@@ -2,7 +2,7 @@
 
 **Status:** Active immediately  
 **Effective date:** 2026-08-01 02:44 UTC+7  
-**Last updated:** 2026-08-01 21:09 UTC+7  
+**Last updated:** 2026-08-01 22:38 UTC+7  
 **Purpose:** Supersede conflicting fixed values and operational rules in `LOL_BETTING_PROCEDURE.md` without deleting its source, verification, roster, patch, draft, and market-analysis procedures.
 
 When this addendum conflicts with `LOL_BETTING_PROCEDURE.md`, this addendum and the latest dated model rule control.
@@ -166,3 +166,37 @@ The user-defined probation view includes all four official LoL wagers placed on 
 - six wagers remain.
 
 Strict model-approved execution performance must remain visible separately. User-directed probation inclusion does not erase price, state-synchronization, item-strength, stake-cap, or other execution deviations.
+
+## 11. Verdict-first live latency protocol
+
+Live analysis must separate the immediate decision from the full audit trail.
+
+### Immediate response order
+
+1. First line: `OFFICIAL BET`, `LEAN`, or `NO BET`, followed by the exact market and odds when relevant.
+2. Second line for an official recommendation: stake, quoted odds, model target floor, hard execution floor, and `Status: not placed`.
+3. Next two to four lines: only the decisive state facts and the passed or failed gates.
+4. Full item inventory, fight budget, finish paths, and expiry reasoning may follow only when needed for audit or when the user requests the detailed review.
+
+### Fast no-bet rule
+
+When one hard veto is already decisive, return the verdict immediately rather than completing every secondary market calculation first. Examples include:
+
+- odds below 1.60;
+- material state or line change without synchronized reassessment;
+- unreadable decision-critical items;
+- missing two-confirmation moneyline gate;
+- missing two-conversion positive-underdog handicap gate;
+- failed late-Under safety buffer;
+- duration market missing mandatory synchronized fields.
+
+Secondary markets should be summarized in one compact line unless one is independently close to actionable.
+
+### Actionable template
+
+`OFFICIAL BET — [event/map/market] @[odds]`  
+`Stake: 0.25u = 250,000 VND | Target floor: [x] | Hard floor: [y] | Status: not placed`
+
+Then provide no more than three decisive reasons before any optional audit detail.
+
+This protocol changes presentation and execution speed only. It does not waive item-strength, model, pricing, expiry, stake, or confirmation gates.
