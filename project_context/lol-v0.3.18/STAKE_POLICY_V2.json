@@ -1,0 +1,13 @@
+{
+  "policyVersion": "2.0",
+  "status": "active",
+  "unitValueVnd": 1000000,
+  "standardEvaluationStakeUnits": 0.25,
+  "standardEvaluationStakeVnd": 250000,
+  "normalMaximumStakeUnits": 0.5,
+  "normalMaximumStakeVnd": 500000,
+  "minimumAcceptedOdds": 1.6,
+  "probationMaximumExposureUnitsPerMap": 0.25,
+  "probationMaximumExposureVndPerMap": 250000,
+  "correlatedAddOnsAllowedDuringProbation": false
+}
