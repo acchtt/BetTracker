@@ -1,14 +1,14 @@
 # League of Legends Model Rules v0.3.20
 
 **Status:** Active immediately  
-**Effective date:** 2026-08-02 19:05 UTC+7  
+**Effective date:** 2026-08-02 18:57 UTC+7  
 **Purpose:** Improve lean-label integrity, live-state verification, moneyline durability, series-spread screening, kill-Under line selection, and positive-handicap repair without weakening the v0.3.19 anti-line-chasing controls.
 
 This version supersedes v0.3.19 where conflicting. All stricter bankroll, placement-confirmation, probation, item-timing, expiry, and market-specific official-promotion rules remain active.
 
 ## 1. Review evidence
 
-The prior all-lean review contained 44 explicit lean/watch snapshots with a 21-23 record and -1.1455u at hypothetical 0.25u equal stakes. Subsequent explicit `LEAN` snapshots added 13 graded outcomes: 7 wins and 6 losses. The combined explicit snapshot record is therefore 28-29 across 57 snapshots. Exact combined hypothetical P/L is unavailable because the TT vs WE Game 1 +9.5 odds were not preserved.
+The prior all-lean review contained 44 explicit lean/watch snapshots with a 21-23 record and -1.1455u at hypothetical 0.25u equal stakes. Subsequent explicit `LEAN` snapshots added 13 graded outcomes: 7 wins and 6 losses. The combined tracked snapshot record is therefore 28-29 across 57 snapshots. Exact combined hypothetical P/L is unavailable because the TT vs WE Game 1 +9.5 odds were not preserved.
 
 The recent explicit sample separated into:
 
@@ -21,7 +21,7 @@ The review supports retaining v0.3.19 line-chasing protection, improving repair 
 
 ## 2. Recommendation taxonomy
 
-Only the exact verdict `LEAN` creates a trackable lean snapshot.
+Only the exact verdict `LEAN` creates a trackable lean snapshot from v0.3.20 onward.
 
 - `LEAN`: formal unplaced recommendation eligible for shadow grading.
 - `WATCH ONLY`: informational candidate, not a lean and not included in the formal lean record.
@@ -131,8 +131,8 @@ Draft theory remains a fair-price input, not proof. When a champion identity, ro
 
 Report four separate records:
 
-1. explicit `LEAN` snapshots;
-2. thesis-level outcomes, grouping correlated same-map revisions;
+1. exact `LEAN` snapshots issued under the current taxonomy;
+2. legacy tracked lean/watch snapshots and thesis-level outcomes, with correlated same-map revisions grouped;
 3. non-lean calibration candidates such as `WATCH ONLY` and `FORCED PICK`;
 4. official placed wagers.
 
