@@ -1,10 +1,16 @@
 {
-  "version": "2026-08-02T10:38:00+07:00",
+  "version": "2026-08-02T11:02:00+07:00",
   "sport": "League of Legends",
-  "activeModelVersion": "lol-v0.3.17",
+  "activeModelVersion": "lol-v0.3.18",
   "probationTarget": 10,
   "completed": 6,
   "remaining": 4,
+  "remainingSequenceNumbers": [
+    7,
+    8,
+    9,
+    10
+  ],
   "record": "2-4",
   "netVnd": -665250,
   "netUnits": -0.66525,
@@ -150,17 +156,31 @@
       "slipId": "1149469609"
     }
   ],
+  "remainingProbationPlan": {
+    "sequence": "7-10",
+    "activeModelVersion": "lol-v0.3.18",
+    "durationOversOfficialEligible": false,
+    "standardStakeUnits": 0.25,
+    "standardStakeVnd": 250000,
+    "maximumExposureUnitsPerMap": 0.25,
+    "minimumAcceptedOdds": 1.6,
+    "correlatedAddOnsAllowed": false,
+    "selectionPolicy": "Selectivity over action. Every official recommendation must pass the current market-specific gate at the synchronized state and accepted price.",
+    "performanceSeparation": "User-confirmed placements from a lean count in the user-defined probation but remain excluded from strict model-approved performance."
+  },
   "reviewConclusion": {
-    "primaryModelIssue": "Duration-over promotion from correlated quiet-state evidence remains the largest historical issue; underdog moneylines and positive kill handicaps require durable conversion evidence before official promotion.",
-    "primaryProcedureIssue": "Required duration and post-15 item-strength evidence must be captured without delaying early live verdicts. Underdog moneylines require hard conversion evidence, and positive underdog handicaps require two qualifying structured-fight conversions.",
+    "primaryModelIssue": "Duration-over promotion from correlated quiet-state evidence remains the largest official-wager issue. The broader lean sample also showed weak moneyline leans from soft evidence and repeated positive-handicap re-entry after functional collapse.",
+    "primaryProcedureIssue": "Live recommendations must verify functional return damage, apply same-map thesis lockouts, distinguish observed kill velocity from draft-only volatility, and track revised lines beneath one market-family thesis.",
     "primaryExecutionIssue": "Wagers 3 and 4 crossed material execution boundaries. Wager 6 stayed within numerical price tolerance but remained outside strict model-approved attribution because it was placed from a lean without the official handicap gate.",
     "actions": [
-      "Activated lol-v0.3.13 with a same-day duration-over suspension, complete synchronized-state requirement, two durable anti-conversion events, fastest-finish-path inventory, three-minute finish-window margin, and one-fight compression veto.",
+      "Activated lol-v0.3.13 with complete synchronized-state requirements, durable anti-conversion evidence, fastest-finish-path inventory, finish-window margin, and one-fight compression controls.",
       "Activated lol-v0.3.14 with item inventory, usable-strength classification, damage-versus-durability comparison, unknown-item veto, and item-completion expiry triggers.",
       "Activated lol-v0.3.15: item snapshots are optional before 15:00 and mandatory at or after 15:00 when decision-critical.",
-      "Activated lol-v0.3.16: draft evaluation now scores damage delivery, carry protection, execution burden and single-point-of-failure risk.",
-      "Activated lol-v0.3.17: underdog live moneylines require at least one hard conversion confirmation, explicit next-two-sequence analysis, favorite comeback pricing, and team/player lead-conversion reliability checks. Kills plus small gold plus Void Grubs cannot complete the official gate.",
-      "Continue separating profitable user-directed lean executions from strict model-approved official performance. A win does not erase a failed recommendation-status gate."
+      "Activated lol-v0.3.16: draft evaluation scores damage delivery, carry protection, execution burden, and single-point-of-failure risk.",
+      "Activated lol-v0.3.17: underdog live moneylines require hard conversion evidence, next-two-sequence analysis, favorite comeback pricing, and lead-conversion reliability checks.",
+      "Activated lol-v0.3.18: moneyline leans require current-map confirmation; positive-underdog handicaps require functional return damage and a next-fight stress test; withdrawn same-map theses are locked out until repaired; kill Overs require observed pace; revised lines are tracked beneath one thesis.",
+      "Duration Overs are not eligible for official recommendation during probation wagers 7-10.",
+      "Continue separating user-directed lean executions from strict model-approved official performance."
     ]
   }
 }
