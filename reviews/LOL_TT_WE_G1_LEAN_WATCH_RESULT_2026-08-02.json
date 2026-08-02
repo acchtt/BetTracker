@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-02T14:40:00+07:00",
+  "version": "2026-08-02T14:42:00+07:00",
   "sport": "League of Legends",
   "event": "ThunderTalk Gaming vs Team WE — Game 1",
   "market": "ThunderTalk Gaming +9.5 kills",
@@ -13,9 +13,40 @@
   "probationWager7Placed": false,
   "quotedOdds": null,
   "hypotheticalPnlCalculated": false,
+  "recordedLeanSnapshot": {
+    "gameTime": "7:43",
+    "kills": "TT 3-1 WE",
+    "goldState": "nearly even",
+    "draft": {
+      "WE": ["Rumble", "Naafiri", "Ahri", "Varus", "Rakan"],
+      "TT": ["K'Sante", "Jarvan IV", "Ryze", "Ziggs", "Shen"]
+    }
+  },
+  "leanRationale": {
+    "handicapArithmetic": "Assuming the lean was assessed at the recorded 7:43 snapshot, TT led by two kills. TT +9.5 would lose only if TT finished at least ten kills behind, so WE needed a net twelve-kill swing from that snapshot. That was a meaningful cushion rather than a marginal number.",
+    "functionalReturnDamage": "TT had two clear damage channels in Ryze and Ziggs. The recorded state showed TT already producing kills and did not document a carry, lane, or role collapse at the time of the lean.",
+    "targetAccessAndCounterplay": "Jarvan IV, K'Sante, and Shen provided engage, counter-engage, peel, and cleanup routes. Ziggs and Ryze also supplied waveclear and ranged return damage, reducing the probability of repeated completely clean WE fights.",
+    "nextFightStressTest": "A plausible clean WE fight of roughly three to five unanswered kills would damage the position but would not by itself consume the full twelve-kill net swing required from the snapshot. The cushion therefore survived a conservative single-fight stress test at lean level.",
+    "initialStructuralRead": "Gold was nearly even and the available record did not show a major tower, objective, or map-access deficit at the lean snapshot. There was therefore no recorded structural state forcing TT into repeated prepared-terrain entries at that moment."
+  },
+  "whyNotOfficial": {
+    "missingTwoConversions": "The official positive-underdog kill-handicap gate required two qualifying structured-fight conversions. The recorded 3-1 kill lead did not establish two independent structured conversions.",
+    "incompleteSynchronizedState": "The files do not preserve the exact tower, dragon, Grub, wave, vision, summoner-spell, item, and gold-distribution state at the original lean decision.",
+    "priceNotVerified": "Quoted odds were not recorded, so minimum-odds compliance and value versus the target and hard floors could not be verified.",
+    "draftIsSupportNotProof": "TT's draft supplied credible theoretical return-kill routes, but composition theory and an early kill lead were insufficient for official promotion without stronger observed fight and structural confirmation.",
+    "probationSelectivity": "Under v0.3.18, selectivity is mandatory and a marginal gate pass should remain a watch rather than become an official wager."
+  },
   "processReview": {
-    "laterThesisStatus": "expired after WE won a 4v4 structured fight and secured three Void Grubs",
-    "outcomeInterpretation": "The final winning settlement does not retroactively reverse the later expiry decision or authorize re-entry after the thesis had been invalidated.",
+    "initialDecisionGrade": "Justified LEAN — 0u watch based on a large live cushion, functioning theoretical return damage, credible counterplay, and no recorded collapse at the snapshot.",
+    "officialVetoGrade": "Correctly not promoted because the two-conversion gate, complete synchronized-state verification, and price verification were absent.",
+    "laterThesisStatus": "Expired after WE won a 4v4 structured fight and secured three Void Grubs.",
+    "expiryInterpretation": "That later sequence materially changed objective control and the reliability of TT's return-kill thesis, so any unplaced recommendation required reassessment rather than carrying forward.",
+    "outcomeInterpretation": "The final winning settlement supports the original cushion direction but does not retroactively reverse the later expiry decision or convert the watch into an official bet.",
     "sameMapRule": "Any re-entry would still have required two new qualifying structured-fight conversions, stabilization, restored functionality, and explicit repair of the original failure condition."
-  }
+  },
+  "sourceLimitations": [
+    "The original quoted odds were not preserved.",
+    "The exact timestamp of the recommendation is inferred to align with the recorded 7:43 snapshot.",
+    "No complete synchronized item, tower, objective, wave, vision, or summoner-spell panel was preserved for the initial lean."
+  ]
 }
