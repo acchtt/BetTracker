@@ -15,7 +15,12 @@
   "potentialPayoutVnd": 226250,
   "potentialProfitVnd": 101250,
   "potentialProfitUnits": 0.10125,
-  "status": "pending",
+  "payoutVnd": 226250,
+  "netProfitVnd": 101250,
+  "netUnits": 0.10125,
+  "status": "win",
+  "result": "FC Porto 1-0 Torreense. Under 2 goals won.",
+  "finalScore": "FC Porto 1-0 Torreense",
   "bookmaker": "BK8",
   "slipId": "871480471375716352",
   "settlementBasis": "Zero or one total goal wins, exactly two total goals pushes, and three or more total goals loses.",
@@ -56,6 +61,13 @@
     "oppositionBoxTouches": "FC Porto 11-5 Torreense",
     "corners": "FC Porto 1-2 Torreense"
   },
+  "review": {
+    "resultGrade": "win",
+    "processGrade": "good-with-caution",
+    "resultAssessment": "The match finished FC Porto 1-0 Torreense, so Under 2 won. Payout was 226,250 VND and net profit was 101,250 VND (+0.10125u).",
+    "processAssessment": "The reduced 0.125u stake and whole-goal protection were appropriate. Two synchronized snapshots supported a low-event state at entry, but Porto's box touches accelerated from 1 to 11 even while xG stayed flat. That territorial acceleration was a real warning and prevents upgrading the process based on the winning outcome.",
+    "calibrationAction": "Retain LEAN — SMALL for similar two-snapshot whole-goal unders, but apply an explicit pressure-acceleration penalty when box touches or final-third entries rise sharply despite flat xG. Do not increase stake from this result alone."
+  },
   "tags": [
     "official-after-user-confirmation",
     "football",
@@ -70,11 +82,17 @@
     "within-lean-small-cap",
     "within-football-cap",
     "unit-basis-1000000-vnd",
-    "open"
+    "win",
+    "settled",
+    "final-score-1-0",
+    "pressure-acceleration-warning"
   ],
-  "notes": "User confirmed FC Porto vs Torreense Under 2 at 1.81 for 125,000 VND (0.125u), slip #871480471375716352. Potential payout is 226,250 VND and potential profit is 101,250 VND (+0.10125u).",
+  "notes": "User confirmed FC Porto vs Torreense Under 2 at 1.81 for 125,000 VND (0.125u), slip #871480471375716352. The wager won with a 1-0 final score. Payout was 226,250 VND and net profit was 101,250 VND (+0.10125u).",
   "placedAt": "2026-08-02T02:52:00+07:00",
   "userConfirmedAt": "2026-08-02T02:52:00+07:00",
+  "resultConfirmedAt": "2026-08-02T09:06:00+07:00",
+  "settledAt": "2026-08-02T09:06:00+07:00",
+  "updatedAt": "2026-08-02T09:06:00+07:00",
   "addedAt": "2026-08-01T19:52:00Z",
   "createdAt": "2026-08-01T19:52:00Z"
 }
