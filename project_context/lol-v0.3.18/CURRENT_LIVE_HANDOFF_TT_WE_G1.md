@@ -7,13 +7,19 @@ ThunderTalk Gaming vs Team WE — Game 1
 - WE: Rumble / Naafiri / Ahri / Varus / Rakan
 - TT: K'Sante / Jarvan IV / Ryze / Ziggs / Shen
 
-## Latest known sequence
+## Recorded sequence
 - At 7:43, TT led 3–1 in kills while gold was nearly even.
-- A prior TT +9.5 kills lean was active as a 0u watch.
+- TT +9.5 kills was recorded as a `LEAN — 0u watch`.
 - WE subsequently won a 4v4 structured fight and secured three Void Grubs.
-- That materially weakened and expired the TT handicap thesis.
-- Current verdict: **NO BET — synchronized scoreboard and current odds required.**
-- Probation wager 7 remains unplaced.
+- That materially weakened and expired the TT handicap thesis for any later entry.
 
-## Next response protocol
-Return verdict first. Reassess the current line independently. Do not re-enter the expired TT handicap thesis unless the v0.3.18 same-map repair conditions are met.
+## Settled watch result
+- TT +9.5 kills: **WIN**.
+- Classification: **unplaced lean/watch — shadow result only**.
+- Official P/L impact: **0 VND / 0u**.
+- Probation impact: **none**.
+- Probation wager 7 remains unplaced.
+- The winning settlement does not retroactively reverse the later expiry decision or make the withdrawn thesis actionable.
+
+## Status
+This Game 1 handoff is closed. Any later map or market requires a fresh synchronized state and independent assessment under LoL v0.3.18.
