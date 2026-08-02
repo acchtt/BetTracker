@@ -11,20 +11,25 @@ This directory is the portable context package for the active League of Legends 
 
 ## Main change
 
-The model now separates long-duration evidence from low-kill evidence. Functional waveclear can delay structure conversion while increasing the number of later Baron, dragon, vision, inhibitor, and base-defense kill windows.
+The model separates long-duration evidence from low-kill evidence. Functional waveclear can delay structure conversion while increasing the number of later Baron, dragon, vision, inhibitor, and base-defense kill windows.
 
 Kill-total and duration projections must include unresolved map inventory, line-specific calculations, and explicit projected ranges.
 
 ## Current probation
 
-- 7/10 completed
-- 3-4 record
-- -451,750 VND / -0.45175u
-- Wager 7: SK +9.5 kills @1.854, won
-- Wagers 8-10 remain
+- 8/10 completed
+- 4-4 record
+- -266,750 VND / -0.26675u
+- Wager 7: SK +9.5 kills @1.854, won +213,500 VND
+- Wager 8: Over 49.5 kills @1.740, won +185,000 VND
+- Wagers 9-10 remain
 - 0.25u maximum exposure per map
 - No correlated same-map add-ons
-- Duration Overs remain ineligible for official wagers 8-10
+- Duration Overs remain ineligible for official wagers 9-10
+
+## Latest calibration
+
+G2 Esports vs SK Gaming Game 2 finished G2 27-24 SK at 43:28, for 51 total kills. The placed Over 49.5 @1.740 won. The v0.3.23 late projection of approximately 49-55 total kills with a 51-53 central estimate was calibrated correctly.
 
 ## Operating rule
 
