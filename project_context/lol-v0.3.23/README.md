@@ -17,19 +17,20 @@ Kill-total and duration projections must include unresolved map inventory, line-
 
 ## Current probation
 
-- 8/10 completed
-- 4-4 record
-- -266,750 VND / -0.26675u
+- 9/10 completed
+- 5-4 record
+- -100,500 VND / -0.1005u
 - Wager 7: SK +9.5 kills @1.854, won +213,500 VND
 - Wager 8: Over 49.5 kills @1.740, won +185,000 VND
-- Wagers 9-10 remain
+- Wager 9: Over 37.5 kills @1.665, won +166,250 VND
+- Wager 10 remains
 - 0.25u maximum exposure per map
 - No correlated same-map add-ons
-- Duration Overs remain ineligible for official wagers 9-10
+- Duration Overs remain ineligible for official wager 10
 
 ## Latest calibration
 
-G2 Esports vs SK Gaming Game 2 finished G2 27-24 SK at 43:28, for 51 total kills. The placed Over 49.5 @1.740 won. The v0.3.23 late projection of approximately 49-55 total kills with a 51-53 central estimate was calibrated correctly.
+Movistar KOI vs Fnatic Game 1 finished MKOI 23-15 FNC at 32:14, for 38 total kills. The placed Over 37.5 @1.665 won by 0.5 kills. All Duration Over 33/34 watch and lean snapshots lost, showing that unresolved structures and prior Baron recovery did not outweigh MKOI's accelerated close once Cassiopeia and Kai'Sa became the dominant item-qualified damage pair.
 
 ## Operating rule
 
