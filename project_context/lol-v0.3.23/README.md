@@ -15,22 +15,23 @@ The model separates long-duration evidence from low-kill evidence. Functional wa
 
 Kill-total and duration projections must include unresolved map inventory, line-specific calculations, and explicit projected ranges.
 
-## Current probation
+## Probation completed
 
-- 9/10 completed
-- 5-4 record
-- -100,500 VND / -0.1005u
+- 10/10 completed
+- 6-4 record
+- +112,250 VND / +0.11225u
 - Wager 7: SK +9.5 kills @1.854, won +213,500 VND
 - Wager 8: Over 49.5 kills @1.740, won +185,000 VND
 - Wager 9: Over 37.5 kills @1.665, won +166,250 VND
-- Wager 10 remains
-- 0.25u maximum exposure per map
-- No correlated same-map add-ons
-- Duration Overs remain ineligible for official wager 10
+- Wager 10: FNC moneyline @1.851, won +212,750 VND
+- Historical probation exposure was 0.25u maximum per map with no correlated same-map add-ons
+- Post-probation staking remains unchanged until an explicit review sets a new policy
 
 ## Latest calibration
 
-Movistar KOI vs Fnatic Game 1 finished MKOI 23-15 FNC at 32:14, for 38 total kills. The placed Over 37.5 @1.665 won by 0.5 kills. All Duration Over 33/34 watch and lean snapshots lost, showing that unresolved structures and prior Baron recovery did not outweigh MKOI's accelerated close once Cassiopeia and Kai'Sa became the dominant item-qualified damage pair.
+Movistar KOI vs Fnatic Game 2 finished FNC 21-12 at 31:09, with FNC leading towers 7-4, dragons 4-1, Baron 1-0 and inhibitors 1-0 in the final synchronized state. The placed FNC moneyline @1.851 won.
+
+The best pre-placement signal was not the early kill lead alone. It was the combination of FNC's 2-0 dragon control, first tower, functioning Rumble-Orianna-Xayah damage, Xayah-Rakan protection against Nocturne-Yone-Galio entry, and MKOI Viktor remaining materially impaired. Aggressive FNC -12.5 watches were too wide, while FNC +5.5, FNC -3.5, Under 39.5 and the moneyline were directionally correct.
 
 ## Operating rule
 
