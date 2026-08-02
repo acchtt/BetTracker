@@ -1,0 +1,133 @@
+{
+  "version": "2026-08-02T18:57:00+07:00",
+  "modelVersionAfterReview": "LoL v0.3.20",
+  "sport": "League of Legends",
+  "scope": "All previously consolidated explicit LoL LEAN snapshots plus subsequent explicit leans and user-confirmed calibration outcomes available in the current project.",
+  "officialBet": false,
+  "officialPnlImpactVnd": 0,
+  "officialPnlImpactUnits": 0,
+  "probationImpact": 0,
+  "baselineReview": {
+    "source": "reviews/LOL_ALL_LEANS_WATCH_BETS_REVIEW_UPDATE_2026-08-02.json",
+    "explicitSnapshots": 44,
+    "wins": 21,
+    "losses": 23,
+    "record": "21-23",
+    "hypotheticalEqualStakeNetUnits": -1.1455,
+    "correlationWarning": "Multiple snapshots are revisions of the same map thesis and are not independent wagers."
+  },
+  "postBaselineExplicitLeans": {
+    "snapshots": 13,
+    "wins": 7,
+    "losses": 6,
+    "record": "7-6",
+    "knownPriceNetUnitsExcludingOneMissingOddsWin": -0.258,
+    "missingPrice": "ThunderTalk Gaming +9.5 kills, Game 1 vs Team WE",
+    "events": [
+      {
+        "event": "ThunderTalk Gaming vs Team WE — Game 1",
+        "market": "TT +9.5 kills",
+        "odds": null,
+        "result": "win",
+        "classification": "explicit LEAN; unplaced shadow result"
+      },
+      {
+        "event": "ThunderTalk Gaming vs Team WE — Game 2",
+        "marketFamily": "TT positive kill handicap",
+        "snapshots": [
+          {"market": "TT +5.5 kills", "odds": 1.784, "result": "loss"},
+          {"market": "TT +5.5 kills", "odds": 1.915, "result": "loss"},
+          {"market": "TT +7.5 kills", "odds": 1.742, "result": "loss"},
+          {"market": "TT +9.5 kills", "odds": 1.809, "result": "loss"}
+        ],
+        "thesisLevelGrade": "one correlated line-chasing process failure"
+      },
+      {
+        "event": "DNS vs BRO — Game 3",
+        "snapshots": [
+          {"market": "DNS +6.5 kills", "odds": 1.688, "result": "win"},
+          {"market": "BRO +6.5 kills", "odds": 1.913, "result": "win"},
+          {"market": "DNS +4.5 kills", "odds": 1.885, "result": "win", "processGrade": "invalid original rationale because the intervening kill direction was misread"},
+          {"market": "BRO moneyline", "odds": 1.652, "result": "loss"},
+          {"market": "DNS moneyline", "odds": 1.766, "result": "win"}
+        ],
+        "classification": "correlated same-map snapshots; 4-1 settlement record"
+      },
+      {
+        "event": "KT Rolster vs Hanwha Life Esports",
+        "snapshots": [
+          {"market": "HLE -1.5 maps", "odds": 1.989, "result": "loss"},
+          {"market": "KT +7.5 kills — Game 1", "odds": 1.901, "result": "win"},
+          {"market": "KT +3.5 kills — Game 1", "odds": 1.815, "result": "win"}
+        ],
+        "classification": "series-spread loss and two correlated same-map handicap wins"
+      }
+    ]
+  },
+  "updatedExplicitSnapshotRecord": {
+    "snapshots": 57,
+    "wins": 28,
+    "losses": 29,
+    "record": "28-29",
+    "exactHypotheticalNetUnitsAvailable": false,
+    "reason": "One winning explicit lean has no preserved quoted odds.",
+    "warning": "Snapshot record remains descriptive and correlated, not an independent-bet backtest."
+  },
+  "recentMarketBreakdown": {
+    "positiveKillHandicaps": {
+      "snapshots": 10,
+      "record": "6-4",
+      "knownPriceNetUnitsExcludingMissingOddsWin": 0.0505,
+      "interpretation": "The market remains useful when return damage and state are functional, but all four losses came from one deteriorating TT line-chasing thesis."
+    },
+    "liveMoneylines": {
+      "snapshots": 2,
+      "record": "1-1",
+      "knownPriceNetUnits": -0.0585,
+      "interpretation": "Small structural leads were insufficient when objective debt and protected-carry scaling conflicted with the proposed side."
+    },
+    "seriesMinusOnePointFive": {
+      "snapshots": 1,
+      "record": "0-1",
+      "knownPriceNetUnits": -0.25,
+      "interpretation": "The sweep thesis was too dependent on roster assumptions and team reputation and should have expired on the adverse Game 1 draft."
+    }
+  },
+  "nonLeanCalibrationOutcomes": {
+    "policy": "These outcomes are excluded from the formal LEAN record because the outputs were closest-watch, provisional-watch, forced-pick, or NO BET classifications.",
+    "igVsLngGame2": [
+      {"market": "LNG +8.5 kills", "odds": 2.046, "classification": "provisional watch / forced pick", "result": "loss"},
+      {"market": "Under 26.5 kills", "odds": 1.887, "classification": "closest watch candidate", "result": "loss"},
+      {"market": "Under 28.5 kills", "odds": 1.958, "classification": "closest watch candidate", "result": "win"}
+    ],
+    "igVsLngGame2Summary": "1-2, -0.2605u at hypothetical 0.25u each; supports exact verdict taxonomy and line-specific Under selection.",
+    "dnsVsBroGame2": "User confirmed all discussed BRO positive handicap lines won, but most outputs were NO BET or vetoed and remain a false-negative calibration cluster rather than formal lean wins.",
+    "dnsVsBroGame1": "BRO +12.5 won as a user-confirmed NO BET shadow outcome; it remains excluded from the lean record."
+  },
+  "rootCauseFindings": [
+    "Ambiguous watch language caused rejected or hypothetical markets to be remembered as leans.",
+    "A live moneyline lean was issued despite a two-dragon deficit, conflicting scaling, and a stronger protected opposing carry.",
+    "The same-map repair lock was too binary and could not recognize item-qualified, structural recovery at lean level.",
+    "Series -1.5 screening did not expire aggressively enough after lineup uncertainty and an adverse first-map draft.",
+    "An intervening kill sequence was assigned to the wrong team before a lean was issued.",
+    "Kill-Under candidates were discussed at multiple lines without one explicit line-selection rule."
+  ],
+  "modelCorrections": {
+    "newVersion": "LoL v0.3.20",
+    "taxonomy": "Only exact LEAN verdicts enter the formal lean record; WATCH ONLY and FORCED PICK are separate.",
+    "stateDirection": "Require verified ownership of intervening kills, towers, and objectives before a new live lean.",
+    "moneyline": "Add objective-conflict and protected-carry durability gates.",
+    "seriesSpread": "Require confirmed lineup and expire -1.5 theses when Game 1 draft materially opposes the sweep path.",
+    "handicapRepair": "Allow one lean-only repaired-watch pathway after one structured conversion plus strict item, gold, structure, and cascade repair; official gate remains two conversions.",
+    "killUnder": "Delay early formal Unders, require a three-kill safety buffer over conservative fight budget, and select only one line."
+  },
+  "probation": {
+    "completed": 6,
+    "target": 10,
+    "record": "2-4",
+    "netVnd": -665250,
+    "netUnits": -0.66525,
+    "wager7Placed": false,
+    "unchangedBecause": "All reviewed outcomes were unplaced shadow or calibration outcomes."
+  }
+}
