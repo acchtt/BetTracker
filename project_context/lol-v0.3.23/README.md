@@ -8,6 +8,7 @@ This directory is the portable context package for the active League of Legends 
 - Activated: 2026-08-02 22:57 UTC+7
 - Root rules: `MODEL_RULES_LOL_V0.3.23.md`
 - Consolidated rules: `project_context/lol-v0.3.23/ACTIVE_RULES_CONSOLIDATED.md`
+- Probation extension: `project_context/lol-v0.3.23/PROBATION_EXTENSION_TO_20.md`
 
 ## Main change
 
@@ -15,17 +16,19 @@ The model separates long-duration evidence from low-kill evidence. Functional wa
 
 Kill-total and duration projections must include unresolved map inventory, line-specific calculations, and explicit projected ranges.
 
-## Probation completed
+## Current probation
 
-- 10/10 completed
+- 10/20 completed
 - 6-4 record
 - +112,250 VND / +0.11225u
 - Wager 7: SK +9.5 kills @1.854, won +213,500 VND
 - Wager 8: Over 49.5 kills @1.740, won +185,000 VND
 - Wager 9: Over 37.5 kills @1.665, won +166,250 VND
 - Wager 10: FNC moneyline @1.851, won +212,750 VND
-- Historical probation exposure was 0.25u maximum per map with no correlated same-map add-ons
-- Post-probation staking remains unchanged until an explicit review sets a new policy
+- Wagers 11-20 remain
+- Standard stake remains 0.25u = 250,000 VND
+- Maximum exposure remains 0.25u per map
+- No correlated same-map add-ons
 
 ## Latest calibration
 
