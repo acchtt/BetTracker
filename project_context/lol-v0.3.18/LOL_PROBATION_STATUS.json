@@ -1,0 +1,109 @@
+{
+  "version": "2026-08-02T11:02:00+07:00",
+  "sport": "League of Legends",
+  "activeModelVersion": "lol-v0.3.18",
+  "probationTarget": 10,
+  "completed": 6,
+  "remaining": 4,
+  "remainingSequenceNumbers": [
+    7,
+    8,
+    9,
+    10
+  ],
+  "record": "2-4",
+  "netVnd": -665250,
+  "netUnits": -0.66525,
+  "strictModelApprovedExecutionView": {
+    "completed": 3,
+    "record": "1-2",
+    "netVnd": -301250,
+    "netUnits": -0.30125
+  },
+  "marketBreakdown": {
+    "durationOvers": {
+      "bets": 3,
+      "record": "0-3",
+      "netVnd": -800000,
+      "netUnits": -0.8
+    },
+    "killTotals": {
+      "bets": 1,
+      "record": "1-0",
+      "netVnd": 198750,
+      "netUnits": 0.19875
+    },
+    "moneylines": {
+      "bets": 1,
+      "record": "0-1",
+      "netVnd": -250000,
+      "netUnits": -0.25
+    },
+    "killHandicaps": {
+      "bets": 1,
+      "record": "1-0",
+      "netVnd": 186000,
+      "netUnits": 0.186
+    }
+  },
+  "wagers": [
+    {
+      "sequence": 1,
+      "event": "Anyone's Legend vs ThunderTalk Gaming — Game 1",
+      "market": "Over 32 minutes",
+      "odds": 1.999,
+      "stakeVnd": 250000,
+      "result": "loss",
+      "netVnd": -250000
+    },
+    {
+      "sequence": 2,
+      "event": "Anyone's Legend vs ThunderTalk Gaming — Game 2",
+      "market": "Under 29.5 kills",
+      "odds": 1.795,
+      "stakeVnd": 250000,
+      "result": "win",
+      "netVnd": 198750
+    },
+    {
+      "sequence": 3,
+      "event": "Top Esports vs LGD Gaming — Game 3",
+      "market": "Over 33 minutes",
+      "odds": 2.117,
+      "stakeVnd": 250000,
+      "result": "loss",
+      "netVnd": -250000,
+      "classification": "user-directed probation exception"
+    },
+    {
+      "sequence": 4,
+      "event": "Dplus KIA vs Gen.G — Game 2",
+      "market": "Over 33 minutes",
+      "odds": 2.021,
+      "stakeVnd": 300000,
+      "result": "loss",
+      "netVnd": -300000,
+      "classification": "user-directed probation exception"
+    },
+    {
+      "sequence": 5,
+      "event": "Karmine Corp vs Natus Vincere — Game 1",
+      "market": "NAVI moneyline",
+      "odds": 2.153,
+      "stakeVnd": 250000,
+      "result": "loss",
+      "netVnd": -250000
+    },
+    {
+      "sequence": 6,
+      "event": "Dignitas vs Cloud9 Kia — Game 1",
+      "market": "Dignitas +9.5 kills",
+      "odds": 1.744,
+      "stakeVnd": 250000,
+      "result": "win",
+      "netVnd": 186000,
+      "slipId": "1149469609",
+      "classification": "placed from LEAN — 0u watch"
+    }
+  ]
+}
