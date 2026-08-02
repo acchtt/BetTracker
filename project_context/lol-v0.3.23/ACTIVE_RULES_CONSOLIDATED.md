@@ -2,16 +2,18 @@
 
 LoL v0.3.23 supersedes v0.3.22 where conflicting. All stricter earlier bankroll, placement, probation, item, state-direction, expiry, handicap, moneyline, and series rules remain active.
 
+The active probation amendment is `project_context/lol-v0.3.23/PROBATION_EXTENSION_TO_20.md`. It supersedes earlier text stating that probation ended after wager 10.
+
 ## Fast verdict and exposure
 
 - Verdict first.
 - Minimum odds: 1.60.
-- Historical probation stake: 0.25u = 250,000 VND.
-- Historical probation maximum exposure: 0.25u per map.
+- Standard probation stake: 0.25u = 250,000 VND.
+- Maximum probation exposure: 0.25u per map.
 - No correlated same-map add-ons.
 - Official only after explicit placement confirmation.
 - If a map already has a placed wager, all other markets are `ANALYSIS ONLY — SAME-MAP EXPOSURE CAP`.
-- Probation is complete. Keep the existing 0.25u exposure policy until an explicit post-probation review authorizes a change.
+- Current probation state: 10/20 completed; wagers 11-20 remain.
 
 ## Mandatory live market scan
 
@@ -173,13 +175,17 @@ Calibration:
 - Duration Under 31 lost by only nine seconds; Duration Over 33/34 lost clearly. The accelerated-close branch was real, but the exact 31-minute line required more margin.
 - Moneyline was the best safety-adjusted market once FNC held kills, first tower, 2-0 dragons and compositionally protected carries despite near-even gold.
 
-## Probation completed
+## Current probation
 
-- completed: 10/10;
+- completed: 10/20;
 - record: 6-4;
 - net: +112,250 VND / +0.11225u;
 - wager 7: SK +9.5 kills @1.854, won +213,500 VND;
 - wager 8: Over 49.5 kills @1.740, won +185,000 VND;
 - wager 9: Over 37.5 kills @1.665, won +166,250 VND;
 - wager 10: FNC moneyline @1.851, won +212,750 VND;
-- keep the existing 0.25u maximum exposure policy until a separate post-probation review changes it.
+- wagers 11-20 remain;
+- standard stake: 0.25u = 250,000 VND;
+- maximum exposure: 0.25u per map;
+- no correlated same-map add-ons;
+- post-probation staking review is deferred until wager 20 unless explicitly requested earlier.
