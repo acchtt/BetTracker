@@ -10,7 +10,7 @@ LoL v0.3.23 supersedes v0.3.22 where conflicting. All stricter earlier bankroll,
 - Maximum exposure: 0.25u per map.
 - No correlated same-map add-ons.
 - Official only after explicit placement confirmation.
-- Duration Overs are not eligible for official wagers 8-10.
+- Duration Overs are not eligible for official wagers 9-10.
 - If a map already has a placed wager, all other markets are `ANALYSIS ONLY — SAME-MAP EXPOSURE CAP`.
 
 ## Mandatory live market scan
@@ -142,10 +142,17 @@ Correct v0.3.23 totals view:
 
 Final: G2 19-11, 30 kills, 41:36.
 
+## G2 vs SK Game 2 calibration
+
+At 37:39, the state was 21-21 kills, roughly +1.1k G2, 6-6 towers, 3-2 dragons, first Baron to G2, and no inhibitors down. Over 49.5 @1.632 was an official recommendation. The user later placed the same line at 1.740 from a synchronized 38:49 state.
+
+Final: G2 27-24, 51 kills, 43:28. The model's projected final range of approximately 49-55 and central estimate of 51-53 were calibrated correctly.
+
 ## Probation
 
-- completed: 7/10;
-- record: 3-4;
-- net: -451,750 VND / -0.45175u;
+- completed: 8/10;
+- record: 4-4;
+- net: -266,750 VND / -0.26675u;
 - wager 7: SK +9.5 kills @1.854, won +213,500 VND;
-- wagers 8-10 remain.
+- wager 8: Over 49.5 kills @1.740, won +185,000 VND;
+- wagers 9-10 remain.
