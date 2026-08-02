@@ -1,8 +1,8 @@
 {
-  "version": "2026-08-02T10:54:00+07:00",
+  "version": "2026-08-02T10:57:00+07:00",
   "sport": "League of Legends",
   "reviewScope": "All explicit LoL LEAN and 0u watch recommendations recorded since the current probation period began.",
-  "supersedesSummaryOnly": "The snapshot totals in the prior review are updated by the user-confirmed KC-NAVI and DIG-C9 outcomes below. Existing event-level reviews remain valid where not contradicted.",
+  "supersedesSummaryOnly": "The snapshot totals in the prior review are updated by the user-confirmed KC-NAVI and DIG-C9 outcomes and the verified DK-Gen.G Game 2 final statistics below. Existing event-level reviews remain valid where not contradicted.",
   "officialBet": false,
   "officialPnlImpact": 0,
   "probationImpact": 0,
@@ -10,7 +10,7 @@
     "changedLinesAreIndependentAssessments": true,
     "repeatedSnapshotsOfTheSameThesisAreCorrelated": true,
     "placedFromLeanOutcomesMayBeReviewedButMustNotBeDoubleCountedAsShadowPnl": true,
-    "internallyInconsistentOutcomeClaimsRemainUnresolved": true
+    "marketSettlementMustMatchVerifiedFinalStatistics": true
   },
   "confirmedCorrections": [
     {
@@ -33,41 +33,56 @@
       "odds": 1.651,
       "result": "win",
       "hypotheticalNetUnitsAt0_25u": 0.16275
+    },
+    {
+      "event": "Dplus KIA vs Gen.G — Game 2",
+      "verifiedFinalState": {
+        "winner": "Dplus KIA",
+        "duration": "approximately 29 minutes",
+        "kills": "Dplus KIA 7-2 Gen.G",
+        "totalKills": 9,
+        "towers": "Dplus KIA 10-1 Gen.G",
+        "dragons": "Dplus KIA 3-0 Gen.G",
+        "voidGrubs": "Gen.G 3-0 Dplus KIA",
+        "riftHeralds": "Dplus KIA 1-0 Gen.G",
+        "barons": "Dplus KIA 1-0 Gen.G"
+      },
+      "markets": [
+        {
+          "market": "Over 27.5 kills",
+          "odds": 2.279,
+          "result": "loss",
+          "hypotheticalNetUnitsAt0_25u": -0.25
+        },
+        {
+          "market": "Under 24.5 kills",
+          "odds": 1.872,
+          "result": "win",
+          "hypotheticalNetUnitsAt0_25u": 0.218
+        }
+      ],
+      "combinedHypotheticalNetUnitsAt0_25uEach": -0.032,
+      "sourceNote": "Final statistics supplied through the user-provided VSGG match page and independently matched by the post-match game table."
     }
   ],
-  "unresolvedCorrection": {
-    "event": "Dplus KIA vs Gen.G — Game 2",
-    "userStatement": "Both markets lost; final kill score 7-2.",
-    "recordedMarkets": [
-      {
-        "market": "Over 27.5 kills",
-        "odds": 2.279
-      },
-      {
-        "market": "Under 24.5 kills",
-        "odds": 1.872
-      }
-    ],
-    "consistencyCheck": "A 7-2 final kill score equals 9 total kills. Under standard total-kills settlement, Over 27.5 loses and Under 24.5 wins, so both cannot lose simultaneously.",
-    "status": "ungraded pending market-label clarification"
-  },
-  "updatedSnapshotSummaryExcludingUnresolvedDKGenG": {
+  "updatedSnapshotSummary": {
     "totalLeanSnapshots": 44,
-    "gradedSnapshots": 42,
-    "wins": 20,
-    "losses": 22,
-    "record": "20-22",
-    "ungradedSnapshots": 2,
+    "gradedSnapshots": 44,
+    "wins": 21,
+    "losses": 23,
+    "record": "21-23",
+    "ungradedSnapshots": 0,
     "hypotheticalEqualStakeUnitsPerSnapshot": 0.25,
-    "hypotheticalTotalStakedUnits": 10.5,
-    "hypotheticalNetUnits": -1.1135,
-    "hypotheticalRoiPercent": -10.6,
+    "hypotheticalTotalStakedUnits": 11.0,
+    "hypotheticalNetUnits": -1.1455,
+    "hypotheticalRoiPercent": -10.41,
     "warning": "This is a snapshot-level descriptive result, not an independent-bet sample. Multiple lines are revisions of the same map thesis."
   },
   "marketConclusions": {
     "moneylines": "Underdog and draft-led moneyline leans remain weak without durable structural conversion.",
     "positiveUnderdogKillHandicaps": "Wide cushions can perform well when return damage remains functional, but repeated same-thesis snapshots must not be treated as independent evidence.",
-    "killOvers": "Observed high-velocity and item-supported Overs performed materially better than draft-only or early-state Overs.",
+    "killOvers": "Observed high-velocity and item-supported Overs performed materially better than draft-only or early-state Overs. DK-Gen.G Over 27.5 was an early volatility thesis that failed in a nine-kill map.",
+    "killUnders": "The DK-Gen.G Under 24.5 direction was correct in a controlled nine-kill close, but it was issued at a later and materially different state from the Over and should not be merged into one forecast.",
     "reentry": "A failed or withdrawn handicap thesis requires demonstrated functional repair before another lean, regardless of a wider number."
   }
 }
