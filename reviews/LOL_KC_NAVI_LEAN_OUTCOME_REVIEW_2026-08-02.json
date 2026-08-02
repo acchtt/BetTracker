@@ -1,0 +1,121 @@
+{
+  "version": "2026-08-02T10:54:00+07:00",
+  "series": "Karmine Corp vs Natus Vincere",
+  "league": "LEC 2026 Summer",
+  "reviewType": "unplaced lean and watch-bet outcome grading",
+  "officialBet": false,
+  "officialPnlVnd": 0,
+  "probationEligible": false,
+  "source": "user-confirmed outcome grading",
+  "policy": {
+    "doNotAddHypotheticalPnlToLedger": true,
+    "doNotCountTowardProbation": true,
+    "repeatedLiveSnapshotsAreCorrelated": true,
+    "changedLinesRemainIndependentAssessments": true
+  },
+  "game1": {
+    "summary": {
+      "gradedSnapshots": 3,
+      "record": "1-2",
+      "hypotheticalNetUnitsAt0_25u": -0.23175
+    },
+    "records": [
+      {
+        "state": "pre-game",
+        "market": "NAVI +8.5 kills",
+        "odds": 2.073,
+        "result": "win",
+        "hypotheticalNetUnits": 0.26825
+      },
+      {
+        "gameTime": "5:54",
+        "market": "NAVI Game 1 moneyline",
+        "odds": 2.623,
+        "result": "loss",
+        "hypotheticalNetUnits": -0.25
+      },
+      {
+        "gameTime": "6:52",
+        "market": "NAVI Game 1 moneyline",
+        "odds": 1.961,
+        "result": "loss",
+        "hypotheticalNetUnits": -0.25
+      }
+    ],
+    "review": "The wide pre-game NAVI kill cushion survived, while both early moneyline leans lost. Draft edge and soft early state were insufficient evidence of durable win conversion."
+  },
+  "game2": {
+    "summary": {
+      "gradedSnapshots": 8,
+      "record": "3-5",
+      "hypotheticalNetUnitsAt0_25u": -0.64925
+    },
+    "records": [
+      {
+        "state": "pre-game",
+        "market": "KC -8.5 kills",
+        "odds": 1.879,
+        "result": "loss",
+        "hypotheticalNetUnits": -0.25
+      },
+      {
+        "gameTime": "4:40",
+        "market": "NAVI Game 2 moneyline",
+        "odds": 2.461,
+        "result": "loss",
+        "hypotheticalNetUnits": -0.25
+      },
+      {
+        "gameTime": "11:21",
+        "market": "NAVI Game 2 moneyline",
+        "odds": 2.640,
+        "result": "loss",
+        "hypotheticalNetUnits": -0.25
+      },
+      {
+        "gameTime": "12:23",
+        "market": "NAVI Game 2 moneyline",
+        "odds": 1.692,
+        "result": "loss",
+        "hypotheticalNetUnits": -0.25
+      },
+      {
+        "gameTime": "16:16",
+        "market": "Over 38.5 total kills",
+        "odds": 1.686,
+        "result": "loss",
+        "hypotheticalNetUnits": -0.25
+      },
+      {
+        "gameTime": "19:51",
+        "market": "KC +8.5 kills",
+        "odds": 1.819,
+        "result": "win",
+        "hypotheticalNetUnits": 0.20475
+      },
+      {
+        "gameTime": "23:31",
+        "market": "KC +8.5 kills",
+        "odds": 1.869,
+        "result": "win",
+        "hypotheticalNetUnits": 0.21725
+      },
+      {
+        "gameTime": "25:21",
+        "market": "KC +8.5 kills",
+        "odds": 1.715,
+        "result": "win",
+        "hypotheticalNetUnits": 0.17875
+      }
+    ],
+    "review": "All non-KC-positive-handicap leans lost. The KC +8.5 cushion thesis won at all three recorded prices, but those snapshots are correlated versions of one evolving thesis and did not pass the official two-conversion gate."
+  },
+  "combinedSummary": {
+    "gradedSnapshots": 11,
+    "record": "4-7",
+    "hypotheticalStakeUnits": 2.75,
+    "hypotheticalNetUnits": -0.881,
+    "hypotheticalRoiPercent": -32.04,
+    "warning": "Snapshot-level ROI overstates independent sample size because the NAVI moneylines and KC +8.5 lines were repeated observations of correlated theses."
+  }
+}
