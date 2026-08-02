@@ -2,12 +2,12 @@
   "event": "Dignitas vs Cloud9 Kia — Game 1",
   "league": "LCS 2026",
   "eventDate": "2026-08-02",
-  "recordType": "unplaced lean and shadow-bet grading",
+  "recordType": "lean, shadow-bet and placed-wager grading",
   "status": "settled",
-  "officialExposureUnits": 0,
-  "officialExposureVnd": 0,
-  "officialProfitLossUnits": 0,
-  "officialProfitLossVnd": 0,
+  "officialExposureUnits": 0.25,
+  "officialExposureVnd": 250000,
+  "officialProfitLossUnits": 0.20725,
+  "officialProfitLossVnd": 207250,
   "unitValueVnd": 1000000,
   "shadowEvaluationStakeUnitsPerLean": 0.25,
   "shadowEvaluationStakeVndPerLean": 250000,
@@ -42,27 +42,31 @@
       "gameTime": "14:12",
       "recommendation": "LEAN",
       "market": "Dignitas +9.5 kills",
-      "odds": 1.716,
-      "placementStatus": "unplaced",
+      "quotedOdds": 1.716,
+      "acceptedOdds": 1.829,
+      "placementStatus": "placed by user",
+      "stakeUnits": 0.25,
+      "stakeVnd": 250000,
+      "slipId": "1149736056",
       "result": "win",
       "resultSource": "user-confirmed",
-      "hypotheticalStakeUnits": 0.25,
-      "hypotheticalStakeVnd": 250000,
-      "hypotheticalProfitUnits": 0.179,
-      "hypotheticalProfitVnd": 179000
+      "profitUnits": 0.20725,
+      "profitVnd": 207250,
+      "modelAttribution": "Placed from a LEAN — 0u watch after both material price-move thresholds were crossed; excluded from strict model-approved execution performance."
     }
   ],
   "shadowSummary": {
-    "record": "3-0",
-    "hypotheticalStakedUnits": 0.75,
-    "hypotheticalStakedVnd": 750000,
-    "hypotheticalProfitUnits": 0.7175,
-    "hypotheticalProfitVnd": 717500,
-    "note": "Shadow performance only. No wager was confirmed or placed, so official profit and loss remain zero."
+    "unplacedRecord": "2-0",
+    "unplacedHypotheticalStakedUnits": 0.5,
+    "unplacedHypotheticalStakedVnd": 500000,
+    "unplacedHypotheticalProfitUnits": 0.5385,
+    "unplacedHypotheticalProfitVnd": 538500,
+    "allRecommendationOutcomes": "3-0",
+    "note": "The Dignitas +9.5 lean became a real placed wager and is excluded from shadow profit to prevent double counting."
   },
   "review": {
-    "positiveSignal": "The draft-based Dignitas direction and subsequent live handicap read were validated by the result, while the kill Over also converted after the observed pace acceleration.",
-    "caution": "These were sequential, state-dependent leans on the same map and must not be treated as three independent official opportunities or combined retrospectively."
+    "positiveSignal": "The draft-based Dignitas direction, live kill Over, and later Dignitas handicap read all won.",
+    "caution": "These were sequential, state-dependent recommendations on the same map and are not three independent pre-game edges. The placed handicap was not model-approved as an official recommendation because it remained a 0u lean and the accepted price move required reassessment."
   },
   "updatedAt": "2026-08-02T10:29:00+07:00"
 }
