@@ -1,0 +1,68 @@
+{
+  "event": "Dignitas vs Cloud9 Kia — Game 1",
+  "league": "LCS 2026",
+  "eventDate": "2026-08-02",
+  "recordType": "unplaced lean and shadow-bet grading",
+  "status": "settled",
+  "officialExposureUnits": 0,
+  "officialExposureVnd": 0,
+  "officialProfitLossUnits": 0,
+  "officialProfitLossVnd": 0,
+  "unitValueVnd": 1000000,
+  "shadowEvaluationStakeUnitsPerLean": 0.25,
+  "shadowEvaluationStakeVndPerLean": 250000,
+  "leans": [
+    {
+      "gameTime": "10:18",
+      "recommendation": "LEAN",
+      "market": "Dignitas Game 1 moneyline",
+      "odds": 2.508,
+      "placementStatus": "unplaced",
+      "result": "win",
+      "resultSource": "user-confirmed",
+      "hypotheticalStakeUnits": 0.25,
+      "hypotheticalStakeVnd": 250000,
+      "hypotheticalProfitUnits": 0.377,
+      "hypotheticalProfitVnd": 377000
+    },
+    {
+      "gameTime": "12:36",
+      "recommendation": "LEAN",
+      "market": "Over 25.5 total kills",
+      "odds": 1.646,
+      "placementStatus": "unplaced",
+      "result": "win",
+      "resultSource": "user-confirmed",
+      "hypotheticalStakeUnits": 0.25,
+      "hypotheticalStakeVnd": 250000,
+      "hypotheticalProfitUnits": 0.1615,
+      "hypotheticalProfitVnd": 161500
+    },
+    {
+      "gameTime": "14:12",
+      "recommendation": "LEAN",
+      "market": "Dignitas +9.5 kills",
+      "odds": 1.716,
+      "placementStatus": "unplaced",
+      "result": "win",
+      "resultSource": "user-confirmed",
+      "hypotheticalStakeUnits": 0.25,
+      "hypotheticalStakeVnd": 250000,
+      "hypotheticalProfitUnits": 0.179,
+      "hypotheticalProfitVnd": 179000
+    }
+  ],
+  "shadowSummary": {
+    "record": "3-0",
+    "hypotheticalStakedUnits": 0.75,
+    "hypotheticalStakedVnd": 750000,
+    "hypotheticalProfitUnits": 0.7175,
+    "hypotheticalProfitVnd": 717500,
+    "note": "Shadow performance only. No wager was confirmed or placed, so official profit and loss remain zero."
+  },
+  "review": {
+    "positiveSignal": "The draft-based Dignitas direction and subsequent live handicap read were validated by the result, while the kill Over also converted after the observed pace acceleration.",
+    "caution": "These were sequential, state-dependent leans on the same map and must not be treated as three independent official opportunities or combined retrospectively."
+  },
+  "updatedAt": "2026-08-02T10:29:00+07:00"
+}
