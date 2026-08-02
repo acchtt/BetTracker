@@ -10,7 +10,7 @@ LoL v0.3.23 supersedes v0.3.22 where conflicting. All stricter earlier bankroll,
 - Maximum exposure: 0.25u per map.
 - No correlated same-map add-ons.
 - Official only after explicit placement confirmation.
-- Duration Overs are not eligible for official wagers 9-10.
+- Duration Overs are not eligible for official wager 10.
 - If a map already has a placed wager, all other markets are `ANALYSIS ONLY — SAME-MAP EXPOSURE CAP`.
 
 ## Mandatory live market scan
@@ -148,11 +148,20 @@ At 37:39, the state was 21-21 kills, roughly +1.1k G2, 6-6 towers, 3-2 dragons, 
 
 Final: G2 27-24, 51 kills, 43:28. The model's projected final range of approximately 49-55 and central estimate of 51-53 were calibrated correctly.
 
+## MKOI vs FNC Game 1 calibration
+
+At 24:57, MKOI led 15-12 kills and roughly 2.7k gold, towers were 4-4, and FNC had previously secured first Baron. Over 37.5 @1.722 was an official recommendation; the user placed the same line at 1.665.
+
+Final: MKOI 23-15, 38 kills, 32:14. The placed Over 37.5 won by exactly 0.5 kills. Treat this as a lower-branch success rather than a wide-margin projection win.
+
+All Duration Over 33 and Over 34 watch/lean snapshots lost. The duration model over-weighted tower parity and FNC's prior Baron recovery, and under-weighted MKOI's accelerated close once Cassiopeia and Kai'Sa became the dominant item-qualified damage pair and FNC's Syndra remained materially impaired.
+
 ## Probation
 
-- completed: 8/10;
-- record: 4-4;
-- net: -266,750 VND / -0.26675u;
+- completed: 9/10;
+- record: 5-4;
+- net: -100,500 VND / -0.1005u;
 - wager 7: SK +9.5 kills @1.854, won +213,500 VND;
 - wager 8: Over 49.5 kills @1.740, won +185,000 VND;
-- wagers 9-10 remain.
+- wager 9: Over 37.5 kills @1.665, won +166,250 VND;
+- wager 10 remains.
