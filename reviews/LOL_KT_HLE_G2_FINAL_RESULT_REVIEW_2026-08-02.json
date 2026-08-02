@@ -1,0 +1,100 @@
+{
+  "version": "2026-08-02T19:57:00+07:00",
+  "modelVersion": "LoL v0.3.20",
+  "sport": "League of Legends",
+  "event": "KT Rolster vs Hanwha Life Esports — Game 2",
+  "resultConfirmation": "user-confirmed final kills: HLE 19-7 KT",
+  "classification": "unplaced shadow and calibration outcomes only",
+  "finalState": {
+    "winner": "HLE",
+    "kills": "HLE 19-7 KT",
+    "killMargin": 12,
+    "totalKills": 26
+  },
+  "formalLeanSettlements": [
+    {
+      "market": "Under 25.5 kills",
+      "odds": 1.649,
+      "recommendation": "LEAN — 0u watch",
+      "result": "loss",
+      "settlementReason": "Final total was 26 kills."
+    }
+  ],
+  "watchOnlySettlements": [
+    {
+      "market": "KT +6.5 kills",
+      "odds": 1.849,
+      "recommendation": "WATCH ONLY",
+      "result": "loss"
+    },
+    {
+      "market": "Under 22.5 kills",
+      "quotedOdds": [2.072, 2.310, 1.719],
+      "recommendation": "WATCH ONLY at selected snapshots; otherwise NO BET",
+      "result": "loss",
+      "settlementReason": "Final total was 26 kills."
+    }
+  ],
+  "noBetCalibrationSettlements": [
+    {
+      "market": "HLE -6.5 kills",
+      "odds": 1.872,
+      "result": "win"
+    },
+    {
+      "market": "HLE -11.5 kills",
+      "quotedOdds": [1.686, 1.765],
+      "result": "win"
+    },
+    {
+      "market": "KT +11.5 kills",
+      "quotedOdds": [2.074, 1.966],
+      "result": "loss"
+    },
+    {
+      "market": "HLE -13.5 kills",
+      "odds": 1.874,
+      "result": "loss"
+    },
+    {
+      "market": "KT +13.5 kills",
+      "odds": 1.847,
+      "result": "win"
+    },
+    {
+      "market": "HLE -10.5 kills",
+      "quotedOdds": [1.901, 1.728, 1.815],
+      "result": "win"
+    },
+    {
+      "market": "KT +10.5 kills",
+      "quotedOdds": [1.821, 2.014, 1.907],
+      "result": "loss"
+    },
+    {
+      "market": "Under 30.5 kills",
+      "odds": 1.505,
+      "result": "win"
+    },
+    {
+      "market": "Under 29.5 kills",
+      "odds": 1.413,
+      "result": "win"
+    },
+    {
+      "market": "Over 22.5 kills",
+      "odds": 1.702,
+      "result": "win"
+    }
+  ],
+  "processReview": {
+    "under25Point5Finding": "The formal Under 25.5 lean failed by exactly one kill. The projected 13-15 additional-kill budget from seven current kills understated the late HLE conversion and base-defense kill volume.",
+    "handicapFinding": "HLE -10.5 and -11.5 both won despite repeated NO BET calls. The model correctly rejected -13.5, showing that the error was not simply refusing all favorite handicaps; it failed to recognize when a distributed gold lead, Grub-to-tower conversion, three-tower control, and KT fight avoidance supported a controlled late margin between 11 and 12 kills.",
+    "ktHandicapFinding": "The line-chasing veto correctly rejected KT +10.5 and +11.5, both of which lost. KT +13.5 won, illustrating that very wide lines can still cover even during deterioration, but this does not invalidate the anti-line-chasing process rule.",
+    "nextReview": "Add this map to the next v0.3.20 calibration review. Test a favorite-handicap conversion gate based on distributed carry economy, structural conversion, opponent fight avoidance, and projected forced base-defense sequences. Recalibrate kill-Under fight budgets when a trailing team avoids mid-game fights but later must defend multiple structures."
+  },
+  "placementConfirmed": false,
+  "officialPnlImpactVnd": 0,
+  "officialPnlImpactUnits": 0,
+  "probationImpact": 0
+}
