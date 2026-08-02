@@ -1,13 +1,13 @@
 {
-  "version": "2026-08-02T10:29:00+07:00",
+  "version": "2026-08-02T10:38:00+07:00",
   "sport": "League of Legends",
   "activeModelVersion": "lol-v0.3.17",
   "probationTarget": 10,
   "completed": 6,
   "remaining": 4,
   "record": "2-4",
-  "netVnd": -644000,
-  "netUnits": -0.644,
+  "netVnd": -665250,
+  "netUnits": -0.66525,
   "inclusionPolicy": "All six user-confirmed official LoL wagers are included. Wagers 3, 4 and 6 are user-directed probation exceptions with execution or recommendation-status deviations preserved. Wager 5 was fully model-compliant.",
   "strictModelApprovedExecutionView": {
     "completed": 3,
@@ -19,7 +19,7 @@
       "eval-20260801-al-tt-g2-under-29-5-kills",
       "lol-20260802-kc-navi-g1-navi-moneyline-live"
     ],
-    "note": "The Dignitas +9.5 wager is excluded because the recommendation was LEAN — 0u watch, the official positive-underdog handicap gate was not passed, and both material price-move thresholds were crossed before execution."
+    "note": "The Dignitas +9.5 wager is excluded because the recommendation was LEAN — 0u watch and the official positive-underdog handicap gate was not passed. The accepted price itself remained within the numerical move thresholds."
   },
   "marketBreakdown": {
     "durationOvers": {
@@ -51,8 +51,8 @@
       "record": "1-0",
       "stakedVnd": 250000,
       "stakedUnits": 0.25,
-      "netVnd": 207250,
-      "netUnits": 0.20725
+      "netVnd": 186000,
+      "netUnits": 0.186
     }
   },
   "wagers": [
@@ -136,30 +136,31 @@
       "probationSequenceNumber": 6,
       "event": "Dignitas vs Cloud9 Kia — Game 1",
       "market": "Dignitas +9.5 kills",
-      "odds": 1.829,
+      "odds": 1.744,
       "stakeVnd": 250000,
       "stakeUnits": 0.25,
       "unitValueVndAtPlacement": 1000000,
       "result": "win",
-      "netVnd": 207250,
-      "netUnits": 0.20725,
+      "netVnd": 186000,
+      "netUnits": 0.186,
       "executionClassification": "user-directed execution from LEAN — 0u watch",
       "entryState": "At 14:12 Cloud9 Kia led 5-4 in kills and approximately 1.1k gold; towers were 0-0, Cloud9 held the first dragon and Dignitas held three Void Grubs.",
-      "executionDeviation": "Accepted odds moved from 1.716 to 1.829 (+0.113) and implied probability moved by approximately 3.60 percentage points. The recommendation was not an official bet and the two-conversion handicap gate was not passed.",
-      "primaryCaution": "The winning result validates the handicap direction for this map but does not retroactively convert the lean into a model-approved official recommendation."
+      "executionDeviation": "Accepted odds moved from 1.716 to 1.744 (+0.028), within the numerical move thresholds. The recommendation was still not an official bet and the two-conversion handicap gate was not passed.",
+      "primaryCaution": "The winning result validates the handicap direction for this map but does not retroactively convert the lean into a model-approved official recommendation.",
+      "slipId": "1149469609"
     }
   ],
   "reviewConclusion": {
     "primaryModelIssue": "Duration-over promotion from correlated quiet-state evidence remains the largest historical issue; underdog moneylines and positive kill handicaps require durable conversion evidence before official promotion.",
     "primaryProcedureIssue": "Required duration and post-15 item-strength evidence must be captured without delaying early live verdicts. Underdog moneylines require hard conversion evidence, and positive underdog handicaps require two qualifying structured-fight conversions.",
-    "primaryExecutionIssue": "Wagers 3, 4 and 6 crossed material execution or recommendation-status boundaries. Wager 6 won but remained outside strict model-approved attribution.",
+    "primaryExecutionIssue": "Wagers 3 and 4 crossed material execution boundaries. Wager 6 stayed within numerical price tolerance but remained outside strict model-approved attribution because it was placed from a lean without the official handicap gate.",
     "actions": [
       "Activated lol-v0.3.13 with a same-day duration-over suspension, complete synchronized-state requirement, two durable anti-conversion events, fastest-finish-path inventory, three-minute finish-window margin, and one-fight compression veto.",
       "Activated lol-v0.3.14 with item inventory, usable-strength classification, damage-versus-durability comparison, unknown-item veto, and item-completion expiry triggers.",
       "Activated lol-v0.3.15: item snapshots are optional before 15:00 and mandatory at or after 15:00 when decision-critical.",
       "Activated lol-v0.3.16: draft evaluation now scores damage delivery, carry protection, execution burden and single-point-of-failure risk.",
       "Activated lol-v0.3.17: underdog live moneylines require at least one hard conversion confirmation, explicit next-two-sequence analysis, favorite comeback pricing, and team/player lead-conversion reliability checks. Kills plus small gold plus Void Grubs cannot complete the official gate.",
-      "Continue separating profitable user-directed lean executions from strict model-approved official performance. A win does not erase a failed recommendation-status or price-synchronization gate."
+      "Continue separating profitable user-directed lean executions from strict model-approved official performance. A win does not erase a failed recommendation-status gate."
     ]
   }
 }
