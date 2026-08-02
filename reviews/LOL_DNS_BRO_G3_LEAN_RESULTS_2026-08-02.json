@@ -1,0 +1,61 @@
+{
+  "version": "2026-08-02T18:04:00+07:00",
+  "modelVersion": "LoL v0.3.19",
+  "sport": "League of Legends",
+  "event": "DNS vs BRO — Game 3",
+  "resultConfirmation": "user-confirmed: all displayed Game 3 leans won except BRO moneyline",
+  "classification": "unplaced shadow outcomes only",
+  "shadowSummary": {
+    "wins": 4,
+    "losses": 1,
+    "record": "4-1",
+    "independenceWarning": "These are correlated same-map snapshots with changing state and opposing-side theses. They are not five independent wagers and must not be added to official performance."
+  },
+  "leans": [
+    {
+      "market": "DNS +6.5 kills",
+      "odds": 1.688,
+      "snapshot": "pregame",
+      "laterStatus": "expired after material state change",
+      "result": "win"
+    },
+    {
+      "market": "BRO +6.5 kills",
+      "odds": 1.913,
+      "snapshot": "7:41",
+      "laterStatus": "expired after state reversal",
+      "result": "win"
+    },
+    {
+      "market": "DNS +4.5 kills",
+      "odds": 1.885,
+      "snapshot": "10:59",
+      "laterStatus": "withdrawn after correcting that BRO secured the two equalizing kills",
+      "result": "win"
+    },
+    {
+      "market": "BRO moneyline",
+      "odds": 1.652,
+      "snapshot": "19:10",
+      "laterStatus": "expired after DNS kill swing, Baron, and soul-point control",
+      "result": "loss"
+    },
+    {
+      "market": "DNS moneyline",
+      "odds": 1.766,
+      "snapshot": "late-game structural-control state",
+      "laterStatus": "active final lean",
+      "result": "win"
+    }
+  ],
+  "placementConfirmed": false,
+  "officialPnlImpactVnd": 0,
+  "officialPnlImpactUnits": 0,
+  "probationImpact": 0,
+  "processNotes": [
+    "The 10:59 state was initially misread; BRO, not DNS, secured the two equalizing kills. The subsequent withdrawal was correct, but the earlier rationale was invalid.",
+    "The winning withdrawn DNS +4.5 result must not retroactively validate the incorrect state interpretation.",
+    "The BRO moneyline loss shows that structural confirmation at 19:10 was insufficient against DNS dragon control and stronger front-to-back scaling.",
+    "No active model change is made from this single map; preserve v0.3.19 and review the full same-map sequence at the scheduled checkpoint."
+  ]
+}
