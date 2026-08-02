@@ -1,0 +1,21 @@
+{
+  "version": "2026-08-02T14:40:00+07:00",
+  "sport": "League of Legends",
+  "event": "ThunderTalk Gaming vs Team WE — Game 1",
+  "market": "ThunderTalk Gaming +9.5 kills",
+  "recommendation": "LEAN — 0u watch",
+  "placementConfirmed": false,
+  "result": "win",
+  "classification": "unplaced lean/watch — shadow result only",
+  "officialPnlImpactVnd": 0,
+  "officialPnlImpactUnits": 0,
+  "probationImpact": 0,
+  "probationWager7Placed": false,
+  "quotedOdds": null,
+  "hypotheticalPnlCalculated": false,
+  "processReview": {
+    "laterThesisStatus": "expired after WE won a 4v4 structured fight and secured three Void Grubs",
+    "outcomeInterpretation": "The final winning settlement does not retroactively reverse the later expiry decision or authorize re-entry after the thesis had been invalidated.",
+    "sameMapRule": "Any re-entry would still have required two new qualifying structured-fight conversions, stabilization, restored functionality, and explicit repair of the original failure condition."
+  }
+}
