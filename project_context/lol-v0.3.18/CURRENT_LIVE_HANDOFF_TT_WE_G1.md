@@ -3,9 +3,13 @@
 ## Match
 ThunderTalk Gaming vs Team WE — Game 1
 
+## Side assignment
+- TT: **blue side**
+- WE: **red side**
+
 ## Draft
-- WE: Rumble / Naafiri / Ahri / Varus / Rakan
-- TT: K'Sante / Jarvan IV / Ryze / Ziggs / Shen
+- TT (blue): K'Sante / Jarvan IV / Ryze / Ziggs / Shen
+- WE (red): Rumble / Naafiri / Ahri / Varus / Rakan
 
 ## Recorded sequence
 - At 7:43, TT led 3–1 in kills while gold was nearly even.
@@ -15,9 +19,10 @@ ThunderTalk Gaming vs Team WE — Game 1
 
 ## Final map outcome
 - **ThunderTalk Gaming won Game 1**, user-confirmed.
-- TT won despite the assessed draft disadvantage.
+- TT won from blue side despite the assessed draft disadvantage.
 - This is an execution and state-conversion outcome, not automatic proof that the original draft assessment was wrong.
 - TT's win does strengthen the interpretation that its composition retained more functional comeback, waveclear, map-play, and return-damage capacity than a simple draft-diff label alone captured.
+- The side correction improves draft-record accuracy but does not, by itself, change the +9.5 lean/watch classification because the preserved files do not contain the full pick/ban sequence or side-adjusted pre-match pricing.
 
 ## Settled watch result
 - TT +9.5 kills: **WIN**.
