@@ -6,12 +6,12 @@ LoL v0.3.23 supersedes v0.3.22 where conflicting. All stricter earlier bankroll,
 
 - Verdict first.
 - Minimum odds: 1.60.
-- Standard probation stake: 0.25u = 250,000 VND.
-- Maximum exposure: 0.25u per map.
+- Historical probation stake: 0.25u = 250,000 VND.
+- Historical probation maximum exposure: 0.25u per map.
 - No correlated same-map add-ons.
 - Official only after explicit placement confirmation.
-- Duration Overs are not eligible for official wager 10.
 - If a map already has a placed wager, all other markets are `ANALYSIS ONLY — SAME-MAP EXPOSURE CAP`.
+- Probation is complete. Keep the existing 0.25u exposure policy until an explicit post-probation review authorizes a change.
 
 ## Mandatory live market scan
 
@@ -156,12 +156,30 @@ Final: MKOI 23-15, 38 kills, 32:14. The placed Over 37.5 won by exactly 0.5 kill
 
 All Duration Over 33 and Over 34 watch/lean snapshots lost. The duration model over-weighted tower parity and FNC's prior Baron recovery, and under-weighted MKOI's accelerated close once Cassiopeia and Kai'Sa became the dominant item-qualified damage pair and FNC's Syndra remained materially impaired.
 
-## Probation
+## MKOI vs FNC Game 2 calibration
 
-- completed: 9/10;
-- record: 5-4;
-- net: -100,500 VND / -0.1005u;
+At 14:45, FNC led 8-6 kills, 1-0 towers and 2-0 dragons while MKOI held only about a 0.4k gold edge. Viktor was 0/4 and remained MKOI's impaired damage channel. FNC retained functioning Rumble-Orianna-Xayah damage and Xayah-Rakan protection against Nocturne-Yone-Galio entry.
+
+FNC moneyline @1.791 was an official recommendation; the user placed it at 1.851.
+
+Final synchronized state: FNC 21-12 MKOI at 31:09, with FNC leading towers 7-4, dragons 4-1, Baron 1-0 and inhibitors 1-0. The placed moneyline won.
+
+Calibration:
+
+- FNC +5.5 was a good early margin-protection direction.
+- FNC -12.5 was too aggressive despite the correct winner thesis; final margin was nine.
+- MKOI +8.5 at the recovery snapshot lost by 0.5, showing that temporary gold compression did not outweigh FNC's objective stack and healthier damage distribution.
+- FNC -3.5 and Under 39.5 were correct watch directions.
+- Duration Under 31 lost by only nine seconds; Duration Over 33/34 lost clearly. The accelerated-close branch was real, but the exact 31-minute line required more margin.
+- Moneyline was the best safety-adjusted market once FNC held kills, first tower, 2-0 dragons and compositionally protected carries despite near-even gold.
+
+## Probation completed
+
+- completed: 10/10;
+- record: 6-4;
+- net: +112,250 VND / +0.11225u;
 - wager 7: SK +9.5 kills @1.854, won +213,500 VND;
 - wager 8: Over 49.5 kills @1.740, won +185,000 VND;
 - wager 9: Over 37.5 kills @1.665, won +166,250 VND;
-- wager 10 remains.
+- wager 10: FNC moneyline @1.851, won +212,750 VND;
+- keep the existing 0.25u maximum exposure policy until a separate post-probation review changes it.
