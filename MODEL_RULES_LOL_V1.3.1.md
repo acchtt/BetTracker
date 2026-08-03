@@ -3,7 +3,7 @@
 **Status:** Active immediately  
 **Effective date:** 2026-08-03 16:10 UTC+7  
 **Supersedes:** LoL v0.3.24 where conflicting  
-**Purpose:** Make forward kill and duration projections mandatory in every synchronized live assessment, prevent projection omissions after chat migration or context compression, and formalize incomplete-output handling.
+**Purpose:** Make forward kill and duration projections mandatory in every synchronized live assessment, prevent projection omissions after chat migration or context compression, formalize incomplete-output handling, and apply the minimum-odds gate uniformly to every wager.
 
 All stricter existing bankroll, probation, minimum-odds, explicit-placement, one-map-exposure, no-correlated-add-on, item-verification, state-direction, thesis-expiry, anti-line-chasing, winner-versus-margin separation, favorite-margin, positive-handicap, kill-total, duration-quarantine, return-kill, clean-close, and market-selection rules remain active.
 
@@ -165,7 +165,27 @@ The live output evaluated the markets structurally but omitted explicit final-ki
 
 The lesson is not that the final result retroactively makes the handicap official. The lesson is that the model must quantify the remaining-kill budget, future net-kill distribution, clean-close branch, and finish-time branches before deciding whether the exact line clears the gate.
 
-## 9. Active bankroll and execution state
+## 9. Universal minimum-odds gate
+
+The minimum odds threshold of **1.60 applies to every wager without exception**.
+
+This includes:
+
+- prematch and live bets;
+- series and map moneylines;
+- series and map handicaps;
+- kill handicaps;
+- kill totals;
+- duration markets when otherwise eligible;
+- exact series scores;
+- over/under map-count markets;
+- any future market family added to the model.
+
+Any offered price below 1.60 is automatically ineligible for `OFFICIAL BET`, regardless of projected win probability, edge, market type, or confidence. The correct verdict must explicitly state that the price is below the universal minimum-odds gate.
+
+The threshold applies to all placed and unplaced official recommendations. `LEAN` and `WATCH ONLY` may still describe directional analysis below 1.60, but such prices can never be promoted unless the executable price reaches at least 1.60 in a fresh synchronized assessment.
+
+## 10. Active bankroll and execution state
 
 The active execution constraints remain:
 
@@ -174,12 +194,12 @@ The active execution constraints remain:
 - official net: +112,250 VND / +0.11225u;
 - standard stake: 0.25u = 250,000 VND;
 - maximum exposure: 0.25u per map;
-- minimum odds: 1.60;
+- minimum odds: 1.60 for all wagers;
 - no correlated same-map add-ons;
 - duration markets are analysis-only through wager 20;
 - a wager becomes official only after explicit placement confirmation.
 
-## 10. Version authority
+## 11. Version authority
 
 LoL v1.3.1 is the active root rules version immediately upon this file being committed to the repository.
 
