@@ -10,9 +10,11 @@ LoL v0.3.24 supersedes v0.3.23 where conflicting. All stricter earlier bankroll,
 - Maximum exposure: 0.25u per map.
 - No correlated same-map add-ons.
 - Official only after explicit placement confirmation.
-- Probation: 10/20, record 6-4, net +112,250 VND / +0.11225u.
-- Wagers 11-20 remain.
+- Probation: 11/20, record 7-4, net +335,750 VND / +0.33575u.
+- Wagers 12-20 remain.
 - All duration markets are official-ineligible through wager 20.
+
+`PROBATION_STATUS.md` is authoritative for the latest record and bankroll state. New chats must also load `LIVE_ANALYSIS_CALIBRATION_HANDBOOK.md` before issuing live verdicts.
 
 ## Performance ledgers
 
@@ -185,11 +187,11 @@ Display when relevant:
 
 ## Current probation
 
-- 10/20 completed;
-- 6-4;
-- +112,250 VND / +0.11225u;
-- wagers 11-20 remain;
+- 11/20 completed;
+- 7-4;
+- +335,750 VND / +0.33575u;
+- wagers 12-20 remain;
 - 0.25u maximum per map;
 - no correlated same-map add-ons;
 - duration markets official-ineligible through wager 20;
-- no stake increase from the LEC 4-0 subset.
+- no stake increase from the current LEC winning subset.
