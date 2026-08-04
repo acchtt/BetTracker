@@ -1,7 +1,7 @@
 # Football Organized Repository Loading Guide
 
 **Status:** Active immediately  
-**Effective:** 2026-08-04 12:02 UTC+7  
+**Effective:** 2026-08-04 17:41 UTC+7  
 **Repository:** `acchtt/SlipTrace`  
 **Canonical namespace:** `models/football/`
 
@@ -37,7 +37,7 @@ A football chat uses `models/football/`, the retained baseline in `models/LEGACY
 
 ### `models/football/rules/`
 
-Contains the complete retained amendment chain. For Football v0.2.28, load v0.2.5 through v0.2.28 in ascending order. Newer versions control where they conflict; earlier rules remain active where later files preserve them.
+Contains the complete retained amendment chain. For Football v0.2.29, load v0.2.5 through v0.2.29 in ascending order. Newer versions control where they conflict; earlier rules remain active where later files preserve them.
 
 Do not load only the highest-numbered file. The football model is cumulative.
 
@@ -81,7 +81,7 @@ The root is reserved for the SlipTrace application, deployment/configuration fil
 4. `models/football/procedures/FOOTBALL_BETTING_PROCEDURE.md`
 5. `models/football/procedures/FOOTBALL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md`
 6. `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.5.md`
-7. Continue sequentially through each version to `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.28.md`
+7. Continue sequentially through each version to `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.29.md`
 8. Latest relevant `models/football/handoffs/` file, when present
 9. `/ledger.json` only when accounting or exposure is relevant
 
@@ -127,4 +127,4 @@ After loading, return:
 
 ## 9. Compact prompt
 
-> Load the football model from `acchtt/SlipTrace`. Open `models/football/CURRENT_MODEL.md` first and follow its exact canonical load order. Load the retained baseline, football procedures, and the complete v0.2.5–v0.2.28 rule chain in ascending order. Use only `models/football/`, required shared files, and `/ledger.json` when accounting is relevant. Do not load `models/lol/` or search the repository root for model files. Return `FOOTBALL FILES LOADED` before analysis.
+> Load the football model from `acchtt/SlipTrace`. Open `models/football/CURRENT_MODEL.md` first and follow its exact canonical load order. Load the retained baseline, football procedures, and the complete v0.2.5–v0.2.29 rule chain in ascending order. Use only `models/football/`, required shared files, and `/ledger.json` when accounting is relevant. Do not load `models/lol/` or search the repository root for model files. Return `FOOTBALL FILES LOADED` before analysis.
