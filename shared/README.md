@@ -1,20 +1,24 @@
 # Shared SlipTrace Resources
 
-This namespace documents resources shared across all betting models.
+This namespace contains resources genuinely shared across betting models.
 
 ## Authoritative shared resources
 
-- `/ledger.json` — canonical feed for ChatGPT-confirmed wagers and settlements.
+- `/ledger.json` — canonical feed for confirmed wagers and settlements.
+- `shared/STAKE_POLICY_V2.json` — shared unit and stake conversion policy where applicable.
+- `shared/LEDGER_UPDATE_FAST_PATH.md` — controlled ledger-update operating procedure.
 - SlipTrace application files at the repository root — portfolio reporting, bankroll, exposure, synchronization, and GitHub Pages deployment.
-- Shared stake or portfolio policies that explicitly apply across sports.
 
-## Important constraint
+## Constraints
 
-Do not copy `ledger.json` into a model directory or into `shared/`. There must be only one authoritative ledger. The root path is preserved because the current application reads and deploys it from there.
+- There must be only one `ledger.json`; do not copy it into `shared/` or a model namespace.
+- Do not write to `/ledger.json` without explicit approval.
+- A recommendation becomes official only after confirmed placement.
+- Sport-specific rules must not be redefined inside `shared/`.
 
 ## Model boundaries
 
-- LoL rules and records: `models/lol/`
-- Football rules and records: `models/football/`
+- LoL: `models/lol/`
+- Football: `models/football/`
 
-A model may reference shared resources, but it must not redefine them inside its own namespace.
+The repository root is not a model-loading location after the physical cleanup.

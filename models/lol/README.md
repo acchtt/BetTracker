@@ -1,17 +1,22 @@
 # League of Legends Model Namespace
 
-This directory is the canonical home for League of Legends model operations.
+Canonical entry point: `models/lol/CURRENT_MODEL.md`
 
 ## Structure
 
-- `CURRENT_MODEL.md` — authoritative startup pointer and current status.
-- `rules/` — versioned LoL model rules.
-- `context/` — active version packages, probation state, procedures, and calibration handbooks.
-- `reviews/` — LoL-only settlement and model-review records.
-- `handoffs/` — active-match handoffs when one exists.
+- `rules/` — active model rule file
+- `procedures/` — operational procedures, addenda, and scoreboard-reading protocol
+- `context/` — consolidated active rules, probation status, calibration handbook, and pre-match/pre-game procedure
+- `handoffs/` — current match-state transfers between chats
+- `reviews/` — current model-development evidence when retained
 
-## Boundary
+## Active version
 
-New LoL files must remain inside `models/lol/`. Shared bankroll and application data remain outside this namespace. In particular, the authoritative betting feed remains `/ledger.json` until the SlipTrace application is deliberately migrated.
+LoL v0.3.25. Normal startup uses the active v0.3.25 rule, consolidated context, procedures, shared stake policy, and the latest relevant handoff. Historical rule versions and old reviews are available through Git history rather than duplicated in the current tree.
 
-Legacy root LoL files and `project_context/lol-*` are retained for compatibility and history, but are not canonical for future writes.
+## Boundaries
+
+- New LoL files must stay inside `models/lol/`.
+- Root application files are not LoL model context.
+- `models/football/` must not be loaded by a LoL chat.
+- `/ledger.json` remains the sole authoritative betting record.

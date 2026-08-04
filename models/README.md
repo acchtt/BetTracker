@@ -1,18 +1,21 @@
-# Betting Model Namespaces
+# SlipTrace Model Namespaces
 
-SlipTrace uses one repository with strict model boundaries.
-
-## Canonical model entry points
+## Canonical entry points
 
 - League of Legends: `models/lol/CURRENT_MODEL.md`
 - Football: `models/football/CURRENT_MODEL.md`
+- Shared resources: `shared/README.md`
+- Retained pre-namespace baseline: `models/LEGACY_MODEL_CHANGELOG.md`
 
-## Ownership rules
+## Clean-root policy
 
-- LoL-only files belong under `models/lol/`.
-- Football-only files belong under `models/football/`.
-- Cross-sport bankroll, ledger, application, and portfolio policy remain shared.
-- New model updates must not write into another model's namespace.
-- Legacy root files remain for compatibility but are not canonical for new work.
+The repository root is reserved for the SlipTrace application, deployment/configuration files, and the authoritative `/ledger.json`.
 
-The repository remains a monorepo so the SlipTrace application and authoritative portfolio ledger can remain centralized without duplicated sources of truth.
+Sport-specific model files belong only under:
+
+- `models/lol/`
+- `models/football/`
+
+Cross-sport policies and ledger operating documentation belong under `shared/`.
+
+Historical model files removed from the working tree remain available in Git history. They should not be restored to the root or loaded during normal analysis unless a historical audit specifically requires them.

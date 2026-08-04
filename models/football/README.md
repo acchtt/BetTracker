@@ -1,17 +1,23 @@
 # Football Model Namespace
 
-This directory is the canonical home for football model operations.
+Canonical entry point: `models/football/CURRENT_MODEL.md`
 
 ## Structure
 
-- `CURRENT_MODEL.md` — authoritative startup pointer and current operating values.
-- `rules/` — versioned football model rules.
-- `context/` — future consolidated procedures and status packages.
-- `reviews/` — football-only settlement and model-review records.
-- `handoffs/` — active-match handoffs when one exists.
+- `rules/` — cumulative football amendments v0.2.5 through the active version
+- `procedures/` — operational betting procedures and active addenda
+- `context/` — portable operating context and status files
+- `handoffs/` — current match-state transfers between chats
+- `reviews/` — audits and model-development evidence
+- `ORGANIZED_FILE_LOADING_GUIDE.md` — repository navigation and loading rules
 
-## Boundary
+## Active version
 
-New football files must remain inside `models/football/`. Shared bankroll and application data remain outside this namespace. The authoritative betting feed remains `/ledger.json`.
+Football v0.2.28. The model is cumulative: load the retained baseline and procedures, then apply v0.2.5 through v0.2.28 in ascending order.
 
-Legacy root football rules are retained for compatibility and history, but are not canonical for future writes.
+## Boundaries
+
+- New football files must stay inside `models/football/`.
+- Root application files are not football model context.
+- `models/lol/` must not be loaded by a football chat.
+- `/ledger.json` remains the sole authoritative betting record and is written only after explicit approval.
