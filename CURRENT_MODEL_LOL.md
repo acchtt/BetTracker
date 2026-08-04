@@ -4,6 +4,7 @@
 - Root rules: `MODEL_RULES_LOL_V0.3.25.md`
 - Portable context: `project_context/lol-v0.3.25/`
 - Calibration handbook: `project_context/lol-v0.3.25/LIVE_ANALYSIS_CALIBRATION_HANDBOOK.md`
+- Pre-match/pre-game procedure: `project_context/lol-v0.3.25/PREMATCH_PREGAME_PROCEDURE.md`
 - Probation status: `project_context/lol-v0.3.25/PROBATION_STATUS.md`
 
 ## Required load order
@@ -12,7 +13,8 @@
 2. `project_context/lol-v0.3.25/ACTIVE_RULES_CONSOLIDATED.md`
 3. `project_context/lol-v0.3.25/PROBATION_STATUS.md`
 4. `project_context/lol-v0.3.25/LIVE_ANALYSIS_CALIBRATION_HANDBOOK.md`
-5. latest active-match handoff, when available
+5. `project_context/lol-v0.3.25/PREMATCH_PREGAME_PROCEDURE.md`
+6. latest active-match handoff, when available
 
 ## Current probation
 
