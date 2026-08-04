@@ -3,18 +3,25 @@
 **Canonical namespace:** `models/football/`
 
 - Active model: **Football v0.2.24**
+- Chat startup/reload guideline: `models/football/CHAT_STARTUP_RELOAD_GUIDELINES.md`
 - Active amendment: `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.24.md`
 - Market-expression rules: `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.23.md`
 - Live-total trajectory rules: `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.22.md`
 - Authoritative betting feed: `/ledger.json`
 
+## Startup rule
+
+Open this file first in every new football chat and after any model, procedure, handoff, or namespace change. Then follow the load order below. A reload is not required for every message.
+
 ## Required load order
 
-1. `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.24.md`
-2. `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.23.md`
-3. `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.22.md`
-4. earlier active football procedures and rules where not superseded
-5. latest file in `models/football/handoffs/`, when available
+1. `models/football/CHAT_STARTUP_RELOAD_GUIDELINES.md`
+2. `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.24.md`
+3. `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.23.md`
+4. `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.22.md`
+5. earlier active football procedures and rules where not superseded
+6. latest file in `models/football/handoffs/`, when available
+7. `/ledger.json` when official record, bankroll, exposure, placement, or settlement status is relevant
 
 ## Active operating values
 
