@@ -2,8 +2,9 @@
 
 **Canonical namespace:** `models/lol/`
 
-- Active model: **LoL v0.3.26**
-- Active rules: `models/lol/rules/MODEL_RULES_LOL_V0.3.26.md`
+- Active model: **LoL v0.3.27**
+- Active rules: `models/lol/rules/MODEL_RULES_LOL_V0.3.27.md`
+- Prior active delta: `models/lol/rules/MODEL_RULES_LOL_V0.3.26.md`
 - Portable baseline context: `models/lol/context/lol-v0.3.25/`
 - Live fast path: `models/lol/procedures/LOL_LIVE_RESPONSE_FAST_PATH_2026-08-05.md`
 - Main procedure: `models/lol/procedures/LOL_BETTING_PROCEDURE.md`
@@ -14,20 +15,21 @@
 
 ## Required load order
 
-1. `models/lol/rules/MODEL_RULES_LOL_V0.3.26.md`
-2. `models/lol/context/lol-v0.3.25/ACTIVE_RULES_CONSOLIDATED.md`
-3. `models/lol/context/lol-v0.3.25/PROBATION_STATUS.md`
-4. `models/lol/context/lol-v0.3.25/LIVE_ANALYSIS_CALIBRATION_HANDBOOK.md`
-5. `models/lol/procedures/LOL_LIVE_RESPONSE_FAST_PATH_2026-08-05.md`
-6. `models/lol/procedures/LOL_BETTING_PROCEDURE.md`
-7. `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md`
-8. `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-02.md`
-9. `models/lol/procedures/LOL_LIVE_SCOREBOARD_READING_PROTOCOL_2026-08-01.md`
-10. `models/lol/context/lol-v0.3.25/PREMATCH_PREGAME_PROCEDURE.md`
-11. `shared/STAKE_POLICY_V2.json`
-12. latest relevant file in `models/lol/handoffs/`, when available
+1. `models/lol/rules/MODEL_RULES_LOL_V0.3.27.md`
+2. `models/lol/rules/MODEL_RULES_LOL_V0.3.26.md`
+3. `models/lol/context/lol-v0.3.25/ACTIVE_RULES_CONSOLIDATED.md`
+4. `models/lol/context/lol-v0.3.25/PROBATION_STATUS.md`
+5. `models/lol/context/lol-v0.3.25/LIVE_ANALYSIS_CALIBRATION_HANDBOOK.md`
+6. `models/lol/procedures/LOL_LIVE_RESPONSE_FAST_PATH_2026-08-05.md`
+7. `models/lol/procedures/LOL_BETTING_PROCEDURE.md`
+8. `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md`
+9. `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-02.md`
+10. `models/lol/procedures/LOL_LIVE_SCOREBOARD_READING_PROTOCOL_2026-08-01.md`
+11. `models/lol/context/lol-v0.3.25/PREMATCH_PREGAME_PROCEDURE.md`
+12. `shared/STAKE_POLICY_V2.json`
+13. latest relevant file in `models/lol/handoffs/`, when available
 
-LoL v0.3.26 is the active delta and supersedes v0.3.25 where conflicting. The v0.3.25 portable context remains the consolidated baseline until the next full context refresh.
+LoL v0.3.27 is the active delta and supersedes earlier rules only where stated. It adds role-weighted gold analysis and a temporary item-verification waiver limited to Gen.G vs HLE Game 3. The waiver expires automatically at Game 3 settlement or abandonment; normal item-verification requirements then resume.
 
 Do not search the repository root for LoL rules. Historical versions and reviews remain recoverable from Git history and are not part of normal startup.
 

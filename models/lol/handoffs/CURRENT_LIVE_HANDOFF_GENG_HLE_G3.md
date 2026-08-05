@@ -1,26 +1,59 @@
 # Current Live Handoff — Gen.G vs HLE Game 3
 
-**Updated:** 2026-08-05 19:54 UTC+7  
-**Active model:** LoL v0.3.26  
+**Updated:** 2026-08-05 20:28 UTC+7  
+**Active model:** LoL v0.3.27  
 **Series:** Gen.G 1-1 HLE  
-**Next map:** Game 3
+**Current map:** Game 3
 
-## Series results
+## Draft and sides
 
-### Game 1
+HLE blue: Mundo / Shyvana / Viktor / Yunara / Leona.
 
-- Gen.G won.
-- User placed Gen.G Game 1 moneyline @1.99 for 0.25u.
-- Settled win: +247,500 VND / +0.2475u.
-- The ticket was an accidental market deviation from the evaluated Gen.G series moneyline.
-- It is recorded in the overall ledger but is not model-attributed and does not automatically count toward probation.
+Gen.G red: Varus / Nocturne / Syndra / Kalista / Renata.
 
-### Game 2
+## Latest synchronized state
 
-- HLE won at 27:26.
-- Final: HLE 16-5 kills, approximately +8.8k gold, 7-2 towers, 4-0 dragons, 1-0 inhibitors, no Baron.
-- No Game 2 wager was placed.
-- The duration forecast miss triggered LoL v0.3.26.
+- Kills: 2-2
+- Total gold: Gen.G approximately +491
+- Towers: 0-0
+- Dragons: 0-0
+- Barons: 0-0
+- Inhibitors: 0-0
+- Exact in-game clock: not visible
+- Grubs and Herald: not visible
+
+## Role-gold correction
+
+The role-delta orientation indicates that Gen.G, not HLE, held the aggregate lead.
+
+Approximate distribution:
+
+- Gen.G top: +332
+- HLE jungle: +45
+- Gen.G mid: +133
+- Gen.G bot: +384
+- HLE support: +313
+
+The deltas reconcile to approximately Gen.G +491. Gen.G's advantage was concentrated in top, mid, and bot damage roles, while HLE's offsets were concentrated in jungle and support.
+
+The previous HLE positive-handicap lean is withdrawn because it depended on the wrong total-gold direction and underweighted carry concentration.
+
+## Temporary item-verification waiver
+
+Decision-critical item verification is waived as a mandatory gate for this Game 3 only.
+
+- Do not guess items.
+- Unknown items do not block a verdict by themselves.
+- Unknown items cannot be counted as positive evidence.
+- Use role-weighted gold, K/D/A function, objectives, structures, fight conversion, and market movement.
+- The waiver expires automatically at Game 3 settlement or abandonment.
+
+## Current status
+
+- No Game 3 position has been confirmed.
+- Current Game 3 exposure: 0u.
+- No active lean survives the role-gold correction.
+- A fresh synchronized scoreboard and current prices are required before a new verdict.
 
 ## Current probation
 
@@ -33,23 +66,12 @@
 - Minimum odds: 1.60
 - Duration official-ineligible through wager 20
 
-## Game 3 startup
-
-Await:
-
-- complete draft and side orientation;
-- synchronized game clock and scoreboard;
-- Game 3 moneyline;
-- kill handicap;
-- kill total;
-- duration line.
-
-Use the live fast path:
+## Live response order
 
 1. verdict first;
-2. verified state;
+2. verified aggregate and role-weighted state;
 3. total-kill projection;
 4. duration projection;
 5. one promotion or rejection trigger.
 
-No Game 3 wager is official without explicit placement confirmation.
+No Game 3 position is official without explicit placement confirmation.
