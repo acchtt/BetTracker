@@ -1,9 +1,9 @@
 {
-  "version": "2026-08-05T12:16:00Z",
+  "version": "2026-08-05T12:21:00Z",
   "bets": [
     {
       "syncId": "lol-20260805-geng-hle-g1-geng-ml",
-      "updatedAt": "2026-08-05T19:16:00+07:00",
+      "updatedAt": "2026-08-05T12:21:00Z",
       "event": "Gen.G vs Hanwha Life Esports — Game 1",
       "league": "LCK 2026 Rounds 3-4",
       "competitionStage": "Best-of-three series; Game 1",
@@ -93,13 +93,15 @@
         "not-model-attributed",
         "probation-excluded-without-exception"
       ],
-      "notes": "The wager was initially described in chat as Gen.G series moneyline at 1.99. The user later corrected that the actual ticket was Gen.G Game 1 moneyline, placed accidentally instead of the intended series market, and confirmed that Gen.G won Game 1. The authoritative record therefore uses the Game 1 market. Payout is 497,500 VND and net profit is 247,500 VND (+0.2475u). Because the actual market differed from the model-evaluated series moneyline, the win is official in the overall ledger but is not model-attributed or automatically included in v0.3.25 probation.",
-      "placedAt": "2026-08-05T18:45:00+07:00",
-      "userConfirmedAt": "2026-08-05T18:45:00+07:00",
+      "notes": "The wager was initially described in chat as Gen.G series moneyline at 1.99. The user later corrected that the actual ticket was Gen.G Game 1 moneyline, placed accidentally instead of the intended series market, and confirmed that Gen.G won Game 1. The authoritative record therefore uses the Game 1 market. Payout is 497,500 VND and net profit is 247,500 VND (+0.2475u). Because the actual market differed from the model-evaluated series moneyline, the win is official in the overall ledger but is not model-attributed or automatically included in v0.3.25 probation. The exact placement and initial confirmation timestamps were not supplied.",
+      "placedAt": null,
+      "userConfirmedAt": null,
       "resultConfirmedAt": "2026-08-05T19:16:00+07:00",
       "settledAt": "2026-08-05T19:16:00+07:00",
       "addedAt": "2026-08-05T11:45:00Z",
-      "createdAt": "2026-08-05T11:45:00Z"
+      "createdAt": "2026-08-05T11:45:00Z",
+      "placedAtStatus": "exact timestamp not supplied",
+      "userConfirmedAtStatus": "confirmed in chat; exact timestamp not supplied"
     },
     {
       "syncId": "football-20260804-sarmiento-independiente-rivadavia-minus-0-25-remaining-match",
@@ -6242,7 +6244,7 @@
       "pending/eval-20260801-mkoi-shft-g2-shft-plus-7-5-kills.json",
       "pending/eval-20260801-mkoi-shft-g3-shft-plus-10-5-kills.json"
     ],
-    "officialRecordsAdded": 2,
-    "officialRecordsUpdated": 33
+    "officialRecordsAdded": 0,
+    "officialRecordsUpdated": 35
   }
 }
