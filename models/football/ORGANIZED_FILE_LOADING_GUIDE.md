@@ -1,7 +1,7 @@
 # Football Organized Repository Loading Guide
 
 **Status:** Active immediately  
-**Effective:** 2026-08-05 21:06 UTC+7  
+**Effective:** 2026-08-06 00:45 UTC+7  
 **Repository:** `acchtt/SlipTrace`  
 **Canonical namespace:** `models/football/`
 
@@ -37,7 +37,7 @@ A football chat uses `models/football/`, the retained baseline in `models/LEGACY
 
 ### `models/football/rules/`
 
-Contains the complete retained amendment chain. For Football v0.2.31, load v0.2.5 through v0.2.31 in ascending order. Newer versions control where they conflict; earlier rules remain active where later files preserve them.
+Contains the complete retained amendment chain. For Football v0.2.32, load v0.2.5 through v0.2.32 in ascending order. Newer versions control where they conflict; earlier rules remain active where later files preserve them.
 
 Do not load only the highest-numbered file. The football model is cumulative.
 
@@ -81,7 +81,7 @@ The root is reserved for the SlipTrace application, deployment/configuration fil
 4. `models/football/procedures/FOOTBALL_BETTING_PROCEDURE.md`
 5. `models/football/procedures/FOOTBALL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md`
 6. `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.5.md`
-7. Continue sequentially through each version to `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.31.md`
+7. Continue sequentially through each version to `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.32.md`
 8. Latest relevant `models/football/handoffs/` file, when present
 9. `/ledger.json` only when accounting or exposure is relevant
 
@@ -91,6 +91,7 @@ The root is reserved for the SlipTrace application, deployment/configuration fil
 - Live match: general set plus latest active handoff and current synchronized evidence.
 - Settlement or bankroll: relevant model set plus `/ledger.json`.
 - Historical review: active model plus only the specifically relevant review or historical evidence.
+- Reminder, automation or secondary-thread analysis: the same active football model and evidence gates as the main chat; no reduced recommendation standard is permitted.
 
 Do not load LoL files, application source, unrelated reviews, pending ledger payloads, or GitHub workflow files as model context.
 
@@ -127,4 +128,4 @@ After loading, return:
 
 ## 9. Compact prompt
 
-> Load the football model from `acchtt/SlipTrace`. Open `models/football/CURRENT_MODEL.md` first and follow its exact canonical load order. Load the retained baseline, football procedures, and the complete v0.2.5–v0.2.31 rule chain in ascending order. Use only `models/football/`, required shared files, and `/ledger.json` when accounting is relevant. Do not load `models/lol/` or search the repository root for model files. Return `FOOTBALL FILES LOADED` before analysis.
+> Load the football model from `acchtt/SlipTrace`. Open `models/football/CURRENT_MODEL.md` first and follow its exact canonical load order. Load the retained baseline, football procedures, and the complete v0.2.5–v0.2.32 rule chain in ascending order. Use only `models/football/`, required shared files, and `/ledger.json` when accounting is relevant. Apply the same model and recommendation gates in reminders, automations and secondary threads. Do not load `models/lol/` or search the repository root for model files. Return `FOOTBALL FILES LOADED` before analysis.
