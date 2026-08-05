@@ -2,10 +2,11 @@
 
 **Canonical namespace:** `models/lol/`
 
-- Active model: **LoL v0.3.27**
-- Active rules: `models/lol/rules/MODEL_RULES_LOL_V0.3.27.md`
-- Prior active delta: `models/lol/rules/MODEL_RULES_LOL_V0.3.26.md`
+- Active model: **LoL v0.3.28**
+- Active rules: `models/lol/rules/MODEL_RULES_LOL_V0.3.28.md`
+- Prior active deltas: `models/lol/rules/MODEL_RULES_LOL_V0.3.27.md` and `models/lol/rules/MODEL_RULES_LOL_V0.3.26.md`
 - Portable baseline context: `models/lol/context/lol-v0.3.25/`
+- Item-verification suspension: `models/lol/procedures/LOL_ITEM_VERIFICATION_SUSPENSION_2026-08-05.md`
 - Live fast path: `models/lol/procedures/LOL_LIVE_RESPONSE_FAST_PATH_2026-08-05.md`
 - Main procedure: `models/lol/procedures/LOL_BETTING_PROCEDURE.md`
 - Procedure addenda: `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md` and `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-02.md`
@@ -17,21 +18,23 @@
 
 ## Required load order
 
-1. `models/lol/rules/MODEL_RULES_LOL_V0.3.27.md`
-2. `models/lol/rules/MODEL_RULES_LOL_V0.3.26.md`
-3. `models/lol/context/lol-v0.3.25/ACTIVE_RULES_CONSOLIDATED.md`
-4. `models/lol/context/lol-v0.3.25/PROBATION_STATUS.md`
-5. `models/lol/context/lol-v0.3.25/LIVE_ANALYSIS_CALIBRATION_HANDBOOK.md`
-6. `models/lol/procedures/LOL_LIVE_RESPONSE_FAST_PATH_2026-08-05.md`
-7. `models/lol/procedures/LOL_BETTING_PROCEDURE.md`
-8. `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md`
-9. `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-02.md`
-10. `models/lol/procedures/LOL_LIVE_SCOREBOARD_READING_PROTOCOL_2026-08-01.md`
-11. `models/lol/context/lol-v0.3.25/PREMATCH_PREGAME_PROCEDURE.md`
-12. `shared/STAKE_POLICY_V2.json`
-13. latest relevant file in `models/lol/handoffs/`, only when an active handoff exists
+1. `models/lol/rules/MODEL_RULES_LOL_V0.3.28.md`
+2. `models/lol/procedures/LOL_ITEM_VERIFICATION_SUSPENSION_2026-08-05.md`
+3. `models/lol/rules/MODEL_RULES_LOL_V0.3.27.md`
+4. `models/lol/rules/MODEL_RULES_LOL_V0.3.26.md`
+5. `models/lol/context/lol-v0.3.25/ACTIVE_RULES_CONSOLIDATED.md`
+6. `models/lol/context/lol-v0.3.25/PROBATION_STATUS.md`
+7. `models/lol/context/lol-v0.3.25/LIVE_ANALYSIS_CALIBRATION_HANDBOOK.md`
+8. `models/lol/procedures/LOL_LIVE_RESPONSE_FAST_PATH_2026-08-05.md`
+9. `models/lol/procedures/LOL_BETTING_PROCEDURE.md`
+10. `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md`
+11. `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-02.md`
+12. `models/lol/procedures/LOL_LIVE_SCOREBOARD_READING_PROTOCOL_2026-08-01.md`
+13. `models/lol/context/lol-v0.3.25/PREMATCH_PREGAME_PROCEDURE.md`
+14. `shared/STAKE_POLICY_V2.json`
+15. latest relevant file in `models/lol/handoffs/`, only when an active handoff exists
 
-LoL v0.3.27 is the active delta and supersedes earlier rules only where stated. It adds role-weighted gold analysis. Its temporary item-verification waiver was limited to Gen.G vs HLE Game 3 and expired at settlement. Normal item-verification requirements are active again.
+LoL v0.3.28 is the active delta and supersedes earlier rules only where stated. It keeps v0.3.27 role-weighted gold and v0.3.26 soul-cascade calibration, adds observed-execution scoring and correction-triggered full market rescans, and suspends item verification until the user explicitly restores it.
 
 Do not search the repository root for LoL rules. Historical versions and reviews remain recoverable from Git history and are not part of normal startup.
 
@@ -57,7 +60,11 @@ The following user-confirmed wins are recorded in the overall ledger but remain 
 
 - No active LoL match handoff.
 - No open LoL exposure.
-- Normal item verification is active.
+- **Item verification is suspended until explicit user restoration.**
+- Unknown items are neutral and must not be guessed.
+- Missing items alone do not block an otherwise valid verdict.
+- Role gold and observed execution must be weighted explicitly when visible.
+- A correction that invalidates a verdict requires an immediate full rescan of all visible markets before repository maintenance.
 - No stake increase is authorized.
 
 ## Write boundary
