@@ -1,9 +1,9 @@
-# Current Live Handoff — Gen.G vs HLE Game 3
+# Closed Live Handoff — Gen.G vs HLE Game 3
 
-**Updated:** 2026-08-05 20:28 UTC+7  
+**Updated:** 2026-08-05 21:54 UTC+7  
 **Active model:** LoL v0.3.27  
-**Series:** Gen.G 1-1 HLE  
-**Current map:** Game 3
+**Series result:** Gen.G 2-1 HLE  
+**Map status:** Game 3 final
 
 ## Draft and sides
 
@@ -11,49 +11,48 @@ HLE blue: Mundo / Shyvana / Viktor / Yunara / Leona.
 
 Gen.G red: Varus / Nocturne / Syndra / Kalista / Renata.
 
-## Latest synchronized state
+## Final Game 3 state
 
-- Kills: 2-2
-- Total gold: Gen.G approximately +491
-- Towers: 0-0
-- Dragons: 0-0
-- Barons: 0-0
-- Inhibitors: 0-0
-- Exact in-game clock: not visible
-- Grubs and Herald: not visible
+- Winner: Gen.G
+- Duration: 36:07
+- Kills: HLE 14-27 Gen.G
+- Gold: Gen.G approximately +6.6k
+- Towers: HLE 6-9 Gen.G
+- Dragons: HLE 1-4 Gen.G
+- Barons: HLE 1-2 Gen.G
+- Inhibitors: HLE 1-1 Gen.G
 
-## Role-gold correction
+## Final role-gold distribution
 
-The role-delta orientation indicates that Gen.G, not HLE, held the aggregate lead.
+The final role deltas reconciled to approximately Gen.G +6.6k:
 
-Approximate distribution:
+- HLE top approximately +1,638;
+- Gen.G jungle approximately +1,507;
+- Gen.G mid approximately +3,256;
+- Gen.G bot approximately +2,498;
+- Gen.G support approximately +969.
 
-- Gen.G top: +332
-- HLE jungle: +45
-- Gen.G mid: +133
-- Gen.G bot: +384
-- HLE support: +313
+Gen.G's decisive economy was concentrated in mid and bot, supported by jungle and support. HLE's top advantage did not compensate for the opposing carry-core deficit.
 
-The deltas reconcile to approximately Gen.G +491. Gen.G's advantage was concentrated in top, mid, and bot damage roles, while HLE's offsets were concentrated in jungle and support.
+## Execution conclusion
 
-The previous HLE positive-handicap lean is withdrawn because it depended on the wrong total-gold direction and underweighted carry concentration.
+Gen.G executed better across fights and neutral objectives. Chovy and Ruler converted the primary carry gold, while Canyon and Duro enabled repeated initiation and follow-up. Gen.G finished with four dragons and two Barons.
+
+## Settled Game 3 ticket
+
+- Selection: Gen.G -3.5 kills
+- Odds: 1.827
+- Stake: 250,000 VND / 0.25u
+- Result: Win
+- Payout: 456,750 VND
+- Net: +206,750 VND / +0.20675u
+- Ticket ID: 1151373952
+
+The wager was confirmed after settlement. It is official in the overall ledger but was not an issued exact-market model bet and is excluded from automatic probation counting absent an explicit exception.
 
 ## Temporary item-verification waiver
 
-Decision-critical item verification is waived as a mandatory gate for this Game 3 only.
-
-- Do not guess items.
-- Unknown items do not block a verdict by themselves.
-- Unknown items cannot be counted as positive evidence.
-- Use role-weighted gold, K/D/A function, objectives, structures, fight conversion, and market movement.
-- The waiver expires automatically at Game 3 settlement or abandonment.
-
-## Current status
-
-- No Game 3 position has been confirmed.
-- Current Game 3 exposure: 0u.
-- No active lean survives the role-gold correction.
-- A fresh synchronized scoreboard and current prices are required before a new verdict.
+The Game 3-only item-verification waiver has expired. Normal item-verification requirements resume for all subsequent matches.
 
 ## Current probation
 
@@ -66,12 +65,9 @@ Decision-critical item verification is waived as a mandatory gate for this Game 
 - Minimum odds: 1.60
 - Duration official-ineligible through wager 20
 
-## Live response order
+## Current operating status
 
-1. verdict first;
-2. verified aggregate and role-weighted state;
-3. total-kill projection;
-4. duration projection;
-5. one promotion or rejection trigger.
-
-No Game 3 position is official without explicit placement confirmation.
+- No active LoL match handoff.
+- No open LoL exposure.
+- Active model remains LoL v0.3.27.
+- Review: `models/lol/reviews/GENG_HLE_GAME3_EXECUTION_REVIEW_2026-08-05.md`.
