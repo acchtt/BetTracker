@@ -1,7 +1,7 @@
 # Football Organized Repository Loading Guide
 
 **Status:** Active immediately  
-**Effective:** 2026-08-06 09:37 UTC+7  
+**Effective:** 2026-08-06 11:58 UTC+7  
 **Repository:** `acchtt/SlipTrace`  
 **Canonical namespace:** `models/football/`
 
@@ -37,7 +37,7 @@ A football chat uses `models/football/`, the retained baseline in `models/LEGACY
 
 ### `models/football/rules/`
 
-Contains the complete retained amendment chain. For Football v0.2.33, load v0.2.5 through v0.2.33 in ascending order. Newer versions control where they conflict; earlier rules remain active where later files preserve them.
+Contains the complete retained amendment chain. For Football v0.2.34, load v0.2.5 through v0.2.34 in ascending order. Newer versions control where they conflict; earlier rules remain active where later files preserve them.
 
 Do not load only the highest-numbered file. The football model is cumulative.
 
@@ -81,7 +81,7 @@ The root is reserved for the SlipTrace application, deployment/configuration fil
 4. `models/football/procedures/FOOTBALL_BETTING_PROCEDURE.md`
 5. `models/football/procedures/FOOTBALL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md`
 6. `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.5.md`
-7. Continue sequentially through each version to `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.33.md`
+7. Continue sequentially through each version to `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.34.md`
 8. Latest relevant `models/football/handoffs/` file, when present
 9. `/ledger.json` only when accounting or exposure is relevant
 
@@ -128,4 +128,4 @@ After loading, return:
 
 ## 9. Compact prompt
 
-> Load the football model from `acchtt/SlipTrace`. Open `models/football/CURRENT_MODEL.md` first and follow its exact canonical load order. Load the retained baseline, football procedures, and the complete v0.2.5–v0.2.33 rule chain in ascending order. Use only `models/football/`, required shared files, and `/ledger.json` when accounting is relevant. Apply the same model and recommendation gates in reminders, automations and secondary threads. Require persistent two-snapshot evidence before directional switches and do not treat invalidation of one side as confirmation of the opposite side. Do not load `models/lol/` or search the repository root for model files. Return `FOOTBALL FILES LOADED` before analysis.
+> Load the football model from `acchtt/SlipTrace`. Open `models/football/CURRENT_MODEL.md` first and follow its exact canonical load order. Load the retained baseline, football procedures, and the complete v0.2.5–v0.2.34 rule chain in ascending order. Use only `models/football/`, required shared files, and `/ledger.json` when accounting is relevant. Apply the same model and recommendation gates in reminders, automations and secondary threads. Require persistent two-snapshot evidence before directional switches; do not treat invalidation of one side as confirmation of the opposite side. Verify competition format before motivation analysis, separate regulation-win, regulation-draw and shootout utility, and treat xG/xGOT as secondary diagnostics only. Do not load `models/lol/` or search the repository root for model files. Return `FOOTBALL FILES LOADED` before analysis.
