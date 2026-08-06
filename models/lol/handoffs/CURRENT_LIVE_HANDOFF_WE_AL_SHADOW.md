@@ -1,7 +1,7 @@
 # Current Live Handoff — Team WE vs Anyone's Legend Shadow
 
 **Opened:** 2026-08-06 20:17 UTC+7  
-**Updated:** 2026-08-06 20:52 UTC+7  
+**Updated:** 2026-08-06 21:07 UTC+7  
 **Active model:** LoL v0.3.33  
 **Competition:** LPL 2026 Split 3  
 **Series:** Team WE vs Anyone's Legend  
@@ -13,7 +13,8 @@
 
 - AL blue side.
 - WE red side.
-- The map was at or near 0:00 when the post-draft prices were captured.
+- AL have secured 3 Void Grubs.
+- Current clock, kills, gold, towers, dragons and live prices were not supplied with the Grub update.
 
 ## Confirmed draft
 
@@ -65,6 +66,12 @@ Draft thesis:
 - AL possess early pressure through Olaf, Naafiri and Ahri.
 - Shen adds global reinforcement and Ziggs adds direct tower conversion.
 - WE can stall through Mundo, Ryze and Neeko, but may struggle to resist clean structure conversion if AL establish the first major lead.
+
+Live thesis update after AL secured 3 Grubs:
+
+- The Grubs strengthen AL's tower-conversion route and therefore modestly strengthen the active Under 31 minutes thesis.
+- Grubs alone do not justify a second shadow position without a synchronized clock, scoreboard and current market.
+- Current verdict: retain the duration lean; no second pick yet.
 
 ## Additional-pick authorization
 
