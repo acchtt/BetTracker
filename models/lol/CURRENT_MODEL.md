@@ -12,9 +12,9 @@
 - Procedure addenda: `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md` and `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-02.md`
 - Scoreboard protocol: `models/lol/procedures/LOL_LIVE_SCOREBOARD_READING_PROTOCOL_2026-08-01.md`
 - Shared stake policy: `shared/STAKE_POLICY_V2.json`
-- Latest closed handoff: `models/lol/handoffs/CURRENT_LIVE_HANDOFF_T1A_DNS_G2.md`
-- Latest review: `models/lol/reviews/T1A_DNS_GAME3_LIVE_HANDICAP_REVIEW_2026-08-06.md`
-- Active live handoff: `models/lol/handoffs/CURRENT_LIVE_HANDOFF_T1_DK_G1_SHADOW.md`
+- Latest closed handoff: `models/lol/handoffs/CURRENT_LIVE_HANDOFF_T1_DK_G1_SHADOW.md`
+- Latest review: `models/lol/reviews/T1_DK_GAME1_SHADOW_REVIEW_2026-08-06.md`
+- Active live handoff: **none**
 
 ## Required load order
 
@@ -59,20 +59,21 @@ Do not search the repository root for LoL rules. Historical versions and reviews
 - Latest verified state: DNS led 29-23 kills with approximately +4.2k gold, 4-3 dragons and 3-0 Barons
 - Exact final game clock and explicit map-winner statement were not supplied; the user explicitly confirmed the wager loss
 
-## Latest shadow miss
+## Latest shadow calibration map
 
-- Event: T1A vs DNS Game 3
-- Candidate: DNS +11.5 kills @1.913
-- Placement confirmed: no
+- Event: T1 vs Dplus KIA Game 1
+- Final supplied state: T1 won 20-4 at 28:24
+- Final total kills: 24
+- Final objectives: T1 9-2 towers, 3-1 dragons, 1-0 Barons and 1-0 inhibitors
+- Under 30.5 kills @1.827 — shadow win, 0u
+- Over 29 minutes @1.856 — shadow loss, 0u
+- Shadow map result: 1-1 across the two logged leans
 - Ledger/probation impact: none
-- Candidate state: T1A 10-7 kills, approximately +4k gold, 2-0 towers and 2-0 dragons
-- User-supplied final kill score: 26-12 in T1A-DNS order
-- Candidate would have lost by 2.5 kills
-- Main error: false stabilization from one kill and a small gold contraction inside an unchanged T1A dominance trend
+- Main calibration: kill-total projection was accurate; duration overvalued DK waveclear and underweighted T1's three-Grub structure acceleration and broad role-gold control
 
 ## Official-wager circuit breaker
 
-The next **two complete LoL maps** are shadow-analysis only.
+The next **two complete LoL maps** are shadow-analysis only. One complete map has now been reviewed; one additional complete shadow map remains.
 
 During the circuit breaker:
 
@@ -94,6 +95,16 @@ For underdog positive handicaps of +7.5 or wider:
 - estimate remaining major fight inventory before judging future net-kill arithmetic;
 - reject widened lines that merely compensate for worsening state.
 
+## Provisional duration calibration from shadow map 1
+
+Until shadow map 2 is reviewed:
+
+- an Over-duration shadow lean near the current clock requires at least a two-minute point-estimate buffer above the line;
+- when the leader has three or more Grubs, at least +4k gold and four or more winning role-gold matchups, theoretical enemy waveclear alone is not stall confirmation;
+- require one observed successful inner-tower or base defense after the first major structure conversion before upgrading the extension branch.
+
+This is a provisional review finding, not a new active model version.
+
 ## Non-model-attributed settled LoL wagers
 
 The following user-confirmed wins are recorded in the overall ledger but remain excluded from automatic probation counting absent an explicit exception:
@@ -103,13 +114,12 @@ The following user-confirmed wins are recorded in the overall ledger but remain 
 
 ## Current operating status
 
-- Active shadow map: T1 vs Dplus KIA Game 1.
-- Circuit-breaker progress: shadow map 1 of 2, pending settlement and written review.
-- Logged shadow leans from the synchronized 13:42 state:
-  - Under 30.5 total kills @1.827 — 0u;
-  - Over 29 minutes @1.856 — 0u.
-- No open LoL exposure and no ledger entry for either lean.
-- Official LoL betting remains paused for the next two complete maps.
+- No active LoL handoff.
+- Circuit-breaker progress: 1 of 2 complete shadow maps reviewed.
+- Shadow calibration record during the circuit breaker: 1-1 across logged leans.
+- One additional complete shadow map and written review remain required.
+- No open LoL exposure and no ledger entry from shadow analysis.
+- Official LoL betting remains paused.
 - Total kills and duration must be projected as separate analytical markets.
 - Duration remains official-ineligible through wager 20.
 - **Item verification is suspended until explicit user restoration.**
