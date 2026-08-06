@@ -44,6 +44,12 @@ Do not load football rules from the repository root. Root model copies were reti
 - v0.2.33 adds regime-persistence, directional-switch, candidate-oscillation, one-event binary-market and substitution-cluster controls; invalidating one side never automatically confirms the opposite side
 - v0.2.34 requires competition-format verification, separates regulation and shootout utility, adds dual-value tie and pressure-to-urgency gates, strengthens tied-state side switching and further de-emphasizes xG/xGOT
 
+## Response scope and brevity
+
+- Keep live reassessments brief and decision-first.
+- Assess recent relevant H2H and home/away form only in the prematch preview.
+- Do not repeat H2H or team-form sections during live reassessments unless the user explicitly requests them.
+
 ## Active handoff state
 
 - Immediate match: Jagiellonia Białystok vs Rangers
