@@ -14,7 +14,7 @@
 - Shared stake policy: `shared/STAKE_POLICY_V2.json`
 - Latest closed handoff: `models/lol/handoffs/CURRENT_LIVE_HANDOFF_T1A_DNS_G2.md`
 - Latest review: `models/lol/reviews/T1A_DNS_GAME3_LIVE_HANDICAP_REVIEW_2026-08-06.md`
-- Active live handoff: **none**
+- Active live handoff: `models/lol/handoffs/CURRENT_LIVE_HANDOFF_T1_DK_G1_SHADOW.md`
 
 ## Required load order
 
@@ -103,9 +103,13 @@ The following user-confirmed wins are recorded in the overall ledger but remain 
 
 ## Current operating status
 
-- No active LoL handoff.
-- No open LoL exposure.
-- Official LoL betting is paused for the next two complete maps.
+- Active shadow map: T1 vs Dplus KIA Game 1.
+- Circuit-breaker progress: shadow map 1 of 2, pending settlement and written review.
+- Logged shadow leans from the synchronized 13:42 state:
+  - Under 30.5 total kills @1.827 — 0u;
+  - Over 29 minutes @1.856 — 0u.
+- No open LoL exposure and no ledger entry for either lean.
+- Official LoL betting remains paused for the next two complete maps.
 - Total kills and duration must be projected as separate analytical markets.
 - Duration remains official-ineligible through wager 20.
 - **Item verification is suspended until explicit user restoration.**
