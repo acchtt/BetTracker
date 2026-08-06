@@ -1,12 +1,12 @@
 # Current Live Handoff — Team WE vs Anyone's Legend Shadow
 
 **Opened:** 2026-08-06 20:17 UTC+7  
-**Updated:** 2026-08-06 21:23 UTC+7  
-**Active model:** LoL v0.3.33  
+**Updated:** 2026-08-06 21:26 UTC+7  
+**Active model:** LoL v0.3.34  
 **Competition:** LPL 2026 Split 3  
 **Series:** Team WE vs Anyone's Legend  
 **Active map:** Game 1  
-**Circuit-breaker status:** Shadow map 4 of 4 active; map not yet complete  
+**Circuit-breaker status:** Shadow map 4 of 8 active; map not yet complete  
 **Actual exposure:** 0u
 
 ## Confirmed sequence
@@ -17,6 +17,7 @@
 4. AL secured 3 Void Grubs later in the map.
 5. The game clock passed 31:00, settling the duration Under as a loss.
 6. The map itself remained in progress when the duration result was reported.
+7. The user extended the circuit breaker because the calibration results were lackluster.
 
 The three-Grub state was **not part of the original entry rationale** and must not be used as a causal explanation for issuing the Under.
 
@@ -73,26 +74,30 @@ The model correctly identified AL's theoretical acceleration through Olaf, Naafi
 
 The later three-Grub state only increased AL's potential tower pressure. Without synchronized gold, towers, dragons and tempo, it did not confirm that the original fast-close thesis was succeeding.
 
-## Provisional duration rule from this map
+## v0.3.34 extension
 
-Until the full map review is completed:
-
-- a pregame or 0:00 duration Under near 31 minutes must not be promoted solely from theoretical draft acceleration when the opponent has at least three credible stall, waveclear or counter-engage tools;
-- Grubs acquired after issuance are live evidence only and must be timestamped separately from the entry rationale;
-- market settlement does not complete a circuit-breaker map; the final map state and post-map review are still required.
+- The circuit breaker now requires **eight complete reviewed maps**.
+- This WE vs AL Game 1 remains shadow map 4 and counts only after the final map state and post-map review are recorded.
+- Maps 5 through 8 remain shadow-only with actual stake and exposure fixed at 0u.
+- Official recommendations do not resume automatically after map 8.
+- Maps 5 through 8 default to one primary shadow lean per map.
+- A pregame or 0:00 duration Under is ineligible during maps 5 through 8 unless at least one synchronized live snapshot confirms actual conversion evidence.
+- Entry-time, later live, and settlement evidence must be separated explicitly.
 
 ## Additional-pick status
 
-- No second shadow pick was entered.
+- No second shadow pick was entered on this map.
 - Actual exposure remained 0u.
 
 ## Circuit-breaker accounting
 
-- Complete maps reviewed before this map: **3 of 4**
+- Complete maps reviewed before this map: **3 of 8**
 - Shadow map 4: **active, not complete**
+- Maps 5 through 8: pending
+- Complete maps still required including this map: **5**
 - Settled shadow market record including this duration result: **3-3**
 - Nominal simulated net including this duration result: **-0.12475u / -124,750 VND**
 - Actual exposure: **0u**
 - Official ledger and probation: unchanged
 
-Official recommendations remain paused. The circuit breaker cannot be closed until the final Game 1 state is supplied and reviewed.
+Official recommendations remain paused. Supply the final Game 1 state to complete shadow map 4 review.
