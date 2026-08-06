@@ -5,7 +5,7 @@
 
 ## Required output order
 
-The first line must be:
+The first visible line must be:
 
 `VERDICT — market @ odds — stake/status`
 
@@ -19,6 +19,23 @@ Then include only:
 
 Do not front-load background discussion.
 
+## Immediate-response rule
+
+For an active map, the verdict must be sent before any repository read, repository write, web search, historical lookup, or extended model narration when the screenshot and user correction already contain enough synchronized state.
+
+The default first response must be compact:
+
+- first line: verdict;
+- second line: stake/status and whether the position is official or shadow;
+- no more than three short supporting lines unless the state is ambiguous;
+- repository logging and detailed review occur only after the visible verdict has been delivered.
+
+When no market qualifies, use:
+
+`NO LEAN — reason — 0u`
+
+Do not delay a negative verdict while searching for an alternative market.
+
 ## Mandatory market coverage
 
 When displayed or requested, always report:
@@ -29,6 +46,8 @@ When displayed or requested, always report:
 - duration.
 
 Use `MARKET UNAVAILABLE/LOCKED` when necessary.
+
+Mandatory market coverage may be supplied after the immediate verdict. It must not delay the first visible line.
 
 ## Mandatory objective inventory
 
@@ -54,7 +73,10 @@ During an active map:
 - do not repeat stable model rules;
 - calculate only the current best eligible market;
 - keep the default response compact;
-- expand only when the state is ambiguous or the user asks.
+- expand only when the state is ambiguous or the user asks;
+- do not announce repository work before the verdict;
+- do not wait for file synchronization to answer;
+- treat a fast `NO LEAN` as preferable to a late speculative lean.
 
 ## Duration branch minimum
 
