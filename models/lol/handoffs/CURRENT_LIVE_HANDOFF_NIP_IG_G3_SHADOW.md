@@ -1,6 +1,6 @@
 # Current Live Handoff — NIP vs IG Game 3 Shadow
 
-**Updated:** 2026-08-06 19:26 UTC+7  
+**Updated:** 2026-08-06 19:31 UTC+7  
 **Active model:** LoL v0.3.32  
 **Competition:** LPL 2026 Split 3  
 **Series:** Ninjas in Pyjamas vs Invictus Gaming  
@@ -22,69 +22,79 @@
 - Original point estimate: 26 kills
 - No correlated add-on
 
-## Latest synchronized state — 5:01
+## Latest synchronized state — 9:50
 
-- Kills: IG 1-0 NIP
-- Gold: IG approximately +402
+- Kills: NIP 2-2 IG
+- Gold: IG approximately +128
 - Towers: 0-0
-- Dragons: 0-0
+- Dragons: NIP 1-0
+- Grubs: NIP 3-0, user-confirmed
 - Barons: 0-0
 - Inhibitors: 0-0
 
 ### Role gold
 
-- NIP top: +26
-- IG jungle: +378
-- IG mid: +133
-- NIP bot: +217
-- IG support: +134
+- NIP top: +322
+- IG jungle: +356
+- IG mid: +467
+- NIP bot: +541
+- IG support: +168
 
-The role totals reconcile to IG's approximately +402 overall lead. The map remains structurally balanced; IG has a small jungle-mid-support advantage while NIP retains slight top and bot leads. One kill and no objectives after five minutes strengthens the low-kill thesis without establishing map dominance.
+The role totals reconcile to IG's approximately +128 overall lead. IG leads three roles, but NIP owns both early neutral-objective classes and the two strongest NIP role advantages are top and bot. This is a balanced state rather than dominance for either side.
+
+NIP's three Grubs create future structure-acceleration potential, but the model does not treat Grubs alone as fast-close confirmation without a material gold lead, broad role-gold control or actual tower conversion. With four total kills, no towers and only one dragon taken by 9:50, the existing kill Under remains supported.
 
 ## Latest visible markets
 
-- IG ML @1.656
-- NIP ML @2.145
-- Over 32 minutes @1.573
-- Under 32 minutes @2.301
-- Over 26.5 total kills @1.658
-- Under 26.5 total kills @2.140
-- IG -4.5 kills @1.820
-- NIP +4.5 kills @1.902
+- IG ML @2.042
+- NIP ML @1.723
+- Over 33 minutes @1.788
+- Under 33 minutes @1.956
+- Over 26.5 total kills @1.552
+- Under 26.5 total kills @2.347
+- IG +3.5 kills @1.790
+- NIP -3.5 kills @1.935
 
 ## Current verdicts
 
 - Existing Under 27.5 @2.066 — retain
-- Under 26.5 @2.140 — no add-on; correlated and one kill less protection
-- IG ML @1.656 — no value
-- NIP ML @2.145 — no lean from one early snapshot
-- IG -4.5 @1.820 — no lean
-- NIP +4.5 @1.902 — no lean yet
-- Over 32 minutes @1.573 — no lean; below minimum and correlated
-- Under 32 minutes @2.301 — no lean
+- Under 26.5 @2.347 — no add-on; correlated and one kill less protection
+- IG ML @2.042 — no lean; objective deficit offsets three-role breadth
+- NIP ML @1.723 — no value in a near-even gold state
+- IG +3.5 @1.790 — no lean
+- NIP -3.5 @1.935 — no lean; no kill-margin control established
+- Over 33 minutes @1.788 — watch only; no second correlated position
+- Under 33 minutes @1.956 — no lean; NIP has not converted Grubs into towers
 
 ## Updated projections
 
 ### Total kills
 
-- Low: 20-23
-- Central: 24-28
-- High: 31-36
-- Point estimate: 26
+- Low: 19-22
+- Central: 23-27
+- High: 30-35
+- Point estimate: 25
 
 ### Duration
 
 - Fast: 30-32 minutes
-- Central: 34-38 minutes
-- Extension: 40-43 minutes
-- Point estimate: 36 minutes
+- Central: 33-37 minutes
+- Extension: 39-42 minutes
+- Point estimate: 35 minutes
+
+## Trend confirmation
+
+- 5:01: IG 1-0, +402 gold, no objectives
+- 9:50: 2-2, IG +128, NIP 1 dragon and 3 Grubs, no towers
+
+NIP improved the objective state and reduced IG's gold edge, but neither side has established broad economic or structural dominance. The low-kill thesis remains intact.
 
 ## Reassessment triggers
 
-- first dragon or first tower;
+- first tower or multi-tower Grub conversion;
+- second dragon;
 - first multi-kill fight;
 - role-gold breadth reaching at least three roles with material total gold;
-- 3+ Grubs combined with a material gold lead;
 - Baron acquisition or a successful Baron-expiry/base-defense cycle.
 
 ## Operating constraints
