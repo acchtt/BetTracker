@@ -14,7 +14,7 @@
 - Shared stake policy: `shared/STAKE_POLICY_V2.json`
 - Latest closed handoff: `models/lol/handoffs/CURRENT_LIVE_HANDOFF_T1_DK_G2_SHADOW.md`
 - Latest review: `models/lol/reviews/T1_DK_GAME2_SHADOW_REVIEW_2026-08-06.md`
-- Active live handoff: none
+- Active live handoff: `models/lol/handoffs/CURRENT_LIVE_HANDOFF_NIP_IG_G3_SHADOW.md`
 
 ## Required load order
 
@@ -60,8 +60,8 @@ LoL v0.3.32 extends the v0.3.31 circuit breaker from two to four complete review
 
 - Required complete reviewed maps: **4**
 - Completed and reviewed: **2**
-- Remaining: **2**
-- Next two complete LoL maps are shadow-only
+- Active: **map 3 — NIP vs IG Game 3**
+- Remaining after the active map: **1**
 - Actual stake and exposure: **0u**
 - Logged shadow leans default to **simulated 0.25u** unless stated otherwise
 - No shadow result changes the official ledger or probation
@@ -85,7 +85,25 @@ LoL v0.3.32 extends the v0.3.31 circuit breaker from two to four complete review
 - Shadow record: 2-0
 - Simulated map net: +0.41850u
 
-**Current combined shadow record:** 3-1.
+**Current combined settled shadow record:** 3-1.
+
+## Active shadow map 3
+
+- Event: NIP vs IG Game 3, series tied 1-1
+- NIP blue: Poppy / Skarner / Sylas / Sivir / Karma
+- IG red: Jax / Wukong / Viktor / Ezreal / Seraphine
+- Logged lean: Under 27.5 total kills @2.066, simulated 0.25u
+- Actual exposure: 0u
+- Initial kill projection: central 25-29, point 26
+- Initial duration projection: central 33-37 minutes, point 35
+- Moneylines and kill handicap: no lean
+
+## Shadow stake convention
+
+- Logged shadow leans default to a nominal simulated stake of **0.25u** unless explicitly stated otherwise.
+- Nominal stakes are used only for shadow performance tracking.
+- Actual shadow stake, exposure and ledger impact remain **0u**.
+- Multiple shadow leans may be tracked on one map because they are not placed wagers; correlations must still be identified during review.
 
 ## Retained live controls
 
@@ -99,12 +117,25 @@ LoL v0.3.32 extends the v0.3.31 circuit breaker from two to four complete review
 - Late total-kill projections must reserve cleanup-fight allowance when another Baron or base defense remains.
 - Total kills and duration receive separate projections and verdicts.
 
+## Duration calibration retained after the first two shadow maps
+
+- An Over-duration lean near the current clock requires at least a two-minute point-estimate buffer above the line at issuance.
+- When the leader has three or more Grubs, at least +4k gold and four or more winning role-gold matchups, theoretical enemy waveclear alone is not stall confirmation.
+- Require one observed successful inner-tower, Baron-expiry or base-defense cycle after the first major structure conversion before upgrading an extension branch.
+- Dragon stacks can preserve future fight inventory and duration even when the opponent leads gold and towers.
+- A successful Baron defense can improve duration Over probability while simultaneously strengthening a kill Under thesis.
+
+## Total-kill calibration retained after the first two shadow maps
+
+- A structurally even map with no towers down can still support a kill Under when both teams can advance through siege, zone control and objective pressure without repeated two-sided fights.
+- Late-map kill projections must reserve a cleanup-fight allowance when a second Baron and base defense remain available.
+- Total kills and duration are separate market families and must receive separate projections and verdicts.
+
 ## Current operating status
 
-- Circuit breaker progress: **2 of 4 complete maps reviewed**.
-- Next two complete maps: shadow-only.
+- Circuit breaker progress: **2 of 4 complete maps reviewed; map 3 active**.
 - Official LoL betting: paused.
-- No open LoL exposure.
+- No open actual LoL exposure.
 - Duration remains official-ineligible through wager 20.
 - Item verification remains suspended until explicit restoration.
 - Unknown items are neutral and must not be guessed.
