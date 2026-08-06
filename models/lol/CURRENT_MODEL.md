@@ -12,9 +12,8 @@
 - Procedure addenda: `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md` and `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-02.md`
 - Scoreboard protocol: `models/lol/procedures/LOL_LIVE_SCOREBOARD_READING_PROTOCOL_2026-08-01.md`
 - Shared stake policy: `shared/STAKE_POLICY_V2.json`
-- Latest closed handoff: `models/lol/handoffs/CURRENT_LIVE_HANDOFF_NIP_IG_G3_SHADOW.md`
-- Latest review: `models/lol/reviews/NIP_IG_GAME3_SHADOW_REVIEW_2026-08-06.md`
-- Active live handoff: `models/lol/handoffs/CURRENT_LIVE_HANDOFF_WE_AL_SHADOW.md`
+- Current cross-chat handoff: `models/lol/handoffs/CHAT_TRANSFER_HANDOFF_2026-08-06.md`
+- Prior match handoff: `models/lol/handoffs/CURRENT_LIVE_HANDOFF_WE_AL_SHADOW.md`
 
 ## Required load order
 
@@ -37,9 +36,9 @@
 17. scoreboard protocol
 18. `models/lol/context/lol-v0.3.25/PREMATCH_PREGAME_PROCEDURE.md`
 19. `shared/STAKE_POLICY_V2.json`
-20. latest relevant handoff when one exists
+20. `models/lol/handoffs/CHAT_TRANSFER_HANDOFF_2026-08-06.md`
 
-LoL v0.3.34 extends the official-wager circuit breaker to eight complete reviewed maps and adds a tighter four-map calibration block after WE vs AL Game 1. All earlier controls remain active unless explicitly superseded.
+LoL v0.3.34 extends the official-wager circuit breaker to eight complete reviewed maps. The cross-chat handoff contains the latest map-5 operating corrections and supersedes stale live-status statements in earlier handoffs.
 
 ## Current probation
 
@@ -60,10 +59,9 @@ LoL v0.3.34 extends the official-wager circuit breaker to eight complete reviewe
 ## Eight-map shadow circuit breaker
 
 - Required complete reviewed maps: **8**
-- Completed and reviewed: **3**
-- Active: **map 4 — Team WE vs Anyone's Legend Game 1**
-- Maps 5 through 8: pending after map 4 is completed and reviewed
-- Complete maps still required, including the active map: **5**
+- Completed and reviewed: **5**
+- Next: **shadow map 6**
+- Maps still required: **3**
 - Actual stake and exposure: **0u**
 - Logged shadow leans default to simulated **0.25u** unless stated otherwise
 - No shadow result changes the official ledger or probation
@@ -77,7 +75,6 @@ LoL v0.3.34 extends the official-wager circuit breaker to eight complete reviewe
 - Final: T1 won 20-4 at 28:24
 - Under 30.5 kills @1.827 — win
 - Over 29 minutes @1.856 — loss
-- Shadow record: 1-1
 - Simulated map net: -0.04325u
 
 **Map 2 — T1 vs Dplus KIA Game 2**
@@ -85,47 +82,56 @@ LoL v0.3.34 extends the official-wager circuit breaker to eight complete reviewe
 - Final: T1 won 17-7 at 36:57
 - Under 31.5 kills @1.811 — win
 - Over 34 minutes @1.863 — win
-- Shadow record: 2-0
 - Simulated map net: +0.41850u
 
 **Map 3 — NIP vs IG Game 3**
 
 - Final: NIP won; final kills NIP 16-21 IG
 - Under 27.5 kills @2.066 — loss
-- Shadow record: 0-1
 - Simulated map net: -0.25000u
 - Main error: late objective-density kill inventory was understated and the live thesis should have been invalidated earlier
 
-## Active shadow map 4
+**Map 4 — WE vs AL Game 1**
 
-- Event: Team WE vs Anyone's Legend Game 1
-- Draft: AL blue Olaf / Naafiri / Ahri / Ziggs / Shen; WE red Mundo / Pantheon / Ryze / Jhin / Neeko
-- Under 31 minutes @2.018 — settled loss after the clock passed 31:00
-- The lean was issued post-draft at or near 0:00, before AL secured three Grubs
-- Three Grubs are later live evidence and are not part of the original entry rationale
-- No second shadow pick was entered
-- The map itself remains incomplete for circuit-breaker accounting until the final map state and review are recorded
+- Under 31 minutes @2.018 — loss
+- Entry was post-draft at or near 0:00, before AL secured three Grubs
+- Three Grubs were later evidence and are not part of the entry rationale
+- Simulated map net: -0.25000u
+- Exact final scoreboard was not captured and must not be invented
+
+**Map 5 — WE vs AL Game 2**
+
+- Final: WE won at 31:02 despite trailing 16-26 kills
+- Over 32 minutes @1.868 — loss
+- WE +14.5 kills @1.966 — win
+- Simulated map net: -0.00850u
+- Main errors: ordinary early towerlessness was overweighted as stall confirmation; comeback capacity was treated as automatically duration-positive; the 19:56 duration thesis was not invalidated strongly enough; the kill-handicap thesis was invalidated too aggressively; a live-labelled screenshot was initially misread as final
 
 ## Current shadow accounting
 
-- Settled shadow market record: **3-3**
-- Nominal simulated net: **-0.12475u / -124,750 VND**
+- Settled shadow market record: **4-4**
+- Nominal simulated net: **-0.13325u / -133,250 VND**
 - Actual exposure and official P&L: **0u / 0 VND**
 
-## Maps 5 through 8 calibration controls
+## Maps 6 through 8 calibration controls
 
 - Default to one primary shadow lean per map.
 - A second lean requires a materially different market thesis and a current synchronized state.
 - `NO LEAN` is acceptable and should not be overridden merely to create a sample.
-- No pregame or 0:00 duration Under may be promoted from theoretical draft acceleration alone.
-- A duration Under requires at least one synchronized live snapshot showing actual conversion evidence.
+- No draft-only duration Under may be promoted from theoretical acceleration alone.
+- A duration Under requires synchronized live conversion evidence.
+- No duration Over before 10:00 unless at least two genuine stall signals exist beyond ordinary towerlessness.
+- Six or more total kills by 8:00 activates a wider fast-ending branch.
+- Fourteen or more total kills by 16:00 prevents 0-0 towers from being classified as confirming duration evidence.
+- Around 20 minutes, a leader with at least +5k gold and a two-tower lead invalidates short-line duration Overs unless exceptional counterevidence exists.
+- Comeback tools widen the duration distribution; they do not automatically increase expected duration.
+- Positive kill-handicap invalidation requires both a small cushion and credible structural, Baron, or base conversion control.
+- A screenshot still marked `Live` cannot be treated as final.
 - Entry-time evidence, later live evidence, and settlement evidence must be timestamped and kept separate.
-- Opposing stall, waveclear, disengage, counter-engage and base-defense tools must be counted explicitly.
 
 ## Retained live controls
 
 - Recorded position state and current analytical thesis state remain separate.
-- Positive kill handicaps of +7.5 or wider require two synchronized stabilization snapshots.
 - Apply the dominance override when the favorite has broad role-gold, objective and structure control.
 - Estimate remaining fight inventory before judging future net-kill arithmetic.
 - Reject widened lines that merely compensate for a worsening state.
@@ -139,7 +145,7 @@ LoL v0.3.34 extends the official-wager circuit breaker to eight complete reviewe
 
 ## Current operating status
 
-- Circuit breaker progress: **3 of 8 complete maps reviewed; map 4 active**.
+- Circuit breaker progress: **5 of 8 complete maps reviewed; map 6 next**.
 - Official LoL betting: paused.
 - No open actual LoL exposure.
 - Duration remains official-ineligible through wager 20.
