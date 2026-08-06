@@ -1,10 +1,11 @@
-# Current Live Handoff — T1 Academy vs DNS Game 2
+# Closed Live Handoff — T1 Academy vs DNS Game 2
 
-**Updated:** 2026-08-06 12:58 UTC+7  
-**Active model:** LoL v0.3.29  
+**Closed:** 2026-08-06 13:41 UTC+7  
+**Model at placement:** LoL v0.3.29  
+**Resulting model:** LoL v0.3.30  
 **Competition:** LCK CL 2026 Rounds 3-4  
-**Series:** T1 Esports Academy 1-0 DN SOOPers Challengers  
-**Current map:** Game 2
+**Series state at placement:** T1 Esports Academy led 1-0  
+**Map:** Game 2
 
 ## Draft and sides
 
@@ -12,71 +13,59 @@ DNS blue: Olaf / Pantheon / Cassiopeia / Aphelios / Lulu.
 
 T1A red: Gnar / Nocturne / Syndra / Yunara / Blitzcrank.
 
-## Official wager
+## Official wager settlement
 
 - Wager number: LoL probation #13
 - Selection: T1 Esports Academy -7.5 kills
 - Accepted odds: 1.864
 - Assessed odds: 1.897
 - Stake: 0.25u = 250,000 VND
-- Potential payout: 466,000 VND
-- Potential profit: 216,000 VND / +0.216u
+- Payout: 0 VND
+- Net: -250,000 VND / -0.25u
 - Ticket ID: 1151540402
 - Placement confirmed: 2026-08-06 12:58 UTC+7
-- Status: pending
+- Result confirmed: 2026-08-06 13:41 UTC+7
+- Status: loss
 - Model-attributed: yes
 - Execution valid: yes
 
-## Exposure
+## Latest verified state
 
-- Current Game 2 exposure: 0.25u
-- Maximum permitted exposure per map: 0.25u
-- Additional Game 2 bets allowed: no
-- No correlated same-map add-ons
+The supplied settlement screenshot showed:
 
-## Market separation
+- kills: DNS 29-23 T1A;
+- gold: DNS approximately +4.2k;
+- towers: T1A 7-6;
+- dragons: DNS 4-3;
+- Barons: DNS 3-0;
+- inhibitors: T1A 2-1.
 
-Total kills and duration are separate analytical market families and must be projected separately in live responses.
+The exact final game clock and explicit map-winner statement were not supplied. The handicap loss was explicitly confirmed by the user.
 
-They are not separate exposure allowances:
+## Role-gold reconciliation
 
-- no kill-total add-on is permitted because the full 0.25u Game 2 cap is used;
-- duration remains official-ineligible through probation wager 20;
-- analysis of either market does not authorize placement.
+- T1A top approximately +2,899;
+- DNS jungle approximately +398;
+- T1A mid approximately +493;
+- DNS bot approximately +5,525;
+- DNS support approximately +1,653.
 
-## Thesis at placement
+DNS bot and support produced the decisive economy. T1A's top and mid advantages did not create the expected kill-margin cascade.
 
-T1A held the lower-burden cascade route through Blitzcrank pick, Nocturne delivery and Syndra burst.
+## Thesis failure
 
-DNS carried active two-carry collapse risk because Cassiopeia and Aphelios are immobile and depend heavily on Lulu protection. Gnar supplied T1A with frontline and follow-up, while DNS's Olaf and Pantheon had to create pressure and simultaneously deny access to both carries.
+The pregame thesis overcounted T1A's Blitzcrank-Nocturne-Syndra access, undercounted DNS's anti-dive and protection system, and improperly transferred Game 1 execution into current-map margin evidence.
 
-Game 1 supplied cross-map execution evidence that T1A could convert first access into kill, objective and structure separation. Under LoL v0.3.29, this supported the negative kill handicap rather than another positive-underdog handicap.
+The decisive arithmetic failure was that the accepted handicap price required T1A to cover in approximately 88.1% of its projected map wins.
 
-## Pregame projections
+LoL v0.3.30 now requires favorite-win-to-cover conversion arithmetic, a current-map reset, anti-whipsaw protection, and temporarily suspends pregame kill handicaps at absolute lines of 7.5 or wider through wager 15.
 
-- Winner direction: T1A
-- Total kills: central 30-35
-- Duration: central 31-35 minutes
-- Duration remains official-ineligible through probation wager 20
+## Probation after settlement
 
-## Live monitoring priorities
+- Completed: 13/20
+- Record: 7-6
+- Net: -164,250 VND / -0.16425u
+- Next model-attributed wager: 14
+- Open exposure: 0u
 
-1. exact clock and current kill margin;
-2. additional future net kills needed for T1A to cover;
-3. total and role-gold direction, especially mid and bot;
-4. whether Blitzcrank-Nocturne-Syndra access is repeatable;
-5. whether Lulu preserves both DNS carries or one collapses;
-6. dragons, Grubs, Herald, Baron, towers, inhibitors and base access;
-7. separate total-kill and duration projections without creating additional exposure.
-
-Item verification remains suspended until explicit user restoration. Unknown items are neutral and must not be guessed.
-
-## Probation state
-
-- Settled/completed before this map: 12/20
-- Settled record before this map: 7-5
-- Settled net before this map: +85,750 VND / +0.08575u
-- Wager 13: official and pending
-- Next new model-attributed wager number after this placement: 14
-
-The settled record and net remain unchanged until Game 2 settlement.
+Item verification remains suspended until explicit user restoration.
