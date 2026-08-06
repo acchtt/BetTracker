@@ -1,14 +1,33 @@
 # LoL v0.3.25 Probation Status
 
-**Effective:** 2026-08-04 02:36 UTC+7  
+**Effective:** 2026-08-06 12:09 UTC+7  
 **Status:** Active
 
 ## Current state
 
-- Completed: 11/20
-- Official record: 7-4
-- Net result: +335,750 VND / +0.33575u
-- Wagers 12-20 remain
+- Settled/completed: 11/20
+- Settled official record: 7-4
+- Settled net result: +335,750 VND / +0.33575u
+- Wager 12: **DNS +7.5 kills @1.981, 0.25u — official pending**
+- Next new model-attributed wager number: 13
+- Wagers 13-20 remain after the active pending wager
+
+## Active wager 12
+
+- Event: T1 Esports Academy vs DN SOOPers Challengers — Game 1
+- Market: DNS +7.5 kills
+- Odds: 1.981
+- Stake: 0.25u = 250,000 VND
+- Potential payout: 495,250 VND
+- Potential profit: 245,250 VND / +0.24525u
+- Ticket ID: 1151528505
+- Placement confirmed: 2026-08-06 12:09 UTC+7
+- Model version: LoL v0.3.28
+- Attribution: model-attributed
+- Current map exposure: 0.25u / 0.25u
+- Additional Game 1 wagers allowed: no
+
+The settled record and net remain unchanged until wager 12 is settled.
 
 ## Exposure rules
 
