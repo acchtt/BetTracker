@@ -1,6 +1,7 @@
 # Current Live Handoff — Team WE vs Anyone's Legend Shadow
 
 **Opened:** 2026-08-06 20:17 UTC+7  
+**Updated:** 2026-08-06 20:26 UTC+7  
 **Active model:** LoL v0.3.33  
 **Competition:** LPL 2026 Split 3  
 **Series:** Team WE vs Anyone's Legend  
@@ -14,7 +15,7 @@
 - No shadow lean is active.
 - No previous-map state carries into the next map as hard evidence.
 
-## Expected roster baseline — confirmation required
+## Roster baseline
 
 ### Team WE
 
@@ -26,7 +27,7 @@
 
 ### Anyone's Legend
 
-- Top: Breathe or Flandre — starter requires confirmation
+- Top: Breathe — user-confirmed
 - Jungle: Tarzan
 - Mid: Shanks
 - Bot: Hope
