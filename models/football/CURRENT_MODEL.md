@@ -2,7 +2,7 @@
 
 **Canonical namespace:** `models/football/`
 
-- Active model: **Football v0.2.34**
+- Active model: **Football v0.2.35**
 - Organized loading guide: `models/football/ORGANIZED_FILE_LOADING_GUIDE.md`
 - Main procedure: `models/football/procedures/FOOTBALL_BETTING_PROCEDURE.md`
 - Procedure addendum: `models/football/procedures/FOOTBALL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md`
@@ -19,7 +19,7 @@ Load the following in this order, applying newer rules over older conflicts:
 2. `models/LEGACY_MODEL_CHANGELOG.md` for the retained pre-v0.2.5 baseline
 3. `models/football/procedures/FOOTBALL_BETTING_PROCEDURE.md`
 4. `models/football/procedures/FOOTBALL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md`
-5. `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.5.md` through `MODEL_RULES_FOOTBALL_V0.2.34.md`, in ascending version order
+5. `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.5.md` through `MODEL_RULES_FOOTBALL_V0.2.35.md`, in ascending version order
 6. `models/football/handoffs/CHAT_TRANSFER_HANDOFF_2026-08-06.md`
 7. `/ledger.json` when official record, bankroll, exposure, placement, or settlement status is relevant
 
@@ -43,6 +43,7 @@ Do not load football rules from the repository root. Root model copies were reti
 - v0.2.32 applies full model parity to reminders, automations and secondary threads; prohibits unsupported precise probabilities and informal executable labels; enforces one-best-expression and combined-exposure controls across all surfaces; and treats user-reported cross-thread placements as official positions with ticket details pending
 - v0.2.33 adds regime-persistence, directional-switch, candidate-oscillation, one-event binary-market and substitution-cluster controls; invalidating one side never automatically confirms the opposite side
 - v0.2.34 requires competition-format verification, separates regulation and shootout utility, adds dual-value tie and pressure-to-urgency gates, strengthens tied-state side switching and further de-emphasizes xG/xGOT
+- v0.2.35 requires a fresh LEAN-or-NO-BET decision once a stated HOLD unlock is satisfied and mandates side-versus-one-goal-over comparison when persistent pressure develops in a tied match
 
 ## Response scope and brevity
 
@@ -52,11 +53,10 @@ Do not load football rules from the repository root. Root model copies were reti
 
 ## Active handoff state
 
-- Immediate match: Jagiellonia Białystok vs Rangers
-- Official model LEAN placed: Jagiellonia Białystok DNB @1.94 decimal
-- Expected model stake: 0.25u; ticket details remain pending
-- Current live score, clock, events, and prices must not be assumed; refresh from the latest user evidence
-- Same-match executable exposure remaining under the normal cap: 0u
+- Current match focus: none; awaiting the next fixture
+- Existing official model position preserved from the handoff: Jagiellonia Białystok DNB @1.94 decimal
+- Expected model stake: 0.25u; ticket details and settlement remain pending
+- Do not assume any new match score, clock, events, lineups or prices; refresh from user evidence
 - Ledger write remains unauthorized
 
 ## Write boundary
