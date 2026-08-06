@@ -44,7 +44,8 @@ Do not search the repository root for LoL rules. Historical versions and reviews
 - 12/20 settled/completed
 - Settled record: 7-5
 - Settled net: +85,750 VND / +0.08575u
-- Next model-attributed wager number: 13
+- Wager 13: **T1A -7.5 kills @1.864, 0.25u — official pending**
+- Next new model-attributed wager number: 14
 - Stake: 0.25u = 250,000 VND
 - Maximum exposure: 0.25u per map
 - Minimum odds: 1.60
@@ -68,8 +69,11 @@ The following user-confirmed wins are recorded in the overall ledger but remain 
 
 - Active match: T1 Esports Academy vs DN SOOPers Challengers, Game 2.
 - Series state: T1A leads 1-0.
-- Current Game 2 exposure: 0u.
-- Awaiting Game 2 sides, complete draft and synchronized prices.
+- Official open position: T1A -7.5 kills @1.864 for 0.25u.
+- Current Game 2 exposure: 0.25u; no additional Game 2 wager is allowed.
+- Total kills and duration must be projected as separate analytical markets.
+- Separate analysis does not create separate exposure allowances.
+- Duration remains official-ineligible through wager 20.
 - **Item verification is suspended until explicit user restoration.**
 - Unknown items are neutral and must not be guessed.
 - Missing items alone do not block an otherwise valid verdict.
