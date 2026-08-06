@@ -14,7 +14,7 @@
 - Shared stake policy: `shared/STAKE_POLICY_V2.json`
 - Latest closed handoff: `models/lol/handoffs/CURRENT_LIVE_HANDOFF_GENG_HLE_G3.md`
 - Latest review: `models/lol/reviews/GENG_HLE_GAME3_EXECUTION_REVIEW_2026-08-05.md`
-- Active live handoff: **none**
+- Active live handoff: `models/lol/handoffs/CURRENT_LIVE_HANDOFF_T1A_DNS_G1.md`
 
 ## Required load order
 
@@ -32,7 +32,7 @@
 12. `models/lol/procedures/LOL_LIVE_SCOREBOARD_READING_PROTOCOL_2026-08-01.md`
 13. `models/lol/context/lol-v0.3.25/PREMATCH_PREGAME_PROCEDURE.md`
 14. `shared/STAKE_POLICY_V2.json`
-15. latest relevant file in `models/lol/handoffs/`, only when an active handoff exists
+15. latest relevant file in `models/lol/handoffs/`, when an active handoff exists
 
 LoL v0.3.28 is the active delta and supersedes earlier rules only where stated. It keeps v0.3.27 role-weighted gold and v0.3.26 soul-cascade calibration, adds observed-execution scoring and correction-triggered full market rescans, and suspends item verification until the user explicitly restores it.
 
@@ -40,10 +40,11 @@ Do not search the repository root for LoL rules. Historical versions and reviews
 
 ## Current probation
 
-- 11/20 completed
-- Record: 7-4
-- Net: +335,750 VND / +0.33575u
-- Wager 12 next for model-attributed probation
+- 11/20 settled/completed
+- Settled record: 7-4
+- Settled net: +335,750 VND / +0.33575u
+- Wager 12: **DNS +7.5 kills @1.981, 0.25u — official pending**
+- Next new model-attributed wager number: 13
 - Stake: 0.25u = 250,000 VND
 - Maximum exposure: 0.25u per map
 - Minimum odds: 1.60
@@ -58,8 +59,9 @@ The following user-confirmed wins are recorded in the overall ledger but remain 
 
 ## Current operating status
 
-- No active LoL match handoff.
-- No open LoL exposure.
+- Active match: T1 Esports Academy vs DN SOOPers Challengers, Game 1.
+- Official open position: DNS +7.5 kills @1.981 for 0.25u.
+- Current Game 1 exposure: 0.25u; no additional Game 1 wager is allowed.
 - **Item verification is suspended until explicit user restoration.**
 - Unknown items are neutral and must not be guessed.
 - Missing items alone do not block an otherwise valid verdict.
