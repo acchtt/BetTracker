@@ -14,7 +14,7 @@
 - Shared stake policy: `shared/STAKE_POLICY_V2.json`
 - Latest closed handoff: `models/lol/handoffs/CURRENT_LIVE_HANDOFF_T1_DK_G1_SHADOW.md`
 - Latest review: `models/lol/reviews/T1_DK_GAME1_SHADOW_REVIEW_2026-08-06.md`
-- Active live handoff: **none**
+- Active live handoff: `models/lol/handoffs/CURRENT_LIVE_HANDOFF_T1_DK_G2_SHADOW.md`
 
 ## Required load order
 
@@ -73,7 +73,7 @@ Do not search the repository root for LoL rules. Historical versions and reviews
 
 ## Official-wager circuit breaker
 
-The next **two complete LoL maps** are shadow-analysis only. One complete map has now been reviewed; one additional complete shadow map remains.
+The next **two complete LoL maps** are shadow-analysis only. One complete map has now been reviewed; Game 2 of T1 vs Dplus KIA is the second shadow map and remains active.
 
 During the circuit breaker:
 
@@ -105,6 +105,17 @@ Until shadow map 2 is reviewed:
 
 This is a provisional review finding, not a new active model version.
 
+## Active shadow map 2
+
+- Event: T1 vs Dplus KIA Game 2
+- Series score: T1 leads 1-0
+- Latest synchronized state: 10:29, T1 led 4-2 kills and approximately 204 gold; all major objectives and towers were 0-0
+- Role-gold direction: T1 top/bot/support; DK jungle/mid
+- No shadow lean logged from the first snapshot
+- Initial total-kill projection: central 28-33, point 31
+- Initial duration projection: central 33-36 minutes, point 34:30
+- Next reassessment trigger: first dragon, first tower, major fight, or material role-gold change
+
 ## Non-model-attributed settled LoL wagers
 
 The following user-confirmed wins are recorded in the overall ledger but remain excluded from automatic probation counting absent an explicit exception:
@@ -114,10 +125,10 @@ The following user-confirmed wins are recorded in the overall ledger but remain 
 
 ## Current operating status
 
-- No active LoL handoff.
-- Circuit-breaker progress: 1 of 2 complete shadow maps reviewed.
+- Active shadow map: T1 vs Dplus KIA Game 2.
+- Circuit-breaker progress: 1 of 2 complete shadow maps reviewed; map 2 active.
 - Shadow calibration record during the circuit breaker: 1-1 across logged leans.
-- One additional complete shadow map and written review remain required.
+- No shadow lean is currently logged for Game 2.
 - No open LoL exposure and no ledger entry from shadow analysis.
 - Official LoL betting remains paused.
 - Total kills and duration must be projected as separate analytical markets.
