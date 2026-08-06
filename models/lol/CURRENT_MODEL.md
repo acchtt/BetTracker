@@ -12,9 +12,9 @@
 - Procedure addenda: `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md` and `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-02.md`
 - Scoreboard protocol: `models/lol/procedures/LOL_LIVE_SCOREBOARD_READING_PROTOCOL_2026-08-01.md`
 - Shared stake policy: `shared/STAKE_POLICY_V2.json`
-- Latest closed handoff: `models/lol/handoffs/CURRENT_LIVE_HANDOFF_T1_DK_G1_SHADOW.md`
-- Latest review: `models/lol/reviews/T1_DK_GAME1_SHADOW_REVIEW_2026-08-06.md`
-- Active live handoff: `models/lol/handoffs/CURRENT_LIVE_HANDOFF_T1_DK_G2_SHADOW.md`
+- Latest closed handoff: `models/lol/handoffs/CURRENT_LIVE_HANDOFF_T1_DK_G2_SHADOW.md`
+- Latest review: `models/lol/reviews/T1_DK_GAME2_SHADOW_REVIEW_2026-08-06.md`
+- Active live handoff: **none**
 
 ## Required load order
 
@@ -59,31 +59,46 @@ Do not search the repository root for LoL rules. Historical versions and reviews
 - Latest verified state: DNS led 29-23 kills with approximately +4.2k gold, 4-3 dragons and 3-0 Barons
 - Exact final game clock and explicit map-winner statement were not supplied; the user explicitly confirmed the wager loss
 
-## Latest shadow calibration map
+## Completed two-map shadow circuit breaker
 
-- Event: T1 vs Dplus KIA Game 1
-- Final supplied state: T1 won 20-4 at 28:24
+The two required complete shadow maps have been settled and reviewed.
+
+### Shadow Map 1 — T1 vs Dplus KIA Game 1
+
+- Final: T1 won 20-4 at 28:24
 - Final total kills: 24
-- Final objectives: T1 9-2 towers, 3-1 dragons, 1-0 Barons and 1-0 inhibitors
-- Under 30.5 kills @1.827 — shadow win, 0u
-- Over 29 minutes @1.856 — shadow loss, 0u
-- Shadow map result: 1-1 across the two logged leans
+- Under 30.5 kills @1.827 — shadow win
+- Over 29 minutes @1.856 — shadow loss
+- Shadow record: 1-1
+- Main calibration: kill-total projection was accurate; duration overvalued theoretical DK waveclear and underweighted T1's three-Grub structure acceleration and broad role-gold control
+
+### Shadow Map 2 — T1 vs Dplus KIA Game 2
+
+- Final: T1 won 17-7 at 36:57
+- Final total kills: 24
+- Final objectives: T1 10-3 towers, DK 3-2 dragons, T1 2-0 Barons and T1 1-0 inhibitors
+- Under 31.5 kills @1.811 — shadow win, simulated 0.25u, +0.20275u
+- Over 34 minutes @1.863 — shadow win, simulated 0.25u, +0.21575u
+- Shadow record: 2-0
+- Nominal simulated exposure: 0.50u
+- Simulated net: +0.41850u / +418,500 VND
+- Actual exposure and official P&L: 0u / 0 VND
+- Main calibration: the original duration point estimate of 36:15 was accurate within 42 seconds; expiration of T1's first Baron without an inhibitor was valid observed stall confirmation
+
+### Combined circuit-breaker result
+
+- Complete maps reviewed: **2 of 2**
+- Combined shadow record: **3-1**
 - Ledger/probation impact: none
-- Main calibration: kill-total projection was accurate; duration overvalued DK waveclear and underweighted T1's three-Grub structure acceleration and broad role-gold control
 
-## Official-wager circuit breaker
+The circuit breaker is complete, but official LoL betting does **not** resume automatically. It remains paused until explicit user authorization.
 
-The next **two complete LoL maps** are shadow-analysis only. One complete map has now been reviewed; Game 2 of T1 vs Dplus KIA is the second shadow map and remains active.
+## Shadow stake convention
 
-During the circuit breaker:
-
-- all stakes are 0u;
-- no market may be labeled `BET`, `OFFICIAL BET`, or an official candidate;
-- exact verdicts, projections, state arithmetic, and post-map reviews remain mandatory;
-- no shadow result changes probation;
-- official recommendations resume only after two full-map reviews and explicit user authorization.
-
-Do not advise betting against the model as an automatic inverse strategy.
+- Logged shadow leans default to a nominal simulated stake of **0.25u** unless explicitly stated otherwise.
+- Nominal stakes are used only for shadow performance tracking.
+- Actual shadow stake, exposure and ledger impact remain **0u**.
+- Multiple shadow leans may be tracked on one map because they are not placed wagers; correlations must still be identified during review.
 
 ## Live handicap control
 
@@ -95,26 +110,19 @@ For underdog positive handicaps of +7.5 or wider:
 - estimate remaining major fight inventory before judging future net-kill arithmetic;
 - reject widened lines that merely compensate for worsening state.
 
-## Provisional duration calibration from shadow map 1
+## Duration calibration retained after the shadow circuit breaker
 
-Until shadow map 2 is reviewed:
+- An Over-duration lean near the current clock requires at least a two-minute point-estimate buffer above the line at issuance.
+- When the leader has three or more Grubs, at least +4k gold and four or more winning role-gold matchups, theoretical enemy waveclear alone is not stall confirmation.
+- Require one observed successful inner-tower, Baron-expiry or base-defense cycle after the first major structure conversion before upgrading an extension branch.
+- Dragon stacks can preserve future fight inventory and duration even when the opponent leads gold and towers.
+- A successful Baron defense can improve duration Over probability while simultaneously strengthening a kill Under thesis.
 
-- an Over-duration shadow lean near the current clock requires at least a two-minute point-estimate buffer above the line;
-- when the leader has three or more Grubs, at least +4k gold and four or more winning role-gold matchups, theoretical enemy waveclear alone is not stall confirmation;
-- require one observed successful inner-tower or base defense after the first major structure conversion before upgrading the extension branch.
+## Total-kill calibration retained after the shadow circuit breaker
 
-This is a provisional review finding, not a new active model version.
-
-## Active shadow map 2
-
-- Event: T1 vs Dplus KIA Game 2
-- Series score: T1 leads 1-0
-- Latest synchronized state: 10:29, T1 led 4-2 kills and approximately 204 gold; all major objectives and towers were 0-0
-- Role-gold direction: T1 top/bot/support; DK jungle/mid
-- No shadow lean logged from the first snapshot
-- Initial total-kill projection: central 28-33, point 31
-- Initial duration projection: central 33-36 minutes, point 34:30
-- Next reassessment trigger: first dragon, first tower, major fight, or material role-gold change
+- A structurally even map with no towers down can still support a kill Under when both teams can advance through siege, zone control and objective pressure without repeated two-sided fights.
+- Late-map kill projections must reserve a cleanup-fight allowance when a second Baron and base defense remain available.
+- Total kills and duration are separate market families and must receive separate projections and verdicts.
 
 ## Non-model-attributed settled LoL wagers
 
@@ -125,13 +133,11 @@ The following user-confirmed wins are recorded in the overall ledger but remain 
 
 ## Current operating status
 
-- Active shadow map: T1 vs Dplus KIA Game 2.
-- Circuit-breaker progress: 1 of 2 complete shadow maps reviewed; map 2 active.
-- Shadow calibration record during the circuit breaker: 1-1 across logged leans.
-- No shadow lean is currently logged for Game 2.
-- No open LoL exposure and no ledger entry from shadow analysis.
-- Official LoL betting remains paused.
-- Total kills and duration must be projected as separate analytical markets.
+- No active live handoff.
+- Circuit breaker: **complete, 2 of 2 maps reviewed**.
+- Official LoL betting: **paused pending explicit user authorization**.
+- Probation remains 13/20, record 7-6, net -164,250 VND / -0.16425u.
+- No open LoL exposure.
 - Duration remains official-ineligible through wager 20.
 - **Item verification is suspended until explicit user restoration.**
 - Unknown items are neutral and must not be guessed.
