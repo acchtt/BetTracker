@@ -1,50 +1,48 @@
 # LoL v0.3.25 Probation Status
 
-**Effective:** 2026-08-06 12:58 UTC+7  
+**Effective:** 2026-08-06 13:41 UTC+7  
 **Status:** Active
 
 ## Current state
 
-- Settled/completed: 12/20
-- Settled official record: 7-5
-- Settled net result: +85,750 VND / +0.08575u
-- Wager 13: **T1A -7.5 kills @1.864, 0.25u — official pending**
-- Next new model-attributed wager number: 14
-- Wagers 14-20 remain after the active pending wager
+- Settled/completed: 13/20
+- Settled official record: 7-6
+- Settled net result: -164,250 VND / -0.16425u
+- Wager 13: **T1A -7.5 kills @1.864, 0.25u — loss**
+- Next model-attributed wager number: 14
+- Wagers 14-20 remain
 
-## Active wager 13
+## Settled wager 13
 
 - Event: T1 Esports Academy vs DN SOOPers Challengers — Game 2
-- Series state: T1A leads 1-0
+- Series state at placement: T1A led 1-0
 - Market: T1A -7.5 kills
 - Odds: 1.864
 - Assessed odds: 1.897
 - Stake: 0.25u = 250,000 VND
-- Potential payout: 466,000 VND
-- Potential profit: 216,000 VND / +0.216u
+- Result: loss
+- Net: -250,000 VND / -0.25u
 - Ticket ID: 1151540402
 - Placement confirmed: 2026-08-06 12:58 UTC+7
-- Model version: LoL v0.3.29
+- Result confirmed: 2026-08-06 13:41 UTC+7
+- Model at placement: LoL v0.3.29
+- Resulting calibration: LoL v0.3.30
 - Attribution: model-attributed
-- Current map exposure: 0.25u / 0.25u
-- Additional Game 2 wagers allowed: no
 
-The settled record and net remain unchanged until wager 13 is settled.
+Latest supplied state showed DNS leading 29-23 kills with approximately +4.2k gold, 4-3 dragons and 3-0 Barons. The exact final game clock and explicit map-winner statement were not supplied, but the user explicitly confirmed the handicap loss.
 
-## Wager 13 draft
+## Wager 13 process lesson
 
-DNS blue: Olaf / Pantheon / Cassiopeia / Aphelios / Lulu.
+The model overreacted to the Game 1 blowout and failed to reconcile the negative-handicap break-even probability with the favorite's no-vig map-win probability.
 
-T1A red: Gnar / Nocturne / Syndra / Yunara / Blitzcrank.
+At the accepted price, the wager required T1A to cover -7.5 in approximately 88.1% of its projected map wins. LoL v0.3.30 adds:
 
-The thesis is T1A's lower-burden access and cascade route against DNS's active two-carry collapse risk. The accepted price was 0.033 below the assessed quote but remained above the 1.60 minimum and was placed immediately at the same post-draft state.
-
-## Market separation
-
-- Total kills and duration must be projected separately in analysis.
-- They do not create separate exposure allowances.
-- No Game 2 kill-total add-on is allowed because the full 0.25u map cap is used.
-- Duration remains official-ineligible through wager 20.
+- favorite-win-to-cover conversion arithmetic;
+- current-map evidence reset;
+- same-series anti-whipsaw protection;
+- stronger resilience credit for anti-dive and protection systems;
+- access reliability and failure-cost testing;
+- temporary pregame wide-handicap suspension through wager 15.
 
 ## Settled wager 12
 
@@ -58,8 +56,6 @@ The thesis is T1A's lower-burden access and cascade route against DNS's active t
 - Model at placement: LoL v0.3.28
 - Resulting calibration: LoL v0.3.29
 
-Latest supplied state at 28:35 showed T1A leading 27-8 kills, approximately +12k gold, 9-1 towers, 3-1 dragons, 1-0 Barons and 2-0 inhibitors. The exact final scoreboard was not supplied, but the user explicitly confirmed the wager lost.
-
 ## Exposure rules
 
 - Standard stake: 0.25u = 250,000 VND
@@ -69,6 +65,14 @@ Latest supplied state at 28:35 showed T1A leading 27-8 kills, approximately +12k
 - Official only after explicit placement confirmation
 - All duration markets are official-ineligible through wager 20
 
+## Temporary handicap control
+
+Until wager 15 is settled:
+
+- pregame kill handicaps at absolute lines of 7.5 or wider are analysis-only;
+- those lines may become official only live after current-map fight, objective/structure, clock, gold and exact-margin confirmation;
+- moneylines, smaller kill handicaps and kill totals remain eligible under normal gates.
+
 ## Official wagers 7-13
 
 - Wager 7: SK +9.5 kills @1.854 — won +213,500 VND
@@ -77,7 +81,7 @@ Latest supplied state at 28:35 showed T1A leading 27-8 kills, approximately +12k
 - Wager 10: FNC moneyline @1.851 — won +212,750 VND
 - Wager 11: KC vs Team Heretics Game 2 Under 22.5 kills @1.894 — won +223,500 VND
 - Wager 12: DNS +7.5 kills @1.981 — lost -250,000 VND
-- Wager 13: T1A -7.5 kills @1.864 — official pending
+- Wager 13: T1A -7.5 kills @1.864 — lost -250,000 VND
 
 ## Staking review
 
