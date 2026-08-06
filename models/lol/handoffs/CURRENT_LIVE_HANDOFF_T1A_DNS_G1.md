@@ -1,10 +1,10 @@
-# Current Live Handoff — T1 Academy vs DNS Game 1
+# Closed Live Handoff — T1 Academy vs DNS Game 1
 
-**Updated:** 2026-08-06 12:09 UTC+7  
-**Active model:** LoL v0.3.28  
+**Closed:** 2026-08-06 12:40 UTC+7  
+**Model at placement:** LoL v0.3.28  
+**Resulting calibration:** LoL v0.3.29  
 **Competition:** LCK CL 2026 Rounds 3-4  
-**Series:** T1 Esports Academy 0-0 DN SOOPers Challengers  
-**Current map:** Game 1
+**Series after Game 1:** T1 Esports Academy 1-0 DN SOOPers Challengers
 
 ## Draft and sides
 
@@ -12,63 +12,47 @@ DNS blue: Rumble / Jarvan IV / Ryze / Ezreal / Neeko.
 
 T1A red: Ornn / Vi / Akali / Lucian / Milio.
 
-## Official wager
+## Settled official wager
 
 - Wager number: LoL probation #12
 - Selection: DNS +7.5 kills
 - Accepted odds: 1.981
 - Stake: 0.25u = 250,000 VND
-- Potential payout: 495,250 VND
-- Potential profit: 245,250 VND / +0.24525u
 - Ticket ID: 1151528505
-- Placement confirmed: 2026-08-06 12:09 UTC+7
-- Status: pending
+- Result: loss
+- Net: -250,000 VND / -0.25u
 - Model-attributed: yes
 - Execution valid: yes
 
-## Exposure
+## Latest verified state
 
-- Current Game 1 exposure: 0.25u
-- Maximum permitted exposure per map: 0.25u
-- Additional Game 1 bets allowed: no
-- No correlated same-map add-ons
+At 28:35:
 
-## Thesis at placement
+- kills: DNS 8-27 T1A;
+- gold: T1A approximately +12k;
+- towers: DNS 1-9 T1A;
+- dragons: DNS 1-3 T1A;
+- Barons: DNS 0-1 T1A;
+- inhibitors: DNS 0-2 T1A.
 
-At the post-draft 0:00 state, T1A needed a final margin of at least eight kills to defeat DNS +7.5.
+Visible role gold:
 
-DNS retained credible return-kill and teamfight conversion through Jarvan IV, Neeko and Rumble, with Ryze and Ezreal able to follow from safer ranges. T1A held a slight-to-moderate draft edge and the simpler initiation pattern, but the line required substantial kill-margin separation rather than merely a T1A map win.
+- DNS top approximately +2,293;
+- T1A jungle approximately +888;
+- T1A mid approximately +4,737;
+- T1A bot approximately +6,304;
+- T1A support approximately +2,351.
 
-Estimated cover probability at assessment: 58-61%.  
-Estimated fair odds: 1.64-1.72.  
-Assessed price: 1.941.  
-Accepted price: 1.981.
+The user explicitly confirmed the wager lost. Exact final scoreboard was not supplied.
 
-## Pregame projections
+## Review conclusion
 
-- Kill range: low 22-25; central 27-32; high 35-40
-- Kill point estimate: 29
-- Duration: fast 29-31; central 33-37; extension 39-43
-- Duration point estimate: 35 minutes
-- Duration remains official-ineligible through probation wager 20
+The model overvalued DNS's theoretical coordinated return-kill tools and underweighted T1A's heavy-favorite cascade, lower execution burden, protected carry structure and DNS two-carry collapse risk. LoL v0.3.29 corrects this process.
 
-## Live monitoring priorities
+## Updated probation
 
-1. exact clock and kill margin;
-2. total and role-gold direction;
-3. towers, dragons, Grubs, Herald, Baron, inhibitors and base access;
-4. independent execution conversions;
-5. whether DNS preserves return-kill function;
-6. whether T1A develops a repeatable margin-expansion route.
-
-Item verification remains suspended until explicit user restoration. Unknown items are neutral and must not be guessed.
-
-## Probation state
-
-- Settled/completed before this map: 11/20
-- Settled record before this map: 7-4
-- Settled net before this map: +335,750 VND / +0.33575u
-- Wager 12: official and pending
-- Next new model-attributed wager number after this placement: 13
-
-The settled record and net remain unchanged until Game 1 settlement.
+- Completed: 12/20
+- Record: 7-5
+- Net: +85,750 VND / +0.08575u
+- Next wager: 13
+- Open exposure: 0u
