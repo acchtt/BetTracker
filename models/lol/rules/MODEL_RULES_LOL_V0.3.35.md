@@ -2,77 +2,98 @@
 
 **Status:** Active delta  
 **Effective date:** 2026-08-07 15:02 UTC+7  
+**Corrected:** 2026-08-07 16:01 UTC+7  
 **Supersedes:** v0.3.34 only where stated
 
 ## Purpose
 
-Extend the official-wager circuit breaker by five additional complete reviewed maps at the user's explicit request after the eighth-map calibration sequence reached its final map.
+Extend the official-wager circuit breaker by five additional complete reviewed maps at the user's explicit request. This correction also records the verified EDG vs JDG Game 1 settlement and enforces pre-existing duration and settlement controls after an erroneous clock read.
 
 ## 1. Thirteen-map circuit breaker
 
-1. The circuit breaker now requires **13 complete reviewed maps** in total.
+1. The circuit breaker requires **13 complete reviewed maps** in total.
 2. Maps 9 through 13 are additional shadow-analysis maps beyond the prior eight-map requirement.
-3. During the entire circuit breaker:
-   - actual stake and actual exposure remain **0u**;
-   - no market may be labeled `BET`, `OFFICIAL BET`, or an official candidate;
-   - a logged shadow lean defaults to simulated **0.25u** unless explicitly stated otherwise;
-   - shadow results do not change `ledger.json`, official P/L, or official probation;
-   - exact settlement and a post-map review remain required for a map to count as complete.
-4. Official LoL recommendations do **not** resume automatically after map 13. Restoration requires explicit user authorization after all 13 maps are complete and reviewed.
-5. The extension cannot be shortened merely because simulated results improve.
+3. During the circuit breaker actual stake/exposure remain **0u**. Logged shadow leans default to simulated **0.25u** unless stated otherwise.
+4. Shadow results do not change the official ledger, official P/L, or probation.
+5. Official recommendations do not resume automatically after map 13; explicit user restoration is required.
 
-## 2. Current transition state
+## 2. Corrected map-8 settlement
 
-At activation:
+**Map 8 — EDG vs JDG Game 1**
 
-- maps **1-7 are complete and reviewed**;
-- **map 8 — EDG vs JDG Game 1 — is still live/incomplete** at the latest supplied frame;
-- the map-8 position **Over 32 minutes @1.803**, simulated 0.25u, is already mathematically settled as a **win** because the verified live clock reached 40:41;
-- map 8 does not count as complete until a final state is verified and its review is recorded;
-- current settled shadow market record including the map-8 duration position is **7-4**;
-- current nominal simulated net is **+0.48625u / +486,250 VND**;
-- actual exposure and actual P/L remain **0u / 0 VND**.
+- EDG blue: Ambessa / Jarvan IV / Ryze / Lucian / Milio.
+- JDG red: Gnar / Vi / Akali / Xayah / Rakan.
+- Entry at 12:31: **Over 32 minutes @1.803**, simulated 0.25u.
+- Entry state: 0-0 kills, JDG +59 gold, 0-0 towers, JDG 1-0 dragons.
+- Corrected final: **JDG won 20-7 at 30:43**.
+- Final structures/objectives shown: JDG 9-3 towers, 4-1 dragons, 1-0 Baron, 1-0 inhibitors.
+- Position result: **LOSS, -0.25u**.
 
-## 3. Retained maps 6-13 calibration controls
+An earlier third-party frame was read as 40:41 and caused a false mathematical win settlement. The later explicit user correction plus final scoreboard overrides that state. The false settlement is reversed.
 
-All v0.3.34 and handoff corrections remain active through map 13:
+## 3. Map-8 process review
 
-- default to one primary shadow lean per map;
-- a second lean requires a materially different thesis and synchronized state;
-- `NO LEAN` is acceptable;
-- no duration Over before 10:00 unless at least two genuine stall signals exist beyond ordinary towerlessness;
-- six or more total kills by 8:00 activates a wider fast-ending branch;
-- fourteen or more total kills by 16:00 prevents 0-0 towers from counting as confirming duration evidence;
-- around 20:00, a leader with at least +5k gold and a two-tower advantage invalidates short-line duration Overs unless exceptional counterevidence exists;
-- comeback tools widen the duration distribution rather than automatically increasing expected duration;
-- positive kill-handicap invalidation requires both a small cushion and credible structural/Baron/base conversion control;
-- do not chase a failing position with a wider correlated line;
-- recorded-position state and current thesis state remain separate;
-- a screenshot still marked `Live` is not final settlement evidence for map-result markets;
-- verdict first; logging after verdict.
+The Over 32 entry should have been rejected under already-active rules.
 
-## 4. Settlement distinction
+1. **Quiet-state clustering error:** 0-0 kills, 0-0 towers, and near-even gold were treated as multiple stall signals. They are one correlated quiet-state cluster, not independent anti-conversion evidence.
+2. **No observed anti-conversion event:** JDG had already converted the first dragon. There was no verified failed siege, resisted objective-to-structure sequence, or other post-cycle anti-conversion event supporting a duration Over.
+3. **Fast-branch contradiction:** the issued analysis itself contained a 30:00-32:00 fast-close branch. A realistic branch at or before the 32-minute line should have vetoed the Over under the retained duration rules.
+4. **Draft acceleration underweighted:** JDG's Vi-Rakan-Akali engage/access plus Xayah safety and Gnar follow-up created a credible one-fight cascade once the game left the quiet opening phase.
+5. **Settlement-control error:** a visible clock from a conflicting telemetry state was treated as decisive without later reconciliation. Any corrected final scoreboard or explicit user correction reverses such a settlement immediately.
 
-A market whose outcome is already mathematically determined by a verified live state may be graded before the map itself is final. Example: an Over 32-minute position is won once the verified clock exceeds 32:00 under the stated settlement basis.
+No new predictive rule is promoted from this single result. The correction is stricter enforcement of existing duration and evidence-integrity rules.
 
-This does **not** make the map complete for circuit-breaker accounting. A complete map still requires verified final-state evidence and review.
+## 4. Required duration enforcement through map 13
 
-## 5. Retained model controls
+All v0.3.34 and earlier duration controls remain active. In particular:
 
-All non-conflicting v0.3.33 through v0.3.26 controls remain active, including:
+- No duration Over before 10:00 unless at least two genuine stall signals exist beyond ordinary towerlessness.
+- After 10:00, correlated quiet indicators such as low kills, near-even gold, and zero towers remain one cluster; they do not become independent stall confirmations merely because more time has elapsed.
+- An Over requires observed anti-conversion evidence, not just absence of action.
+- If the model's own realistic fast-close branch reaches or beats the offered duration line, the Over is `NO LEAN` unless the defending team has already demonstrated resistance to that exact route.
+- Six or more kills by 8:00 activates a wider fast-ending branch.
+- Fourteen or more kills by 16:00 prevents 0-0 towers from confirming an Over.
+- Around 20:00, a leader with at least +5k gold and a two-tower edge invalidates short-line Overs absent exceptional counterevidence.
+- Comeback tools widen the distribution; they do not automatically increase expected duration.
 
-- late objective-density kill reserves and kill-Under invalidation thresholds;
+## 5. Settlement-correction control
+
+When explicit user correction or verified final evidence contradicts an earlier state or settlement:
+
+1. corrected/final evidence controls immediately;
+2. reverse the prior shadow settlement and all derived accounting;
+3. preserve the original entry rationale and timestamp;
+4. record the discrepancy as state-extraction, telemetry, or settlement-verification error;
+5. resynchronize cumulative shadow statistics before further model evaluation.
+
+A mathematically determined prop may be graded from a live state only when the underlying clock/state itself is reliable and correctly associated with the event/map.
+
+## 6. Corrected shadow state after map 8
+
+- Complete/reviewed: **8/13**.
+- Shadow market record: **6-5**.
+- Nominal simulated net: **+0.03550u / +35,500 VND**.
+- Actual exposure/P&L: **0u / 0 VND**.
+- Next complete reviewed map: **shadow map 9/13**.
+
+## 7. Retained model controls
+
+All non-conflicting v0.3.34 through v0.3.26 controls remain active, including:
+
+- verdict first;
+- recorded-position state separate from current thesis state;
 - dominance override and multi-snapshot stabilization;
 - current-map hard-evidence reset;
-- role-gold breadth and carry-concentration treatment;
-- observed execution conversion scoring;
+- role-gold breadth and observed-execution scoring;
+- late objective-density kill reserves and kill-Under invalidation thresholds;
 - soul-cascade and Grub-assisted structure routing;
 - Baron acquisition versus Baron conversion separation;
 - winner versus margin separation;
-- item verification suspension until explicit restoration;
-- duration markets remain official-ineligible through official probation wager 20.
+- no chasing failing positions with wider correlated lines;
+- item verification suspended until explicit restoration;
+- duration markets official-ineligible through official probation wager 20.
 
-## 6. Official probation remains unchanged
+## 8. Official probation unchanged
 
 - completed: **13/20**;
 - record: **7-6**;
@@ -85,13 +106,4 @@ All non-conflicting v0.3.33 through v0.3.26 controls remain active, including:
 
 ## Review requirement after map 13
 
-Produce a combined review covering:
-
-- all shadow market results and simulated P/L;
-- performance by market family;
-- entry-time versus update-time errors;
-- calibration by game phase;
-- duration calibration after the map-5 corrections;
-- handicap invalidation and dominance performance;
-- whether any market family is suitable for limited restoration;
-- whether the circuit breaker should end, narrow, or continue.
+Produce a combined review covering shadow record/P&L, performance by market family, entry-time versus update-time errors, duration calibration after maps 5 and 8, handicap invalidation/dominance performance, and whether restoration should end, narrow, or continue.
