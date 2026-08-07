@@ -54,11 +54,11 @@
 ## Thirteen-map shadow circuit breaker
 
 - Required complete reviewed maps: **13**
-- Complete/reviewed: **11**
-- Next complete reviewed map: **shadow map 12/13**
-- CB-11 — Hanjin BRION vs BNK FEARX Game 2 — is complete/reviewed
-- User-confirmed final despite delayed telemetry: **BRO won at 36:38, 25-16 kills**
-- Final structure: **BRO 9-3 towers, 4-1 dragons, 2-0 Barons, 1-0 inhibitors**
+- Complete/reviewed: **12**
+- Next complete reviewed map: **shadow map 13/13**
+- CB-12 — Top Esports vs Bilibili Gaming Game 1 — is complete/reviewed
+- Verified final: **TES won at 40:52, 34-31 kills**
+- Final structure: **TES 9-6 towers, 3-3 dragons, TES 1-2 BLG Barons, TES 1-0 inhibitors**
 - Maps 9-13 are additional shadow maps requested by the user on 2026-08-07
 - Actual stake/exposure: **0u**
 - Default logged shadow stake: simulated **0.25u**
@@ -68,95 +68,64 @@
 ## Corrected shadow accounting
 
 - Through map 7: **6-4, +0.28550u**
-- Map 8 — EDG vs JDG Game 1: **Over 32 minutes @1.803 LOST -0.25u**
-- CB-09 had no recorded position and therefore no P/L impact
-- CB-10: **BRO +6.5 kills @2.056 WON +0.264u** and **Under 33.5 kills @1.744 WON +0.186u**
-- CB-11: **Over 30.5 kills @1.710 WON +0.1775u**
-- Current settled shadow market record: **9-5**
-- Nominal simulated net: **+0.66300u / +663,000 VND**
+- CB-08: Over 32 minutes @1.803 — **LOSS -0.25u**
+- CB-09: no recorded position; no P/L impact
+- CB-10: BRO +6.5 kills @2.056 — **WIN +0.264u**; Under 33.5 kills @1.744 — **WIN +0.186u**
+- CB-11: Over 30.5 kills @1.710 — **WIN +0.1775u**
+- CB-12: TES ML @2.468 — **WIN +0.3670u**
+- Current settled shadow market record: **10-5**
+- Nominal simulated net: **+1.03000u / +1,030,000 VND**
 - Actual exposure/P&L: **0u / 0 VND**
 
-## Map-8 correction lesson
+## Retained calibration lessons
 
-The duration entry should have been rejected under existing rules:
+### CB-08 duration correction
 
-- 0-0 kills, 0-0 towers and near-even gold were one correlated quiet-state cluster, not independent stall evidence;
-- no observed post-cycle anti-conversion event supported the Over;
-- the analysis itself contained a 30:00-32:00 fast-close branch, which contradicted an Over 32 entry;
-- JDG's Vi-Rakan-Akali access plus Xayah/Gnar conversion created a credible one-fight acceleration branch;
-- an earlier conflicting clock read caused a false win settlement and has been reversed.
+The Over 32 entry should have been rejected: 0-0 kills, 0-0 towers and near-even gold were one correlated quiet-state cluster; no observed anti-conversion event supported the Over; the model itself contained a 30:00-32:00 fast-close branch; and JDG had a credible one-fight acceleration route. Conflicting telemetry caused a false settlement that was reversed after verified correction.
 
-## Map-9 review
+### CB-09 recording/dominance correction
 
-CB-09 draft:
+A conditional KT +7.5 @1.983 lean was never price-resynchronized or persisted, so it remained **CONDITIONAL / UNRECORDED**. At 21:45 Gen.G led 8-2, +9.7k, 5-0 towers and 2-0 dragons, correctly triggering dominance override. Final: Gen.G 12-2 at 25:13. Draft resilience alone is not enough for a positive handicap without synchronized price and current-map execution evidence.
 
-- Gen.G blue: Olaf / Lee Sin / Galio / Ezreal / Leona.
-- KT red: Zaahen / Skarner / Orianna / Kai'Sa / Nautilus.
+### CB-10 independent-market lesson
 
-A conditional **KT +7.5 @1.983** lean was discussed from the last quoted pregame price, but the exact price was not re-synchronized after draft and no Airtable `Positions` record was written. Under the connected-stack procedure it remained **CONDITIONAL / UNRECORDED** and never entered shadow P/L.
+BRO +6.5 @2.056 and Under 33.5 @1.744 both won. Kill handicap, Total Kills and Duration are distinct analytical market families. The second position was an explicit one-map exposure override only; it did not change the global stake policy.
 
-At 21:45 Gen.G led **8-2 kills, +9.7k gold, 5-0 towers, 2-0 dragons**. This correctly triggered dominance override and invalidated the KT handicap-resilience thesis. The verified final at 25:13 was Gen.G **12-2**.
+### CB-11 delayed-telemetry lesson
 
-No new predictive rule is promoted from this single unrecorded lean. Existing controls are enforced more strictly: draft resilience is not enough for a positive handicap without synchronized price plus current-map confirmation, and broad structural/economic dominance overrides theoretical comeback shape.
+Over 30.5 @1.710 won. The thesis degraded correctly at 9:14 after a 1-1 start but was not invalidated because both drafts retained substantial forced-fight inventory. The user explicitly confirmed the 36:38 BRO 25-16 frame was final despite the stale `Live` flag, and that explicit correction properly overrode delayed telemetry.
 
-## Map-10 review
+### CB-12 post-draft underdog repricing lesson
 
-CB-10 — Hanjin BRION vs BNK FEARX Game 1:
-
-- Preview prior treated BRO as materially closer than the opening market because of prior matchup evidence and current execution profile.
-- At 10:36 the live state was **2-2 kills, near-even gold, 0-0 towers, BFX 1-0 dragons**.
-- **BRO +6.5 kills @2.056** was recorded and later won; final kill score was **BRO 14-17 BFX**.
-- At 17:26, **Under 33.5 kills @1.744** independently qualified. The user explicitly instructed it to be recorded despite the existing map position; this was treated as a one-map exposure override, not a global stake-policy change.
-- Verified final: **BRO won at 38:35**, 31 total kills.
-- Both positions won for **+0.450u** combined simulated P/L.
-
-Calibration lesson: kill handicap, total kills, and duration are distinct analytical market families. A map-winner result does not determine kill-handicap validity, and independent market evaluation must remain separate from aggregate exposure policy.
-
-## Map-11 review
-
-CB-11 — Hanjin BRION vs BNK FEARX Game 2:
+CB-12 — TES blue vs BLG red, Game 1.
 
 Draft:
+- TES: Rumble / Vi / Ahri / Jhin / Alistar.
+- BLG: Ambessa / Jarvan IV / Lissandra / Corki / Camille.
 
-- BRO blue: Rumble / Pantheon / Cassiopeia / Kai'Sa / Leona.
-- BFX red: Ambessa / Vi / Syndra / Ziggs / Rell.
+Post-draft prices:
+- BLG ML 1.526 / TES ML 2.468;
+- Over/Under 32m 2.166 / 1.671;
+- Over/Under 31.5 kills 1.738 / 2.063;
+- BLG -6.5 1.746 / TES +6.5 2.031.
 
-Post-draft odds:
+Preview baseline favored BLG, but the completed draft materially improved TES: Vi-Ahri-Alistar supplied reliable pick access, Rumble punished BLG's dive stack, and BLG Camille support increased execution variance. TES was repriced to roughly 42-44% versus a 40.5% raw break-even and **TES ML @2.468** was recorded for 0.25u simulated.
 
-- BFX ML 1.648 / BRO 2.205;
-- Over/Under 32m 1.711 / 2.101;
-- Over/Under 30.5 kills 1.710 / 2.081;
-- BFX -5.5 1.867 / BRO +5.5 1.906.
-
-**Over 30.5 kills @1.710**, simulated 0.25u, was recorded pregame because both drafts retained repeatable engage and re-engage routes. At 9:14 the map was only **1-1 kills**, so the thesis was correctly marked **DEGRADED**, not invalidated. The position later became mathematically won when the live frame reached 41 kills.
-
-The scoreboard still displayed `Live` at 36:38, but the user explicitly confirmed this was the final state and that result telemetry was delayed. Under the connected-stack discrepancy hierarchy, the explicit user correction overrides the stale `Live` flag.
-
-Final accepted state:
-
-- **BRO won at 36:38**;
-- **25-16 kills** (41 total);
-- **BRO +11k gold**;
-- **BRO 9-3 towers**;
-- **BRO 4-1 dragons**;
-- **BRO 2-0 Barons**;
-- **BRO 1-0 inhibitors**.
-
-Position settlement: **WIN +0.1775u simulated**. No material process error is recorded.
+Verified final: **TES won at 40:52, 34-31 kills**. Position result: **WIN +0.367u simulated**. No material process error recorded. The unrecorded Over 31.5 analytical lean is not part of accounting.
 
 ## Connected-stack synchronization status
 
-Synchronization is current through **CB-11**.
+Synchronization is current through **CB-12**.
 
-- **GitHub:** authoritative through completed/reviewed CB-11.
-- **Airtable Maps:** CB-01 through CB-11 are present and complete/reviewed; CB-04 preserves unknown final details rather than inventing them.
-- **Airtable Positions:** all **14** actual recorded shadow market positions through CB-11 are persisted and settled as applicable.
-- **Airtable Snapshots:** synchronized evidence is mirrored from CB-05 through CB-11. Earlier CB-01 through CB-04 snapshot detail was not fully reconstructable and was deliberately not invented.
-- **Google calibration workbook Maps:** synchronized through CB-11.
-- **Google calibration workbook Positions:** synchronized through CB-11.
-- **Google calibration workbook Snapshots:** mirrored from CB-05 through CB-11.
-- **Google Rule Changes:** includes v0.3.35, the mandatory 2026-08-07 connected-stack procedure, independent Total-Kills/Duration handling, and compact-live-response presentation guidance.
-- There is **no tracker lag through CB-11**.
+- **GitHub:** authoritative through completed/reviewed CB-12.
+- **Airtable Maps:** CB-01 through CB-12 are present and complete/reviewed; CB-04 preserves unknown final details rather than inventing them.
+- **Airtable Positions:** all **15** actual recorded shadow market positions through CB-12 are persisted and settled as applicable.
+- **Airtable Snapshots:** synchronized evidence is mirrored from CB-05 through CB-12. Earlier CB-01 through CB-04 snapshot detail was not fully reconstructable and was deliberately not invented.
+- **Google calibration workbook Maps:** synchronized through CB-12.
+- **Google calibration workbook Positions:** synchronized through CB-12.
+- **Google calibration workbook Snapshots:** mirrored from CB-05 through CB-12.
+- **Google Rule Changes:** includes v0.3.35, the mandatory 2026-08-07 connected-stack procedure, independent Total-Kills/Duration handling, and compact-live-response guidance.
+- There is **no tracker lag through CB-12**.
 
 Every future chat must still run the startup sync audit. A previously synchronized stack can become stale again.
 
