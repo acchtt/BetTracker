@@ -2,7 +2,7 @@
 
 **Status:** Active immediately  
 **Effective date:** 2026-08-04 02:36 UTC+7  
-**Purpose:** Separate kill suppression from duration compression, require verified terminal access for fast-close projections, and add a methodical-control time adjustment.
+**Purpose:** Separate kill suppression from duration compression, require verified terminal access for fast-close projections, add a methodical-control time adjustment, and prevent positive-handicap entries that underweight aligned objective and gold control.
 
 This version supersedes v0.3.24 where conflicting. All stricter earlier bankroll, placement, probation, item-verification, state-direction, expiry, anti-line-chasing, repair, handicap, moneyline, totals, representative-thesis, return-kill, and clean-close rules remain active.
 
@@ -164,3 +164,60 @@ Review this patch after the earlier of:
 - probation wager 15 settlement;
 - two further terminal-access misclassifications;
 - a user-requested review.
+
+## 12. Aligned objective-control safeguard for positive kill handicaps
+
+**Added 2026-08-08 after FNC vs Team Heretics Game 2.**
+
+Triggering failure: at 9:05 FNC led only 1-0 kills and about 0.8k gold, but already held all three first Grubs and the first dragon. The model backed TH +7.5 kills @1.940 largely because the current kill margin was small. FNC later converted the aligned map-control edge into a one-sided kill margin and won the map. The error was treating a wide positive handicap as intrinsically safe while underweighting objective-led future fight access.
+
+### 12.1 Aligned-control state
+
+Treat the leader as having **aligned objective control** when all are true:
+
+1. the same team leads gold by a meaningful amount or has a clearly improving gold trajectory;
+2. that team controls both early neutral-objective classes available in the current phase — normally Grubs/Herald-side leverage **and** dragons — or has equivalent cross-map objective dominance;
+3. the trailing side has not demonstrated compensating tower pressure, successful structured fights, or a durable lane/economy advantage.
+
+A low current kill count does not neutralize aligned objective control.
+
+### 12.2 Positive-handicap restriction
+
+When aligned objective control is active against the side receiving the positive kill handicap:
+
+- **Do not promote the trailing side's positive kill handicap solely because the current kill margin is small or the cushion is wide.**
+- Require at least one verified compensation signal before a formal `LEAN` and at least two before an `OFFICIAL BET` or simulated circuit-breaker `TAKE`.
+
+Valid compensation signals are:
+
+1. a tower lead or clear tower-trade path for the trailing side;
+2. a successful structured 4v4/5v5 or two separate meaningful skirmish conversions;
+3. stable or improving gold despite losing the objective classes;
+4. item-qualified carry function plus executable engage/peel that has already produced a live conversion;
+5. control of the next major neutral setup with lane priority and vision sufficient to contest rather than merely arrive.
+
+Champion composition alone is not compensation.
+
+### 12.3 Escalation rule
+
+If the leader progresses from aligned objective control to **two dragons plus first objective-class sweep**, or adds a material gold lead while the trailing side still has zero towers and no meaningful fight win, then:
+
+`NO BET — OBJECTIVE-CONTROL HANDICAP VETO`
+
+applies to the trailing side's positive kill handicap until the state is repaired by a verified compensation signal.
+
+Do not use the phrase “they only need to avoid losing by X kills” as sufficient rationale in this state. The model must instead estimate whether the leader's objective control is likely to create repeated forced-fight and structure-conversion sequences that can expand the kill margin non-linearly.
+
+### 12.4 Mandatory handicap check
+
+Before every positive kill-handicap recommendation, explicitly check:
+
+- current kill margin and cushion;
+- gold direction;
+- Grubs/Herald-side control;
+- dragon control;
+- tower state;
+- whether the trailing side has actually won a structured fight;
+- whether the leader can force the next two objective or structure sequences.
+
+If objective control and gold are aligned for the opponent and the trailing side lacks compensation, the default is **PASS**, not “cushion safety.”
