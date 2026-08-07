@@ -1,6 +1,6 @@
 # FOOTBALL PRE-VERDICT VALIDATOR
 
-Effective with Football v0.2.40.
+Effective with Football v0.2.40; strengthened by Football v0.2.41.
 
 This procedure is mandatory before any `SHADOW LEAN — DO NOT PLACE`, `LEAN`, or `OFFICIAL BET` output. It is an enforcement layer over all active football rules, not a replacement for them.
 
@@ -46,9 +46,13 @@ Explicitly separate and apply:
 - loss-avoidance utility;
 - conservation utility.
 
-If a margin-sensitive tiebreaker applies, do not assume conservation from a lead without accounting for the value of additional margin.
+Verify the **exact order** of relevant standings or qualification tiebreakers. Do not merely note that goal difference exists.
 
-If format or utility propagation is unresolved, result = `HOLD`.
+If a margin-sensitive tiebreaker applies, do not assume conservation from a lead without accounting for the value and priority of additional margin. Do not overstate goal-difference value if another criterion ranks ahead of it.
+
+When competition incentives materially affect the candidate, `Margin Incentive Propagated` must be true in Airtable.
+
+If format, tiebreak order or utility propagation is unresolved, result = `HOLD`.
 
 ## Gate 4 — xG/xGOT role
 
@@ -106,9 +110,24 @@ When fading a material favourite or taking a protected underdog:
 
 - apply v0.2.38 live favourite-fade requirements;
 - apply v0.2.39 prematch deep-favourite and margin-risk requirements;
+- apply v0.2.41 protected-underdog burden escalation and favourite-first-goal branch requirements;
 - preserve the exact protected line rather than moving to a worse settlement line merely to meet the odds floor.
 
-If the applicable favourite-fade gate is unresolved or failed, validation cannot pass.
+### Prematch protected-underdog sub-gate
+
+When the candidate is approximately +1.0, +1.25, +1.5 or larger against a material/deep favourite:
+
+1. identify at least two independent affirmative **margin-suppression** channels under v0.2.41;
+2. write `Underdog Suppression Evidence Count` to Airtable and require value >= 2;
+3. at least one suppression channel must address the favourite's repeated high-value creation/conversion or multi-goal-margin weakness;
+4. at least one suppression channel must address underdog adverse-state resistance or a credible scoring route to restore protection;
+5. run the favourite-first-goal branch and require `Favorite First-Goal Branch = Pass`;
+6. reject defensive formation labels, generic counterattack narratives, friendly H2H, isolated close losses and the existence of the large handicap itself as standalone suppression evidence;
+7. when competition margin incentives matter, require `Margin Incentive Propagated = true`.
+
+If `Underdog Suppression Evidence Count < 2`, `Favorite First-Goal Branch = Fail/Unresolved`, or applicable margin incentive propagation is false, result = `FAIL`.
+
+If the applicable favourite-fade gate is otherwise unresolved or failed, validation cannot pass.
 
 ## Gate 8 — market-family scan
 
@@ -158,9 +177,11 @@ Required fields include at minimum:
 - goal environment;
 - synchronization and reset status;
 - competition-format and utility verification;
+- margin-incentive propagation when applicable;
 - xG role;
 - primary channels and count;
 - favourite-fade and directional-persistence states where applicable;
+- underdog suppression evidence count and favourite-first-goal branch when applicable;
 - major-market scan status;
 - circuit-breaker mode;
 - validator result and fail reasons.
