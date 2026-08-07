@@ -2,7 +2,7 @@
 
 **Canonical namespace:** `models/football/`
 
-- Active model: **Football v0.2.40**
+- Active model: **Football v0.2.41**
 - Organized loading guide: `models/football/ORGANIZED_FILE_LOADING_GUIDE.md`
 - Main procedure: `models/football/procedures/FOOTBALL_BETTING_PROCEDURE.md`
 - Procedure addendum: `models/football/procedures/FOOTBALL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md`
@@ -21,7 +21,7 @@ Load the following in this order, applying newer rules over older conflicts:
 2. `models/LEGACY_MODEL_CHANGELOG.md` for the retained pre-v0.2.5 baseline
 3. `models/football/procedures/FOOTBALL_BETTING_PROCEDURE.md`
 4. `models/football/procedures/FOOTBALL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md`
-5. `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.5.md` through `MODEL_RULES_FOOTBALL_V0.2.40.md`, in ascending version order
+5. `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.5.md` through `MODEL_RULES_FOOTBALL_V0.2.41.md`, in ascending version order
 6. `models/football/procedures/FOOTBALL_PRE_VERDICT_VALIDATOR.md`
 7. `models/football/airtable/FOOTBALL_DECISION_STATE_AIRTABLE.md`
 8. `models/football/handoffs/CHAT_TRANSFER_HANDOFF_2026-08-06.md`
@@ -63,6 +63,7 @@ Do not load football rules from the repository root. Root model copies were reti
 - v0.2.38 preserves protected handicap settlement, strengthens live favourite-fade and directional-switch gates, and prohibits using shots on target alone as scoring-superiority evidence
 - v0.2.39 strengthens **prematch** favourite-fade and margin-risk analysis, vetoes formation/possession narratives as standalone protection evidence, gives friendly H2H near-zero decision weight, and activates the four-match football circuit breaker
 - v0.2.40 adds the **hard pre-verdict validator**, Airtable-backed decision-state write lock, xG enforcement lock, regime-consistency lock, competition-utility propagation lock and mandatory two-channel primary-evidence minimum
+- v0.2.41 strengthens **protected-underdog deep-favourite validation**: at least two affirmative margin-suppression channels, mandatory favourite-first-goal branch testing, exact tiebreak-order propagation, and Airtable margin-branch fields are required before a large protected underdog can pass
 
 ## Hard pre-verdict enforcement
 
@@ -74,6 +75,14 @@ Before any `SHADOW LEAN — DO NOT PLACE`, `LEAN`, or `OFFICIAL BET`:
 4. while the circuit breaker is active, output only `SHADOW LEAN — DO NOT PLACE` and create a corresponding `Circuit Breaker` record.
 
 If validation is `HOLD` or `FAIL`, do not promote the candidate. If Airtable decision-state validation is unavailable, return `NO BET — HOLD — decision-state validation unavailable` rather than bypassing the control.
+
+For any prematch protected-underdog candidate against a material/deep favourite, Airtable must additionally show:
+
+- `Underdog Suppression Evidence Count >= 2`;
+- `Favorite First-Goal Branch = Pass`;
+- `Margin Incentive Propagated = true` when competition margin/tiebreak incentives are relevant.
+
+Failure of any applicable condition forces `NO BET`.
 
 ## Airtable operational control
 
@@ -96,8 +105,7 @@ Airtable is an operational decision-control log only. `/ledger.json` remains aut
 
 - Current match focus: Portland Timbers vs Puebla.
 - Latest user-supplied synchronized snapshot before v0.2.40 activation: Portland 5-1 Puebla at approximately 58:01. The 5-1 goal created a new reset epoch; no post-goal shadow selection has been validated and the circuit breaker remains 0/4. Do not assume that score/minute persists without fresh user evidence.
-- Existing official position: San Diego FC +1.5 @1.89, expected stake 0.25u; user later reported América leading 3-0, but the wager is not settled until the final result is verified. Ticket ID, actual stake and placement timestamp remain pending.
-- Review classification for San Diego +1.5: **model-attributed prematch selection error**. The model overvalued the +1.5 protection and nominal 5-3-2 shape while underweighting América's deep-favourite margin prior and San Diego's volatile away defensive tail; the June 2025 friendly H2H should have carried near-zero decision weight.
+- Club América vs San Diego FC: **San Diego FC +1.5 @1.89 — user confirmed loss at final score América 3-1 San Diego.** Expected stake 0.25u; ticket ID, actual stake and placement timestamp remain pending. Review classification: **model-attributed prematch selection error**. The pick failed to establish two independent margin-suppression channels, did not pass a favourite-first-goal branch, overvalued nominal 5-3-2/protection and friendly H2H, underweighted San Diego's adverse away margin tail, and incompletely propagated Leagues Cup margin incentives. Ledger not updated.
 - Chicago Fire vs Necaxa: Necaxa +0.5 @1.89 — user confirmed loss. Review classified the selection as a model-attributed market-promotion error: the model reduced protection from the watched +0.75 line and overweighted shots on target without sufficient high-value access. Expected stake 0.25u; ticket details and exact settlement evidence remain pending. Ledger not updated.
 - Jagiellonia Białystok DNB @1.94: user confirmed win; expected stake 0.25u, ticket details pending, ledger not updated.
 - Shanghai Port -0.5 @1.83: user confirmed loss; ledger reconciliation required.
