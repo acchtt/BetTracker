@@ -210,3 +210,18 @@ Effective 2026-08-07, `Total Kills` and `Duration` are separate betting/analysis
 - **Exposure policy is separate from market-family classification.** Unless the active stake policy is explicitly changed, the existing aggregate per-map exposure cap remains in force. Independent classification does not silently raise the map exposure ceiling.
 
 Future chats must therefore distinguish `independent market verdict` from `additional stake permitted under the current exposure cap`.
+
+## 14. Live-response brevity without analytical shortcuts
+
+Effective 2026-08-07, live responses should default to a **brief operational format** so the user can act quickly.
+
+- Brevity is a presentation rule only. It must **never** reduce, skip, or weaken any active model rule, procedure gate, price check, evidence check, market-family evaluation, dominance override, settlement rule, or tracker requirement.
+- Run the full applicable analysis first; expose only the minimum decision-relevant output unless the user asks for detail or a review is required.
+- Default live format: **VERDICT first**, then one compact reason/state line, then recording status when relevant.
+- When multiple market families are visible, concise labels such as `SIDE/HANDICAP`, `KILLS`, and `TIME` may be used so each still receives an independent verdict without long prose.
+- Do not repeat draft explanations, historical context, probability derivations, or rule text unless they materially changed the current verdict.
+- `NO LEAN`, `HOLD`, `WATCH`, `RECORD`, `INVALIDATED`, and `SETTLED` should be stated explicitly and briefly.
+- Corrections, process reviews, or disputed settlements may be longer because auditability takes priority over brevity.
+- Tool/tracker writes remain **after the verdict** and must not delay the live answer.
+
+**Compact output must never mean compact reasoning. The active model and all mandatory rules remain fully binding.**
