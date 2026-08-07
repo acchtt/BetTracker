@@ -60,13 +60,13 @@ Do not load football rules from the repository root. Root model copies were reti
 
 ## Active position and reconciliation state
 
-- Current live match focus: Chicago Fire vs Necaxa.
-- Official position: Necaxa +0.5 @1.89, placed from a model LEAN. Expected stake 0.25u; ticket ID, actual stake, placement timestamp and exact acceptance score/minute remain pending.
-- Latest supplied state showed Chicago leading 1-0 around 34 minutes after a 31st-minute goal. Do not assume the state remains current; refresh from the latest user evidence.
-- Fixed same-match cap removed. Additional Chicago–Necaxa positions are permitted only after a fresh synchronized LEAN under v0.2.37.
+- Current match focus: Club América vs San Diego FC.
+- Official position: San Diego FC +1.5 @1.89, placed from a model LEAN. Expected stake 0.25u; ticket ID, actual stake and placement timestamp remain pending.
+- Chicago Fire vs Necaxa official position remains active: Necaxa +0.5 @1.89, expected stake 0.25u; ticket ID, actual stake, placement timestamp and exact acceptance score/minute remain pending.
 - Jagiellonia Białystok DNB @1.94: user confirmed win; expected stake 0.25u, ticket details pending, ledger not updated.
 - Shanghai Port -0.5 @1.83: user confirmed loss; ledger reconciliation required.
 - Laos vs Philippines Under 3.5 @1.87: user confirmed loss; ledger reconciliation required.
+- Do not assume any current score, clock, event, lineup or market state without fresh user evidence.
 - Ledger write remains unauthorized.
 
 ## Write boundary
