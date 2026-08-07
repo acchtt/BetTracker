@@ -48,28 +48,29 @@ Where conflicts exist, **v0.3.36 controls**.
 ## Twenty-map shadow circuit breaker
 
 - Required complete reviewed maps: **20**
-- Complete/reviewed: **13/20**
-- Active map: **CB-14 — Shifters vs GIANTX Game 2**
-- Remaining after CB-14 completes: CB-15 through CB-20
+- Complete/reviewed: **14/20**
+- Next map: **CB-15**
+- Remaining: CB-15 through CB-20
 - Actual stake/exposure remains **0u** throughout the breaker
 - Default logged shadow position size remains simulated **0.25u** unless separately justified
 - Shadow results never change the official probation ledger
 - Improving simulated results never shortens the breaker
 - No official recommendations resume automatically after CB-20; explicit user restoration is required
 
-## Settled shadow accounting through CB-13
+## Settled shadow accounting through CB-14
 
-- Settled shadow market record: **10-6**
-- Nominal simulated net: **+0.7800u / +780,000 VND**
+- Settled shadow market record: **11-7**
+- Nominal simulated net: **+0.8590u / +859,000 VND**
 - Actual exposure/P&L: **0u / 0 VND**
 
-## Active CB-14 position
+## CB-14 settlement — Shifters vs GIANTX Game 2
 
-- `CB-14-P01` — **Under 30.5 kills @2.316**, simulated 0.25u, actual 0u
-- Entry 8:37: SHFT 1-3 GX, GX +2.2k gold, 0-0 towers, GX 1-0 dragons, SHFT 3-0 grubs
-- Latest synchronized state 14:48: SHFT 2-6 GX, GX +4.9k gold, 0-0 towers, GX 2-0 dragons, SHFT 3-0 grubs
-- Thesis: **ACTIVE / strengthened**
-- Do not settle without final evidence or explicit user confirmation of the final state
+- Final: **Shifters won, 17-11 kills, 35:34**.
+- `CB-14-P01` — **Under 30.5 kills @2.316**, simulated 0.25u, **WIN +0.329u**, actual 0u.
+- `CB-14-P02` — **GX +3.5 kills @1.781**, simulated 0.25u, **LOSS -0.25u**, actual 0u.
+- CB-14 net: **+0.079u**.
+- Earlier 22:38 gold-lead attribution was corrected: **GX**, not SHFT, held the +1.9k lead.
+- Final evidence/user confirmation overrides the scoreboard tile that still displayed `FINAL RESULT PENDING`.
 
 ## v0.3.36 stake-policy change
 
@@ -110,8 +111,8 @@ Effective 2026-08-07 23:25 UTC+7, the user explicitly removed the prior **0.25u 
 
 ## Connected-stack status
 
-- Completed-map synchronization is authoritative through **CB-13**.
-- CB-14 is active and has an open Airtable position/snapshots; it is not yet a completed-map sync state.
+- Completed-map synchronization is authoritative through **CB-14**.
+- CB-15 is next; no active shadow position is open.
 - GitHub is authoritative for model/rule policy.
 - Airtable tracks maps, snapshots and positions.
 - Google calibration workbook mirrors completed maps and rule changes; any discrepancy defers to GitHub.
