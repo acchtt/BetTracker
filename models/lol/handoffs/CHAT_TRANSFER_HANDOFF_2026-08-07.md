@@ -1,7 +1,7 @@
 # LoL Cross-Chat Transfer Handoff — 2026-08-07
 
 **Prepared:** 2026-08-07 15:02 UTC+7  
-**Corrected / synchronized:** 2026-08-07 21:45 UTC+7  
+**Corrected / synchronized:** 2026-08-07 22:53 UTC+7  
 **Repository:** `acchtt/SlipTrace`  
 **Active model:** **LoL v0.3.35**
 
@@ -16,12 +16,12 @@ Live responses should be brief by default, but brevity is presentation-only: ful
 ## Current operating state
 
 - Circuit breaker requirement: **20 complete reviewed shadow maps**.
-- Complete/reviewed: **12/20**.
-- Remaining: **8 maps — CB-13 through CB-20**.
-- Next map: **CB-13**.
-- CB-12 — Top Esports vs Bilibili Gaming Game 1 — complete/reviewed.
-- Verified CB-12 final: **TES won at 40:52, 34-31 kills**.
-- Final structure: **TES 9-6 towers, 3-3 dragons, BLG 2-1 Barons, TES 1-0 inhibitors**.
+- Complete/reviewed: **13/20**.
+- Remaining: **7 maps — CB-14 through CB-20**.
+- Next map: **CB-14**.
+- CB-13 — Shifters vs GIANTX Game 1 — complete/reviewed.
+- Verified CB-13 final: **GIANTX won at 36:23, 16-10 kills**.
+- Final structure: **GX 9-3 towers, 4-1 dragons, 1-0 Baron, 2-0 inhibitors**.
 - Official LoL betting remains paused through CB-20 and requires explicit user restoration afterward.
 - Actual exposure/P&L: **0u / 0 VND**.
 - Item verification remains suspended; unknown items are neutral and never guessed.
@@ -42,7 +42,7 @@ Live responses should be brief by default, but brevity is presentation-only: ful
 - Minimum odds 1.60; max official exposure 0.25u/map.
 - Duration remains official-ineligible through wager 20.
 
-## Corrected shadow accounting through CB-12
+## Corrected shadow accounting through CB-13
 
 - Through map 7: **6-4, +0.28550u**.
 - CB-08: Over 32m @1.803 — LOSS -0.25u.
@@ -50,19 +50,20 @@ Live responses should be brief by default, but brevity is presentation-only: ful
 - CB-10: BRO +6.5 kills @2.056 — WIN +0.264u; Under 33.5 kills @1.744 — WIN +0.186u.
 - CB-11: Over 30.5 kills @1.710 — WIN +0.1775u.
 - CB-12: TES ML @2.468 — WIN +0.3670u.
-- Current settled shadow market record: **10-5**.
-- Current nominal simulated net: **+1.03000u / +1,030,000 VND**.
+- CB-13: SHFT +3.5 kills @1.886 — LOSS -0.25u.
+- Current settled shadow market record: **10-6**.
+- Current nominal simulated net: **+0.78000u / +780,000 VND**.
 - Actual exposure/P&L: **0u / 0 VND**.
 
-## Connected-stack status — SYNCHRONIZED THROUGH CB-12
+## Connected-stack status — SYNCHRONIZED THROUGH CB-13
 
-- GitHub: authoritative through completed/reviewed CB-12 and carries the 20-map requirement.
-- Airtable Maps: CB-01 through CB-12 complete/reviewed; CB-04 intentionally preserves unknown final details.
-- Airtable Positions: all 15 recorded shadow positions through CB-12 are persisted and settled as applicable.
-- Airtable Snapshots: synchronized from CB-05 through CB-12; earlier unreconstructable detail was not invented.
-- Google calibration workbook Maps / Positions / Snapshots: synchronized through CB-12.
+- GitHub: authoritative through completed/reviewed CB-13 and carries the 20-map requirement.
+- Airtable Maps: CB-01 through CB-13 complete/reviewed; CB-04 intentionally preserves unknown final details.
+- Airtable Positions: all 16 recorded shadow positions through CB-13 are persisted and settled as applicable.
+- Airtable Snapshots: synchronized from CB-05 through CB-13; earlier unreconstructable detail was not invented.
+- Google calibration workbook Maps / Positions / Snapshots: synchronized through CB-13.
 - Google Rule Changes: includes v0.3.35, connected-stack procedure, independent Total-Kills/Duration handling, brief-live-response guidance, and the **20-map circuit-breaker extension**.
-- There is no completed-map tracker lag through CB-12.
+- There is no completed-map tracker lag through CB-13.
 
 The startup sync audit remains mandatory in every future chat.
 
@@ -83,6 +84,9 @@ Over 30.5 @1.710 was recorded and won. The thesis degraded at 9:14 after a 1-1 s
 ### CB-12 — Top Esports vs Bilibili Gaming Game 1
 TES blue: Rumble / Vi / Ahri / Jhin / Alistar. BLG red: Ambessa / Jarvan IV / Lissandra / Corki / Camille. Preview favored BLG, but the completed draft materially improved TES through reliable pick access, Rumble anti-dive value, and higher BLG execution variance from Camille support. TES ML @2.468 was recorded for 0.25u simulated and won. Final: TES 34-31 at 40:52. No material process error.
 
+### CB-13 — Shifters vs GIANTX Game 1
+SHFT blue: Rumble / Wukong / Viktor / Corki / Rakan. GX red: Ornn / Jarvan IV / Orianna / Ezreal / Shen. No pregame entry. SHFT +3.5 kills @1.886 was recorded at 8:27 after SHFT led 1-0 kills and +1.1k gold; the thesis still looked viable at 9:27 with 1-1 kills and +619g. This proved to be shallow confirmation rather than durable resilience. GX's composition had superior objective/front-to-back conversion, and by the user-confirmed final at 36:23 GX led 16-10 kills, 9-3 towers, 4-1 dragons, 1-0 Baron and 2-0 inhibitors. Position lost -0.25u. Calibration: shallow early kill/gold parity alone is insufficient positive-handicap confirmation when the favorite has materially stronger scaling and objective conversion; require evidence the underdog can repeatedly contest or trade through objective cycles.
+
 ## Mandatory controls through CB-20
 
 - Verdict first; logging after verdict.
@@ -101,6 +105,7 @@ TES blue: Rumble / Vi / Ahri / Jhin / Alistar. BLG red: Ambessa / Jarvan IV / Li
 - Around 20:00, +5k gold plus two-tower lead invalidates short-line duration Overs unless exceptional counterevidence exists.
 - Comeback tools widen duration distribution; do not automatically raise expected duration.
 - Positive handicap invalidation needs small cushion plus credible structural/Baron/base conversion.
+- Positive handicap confirmation must not rely on shallow early kill/gold parity alone when the opponent has materially stronger scaling/objective conversion; require evidence the underdog can repeatedly contest or trade through objective cycles.
 - Draft handicap resilience alone is insufficient; synchronized price and current-map execution evidence are required.
 - Kill Unders retain v0.3.33 late-objective-density reserves/invalidation rules.
 - Current-map hard evidence resets every map; prior execution is soft prior only.
