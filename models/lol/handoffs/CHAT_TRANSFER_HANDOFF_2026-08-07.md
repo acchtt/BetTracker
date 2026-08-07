@@ -1,19 +1,23 @@
 # LoL Cross-Chat Transfer Handoff — 2026-08-07
 
 **Prepared:** 2026-08-07 15:02 UTC+7  
-**Corrected:** 2026-08-07 16:01 UTC+7  
+**Corrected:** 2026-08-07 16:39 UTC+7  
 **Repository:** `acchtt/SlipTrace`  
 **Active model:** **LoL v0.3.35**
 
 ## Required load order
 
-Load `models/lol/CURRENT_MODEL.md`, then v0.3.35 through v0.3.26 deltas, item-verification suspension, v0.3.25 consolidated rules/probation/calibration handbook, live fast path, main procedure plus addenda and scoreboard protocol, pre-match procedure, shared stake policy, then this handoff.
+Load `models/lol/CURRENT_MODEL.md`, then v0.3.35 through v0.3.26 deltas, item-verification suspension, v0.3.25 consolidated rules/probation/calibration handbook, live fast path, main betting procedure, **`models/lol/procedures/LOL_CONNECTED_STACK_SYNC_AND_RECORDING_PROCEDURE_2026-08-07.md`**, procedure addenda and scoreboard protocol, pre-match procedure, shared stake policy, then this handoff.
+
+The connected-stack procedure is mandatory. A future chat must not describe Airtable/Sheets as synchronized without checking them, and must not call a lean `recorded` unless the exact position was actually persisted.
 
 ## Current operating state
 
 - Circuit breaker requirement: **13 complete reviewed maps**.
 - Complete/reviewed: **8/13**.
-- Next complete reviewed map: **shadow map 9/13**.
+- Current map awaiting complete review: **shadow map 9/13 — KT Rolster vs Gen.G Game 2**.
+- User confirmed Gen.G won **12-2 kills**; exact final duration/final-state screen remains unverified.
+- No validly recorded shadow position exists on map 9.
 - Official LoL betting remains paused through all 13 maps and requires explicit user restoration after map 13.
 - Actual exposure/P&L: **0u / 0 VND**.
 - Item verification remains suspended; unknown items are neutral and never guessed.
@@ -79,6 +83,51 @@ User explicitly extended the prior eight-map breaker by **five additional comple
 - Improving simulated results does not shorten the breaker.
 - Official recommendations do not resume automatically after map 13.
 
+## Connected-stack audit and mandatory correction
+
+Audit on 2026-08-07 found:
+
+- GitHub current through corrected map 8;
+- Airtable `Maps`/`Positions` only current through map 5;
+- Google calibration workbook further behind;
+- therefore Airtable/Sheets are currently in **TRACKER LAG** until synchronized;
+- the KT +7.5 Game 2 recommendation was conditional/discussed but was **never validly recorded**.
+
+Consequences:
+
+- KT +7.5 is not part of shadow record or P/L;
+- future chats must perform the startup sync audit in the connected-stack procedure;
+- chat wording alone never creates a recorded position;
+- only an actual Airtable `Positions` entry, or explicit user confirmation followed by tracker synchronization, creates a recorded shadow position;
+- if Airtable or Sheets cannot be accessed, state `TRACKER SYNC PENDING` and do not claim synchronization.
+
+## Map 9 — KT Rolster vs Gen.G Game 2 — RESULT KNOWN, REVIEW INCOMPLETE
+
+Draft:
+
+- Gen.G blue: Olaf / Lee Sin / Galio / Ezreal / Leona.
+- KT red: Zaahen / Skarner / Orianna / Kai'Sa / Nautilus.
+
+Quoted pregame prices:
+
+- Gen.G ML 1.430 / KT 2.771;
+- Gen.G -7.5 @1.799 / KT +7.5 @1.983;
+- O/U 28.5 @1.884/1.871;
+- Over/Under 32 min @1.747/2.049.
+
+A **conditional KT +7.5 lean** was issued, but the price was not re-synchronized and no Airtable position was written. It must therefore remain **CONDITIONAL / UNRECORDED**.
+
+At 21:45:
+
+- Gen.G led 8-2 kills;
+- Gen.G +9.7k gold;
+- Gen.G 5-0 towers;
+- Gen.G 2-0 dragons;
+- 0-0 Barons;
+- the KT handicap thesis was analytically invalidated.
+
+User later confirmed final winner/kill score: **Gen.G won 12-2**. Exact final clock remains unverified. Because there was no recorded position, map-9 result does not change shadow P/L.
+
 ## Mandatory controls through map 13
 
 - Verdict first; logging after verdict.
@@ -93,17 +142,9 @@ User explicitly extended the prior eight-map breaker by **five additional comple
 - Comeback tools widen duration distribution; do not automatically raise expected duration.
 - Positive handicap invalidation needs small cushion plus credible structural/Baron/base conversion.
 - Recorded position state and current thesis state remain separate.
+- `CONDITIONAL / UNRECORDED` and `RECORDED SHADOW POSITION` are separate state transitions.
 - Do not chase failing positions with wider correlated lines.
 - Kill Unders retain v0.3.33 late-objective-density reserves/invalidation rules.
 - Current-map hard evidence resets every map; prior execution is soft prior only.
 - Explicit user correction or verified final state overrides stale/conflicting telemetry immediately and reverses settlement/accounting when required.
-
-## Current live focus
-
-Focus has switched to **KT Rolster vs Gen.G Game 2**. Latest supplied draft:
-
-- Gen.G blue: Olaf / Lee Sin / Galio / Ezreal / Leona.
-- KT red: Zaahen / Skarner / Orianna / Kai'Sa / Nautilus.
-- Last quoted prices before draft: Gen.G ML 1.430, KT 2.771; Gen.G -7.5 @1.799, KT +7.5 @1.983; O/U 28.5 @1.884/1.871; Over/Under 32 min @1.747/2.049.
-- Shadow lean issued: **KT +7.5 kills @1.983**, simulated 0.25u, conditional on price remaining synchronized; actual 0u.
-- Series score was not explicitly confirmed in chat at issuance, so no deciding-map modifier was applied.
+- The connected-stack procedure governs startup audit, tracker writes, settlement synchronization, and discrepancy handling.
