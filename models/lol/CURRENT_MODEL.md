@@ -9,6 +9,7 @@
 - Item-verification suspension: `models/lol/procedures/LOL_ITEM_VERIFICATION_SUSPENSION_2026-08-05.md`
 - Live fast path: `models/lol/procedures/LOL_LIVE_RESPONSE_FAST_PATH_2026-08-05.md`
 - Main procedure: `models/lol/procedures/LOL_BETTING_PROCEDURE.md`
+- Connected-stack sync/recording procedure: `models/lol/procedures/LOL_CONNECTED_STACK_SYNC_AND_RECORDING_PROCEDURE_2026-08-07.md`
 - Procedure addenda: `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md` and `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-02.md`
 - Scoreboard protocol: `models/lol/procedures/LOL_LIVE_SCOREBOARD_READING_PROTOCOL_2026-08-01.md`
 - Shared stake policy: `shared/STAKE_POLICY_V2.json`
@@ -32,11 +33,12 @@
 14. `models/lol/context/lol-v0.3.25/LIVE_ANALYSIS_CALIBRATION_HANDBOOK.md`
 15. `models/lol/procedures/LOL_LIVE_RESPONSE_FAST_PATH_2026-08-05.md`
 16. `models/lol/procedures/LOL_BETTING_PROCEDURE.md`
-17. both procedure addenda
-18. scoreboard protocol
-19. `models/lol/context/lol-v0.3.25/PREMATCH_PREGAME_PROCEDURE.md`
-20. `shared/STAKE_POLICY_V2.json`
-21. `models/lol/handoffs/CHAT_TRANSFER_HANDOFF_2026-08-07.md`
+17. `models/lol/procedures/LOL_CONNECTED_STACK_SYNC_AND_RECORDING_PROCEDURE_2026-08-07.md`
+18. both procedure addenda
+19. scoreboard protocol
+20. `models/lol/context/lol-v0.3.25/PREMATCH_PREGAME_PROCEDURE.md`
+21. `shared/STAKE_POLICY_V2.json`
+22. `models/lol/handoffs/CHAT_TRANSFER_HANDOFF_2026-08-07.md`
 
 ## Current probation
 
@@ -53,7 +55,9 @@
 
 - Required complete reviewed maps: **13**
 - Complete/reviewed: **8**
-- Next complete reviewed map: **shadow map 9/13**
+- Current map awaiting complete review: **shadow map 9/13 — KT Rolster vs Gen.G Game 2**
+- User confirmed Gen.G won **12-2 kills**; exact final duration/final-state screen remains unverified
+- No validly recorded shadow position exists on map 9
 - Maps 9-13 are additional shadow maps requested by the user on 2026-08-07
 - Actual stake/exposure: **0u**
 - Default logged shadow stake: simulated **0.25u**
@@ -79,12 +83,24 @@ The duration entry should have been rejected under existing rules:
 - JDG's Vi-Rakan-Akali access plus Xayah/Gnar conversion created a credible one-fight acceleration branch;
 - an earlier conflicting clock read caused a false win settlement and has been reversed.
 
+## Connected-stack audit status
+
+Audit on 2026-08-07 found:
+
+- GitHub current through corrected shadow map 8;
+- Airtable live tracker populated only through map 5;
+- Google calibration workbook further behind;
+- KT +7.5 Game 2 lean was conditional/discussed but never validly recorded.
+
+Until synchronization is repaired, stale Airtable/Sheets rows must be labeled `TRACKER LAG`. A shadow position only counts toward record/P&L when the exact entry is actually persisted under the connected-stack procedure.
+
 ## Active calibration controls through map 13
 
 - Verdict first; logging after verdict.
 - Default to one primary shadow lean per map; a second requires a materially distinct thesis and synchronized state.
 - `NO LEAN` is acceptable.
 - Recorded-position state and current analytical thesis state are separate.
+- `CONDITIONAL / UNRECORDED` and `RECORDED SHADOW POSITION` are distinct states; chat wording alone never creates a recorded position.
 - No duration Over before 10:00 unless at least two genuine stall signals exist beyond ordinary towerlessness.
 - Correlated quiet indicators remain one cluster after 10:00; absence of action is not itself anti-conversion evidence.
 - If a realistic fast-close branch reaches or beats the duration line, reject the Over unless that route has already been demonstrably resisted.
