@@ -54,10 +54,12 @@
 ## Thirteen-map shadow circuit breaker
 
 - Required complete reviewed maps: **13**
-- Complete/reviewed: **8**
-- Current map awaiting complete review: **shadow map 9/13 — KT Rolster vs Gen.G Game 2**
-- User confirmed Gen.G won **12-2 kills**; exact final duration/final-state screen remains unverified
-- No validly recorded shadow position exists on map 9
+- Complete/reviewed: **9**
+- Next complete reviewed map: **shadow map 10/13**
+- CB-09 — KT Rolster vs Gen.G Game 2 — is complete/reviewed
+- Verified final: **Gen.G won at 25:13, 12-2 kills**
+- Final structure: **9-0 towers, 3-0 dragons, 1-0 Baron, 2-0 inhibitors**
+- No validly recorded shadow position existed on CB-09
 - Maps 9-13 are additional shadow maps requested by the user on 2026-08-07
 - Actual stake/exposure: **0u**
 - Default logged shadow stake: simulated **0.25u**
@@ -69,6 +71,7 @@
 - Through map 7: **6-4, +0.28550u**
 - Map 8 — EDG vs JDG Game 1: **Over 32 minutes @1.803 LOST -0.25u**
 - Corrected final: **JDG won 20-7 at 30:43**
+- CB-09 had no recorded position and therefore no P/L impact
 - Current settled shadow market record: **6-5**
 - Nominal simulated net: **+0.03550u / +35,500 VND**
 - Actual exposure/P&L: **0u / 0 VND**
@@ -83,19 +86,32 @@ The duration entry should have been rejected under existing rules:
 - JDG's Vi-Rakan-Akali access plus Xayah/Gnar conversion created a credible one-fight acceleration branch;
 - an earlier conflicting clock read caused a false win settlement and has been reversed.
 
+## Map-9 review
+
+CB-09 draft:
+
+- Gen.G blue: Olaf / Lee Sin / Galio / Ezreal / Leona.
+- KT red: Zaahen / Skarner / Orianna / Kai'Sa / Nautilus.
+
+A conditional **KT +7.5 @1.983** lean was discussed from the last quoted pregame price, but the exact price was not re-synchronized after draft and no Airtable `Positions` record was written. Under the connected-stack procedure it remained **CONDITIONAL / UNRECORDED** and never entered shadow P/L.
+
+At 21:45 Gen.G led **8-2 kills, +9.7k gold, 5-0 towers, 2-0 dragons**. This correctly triggered dominance override and invalidated the KT handicap-resilience thesis. The verified final at 25:13 was Gen.G **12-2**, confirming that the draft-resilience premise was materially over-weighted without current-map execution evidence.
+
+No new predictive rule is promoted from this single unrecorded lean. Existing controls are enforced more strictly: draft resilience is not enough for a positive handicap without synchronized price plus current-map confirmation, and broad structural/economic dominance overrides theoretical comeback shape.
+
 ## Connected-stack synchronization status
 
-Synchronization completed on 2026-08-07 after the connected-stack audit.
+Synchronization is current through **CB-09**.
 
-- **GitHub:** authoritative through corrected CB-08 and current map-9 partial result state.
-- **Airtable Maps:** CB-01 through CB-08 are present and marked complete/reviewed; CB-04 preserves unknown final details rather than inventing them.
-- **Airtable Positions:** all **11** shadow market positions from CB-01 through CB-08 are persisted with exact selections, odds, simulated P/L, and actual exposure 0u.
-- **Airtable Snapshots:** synchronized evidence is mirrored from CB-05 through CB-08. Earlier CB-01 through CB-04 snapshot detail was not fully reconstructable and was deliberately not invented.
-- **Google calibration workbook Maps/Positions:** synchronized through CB-08.
-- **Google calibration workbook Snapshots:** mirrored from CB-05 through CB-08.
+- **GitHub:** authoritative through completed/reviewed CB-09.
+- **Airtable Maps:** CB-01 through CB-09 are present and marked complete/reviewed; CB-04 preserves unknown final details rather than inventing them.
+- **Airtable Positions:** all **11** actual recorded shadow market positions from CB-01 through CB-08 are persisted; no position exists for CB-09.
+- **Airtable Snapshots:** synchronized evidence is mirrored from CB-05 through CB-09. Earlier CB-01 through CB-04 snapshot detail was not fully reconstructable and was deliberately not invented.
+- **Google calibration workbook Maps:** synchronized through CB-09.
+- **Google calibration workbook Positions:** synchronized through CB-08 because CB-09 had no recorded position.
+- **Google calibration workbook Snapshots:** mirrored from CB-05 through CB-09.
 - **Google Rule Changes:** includes v0.3.35 circuit-breaker extension and the mandatory 2026-08-07 connected-stack procedure.
-- There is **no tracker lag through CB-08**.
-- CB-09 remains outside completed-map accounting until exact final duration/final-state verification is supplied; its conditional KT +7.5 lean was never recorded and does not affect shadow P/L.
+- There is **no tracker lag through CB-09**.
 
 Every future chat must still run the startup sync audit. A previously synchronized stack can become stale again.
 
@@ -114,6 +130,7 @@ Every future chat must still run the startup sync audit. A previously synchroniz
 - Around 20 minutes, a leader with at least +5k gold and a two-tower advantage invalidates short-line duration Overs unless exceptional counterevidence exists.
 - Comeback tools widen duration distribution; they do not automatically increase expected duration.
 - Positive kill-handicap invalidation requires both a small remaining cushion and credible structural/Baron/base conversion control.
+- Draft handicap resilience is insufficient by itself for entry; synchronized price and current-map execution evidence are required.
 - Apply dominance override, multi-snapshot stabilization, role-gold breadth, observed-execution scoring, current-map evidence reset, late objective-density kill reserves, soul-cascade routing, and Baron acquisition/conversion separation from retained deltas.
 - Do not chase failing positions with wider correlated lines.
 - Explicit user correction or verified final evidence immediately overrides stale/conflicting telemetry and reverses derived settlement/accounting when necessary.
