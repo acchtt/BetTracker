@@ -1,0 +1,176 @@
+# FOOTBALL PRE-VERDICT VALIDATOR
+
+Effective with Football v0.2.40.
+
+This procedure is mandatory before any `SHADOW LEAN — DO NOT PLACE`, `LEAN`, or `OFFICIAL BET` output. It is an enforcement layer over all active football rules, not a replacement for them.
+
+## Result semantics
+
+- `PASS`: every mandatory gate is satisfied. The candidate may proceed subject to circuit-breaker mode and execution rules.
+- `HOLD`: the thesis may remain plausible but one or more required states are unresolved, stale or awaiting persistence. Output `NO BET — HOLD`.
+- `FAIL`: one or more mandatory gates are contradicted or violated. Output `NO BET`.
+
+No candidate may be promoted around a `HOLD` or `FAIL` result.
+
+## Gate 1 — synchronized state
+
+Confirm from current evidence:
+
+- match identity;
+- score;
+- minute/phase;
+- material events since the prior snapshot;
+- current line and odds for the candidate;
+- settlement scope of the market.
+
+If any of these are assumed rather than synchronized, result = `HOLD`.
+
+## Gate 2 — reset epoch
+
+Check for goals, penalties, red cards, substitution clusters, injuries, tactical changes, weather/pitch changes or other material events.
+
+If a material reset has occurred, establish a new reset epoch. Do not carry the old directional or goal-environment classification through the reset without fresh evidence.
+
+If post-reset evidence is insufficient, set `Goal Environment = Unresolved`, `Reset Resolved = false`, and result = `HOLD`.
+
+## Gate 3 — competition format and utility
+
+Verify the competition format whenever motivation or result utility matters.
+
+Explicitly separate and apply:
+
+- regulation-win utility;
+- regulation-draw utility;
+- shootout utility;
+- margin/goal-difference utility;
+- loss-avoidance utility;
+- conservation utility.
+
+If a margin-sensitive tiebreaker applies, do not assume conservation from a lead without accounting for the value of additional margin.
+
+If format or utility propagation is unresolved, result = `HOLD`.
+
+## Gate 4 — xG/xGOT role
+
+Set `xG Role` to exactly one of:
+
+- `Secondary Only`;
+- `Not Used`;
+- `Violation`.
+
+Ask the counterfactual: **If xG/xGOT were removed from this assessment, would the primary thesis still stand?**
+
+If no, set `Violation` and result = `FAIL`.
+
+xG/xGOT may never independently establish scoring superiority, goal environment, regression, pressure, urgency or a side/total selection.
+
+## Gate 5 — primary evidence
+
+For any live candidate, identify at least two independent primary forward-looking channels, subject to stricter active rules.
+
+Valid channels include:
+
+- box/central access;
+- big/clear chances;
+- dangerous transitions/cutbacks;
+- sustained set-piece pressure;
+- defensive degradation;
+- shot-location/chance structure independent of xG;
+- persistent territory/box touches;
+- tempo/persistence;
+- relevant scoring/conceding profile;
+- materially predictive lineup/availability evidence.
+
+Possession, pass volume, raw shots, SOT, xG and xGOT cannot by themselves satisfy the minimum.
+
+If fewer than two independent primary channels support the candidate, result = `FAIL` or `HOLD` depending on whether more evidence can reasonably resolve the state.
+
+## Gate 6 — directional persistence and regime consistency
+
+For live directional switches, favourite fades or goal-environment changes, require persistence across comparable evidence windows as required by active rules.
+
+A single high-value event can trigger a reset but cannot alone prove the post-reset regime.
+
+Check that:
+
+- the stated `Goal Environment` matches the evidence;
+- the `Reset Resolved` state is consistent with the classification;
+- a prior Neutral/Closed/Open classification has not been retrospectively rewritten because of one later event;
+- directional switches have persistent post-reset support.
+
+Any contradiction = `HOLD` or `FAIL`.
+
+## Gate 7 — favourite and margin gates
+
+When fading a material favourite or taking a protected underdog:
+
+- apply v0.2.38 live favourite-fade requirements;
+- apply v0.2.39 prematch deep-favourite and margin-risk requirements;
+- preserve the exact protected line rather than moving to a worse settlement line merely to meet the odds floor.
+
+If the applicable favourite-fade gate is unresolved or failed, validation cannot pass.
+
+## Gate 8 — market-family scan
+
+Reassess all currently available major market families relevant to the state, including sides/Asian handicaps, totals and any material derivatives supplied by the user.
+
+Compare the candidate against the best alternative expression.
+
+Do not anchor to the previously discussed market. Invalidating one candidate does not confirm another.
+
+If the major-market scan is incomplete, result = `HOLD`.
+
+## Gate 9 — settlement and event-budget integrity
+
+For the exact candidate:
+
+- state what outcomes win, push/half-win/half-loss where applicable, and lose;
+- for totals, compute the remaining event budget at the current score;
+- for handicaps, distinguish current-match score from remaining-segment settlement when relevant;
+- verify minimum odds >= 1.70;
+- verify accepted-odds drift <= 0.08 only when the score, minute, line, settlement scope and material state are unchanged and acceptance is within 120 seconds.
+
+Any settlement misunderstanding or unresolved line movement = `FAIL` or `HOLD`.
+
+## Gate 10 — circuit-breaker and output mode
+
+If the four-match circuit breaker is active:
+
+- `PASS` may output only `SHADOW LEAN — DO NOT PLACE`;
+- exactly one primary shadow selection may count per match;
+- simulated stake = 0.25u;
+- the shadow selection must be written to the Airtable `Circuit Breaker` table;
+- `NO BET` / `NO BET — HOLD` do not consume a slot.
+
+Official execution cannot resume after 4/4 until the four-match review is complete and the user explicitly restores official betting.
+
+## Gate 11 — Airtable write lock
+
+Before emitting a shadow or executable verdict, write the material assessment to the Airtable `Decision States` table documented in `models/football/airtable/FOOTBALL_DECISION_STATE_AIRTABLE.md`.
+
+Required fields include at minimum:
+
+- Assessment ID;
+- Match;
+- Model Version;
+- minute/score/reset epoch/assessment period;
+- verdict/candidate/line/odds if applicable;
+- goal environment;
+- synchronization and reset status;
+- competition-format and utility verification;
+- xG role;
+- primary channels and count;
+- favourite-fade and directional-persistence states where applicable;
+- major-market scan status;
+- circuit-breaker mode;
+- validator result and fail reasons.
+
+A candidate verdict cannot be `SHADOW LEAN — DO NOT PLACE`, `LEAN`, or `OFFICIAL BET` unless the corresponding record has `Validator Result = PASS`.
+
+If Airtable is unavailable, execution validation is unavailable; output `NO BET — HOLD — decision-state validation unavailable`.
+
+## Compact response behavior
+
+The user-facing live response remains brief and decision-first. Do not print the full validator checklist unless requested.
+
+When validation fails or holds, mention only the decisive failed/unresolved gates and the unlock condition.
