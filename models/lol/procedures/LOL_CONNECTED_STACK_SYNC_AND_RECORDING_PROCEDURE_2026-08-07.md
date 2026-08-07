@@ -195,3 +195,18 @@ Therefore that KT +7.5 lean is **not** part of shadow P/L. Future chats must loa
 ## 12. Non-negotiable operating summary
 
 **Verdict first. Evidence synchronized. Tracker write second. Only an actual tracker entry is recorded. Settlement requires verified evidence. GitHub governs rules. Discrepancies are surfaced, never silently reconciled.**
+
+## 13. Independent Total-Kills and Duration market handling
+
+Effective 2026-08-07, `Total Kills` and `Duration` are separate betting/analysis market families.
+
+- Evaluate Total Kills on its own kill-inventory, fight-frequency, objective-density, comeback-shape, and reserve requirements.
+- Evaluate Duration on its own structure-conversion, terminal-route, stall/anti-conversion, fast-close-branch, and duration-buffer requirements.
+- A Total-Kills position or thesis must **not** automatically block a Duration position or thesis merely because both are same-map props.
+- A Duration position or thesis must **not** automatically block a Total-Kills position or thesis merely because both are same-map props.
+- Side moneyline and kill-handicap exposure does not suppress analysis of Total Kills or Duration; each market family receives an independent verdict.
+- Correlation may still be discussed as a risk characteristic, but correlation alone is not a veto between Total Kills and Duration.
+- Each market family may have its own Airtable `Positions` row if it independently clears its model gates and recording requirements.
+- **Exposure policy is separate from market-family classification.** Unless the active stake policy is explicitly changed, the existing aggregate per-map exposure cap remains in force. Independent classification does not silently raise the map exposure ceiling.
+
+Future chats must therefore distinguish `independent market verdict` from `additional stake permitted under the current exposure cap`.
