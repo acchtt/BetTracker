@@ -2,7 +2,7 @@
 
 **Canonical namespace:** `models/football/`
 
-- Active model: **Football v0.2.37**
+- Active model: **Football v0.2.38**
 - Organized loading guide: `models/football/ORGANIZED_FILE_LOADING_GUIDE.md`
 - Main procedure: `models/football/procedures/FOOTBALL_BETTING_PROCEDURE.md`
 - Procedure addendum: `models/football/procedures/FOOTBALL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md`
@@ -19,7 +19,7 @@ Load the following in this order, applying newer rules over older conflicts:
 2. `models/LEGACY_MODEL_CHANGELOG.md` for the retained pre-v0.2.5 baseline
 3. `models/football/procedures/FOOTBALL_BETTING_PROCEDURE.md`
 4. `models/football/procedures/FOOTBALL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md`
-5. `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.5.md` through `MODEL_RULES_FOOTBALL_V0.2.37.md`, in ascending version order
+5. `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.5.md` through `MODEL_RULES_FOOTBALL_V0.2.38.md`, in ascending version order
 6. `models/football/handoffs/CHAT_TRANSFER_HANDOFF_2026-08-06.md`
 7. `/ledger.json` when official record, bankroll, exposure, placement or settlement status is relevant
 
@@ -51,6 +51,7 @@ Do not load football rules from the repository root. Root model copies were reti
 - v0.2.35 requires a fresh LEAN-or-NO-BET decision once a stated HOLD unlock is satisfied and mandates side-versus-one-goal-over comparison when persistent pressure develops in a tied match
 - v0.2.36 increases same-state execution odds tolerance to 0.08 and retires the independent implied-probability sub-trigger inside that range
 - v0.2.37 removes the fixed same-match exposure cap while preserving 0.25u per executable LEAN, one new selection per reassessment and explicit correlation/exposure controls
+- v0.2.38 preserves protected handicap settlement, strengthens favourite-fade and directional-switch gates, and prohibits using shots on target alone as scoring-superiority evidence
 
 ## Response scope and brevity
 
@@ -62,7 +63,7 @@ Do not load football rules from the repository root. Root model copies were reti
 
 - Current match focus: Club América vs San Diego FC.
 - Official position: San Diego FC +1.5 @1.89, placed from a model LEAN. Expected stake 0.25u; ticket ID, actual stake and placement timestamp remain pending.
-- Chicago Fire vs Necaxa: Necaxa +0.5 @1.89 — user confirmed loss after Chicago moved 2-0 ahead. Expected stake 0.25u; ticket ID, actual stake, placement timestamp, exact acceptance score/minute and exact final score/time remain pending. Ledger not updated.
+- Chicago Fire vs Necaxa: Necaxa +0.5 @1.89 — user confirmed loss. Review classified the selection as a model-attributed market-promotion error: the model reduced protection from the watched +0.75 line and overweighted shots on target without sufficient high-value access. Expected stake 0.25u; ticket details and exact settlement evidence remain pending. Ledger not updated.
 - Jagiellonia Białystok DNB @1.94: user confirmed win; expected stake 0.25u, ticket details pending, ledger not updated.
 - Shanghai Port -0.5 @1.83: user confirmed loss; ledger reconciliation required.
 - Laos vs Philippines Under 3.5 @1.87: user confirmed loss; ledger reconciliation required.
