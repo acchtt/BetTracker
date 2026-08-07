@@ -2,6 +2,7 @@
 
 **Prepared:** 2026-08-07 15:02 UTC+7  
 **Corrected:** 2026-08-07 16:39 UTC+7  
+**Stack synchronized:** 2026-08-07  
 **Repository:** `acchtt/SlipTrace`  
 **Active model:** **LoL v0.3.35**
 
@@ -83,23 +84,22 @@ User explicitly extended the prior eight-map breaker by **five additional comple
 - Improving simulated results does not shorten the breaker.
 - Official recommendations do not resume automatically after map 13.
 
-## Connected-stack audit and mandatory correction
+## Connected-stack status — SYNCHRONIZED THROUGH CB-08
 
-Audit on 2026-08-07 found:
+The 2026-08-07 audit originally found tracker lag. That lag has now been repaired through CB-08.
 
-- GitHub current through corrected map 8;
-- Airtable `Maps`/`Positions` only current through map 5;
-- Google calibration workbook further behind;
-- therefore Airtable/Sheets are currently in **TRACKER LAG** until synchronized;
-- the KT +7.5 Game 2 recommendation was conditional/discussed but was **never validly recorded**.
+Current synchronized state:
 
-Consequences:
+- **GitHub:** authoritative through corrected CB-08 and current CB-09 partial result state.
+- **Airtable Maps:** CB-01 through CB-08 present and complete/reviewed; CB-04 intentionally preserves unknown final winner/clock/score.
+- **Airtable Positions:** all **11** shadow positions from CB-01 through CB-08 are persisted and settle to the authoritative **6-5, +0.03550u** record.
+- **Airtable Snapshots:** synchronized evidence is present from CB-05 through CB-08. Detailed CB-01 through CB-04 snapshots were not fully reconstructable and were not invented.
+- **Google calibration workbook Maps and Positions:** synchronized through CB-08.
+- **Google calibration workbook Snapshots:** mirrored from CB-05 through CB-08.
+- **Google Rule Changes:** includes v0.3.35 and the mandatory connected-stack sync/recording procedure.
+- There is **no tracker lag through CB-08**.
 
-- KT +7.5 is not part of shadow record or P/L;
-- future chats must perform the startup sync audit in the connected-stack procedure;
-- chat wording alone never creates a recorded position;
-- only an actual Airtable `Positions` entry, or explicit user confirmation followed by tracker synchronization, creates a recorded shadow position;
-- if Airtable or Sheets cannot be accessed, state `TRACKER SYNC PENDING` and do not claim synchronization.
+The startup sync audit remains mandatory in every future chat because the stack may become stale again after new maps.
 
 ## Map 9 — KT Rolster vs Gen.G Game 2 — RESULT KNOWN, REVIEW INCOMPLETE
 
@@ -115,7 +115,7 @@ Quoted pregame prices:
 - O/U 28.5 @1.884/1.871;
 - Over/Under 32 min @1.747/2.049.
 
-A **conditional KT +7.5 lean** was issued, but the price was not re-synchronized and no Airtable position was written. It must therefore remain **CONDITIONAL / UNRECORDED**.
+A **conditional KT +7.5 lean** was issued, but the price was not re-synchronized and no Airtable position was written. It therefore remains **CONDITIONAL / UNRECORDED** and is not part of shadow P/L.
 
 At 21:45:
 
@@ -126,7 +126,7 @@ At 21:45:
 - 0-0 Barons;
 - the KT handicap thesis was analytically invalidated.
 
-User later confirmed final winner/kill score: **Gen.G won 12-2**. Exact final clock remains unverified. Because there was no recorded position, map-9 result does not change shadow P/L.
+User later confirmed final winner/kill score: **Gen.G won 12-2**. Exact final clock remains unverified. Because there was no recorded position, map-9 result does not change shadow P/L. Do not mark CB-09 complete until the exact final duration/final-state verification is supplied and the review is logged.
 
 ## Mandatory controls through map 13
 
