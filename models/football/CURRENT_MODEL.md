@@ -2,10 +2,12 @@
 
 **Canonical namespace:** `models/football/`
 
-- Active model: **Football v0.2.39**
+- Active model: **Football v0.2.40**
 - Organized loading guide: `models/football/ORGANIZED_FILE_LOADING_GUIDE.md`
 - Main procedure: `models/football/procedures/FOOTBALL_BETTING_PROCEDURE.md`
 - Procedure addendum: `models/football/procedures/FOOTBALL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md`
+- Mandatory validator: `models/football/procedures/FOOTBALL_PRE_VERDICT_VALIDATOR.md`
+- Airtable control map: `models/football/airtable/FOOTBALL_DECISION_STATE_AIRTABLE.md`
 - Active rule directory: `models/football/rules/`
 - Active cross-chat handoff: `models/football/handoffs/CHAT_TRANSFER_HANDOFF_2026-08-06.md`
 - Historical baseline: `models/LEGACY_MODEL_CHANGELOG.md`
@@ -19,18 +21,20 @@ Load the following in this order, applying newer rules over older conflicts:
 2. `models/LEGACY_MODEL_CHANGELOG.md` for the retained pre-v0.2.5 baseline
 3. `models/football/procedures/FOOTBALL_BETTING_PROCEDURE.md`
 4. `models/football/procedures/FOOTBALL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md`
-5. `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.5.md` through `MODEL_RULES_FOOTBALL_V0.2.39.md`, in ascending version order
-6. `models/football/handoffs/CHAT_TRANSFER_HANDOFF_2026-08-06.md`
-7. `/ledger.json` when official record, bankroll, exposure, placement or settlement status is relevant
+5. `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.5.md` through `MODEL_RULES_FOOTBALL_V0.2.40.md`, in ascending version order
+6. `models/football/procedures/FOOTBALL_PRE_VERDICT_VALIDATOR.md`
+7. `models/football/airtable/FOOTBALL_DECISION_STATE_AIRTABLE.md`
+8. `models/football/handoffs/CHAT_TRANSFER_HANDOFF_2026-08-06.md`
+9. `/ledger.json` when official record, bankroll, exposure, placement or settlement status is relevant
 
-Do not load football rules from the repository root. Root model copies were retired during the physical cleanup.
+Do not load football rules from the repository root. Root model copies were retired during the physical cleanup. The older handoff supplies historical state only and must not override newer active rules or validator controls.
 
 ## Active operating values
 
 - 1u = 1,000,000 VND
 - Minimum odds: 1.70
 - Every executable or shadow LEAN uses exactly 0.25u = 250,000 VND
-- **Official football betting is paused under the v0.2.39 four-match circuit breaker**
+- **Official football betting is paused under the four-match circuit breaker**
 - Circuit breaker: **0/4 completed**; only matches producing an otherwise executable LEAN can count, with at most one designated primary shadow selection per match
 - During the circuit breaker use `SHADOW LEAN — DO NOT PLACE`; do not issue a new `OFFICIAL BET`
 - `NO BET` matches do not consume a circuit-breaker slot
@@ -48,7 +52,7 @@ Do not load football rules from the repository root. Root model copies were reti
 - Every match-analysis message must include the v0.2.28 assessment-period field
 - Every prematch assessment and material live reassessment must independently scan all available major market families under v0.2.29; do not anchor to the previously discussed market
 - Before any pick, v0.2.30 requires both teams' relevant scoring/conceding profiles and verified or explicitly classified motivation/result utility
-- xG and xGOT are supporting evidence only; future-goal assessment must use multiple independent forward-looking channels and classify the goal environment as Closed, Neutral or Open
+- xG and xGOT are supporting evidence only; future-goal assessment must use multiple independent forward-looking channels. Goal environment is Closed, Neutral or Open only when established; after a material reset it may remain `Unresolved` until persistence is demonstrated
 - v0.2.31 separates win, draw and margin utility; requires exact event-budget analysis for goal and corner unders; strengthens high-event late-under and deep-favorite handicap gates; and requires explicit `NO BET — HOLD` unlock conditions when a mandatory gate remains unresolved
 - v0.2.32 applies full model parity to reminders, automations and secondary threads; prohibits unsupported precise probabilities and informal executable labels; enforces one-best-expression controls across all surfaces; and treats user-reported cross-thread placements as official positions with ticket details pending
 - v0.2.33 adds regime-persistence, directional-switch, candidate-oscillation, one-event binary-market and substitution-cluster controls; invalidating one side never automatically confirms the opposite side
@@ -58,16 +62,40 @@ Do not load football rules from the repository root. Root model copies were reti
 - v0.2.37 removes the fixed same-match exposure cap while preserving 0.25u per executable LEAN, one new selection per reassessment and explicit correlation/exposure controls
 - v0.2.38 preserves protected handicap settlement, strengthens live favourite-fade and directional-switch gates, and prohibits using shots on target alone as scoring-superiority evidence
 - v0.2.39 strengthens **prematch** favourite-fade and margin-risk analysis, vetoes formation/possession narratives as standalone protection evidence, gives friendly H2H near-zero decision weight, and activates the four-match football circuit breaker
+- v0.2.40 adds the **hard pre-verdict validator**, Airtable-backed decision-state write lock, xG enforcement lock, regime-consistency lock, competition-utility propagation lock and mandatory two-channel primary-evidence minimum
+
+## Hard pre-verdict enforcement
+
+Before any `SHADOW LEAN — DO NOT PLACE`, `LEAN`, or `OFFICIAL BET`:
+
+1. complete `FOOTBALL_PRE_VERDICT_VALIDATOR.md`;
+2. create the corresponding Airtable `Decision States` record;
+3. require `Validator Result = PASS`;
+4. while the circuit breaker is active, output only `SHADOW LEAN — DO NOT PLACE` and create a corresponding `Circuit Breaker` record.
+
+If validation is `HOLD` or `FAIL`, do not promote the candidate. If Airtable decision-state validation is unavailable, return `NO BET — HOLD — decision-state validation unavailable` rather than bypassing the control.
+
+## Airtable operational control
+
+- Base: `SlipTrace Football Decision Control`
+- Base ID: `appWyZJjitSBATXAU`
+- Decision States table: `tblQmUpd5WjBLQ38X`
+- Circuit Breaker table: `tblcJfh8zbNyzjArK`
+- Full field map: `models/football/airtable/FOOTBALL_DECISION_STATE_AIRTABLE.md`
+
+Airtable is an operational decision-control log only. `/ledger.json` remains authoritative for official accounting when writes are authorized.
 
 ## Response scope and brevity
 
 - Keep live reassessments brief and decision-first.
 - Assess recent relevant H2H and home/away form only in the prematch preview.
 - Do not repeat H2H or team-form sections during live reassessments unless the user explicitly requests them.
+- Do not print the full validator checklist unless the user requests it; surface only decisive failed/unresolved gates and unlock conditions.
 
 ## Active position and reconciliation state
 
-- Current match focus: Club América vs San Diego FC.
+- Current match focus: Portland Timbers vs Puebla.
+- Latest user-supplied synchronized snapshot before v0.2.40 activation: Portland 5-1 Puebla at approximately 58:01. The 5-1 goal created a new reset epoch; no post-goal shadow selection has been validated and the circuit breaker remains 0/4. Do not assume that score/minute persists without fresh user evidence.
 - Existing official position: San Diego FC +1.5 @1.89, expected stake 0.25u; user later reported América leading 3-0, but the wager is not settled until the final result is verified. Ticket ID, actual stake and placement timestamp remain pending.
 - Review classification for San Diego +1.5: **model-attributed prematch selection error**. The model overvalued the +1.5 protection and nominal 5-3-2 shape while underweighting América's deep-favourite margin prior and San Diego's volatile away defensive tail; the June 2025 friendly H2H should have carried near-zero decision weight.
 - Chicago Fire vs Necaxa: Necaxa +0.5 @1.89 — user confirmed loss. Review classified the selection as a model-attributed market-promotion error: the model reduced protection from the watched +0.75 line and overweighted shots on target without sufficient high-value access. Expected stake 0.25u; ticket details and exact settlement evidence remain pending. Ledger not updated.
@@ -81,10 +109,10 @@ Do not load football rules from the repository root. Root model copies were reti
 
 - Football circuit breaker: **0/4 completed**.
 - New football positions are shadow only.
-- A match counts only if a normal executable LEAN would otherwise clear all active rules, one primary shadow selection is designated, and the result is later verified.
-- Track selection, line, odds, state, result, simulated P/L and process validity for each counted match.
+- A match counts only if a normal executable LEAN would otherwise clear all active rules, the hard validator returns PASS, the Airtable Decision States write exists, one primary shadow selection is designated, and the result is later verified.
+- Track selection, line, odds, state, result, simulated P/L and process validity in the Airtable `Circuit Breaker` table.
 - Official execution can resume only after the 4/4 review and explicit user approval.
 
 ## Write boundary
 
-All new football rules, procedures, context, handoffs and reviews must be written under `models/football/`. Shared policies belong under `shared/`. Do not create new football model files at the repository root.
+All new football rules, procedures, context, handoffs, Airtable-control documentation and reviews must be written under `models/football/`. Shared policies belong under `shared/`. Do not create new football model files at the repository root.
