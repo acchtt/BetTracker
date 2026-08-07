@@ -45,12 +45,12 @@
 On 2026-08-07, after CB-12, the user judged the 13-map sample insufficient and explicitly added **7 additional maps beyond the existing 13-map endpoint**.
 
 - Required complete reviewed maps: **20**
-- Complete/reviewed: **12/20**
-- Remaining: **8 maps — CB-13 through CB-20**
-- Next map: **CB-13 / shadow map 13 of 20**
-- CB-12 — Top Esports vs Bilibili Gaming Game 1 — complete/reviewed
-- Verified CB-12 final: **TES won at 40:52, 34-31 kills**
-- Final structure: **TES 9-6 towers, dragons 3-3, BLG 2-1 Barons, TES 1-0 inhibitors**
+- Complete/reviewed: **13/20**
+- Remaining: **7 maps — CB-14 through CB-20**
+- Next map: **CB-14 / shadow map 14 of 20**
+- CB-13 — Shifters vs GIANTX Game 1 — complete/reviewed
+- Verified CB-13 final: **GIANTX won at 36:23, 16-10 kills**
+- Final structure: **GX 9-3 towers, GX 4-1 dragons, GX 1-0 Baron, GX 2-0 inhibitors**
 - Actual stake/exposure remains **0u**
 - Default logged shadow stake remains simulated **0.25u**
 - Shadow results never change the official probation ledger
@@ -62,7 +62,7 @@ Extension history:
 - First extension: +5 maps -> 13 total
 - Second extension after CB-12: +7 maps beyond the 13-map endpoint -> **20 total**
 
-## Corrected shadow accounting through CB-12
+## Corrected shadow accounting through CB-13
 
 - Through map 7: **6-4, +0.28550u**
 - CB-08: Over 32 minutes @1.803 — LOSS -0.25u
@@ -70,8 +70,9 @@ Extension history:
 - CB-10: BRO +6.5 kills @2.056 — WIN +0.264u; Under 33.5 kills @1.744 — WIN +0.186u
 - CB-11: Over 30.5 kills @1.710 — WIN +0.1775u
 - CB-12: TES ML @2.468 — WIN +0.3670u
-- Current settled shadow market record: **10-5**
-- Nominal simulated net: **+1.03000u / +1,030,000 VND**
+- CB-13: SHFT +3.5 kills @1.886 — LOSS -0.25u
+- Current settled shadow market record: **10-6**
+- Nominal simulated net: **+0.78000u / +780,000 VND**
 - Actual exposure/P&L: **0u / 0 VND**
 
 ## Retained calibration lessons
@@ -91,17 +92,20 @@ Over 30.5 won. The thesis degraded at 9:14 after a 1-1 start but was not invalid
 ### CB-12 post-draft underdog repricing lesson
 TES blue: Rumble / Vi / Ahri / Jhin / Alistar. BLG red: Ambessa / Jarvan IV / Lissandra / Corki / Camille. Preview favored BLG, but the completed draft improved TES via reliable pick access, anti-dive Rumble value, and higher BLG execution variance from Camille support. TES ML @2.468 was recorded and won at 40:52, 34-31. No material process error.
 
+### CB-13 positive-handicap confirmation lesson
+SHFT +3.5 kills @1.886 was recorded after SHFT led 1-0 kills and +1.1k gold at 8:27, then still held +619g at 1-1 kills by 9:27. That confirmation was too shallow relative to GX's cleaner Ornn/Jarvan/Orianna/Ezreal/Shen scaling, objective control and conversion structure. By 36:23 GX led 16-10 kills, 9-3 towers, 4-1 dragons, 1-0 Baron and 2-0 inhibitors. Future positive kill-handicap confirmation must distinguish temporary early parity from durable map-control evidence; shallow gold/kill leads alone are insufficient when the opposing composition has superior objective and front-to-back conversion.
+
 ## Connected-stack synchronization status
 
-Synchronization is current through **CB-12**.
+Synchronization is current through **CB-13**.
 
-- GitHub: authoritative through completed/reviewed CB-12 and now carries the **20-map circuit-breaker requirement**
-- Airtable Maps: CB-01 through CB-12 complete/reviewed; CB-04 preserves unknown final details rather than inventing them
-- Airtable Positions: all 15 actual recorded shadow positions through CB-12 persisted and settled as applicable
-- Airtable Snapshots: synchronized from CB-05 through CB-12; unreconstructable CB-01 through CB-04 detail was not invented
-- Google calibration workbook Maps / Positions / Snapshots: synchronized through CB-12
+- GitHub: authoritative through completed/reviewed CB-13 and carries the **20-map circuit-breaker requirement**
+- Airtable Maps: CB-01 through CB-13 complete/reviewed; CB-04 preserves unknown final details rather than inventing them
+- Airtable Positions: all 16 actual recorded shadow positions through CB-13 persisted and settled as applicable
+- Airtable Snapshots: synchronized from CB-05 through CB-13; unreconstructable CB-01 through CB-04 detail was not invented
+- Google calibration workbook Maps / Positions / Snapshots: synchronized through CB-13
 - Google Rule Changes: includes v0.3.35, connected-stack procedure, independent Total-Kills/Duration handling, compact live-response guidance, and **CB20 extension policy**
-- There is no completed-map tracker lag through CB-12
+- There is no completed-map tracker lag through CB-13
 
 Every future chat must still run the startup sync audit.
 
@@ -123,6 +127,7 @@ Every future chat must still run the startup sync audit.
 - Around 20:00, a leader with at least +5k gold and a two-tower advantage invalidates short-line duration Overs unless exceptional counterevidence exists.
 - Comeback tools widen duration distribution; they do not automatically increase expected duration.
 - Positive kill-handicap invalidation requires both a small remaining cushion and credible structural/Baron/base conversion control.
+- Positive kill-handicap confirmation must not rely on shallow early kill/gold parity alone when the opponent has materially stronger scaling/objective conversion; require evidence that the underdog can repeatedly contest or trade through objective cycles.
 - Draft handicap resilience alone is insufficient; synchronized price and current-map execution evidence are required.
 - Apply dominance override, multi-snapshot stabilization, role-gold breadth, observed-execution scoring, current-map evidence reset, late objective-density kill reserves, soul-cascade routing, and Baron acquisition/conversion separation.
 - Do not chase failing positions with wider correlated lines.
