@@ -35,7 +35,7 @@ Do not load football rules from the repository root. Root model copies were reti
 - Minimum odds: 1.70
 - Every executable or shadow LEAN uses exactly 0.25u = 250,000 VND
 - **Official football betting is paused under the four-match circuit breaker**
-- Circuit breaker: **0/4 completed**; only matches producing an otherwise executable LEAN can count, with at most one designated primary shadow selection per match
+- Circuit breaker: **1/4 completed**; only matches producing an otherwise executable LEAN can count, with at most one designated primary shadow selection per match
 - During the circuit breaker use `SHADOW LEAN — DO NOT PLACE`; do not issue a new `OFFICIAL BET`
 - `NO BET` matches do not consume a circuit-breaker slot
 - After 4/4, review all four shadow matches and require explicit user approval before restoring official betting
@@ -103,8 +103,8 @@ Airtable is an operational decision-control log only. `/ledger.json` remains aut
 
 ## Active position and reconciliation state
 
-- Current match focus: Portland Timbers vs Puebla.
-- Latest user-supplied synchronized snapshot before v0.2.40 activation: Portland 5-1 Puebla at approximately 58:01. The 5-1 goal created a new reset epoch; no post-goal shadow selection has been validated and the circuit breaker remains 0/4. Do not assume that score/minute persists without fresh user evidence.
+- Latest completed circuit-breaker shadow: **Singapore +1 @1.75, simulated 0.25u — WON** after user-confirmed final score Singapore 1-1 Indonesia. Simulated P/L: **+0.1875u = +187,500 VND**. Process validity: **Valid**. Exact +1 protection was intentionally preferred to +0.75 because it preserved push protection on an Indonesia one-goal win while still winning on a draw.
+- Portland Timbers vs Puebla: latest user-supplied synchronized snapshot before v0.2.40 activation was Portland 5-1 Puebla at approximately 58:01. The 5-1 goal created a new reset epoch; no post-goal shadow selection was validated and the match did not consume a circuit-breaker slot.
 - Club América vs San Diego FC: **San Diego FC +1.5 @1.89 — user confirmed loss at final score América 3-1 San Diego.** Expected stake 0.25u; ticket ID, actual stake and placement timestamp remain pending. Review classification: **model-attributed prematch selection error**. The pick failed to establish two independent margin-suppression channels, did not pass a favourite-first-goal branch, overvalued nominal 5-3-2/protection and friendly H2H, underweighted San Diego's adverse away margin tail, and incompletely propagated Leagues Cup margin incentives. Ledger not updated.
 - Chicago Fire vs Necaxa: Necaxa +0.5 @1.89 — user confirmed loss. Review classified the selection as a model-attributed market-promotion error: the model reduced protection from the watched +0.75 line and overweighted shots on target without sufficient high-value access. Expected stake 0.25u; ticket details and exact settlement evidence remain pending. Ledger not updated.
 - Jagiellonia Białystok DNB @1.94: user confirmed win; expected stake 0.25u, ticket details pending, ledger not updated.
@@ -115,7 +115,8 @@ Airtable is an operational decision-control log only. `/ledger.json` remains aut
 
 ## Circuit-breaker state
 
-- Football circuit breaker: **0/4 completed**.
+- Football circuit breaker: **1/4 completed**.
+- Slot 1: **Singapore +1 @1.75 vs Indonesia — WON, +0.1875u simulated P/L, process valid**.
 - New football positions are shadow only.
 - A match counts only if a normal executable LEAN would otherwise clear all active rules, the hard validator returns PASS, the Airtable Decision States write exists, one primary shadow selection is designated, and the result is later verified.
 - Track selection, line, odds, state, result, simulated P/L and process validity in the Airtable `Circuit Breaker` table.
