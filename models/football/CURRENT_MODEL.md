@@ -62,7 +62,7 @@ Do not load football rules from the repository root. Root model copies were reti
 
 - Current match focus: Club América vs San Diego FC.
 - Official position: San Diego FC +1.5 @1.89, placed from a model LEAN. Expected stake 0.25u; ticket ID, actual stake and placement timestamp remain pending.
-- Chicago Fire vs Necaxa official position remains active: Necaxa +0.5 @1.89, expected stake 0.25u; ticket ID, actual stake, placement timestamp and exact acceptance score/minute remain pending.
+- Chicago Fire vs Necaxa: Necaxa +0.5 @1.89 — user confirmed loss after Chicago moved 2-0 ahead. Expected stake 0.25u; ticket ID, actual stake, placement timestamp, exact acceptance score/minute and exact final score/time remain pending. Ledger not updated.
 - Jagiellonia Białystok DNB @1.94: user confirmed win; expected stake 0.25u, ticket details pending, ledger not updated.
 - Shanghai Port -0.5 @1.83: user confirmed loss; ledger reconciliation required.
 - Laos vs Philippines Under 3.5 @1.87: user confirmed loss; ledger reconciliation required.
