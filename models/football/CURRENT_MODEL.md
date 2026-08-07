@@ -2,7 +2,7 @@
 
 **Canonical namespace:** `models/football/`
 
-- Active model: **Football v0.2.35**
+- Active model: **Football v0.2.36**
 - Organized loading guide: `models/football/ORGANIZED_FILE_LOADING_GUIDE.md`
 - Main procedure: `models/football/procedures/FOOTBALL_BETTING_PROCEDURE.md`
 - Procedure addendum: `models/football/procedures/FOOTBALL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md`
@@ -19,9 +19,9 @@ Load the following in this order, applying newer rules over older conflicts:
 2. `models/LEGACY_MODEL_CHANGELOG.md` for the retained pre-v0.2.5 baseline
 3. `models/football/procedures/FOOTBALL_BETTING_PROCEDURE.md`
 4. `models/football/procedures/FOOTBALL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md`
-5. `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.5.md` through `MODEL_RULES_FOOTBALL_V0.2.35.md`, in ascending version order
+5. `models/football/rules/MODEL_RULES_FOOTBALL_V0.2.5.md` through `MODEL_RULES_FOOTBALL_V0.2.36.md`, in ascending version order
 6. `models/football/handoffs/CHAT_TRANSFER_HANDOFF_2026-08-06.md`
-7. `/ledger.json` when official record, bankroll, exposure, placement, or settlement status is relevant
+7. `/ledger.json` when official record, bankroll, exposure, placement or settlement status is relevant
 
 Do not load football rules from the repository root. Root model copies were retired during the physical cleanup.
 
@@ -34,16 +34,20 @@ Do not load football rules from the repository root. Root model copies were reti
 - `LEAN — SMALL` is retired for future recommendations
 - A wager is official only after confirmed placement
 - Ledger writes remain on hold until explicitly approved
-- Every material score, minute, line, odds, card, penalty, substitution, injury, weather, pitch, or settlement change requires independent repricing
+- Every material score, minute, line, card, penalty, substitution, injury, weather, pitch or settlement change requires independent repricing
+- Same-state accepted-odds drift of up to 0.08 is permitted under v0.2.36 when the line, settlement scope, score, minute and material state are unchanged, acceptance is within 120 seconds and odds remain at least 1.70
+- A decimal-odds move greater than 0.08 requires a fresh synchronized reprice
+- The former 1.5-percentage-point implied-probability sub-trigger does not independently invalidate a same-state execution inside the 0.08 tolerance
 - Every match-analysis message must include the v0.2.28 assessment-period field
 - Every prematch assessment and material live reassessment must independently scan all available major market families under v0.2.29; do not anchor to the previously discussed market
 - Before any pick, v0.2.30 requires both teams' relevant scoring/conceding profiles and verified or explicitly classified motivation/result utility
-- xG and xGOT are supporting evidence only; future-goal assessment must use multiple independent forward-looking channels and classify the goal environment as Closed, Neutral, or Open
+- xG and xGOT are supporting evidence only; future-goal assessment must use multiple independent forward-looking channels and classify the goal environment as Closed, Neutral or Open
 - v0.2.31 separates win, draw and margin utility; requires exact event-budget analysis for goal and corner unders; strengthens high-event late-under and deep-favorite handicap gates; and requires explicit `NO BET — HOLD` unlock conditions when a mandatory gate remains unresolved
 - v0.2.32 applies full model parity to reminders, automations and secondary threads; prohibits unsupported precise probabilities and informal executable labels; enforces one-best-expression and combined-exposure controls across all surfaces; and treats user-reported cross-thread placements as official positions with ticket details pending
 - v0.2.33 adds regime-persistence, directional-switch, candidate-oscillation, one-event binary-market and substitution-cluster controls; invalidating one side never automatically confirms the opposite side
 - v0.2.34 requires competition-format verification, separates regulation and shootout utility, adds dual-value tie and pressure-to-urgency gates, strengthens tied-state side switching and further de-emphasizes xG/xGOT
 - v0.2.35 requires a fresh LEAN-or-NO-BET decision once a stated HOLD unlock is satisfied and mandates side-versus-one-goal-over comparison when persistent pressure develops in a tied match
+- v0.2.36 increases same-state execution odds tolerance to 0.08 and retires the independent implied-probability sub-trigger inside that range
 
 ## Response scope and brevity
 
@@ -51,14 +55,18 @@ Do not load football rules from the repository root. Root model copies were reti
 - Assess recent relevant H2H and home/away form only in the prematch preview.
 - Do not repeat H2H or team-form sections during live reassessments unless the user explicitly requests them.
 
-## Active handoff state
+## Active position and reconciliation state
 
-- Current match focus: none; awaiting the next fixture
-- Existing official model position preserved from the handoff: Jagiellonia Białystok DNB @1.94 decimal
-- Expected model stake: 0.25u; ticket details and settlement remain pending
-- Do not assume any new match score, clock, events, lineups or prices; refresh from user evidence
-- Ledger write remains unauthorized
+- Current live match focus: Chicago Fire vs Necaxa.
+- Official position: Necaxa +0.5 @1.89, placed from a model LEAN. Expected stake 0.25u; ticket ID, actual stake, placement timestamp and exact acceptance score/minute remain pending.
+- Same-match executable exposure remaining for Chicago Fire vs Necaxa: 0u under the normal cap.
+- Existing official model position preserved from the handoff: Jagiellonia Białystok DNB @1.94. Expected stake 0.25u; ticket details and settlement remain pending.
+- Ledger records currently marked pending and requiring settlement reconciliation:
+  - Shanghai Port -0.5 @1.83, 0.25u.
+  - Laos vs Philippines Under 3.5 @1.87, 0.3u.
+- Do not infer settlement or alter these records without evidence.
+- Ledger write remains unauthorized.
 
 ## Write boundary
 
-All new football rules, procedures, context, handoffs, and reviews must be written under `models/football/`. Shared policies belong under `shared/`. Do not create new football model files at the repository root.
+All new football rules, procedures, context, handoffs and reviews must be written under `models/football/`. Shared policies belong under `shared/`. Do not create new football model files at the repository root.
