@@ -1,7 +1,7 @@
 # LoL Cross-Chat Transfer Handoff — 2026-08-07
 
 **Prepared:** 2026-08-07 15:02 UTC+7  
-**Corrected:** 2026-08-07 16:39 UTC+7  
+**Corrected:** 2026-08-07 17:02 UTC+7  
 **Stack synchronized:** 2026-08-07  
 **Repository:** `acchtt/SlipTrace`  
 **Active model:** **LoL v0.3.35**
@@ -15,10 +15,11 @@ The connected-stack procedure is mandatory. A future chat must not describe Airt
 ## Current operating state
 
 - Circuit breaker requirement: **13 complete reviewed maps**.
-- Complete/reviewed: **8/13**.
-- Current map awaiting complete review: **shadow map 9/13 — KT Rolster vs Gen.G Game 2**.
-- User confirmed Gen.G won **12-2 kills**; exact final duration/final-state screen remains unverified.
-- No validly recorded shadow position exists on map 9.
+- Complete/reviewed: **9/13**.
+- Next complete reviewed map: **shadow map 10/13**.
+- CB-09 — KT Rolster vs Gen.G Game 2 — is complete/reviewed.
+- Verified final: **Gen.G won at 25:13, 12-2 kills**.
+- No validly recorded shadow position existed on CB-09.
 - Official LoL betting remains paused through all 13 maps and requires explicit user restoration after map 13.
 - Actual exposure/P&L: **0u / 0 VND**.
 - Item verification remains suspended; unknown items are neutral and never guessed.
@@ -71,6 +72,7 @@ No new predictive rule is promoted from one result; existing duration and eviden
 
 - Through map 7: **6-4, +0.28550u**.
 - Map 8: **loss -0.25u**.
+- CB-09: no recorded position; no P/L impact.
 - Current market record: **6-5**.
 - Current nominal simulated net: **+0.03550u / +35,500 VND**.
 - Actual exposure/P&L: **0u / 0 VND**.
@@ -84,24 +86,23 @@ User explicitly extended the prior eight-map breaker by **five additional comple
 - Improving simulated results does not shorten the breaker.
 - Official recommendations do not resume automatically after map 13.
 
-## Connected-stack status — SYNCHRONIZED THROUGH CB-08
-
-The 2026-08-07 audit originally found tracker lag. That lag has now been repaired through CB-08.
+## Connected-stack status — SYNCHRONIZED THROUGH CB-09
 
 Current synchronized state:
 
-- **GitHub:** authoritative through corrected CB-08 and current CB-09 partial result state.
-- **Airtable Maps:** CB-01 through CB-08 present and complete/reviewed; CB-04 intentionally preserves unknown final winner/clock/score.
-- **Airtable Positions:** all **11** shadow positions from CB-01 through CB-08 are persisted and settle to the authoritative **6-5, +0.03550u** record.
-- **Airtable Snapshots:** synchronized evidence is present from CB-05 through CB-08. Detailed CB-01 through CB-04 snapshots were not fully reconstructable and were not invented.
-- **Google calibration workbook Maps and Positions:** synchronized through CB-08.
-- **Google calibration workbook Snapshots:** mirrored from CB-05 through CB-08.
+- **GitHub:** authoritative through completed/reviewed CB-09.
+- **Airtable Maps:** CB-01 through CB-09 present and complete/reviewed; CB-04 intentionally preserves unknown final winner/clock/score.
+- **Airtable Positions:** all **11** actual recorded shadow positions from CB-01 through CB-08 are persisted; no CB-09 position exists.
+- **Airtable Snapshots:** synchronized evidence is present from CB-05 through CB-09. Detailed CB-01 through CB-04 snapshots were not fully reconstructable and were not invented.
+- **Google calibration workbook Maps:** synchronized through CB-09.
+- **Google calibration workbook Positions:** synchronized through CB-08 because CB-09 had no recorded position.
+- **Google calibration workbook Snapshots:** mirrored from CB-05 through CB-09.
 - **Google Rule Changes:** includes v0.3.35 and the mandatory connected-stack sync/recording procedure.
-- There is **no tracker lag through CB-08**.
+- There is **no tracker lag through CB-09**.
 
 The startup sync audit remains mandatory in every future chat because the stack may become stale again after new maps.
 
-## Map 9 — KT Rolster vs Gen.G Game 2 — RESULT KNOWN, REVIEW INCOMPLETE
+## Map 9 — KT Rolster vs Gen.G Game 2 — COMPLETE
 
 Draft:
 
@@ -115,7 +116,7 @@ Quoted pregame prices:
 - O/U 28.5 @1.884/1.871;
 - Over/Under 32 min @1.747/2.049.
 
-A **conditional KT +7.5 lean** was issued, but the price was not re-synchronized and no Airtable position was written. It therefore remains **CONDITIONAL / UNRECORDED** and is not part of shadow P/L.
+A **conditional KT +7.5 lean** was issued from the last quoted price, but the exact price was not re-synchronized after draft and no Airtable position was written. It therefore remained **CONDITIONAL / UNRECORDED** and is not part of shadow P/L.
 
 At 21:45:
 
@@ -124,9 +125,18 @@ At 21:45:
 - Gen.G 5-0 towers;
 - Gen.G 2-0 dragons;
 - 0-0 Barons;
-- the KT handicap thesis was analytically invalidated.
+- the KT handicap thesis was analytically invalidated under dominance override.
 
-User later confirmed final winner/kill score: **Gen.G won 12-2**. Exact final clock remains unverified. Because there was no recorded position, map-9 result does not change shadow P/L. Do not mark CB-09 complete until the exact final duration/final-state verification is supplied and the review is logged.
+Verified final screen:
+
+- **Gen.G won at 25:13**;
+- **12-2 kills**;
+- **9-0 towers**;
+- **3-0 dragons**;
+- **1-0 Baron**;
+- **2-0 inhibitors**.
+
+Process review: the initial draft-resilience thesis was too generous without current-map execution evidence. However, the new connected-stack price/recording gate worked as intended: because the price was not re-synchronized and no position record was created, the weak lean did not become a false shadow wager. No new predictive rule is promoted from this single unrecorded lean.
 
 ## Mandatory controls through map 13
 
@@ -141,6 +151,7 @@ User later confirmed final winner/kill score: **Gen.G won 12-2**. Exact final cl
 - Around 20:00, +5k gold plus two-tower lead invalidates short-line duration Overs unless exceptional counterevidence exists.
 - Comeback tools widen duration distribution; do not automatically raise expected duration.
 - Positive handicap invalidation needs small cushion plus credible structural/Baron/base conversion.
+- Draft handicap resilience is insufficient by itself for entry; synchronized price and current-map execution evidence are required.
 - Recorded position state and current thesis state remain separate.
 - `CONDITIONAL / UNRECORDED` and `RECORDED SHADOW POSITION` are separate state transitions.
 - Do not chase failing positions with wider correlated lines.
