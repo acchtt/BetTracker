@@ -1,6 +1,6 @@
 # FOOTBALL AIRTABLE DECISION-STATE CONTROL
 
-Effective with Football v0.2.40.
+Effective with Football v0.2.40; strengthened by Football v0.2.41.
 
 This document records the canonical operational Airtable control plane for football decision-state validation.
 
@@ -36,11 +36,14 @@ Important field IDs:
 - Reset Resolved — `fldJR1gsmr6g7zncK`
 - Competition Format Verified — `fld2sc8z4Fh5gL7Op`
 - Win Draw Margin Utility Verified — `fldXAYNAW0LS8sUF1`
+- Margin Incentive Propagated — `fldU7zDQfsrNz7ynX`
 - xG Role — `fldulLHGJxfWKrJj9`
 - Primary Channels — `fld6Rcz1ryT2TsfMu`
 - Independent Primary Channels — `fldGz8gbcyuPUqZWD`
 - Favorite Fade Gate — `fldZhL6NWpiNCwQCS`
 - Directional Persistence — `fldz2otbFIu7Dr8OE`
+- Underdog Suppression Evidence Count — `fldFvGzM6hi1FNWFk`
+- Favorite First-Goal Branch — `fld3Oq1Fb4FBYJD2R`
 - Major Markets Scanned — `fldoWuPOW46IuEhlF`
 - Circuit Breaker Mode — `fldnMIgdPKLcXc64W`
 - Validator Result — `fldCuQ8rqNrmhgpld`
@@ -56,6 +59,13 @@ No `SHADOW LEAN — DO NOT PLACE`, `LEAN`, or `OFFICIAL BET` may be emitted unle
 If a material reset is unresolved, write the state with `Goal Environment = Unresolved`, `Reset Resolved = false`, and `Validator Result = HOLD`.
 
 If xG/xGOT is creating the thesis rather than corroborating it, write `xG Role = Violation` and `Validator Result = FAIL`.
+
+For a prematch protected-underdog candidate against a material/deep favourite under v0.2.41:
+
+- `Underdog Suppression Evidence Count` must be at least 2;
+- `Favorite First-Goal Branch` must be `Pass`;
+- `Margin Incentive Propagated` must be checked whenever competition tiebreak/order or other incentives materially affect margin utility;
+- failure of any applicable condition forces `Validator Result = FAIL`.
 
 ## Table 2 — Circuit Breaker
 
@@ -88,7 +98,7 @@ Important field IDs:
 6. `NO BET` and `NO BET — HOLD` do not consume a slot.
 7. After four counted and settled slots, perform the four-match review. Official betting remains paused until the user explicitly restores it.
 
-## Current state at activation
+## Current state
 
 - Circuit breaker: `0/4 complete`.
 - Official football betting: paused.
