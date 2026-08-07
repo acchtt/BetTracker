@@ -83,16 +83,21 @@ The duration entry should have been rejected under existing rules:
 - JDG's Vi-Rakan-Akali access plus Xayah/Gnar conversion created a credible one-fight acceleration branch;
 - an earlier conflicting clock read caused a false win settlement and has been reversed.
 
-## Connected-stack audit status
+## Connected-stack synchronization status
 
-Audit on 2026-08-07 found:
+Synchronization completed on 2026-08-07 after the connected-stack audit.
 
-- GitHub current through corrected shadow map 8;
-- Airtable live tracker populated only through map 5;
-- Google calibration workbook further behind;
-- KT +7.5 Game 2 lean was conditional/discussed but never validly recorded.
+- **GitHub:** authoritative through corrected CB-08 and current map-9 partial result state.
+- **Airtable Maps:** CB-01 through CB-08 are present and marked complete/reviewed; CB-04 preserves unknown final details rather than inventing them.
+- **Airtable Positions:** all **11** shadow market positions from CB-01 through CB-08 are persisted with exact selections, odds, simulated P/L, and actual exposure 0u.
+- **Airtable Snapshots:** synchronized evidence is mirrored from CB-05 through CB-08. Earlier CB-01 through CB-04 snapshot detail was not fully reconstructable and was deliberately not invented.
+- **Google calibration workbook Maps/Positions:** synchronized through CB-08.
+- **Google calibration workbook Snapshots:** mirrored from CB-05 through CB-08.
+- **Google Rule Changes:** includes v0.3.35 circuit-breaker extension and the mandatory 2026-08-07 connected-stack procedure.
+- There is **no tracker lag through CB-08**.
+- CB-09 remains outside completed-map accounting until exact final duration/final-state verification is supplied; its conditional KT +7.5 lean was never recorded and does not affect shadow P/L.
 
-Until synchronization is repaired, stale Airtable/Sheets rows must be labeled `TRACKER LAG`. A shadow position only counts toward record/P&L when the exact entry is actually persisted under the connected-stack procedure.
+Every future chat must still run the startup sync audit. A previously synchronized stack can become stale again.
 
 ## Active calibration controls through map 13
 
