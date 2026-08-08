@@ -2,10 +2,11 @@
 
 **Canonical namespace:** `models/lol/`
 
-- Active model: **LoL v0.3.36**
-- Active rules: `models/lol/rules/MODEL_RULES_LOL_V0.3.36.md`
-- Prior active deltas: v0.3.35 through v0.3.26 under `models/lol/rules/`
+- Active model: **LoL v0.3.37**
+- Active rules: `models/lol/rules/MODEL_RULES_LOL_V0.3.37.md`
+- Prior active deltas: v0.3.36 through v0.3.26 under `models/lol/rules/`
 - Portable baseline context: `models/lol/context/lol-v0.3.25/`
+- Mandatory live checklist: `models/lol/procedures/LOL_LIVE_VERDICT_EXECUTION_CHECKLIST_2026-08-08.md`
 - Item-verification suspension: `models/lol/procedures/LOL_ITEM_VERIFICATION_SUSPENSION_2026-08-05.md`
 - Live fast path: `models/lol/procedures/LOL_LIVE_RESPONSE_FAST_PATH_2026-08-05.md`
 - Main procedure: `models/lol/procedures/LOL_BETTING_PROCEDURE.md`
@@ -13,25 +14,27 @@
 - Procedure addenda: `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-01.md` and `models/lol/procedures/LOL_BETTING_PROCEDURE_ADDENDUM_2026-08-02.md`
 - Scoreboard protocol: `models/lol/procedures/LOL_LIVE_SCOREBOARD_READING_PROTOCOL_2026-08-01.md`
 - Shared stake policy: `shared/STAKE_POLICY_V2.json`
-- Prior full handoff: `models/lol/handoffs/CHAT_TRANSFER_HANDOFF_2026-08-07.md`
-- Current handoff amendment: `models/lol/handoffs/CHAT_TRANSFER_HANDOFF_2026-08-07_2325.md`
+- Latest handoff: `models/lol/handoffs/CHAT_TRANSFER_HANDOFF_2026-08-08.md`
 
 ## Required load order
 
-1. v0.3.36 through v0.3.26 rule deltas
-2. item-verification suspension
-3. v0.3.25 consolidated rules, probation status, calibration handbook
-4. live fast path
-5. main betting procedure
-6. connected-stack sync/recording procedure
-7. both procedure addenda
-8. scoreboard protocol
-9. pre-match/pregame procedure
-10. shared stake policy
-11. prior full 2026-08-07 handoff
-12. current 23:25 amendment last
+Every new chat must load these before its first LoL analysis:
 
-Where conflicts exist, **v0.3.36 controls**.
+1. `models/lol/CURRENT_MODEL.md`
+2. v0.3.37 through v0.3.26 rule deltas
+3. item-verification suspension
+4. v0.3.25 consolidated rules, probation status, calibration handbook
+5. mandatory live verdict execution checklist
+6. live fast path
+7. main betting procedure
+8. connected-stack sync/recording procedure
+9. both procedure addenda
+10. scoreboard protocol
+11. pre-match/pregame procedure
+12. shared stake policy
+13. latest handoff last
+
+Where conflicts exist, **v0.3.37 controls**.
 
 ## Official probation
 
@@ -40,83 +43,118 @@ Where conflicts exist, **v0.3.36 controls**.
 - Net: -0.16425u / -164,250 VND
 - Next official wager after eventual restoration: 14
 - Standard/default stake after restoration: **0.25u**
-- **No hard aggregate per-map exposure cap from v0.3.36 onward**
-- Minimum odds: 1.60
+- No hard aggregate per-map exposure cap
+- Minimum odds: **1.60**
 - Duration markets official-ineligible through wager 20
-- Official betting remains paused until the circuit breaker is complete and the user explicitly restores it
+- Official betting remains paused until the 20-map circuit breaker is complete and the user explicitly restores it
 
-## Twenty-map shadow circuit breaker
+## Twenty-map shadow circuit breaker — current chat state
 
-- Required complete reviewed maps: **20**
-- Complete/reviewed: **14/20**
-- Next map: **CB-15**
-- Remaining: CB-15 through CB-20
-- Actual stake/exposure remains **0u** throughout the breaker
-- Default logged shadow position size remains simulated **0.25u** unless separately justified
-- Shadow results never change the official probation ledger
-- Improving simulated results never shortens the breaker
-- No official recommendations resume automatically after CB-20; explicit user restoration is required
+User-confirmed recent sequence:
 
-## Settled shadow accounting through CB-14
+- **CB-17:** TH +7.5 kills vs FNC — LOSS; this triggered the Objective-Control Handicap Veto patch.
+- **CB-18:** TH vs FNC Game 3 Under 26.5 thesis was directionally correct with 25 final kills, but the executable line deteriorated before placement. Correct status: **NO BET / 0u**, not a win.
+- The user explicitly stated **CB-19 was next** before the T1 vs HLE sequence.
+- **CB-19:** T1 vs HLE Game 2 is treated as the next complete reviewed map. Final: HLE won 12-9 kills at 33:59. No position was recorded. Under 23.5 @1.894 was recommended conditionally but not confirmed before the line moved; therefore **NO BET / 0u** and no graded market result.
+- **CB-20:** T1 vs HLE Game 3 is the active/next breaker map in the current chat unless the user supplies a newer correction.
 
-- Settled shadow market record: **11-7**
-- Nominal simulated net: **+0.8590u / +859,000 VND**
-- Actual exposure/P&L: **0u / 0 VND**
+Actual stake/exposure remains **0u** throughout the breaker. Shadow results do not change official probation. Official recommendations do not resume automatically after CB-20; explicit user restoration remains mandatory.
 
-## CB-14 settlement — Shifters vs GIANTX Game 2
+Do not reconstruct cumulative shadow record/net from partial chat history. Run the connected-stack startup sync audit before asserting a cumulative CB total beyond the last fully synchronized record.
 
-- Final: **Shifters won, 17-11 kills, 35:34**.
-- `CB-14-P01` — **Under 30.5 kills @2.316**, simulated 0.25u, **WIN +0.329u**, actual 0u.
-- `CB-14-P02` — **GX +3.5 kills @1.781**, simulated 0.25u, **LOSS -0.25u**, actual 0u.
-- CB-14 net: **+0.079u**.
-- Earlier 22:38 gold-lead attribution was corrected: **GX**, not SHFT, held the +1.9k lead.
-- Final evidence/user confirmation overrides the scoreboard tile that still displayed `FINAL RESULT PENDING`.
+## v0.3.37 mandatory execution discipline
 
-## v0.3.36 stake-policy change
+### Verdict format
 
-Effective 2026-08-07 23:25 UTC+7, the user explicitly removed the prior **0.25u per-map aggregate exposure cap**.
+The first visible line must be one of:
 
-- There is now **no hard aggregate LoL per-map exposure ceiling**.
-- Standard/default individual position size remains **0.25u** unless separately justified.
-- Removal of the cap does not authorize automatic stake escalation, martingale behavior, or loss chasing.
-- During the circuit breaker actual exposure remains **0u**.
-- Total Kills, Duration, map moneyline and kill handicap remain independently priced market families.
-- The **no correlated same-map add-on** rule remains active.
-- A second or later same-map position requires a materially distinct thesis, synchronized current state, qualifying price, and compliance with correlation/chasing rules.
-- Do not convert a PASS/WATCH into an entry merely because the aggregate map cap is gone.
+- `TAKE — [selection] @[odds] — shadow 0.25u; actual 0u.`
+- `PASS — [market/selection] @[odds] — 0u.`
+- `HOLD — [market/selection] @[odds] — 0u.`
 
-## Active calibration controls through CB-20
+Live responses remain brief, but brevity never bypasses model gates.
 
-- Verdict first; logging after verdict.
-- Live replies compact by default; brevity is presentation-only and never bypasses full model/rule checks.
-- `NO LEAN` is acceptable.
-- Recorded-position state and current thesis state are separate.
-- `CONDITIONAL / UNRECORDED` and `RECORDED SHADOW POSITION` are distinct states.
-- Total Kills and Duration are separate analytical market families and each receives an independent verdict.
-- Current-map hard evidence resets every map; prior execution is a soft prior only.
-- No duration Over before 10:00 unless at least two genuine stall signals exist beyond ordinary towerlessness.
-- Correlated quiet indicators remain one cluster; absence of action is not itself anti-conversion evidence.
-- If a realistic fast-close branch reaches or beats the duration line, reject the Over unless that route has already been demonstrably resisted.
-- Six or more total kills by 8:00 activates a wider fast-ending branch.
-- Fourteen or more total kills by 16:00 prevents 0-0 towers from being confirming duration evidence.
-- Around 20:00, a leader with at least +5k gold and a two-tower advantage invalidates short-line duration Overs unless exceptional counterevidence exists.
-- Comeback tools widen duration distribution; they do not automatically increase expected duration.
-- Positive kill-handicap invalidation requires both a small remaining cushion and credible structural/Baron/base conversion control.
-- Positive kill-handicap confirmation must not rely on shallow early kill/gold parity alone when the opponent has materially stronger scaling/objective conversion; require evidence that the underdog can repeatedly contest or trade through objective cycles.
-- Draft handicap resilience alone is insufficient; synchronized price and current-map execution evidence are required.
-- Apply dominance override, multi-snapshot stabilization, role-gold breadth, observed-execution scoring, current-map evidence reset, late objective-density kill reserves, soul-cascade routing, and Baron acquisition/conversion separation.
-- Do not chase failing positions with wider or directionally correlated lines.
-- Explicit user correction or verified final evidence overrides stale/conflicting telemetry and can reverse settlement/accounting.
+### Pre-verdict checklist is compulsory
+
+Before every live verdict, internally verify:
+
+1. current-frame fingerprint;
+2. recorded-position state versus current thesis state;
+3. independent moneyline scan;
+4. exact kill-handicap arithmetic and cascade test;
+5. independent total-kills low/central/high projection;
+6. independent duration fast/central/extension projection;
+7. line/price availability, minimum odds, correlation and chasing controls;
+8. Live/Pending/final settlement state.
+
+Missing decision-critical data => fail closed with `PASS` or `HOLD`. Never fill a missing gate with intuition.
+
+### Executable-price rule
+
+A `TAKE` remains **CONDITIONAL / UNRECORDED** until the user confirms the same qualifying executable line/price remained available and was accepted for tracking.
+
+If the line locks, disappears, or deteriorates before confirmation, the recommendation becomes **NO BET / 0u**. It is never graded as a win or loss later, even if the underlying thesis would have been correct.
+
+### Objective-Control Handicap Veto
+
+For a positive kill handicap, aligned opponent **gold lead + meaningful neutral-objective control** cannot be dismissed merely because the current kill margin is small or the cushion is wide.
+
+Without affirmative current-map evidence that the handicap side can survive the next cascade and repeatedly contest/trade or generate return kills through objective cycles, the positive handicap is a **PASS**.
+
+### Exact handicap arithmetic
+
+Every evaluated handicap must calculate:
+
+- current margin;
+- required final margin;
+- exact additional future net kills required;
+- cascade stress test;
+- objective/structural alignment;
+- return-kill and contest routes;
+- repair/line-chasing state when applicable.
+
+Never claim a line widened/tightened without a verified prior same-map line.
+
+### Total Kills and Duration are separate
+
+Total Kills requires current kills, whole kills to line, unresolved fight inventory, objective-density reserve and low/central/high branches.
+
+Duration requires fast-close, central and extension branches plus structure/base route, stall evidence, and terminal-access/methodical-control checks when applicable.
+
+Retained duration corrections remain mandatory: no Over before 10:00 without two genuine stall signals beyond towerlessness; >=6 kills by 8:00 widens fast-finish risk; >=14 kills by 16:00 prevents 0-0 towers from confirming an Over; around 20:00 a >=+5k gold and +2-tower leader invalidates short Overs absent exceptional counterevidence; comeback tools widen the distribution; Grubs alone do not prove completed acceleration; kill suppression does not equal time compression.
+
+### Settlement verification
+
+A screenshot marked `Live` or `Pending` is never final settlement evidence by itself. Settle only from a verified final/result state or a separate explicit exact user confirmation sufficient under the evidence hierarchy.
+
+### Plugin/logging order
+
+For active live maps:
+
+1. complete model checklist;
+2. show verdict immediately;
+3. then perform GitHub/Airtable/Sheets logging or other connected-stack work.
+
+Logging/plugin work never delays the live verdict.
+
+## Retained controls
+
+- 1u = 1,000,000 VND.
+- Default individual shadow size: 0.25u.
+- No hard aggregate LoL per-map exposure cap.
+- No automatic stake escalation, martingale behavior, or loss chasing.
+- No correlated same-map add-ons.
+- Multiple same-map shadow positions require materially distinct theses, synchronized state and qualifying prices.
+- Current-map hard evidence resets every map; prior execution is only a soft prior.
 - Item verification remains suspended until explicit restoration; unknown items are neutral and never guessed.
+- Apply dominance override, multi-snapshot stabilization, role-gold breadth, observed-execution scoring, late objective-density kill reserves, soul-cascade routing, Baron acquisition/conversion separation, comeback-shape correction and settlement-verification correction.
 
-## Connected-stack status
+## Connected-stack authority
 
-- Completed-map synchronization is authoritative through **CB-14**.
-- CB-15 is next; no active shadow position is open.
 - GitHub is authoritative for model/rule policy.
 - Airtable tracks maps, snapshots and positions.
-- Google calibration workbook mirrors completed maps and rule changes; any discrepancy defers to GitHub.
-- Every future chat must run the startup sync audit before claiming the stack is synchronized.
+- Google calibration workbook mirrors completed maps and rule changes.
+- If stack records disagree, run the startup sync audit; do not silently merge conflicting states.
 
 ## Write boundary
 
