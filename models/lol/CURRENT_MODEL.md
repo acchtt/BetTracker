@@ -2,9 +2,9 @@
 
 **Canonical namespace:** `models/lol/`
 
-- Active model: **LoL v0.3.39**
-- Active rules: `models/lol/rules/MODEL_RULES_LOL_V0.3.39.md`
-- Prior active deltas: v0.3.38 through v0.3.26 under `models/lol/rules/`
+- Active model: **LoL v0.3.40**
+- Active rules: `models/lol/rules/MODEL_RULES_LOL_V0.3.40.md`
+- Prior active deltas: v0.3.39 through v0.3.26 under `models/lol/rules/`
 - Portable baseline context: `models/lol/context/lol-v0.3.25/`
 - Mandatory live checklist: `models/lol/procedures/LOL_LIVE_VERDICT_EXECUTION_CHECKLIST_2026-08-08.md`
 - Item-verification suspension: `models/lol/procedures/LOL_ITEM_VERIFICATION_SUSPENSION_2026-08-05.md`
@@ -21,7 +21,7 @@
 Every new chat must load these before its first LoL analysis:
 
 1. `models/lol/CURRENT_MODEL.md`
-2. v0.3.39 through v0.3.26 rule deltas
+2. v0.3.40 through v0.3.26 rule deltas
 3. item-verification suspension
 4. v0.3.25 consolidated rules, probation status, calibration handbook
 5. mandatory live verdict execution checklist
@@ -34,7 +34,7 @@ Every new chat must load these before its first LoL analysis:
 12. shared stake policy
 13. latest handoff last
 
-Where conflicts exist, **v0.3.39 controls**.
+Where conflicts exist, **v0.3.40 controls**.
 
 ## Official probation
 
@@ -50,14 +50,14 @@ Where conflicts exist, **v0.3.39 controls**.
 
 ## Twenty-map shadow circuit breaker — completed
 
-User-confirmed recent sequence:
+The required 20/20 shadow maps are complete. Completion does **not** automatically restore official wagering.
 
-- **CB-17:** TH +7.5 kills vs FNC — LOSS; triggered Objective-Control Handicap Veto.
-- **CB-18:** TH vs FNC Game 3 Under 26.5 thesis finished with 25 final kills, but executable line deteriorated before placement => **NO BET / 0u**.
-- **CB-19:** T1 vs HLE Game 2 — HLE won 12-9 at 33:59. No recorded position. Conditional Under 23.5 @1.894 expired before confirmation => **NO BET / 0u**.
-- **CB-20:** T1 vs HLE Game 3 — HLE won 28-13 at 34:49. No recorded position. Under 26.5 @1.60 was PASS; HLE -10.5 and T1 +10.5 were PASSes.
+Recent breaker sequence remains:
 
-The required **20/20 shadow maps are complete**. Completion does **not** automatically restore official wagering.
+- CB-17 TH +7.5 kills vs FNC — LOSS; triggered Objective-Control Handicap Veto.
+- CB-18 TH/FNC G3 Under 26.5 thesis correct but line deteriorated before placement => NO BET / 0u.
+- CB-19 T1/HLE G2 — no recorded position; conditional Under expired => NO BET / 0u.
+- CB-20 T1/HLE G3 — no recorded position.
 
 ## Mandatory verdict discipline
 
@@ -71,9 +71,9 @@ Before every live verdict internally verify:
 
 1. current-frame fingerprint;
 2. recorded-position state versus current thesis state;
-3. independent moneyline scan;
+3. independent moneyline scan including v0.3.40 probability gate when pregame/0:00;
 4. phase-aware exact kill-handicap arithmetic + probability gate + cascade test + structural controls;
-5. independent total-kills low/central/high projection;
+5. independent total-kills low/central/high projection + v0.3.40 probability/fight-density reserve;
 6. independent duration fast/central/extension projection;
 7. line/price availability, minimum odds, correlation and chasing controls;
 8. settlement state.
@@ -86,43 +86,50 @@ A `TAKE` remains **CONDITIONAL / UNRECORDED** until the user confirms the same q
 
 If the line locks, disappears, or deteriorates before confirmation, the recommendation becomes **NO BET / 0u** and is never graded later.
 
-## v0.3.39 Phase-Aware Kill-Handicap Calibration
+## v0.3.40 Pregame ML Calibration
 
-Kill handicaps must first be classified as **pregame/0:00, early live, or mid/late live**.
+For any pregame / 0:00 moneyline TAKE:
 
-### Probability edge gate
+- construct baseline map `P_win` range before draft;
+- separate series prior from map prior;
+- apply verified side adjustment;
+- apply disciplined draft/composition adjustment;
+- apply supported execution/form adjustment;
+- calculate `P_break_even = 1 / odds`;
+- require the **lower end** of final `P_win` range to clear break-even by **at least +3 percentage points**.
 
-For any handicap TAKE calculate `P_break_even = 1 / odds`, estimate a reasonable `P_cover` range, and require the **lower end** of that range to clear break-even by:
+Draft alone normally moves a map prior by **0–4pp**. A >4pp move requires at least three independent material matchup advantages. One attractive interaction cannot justify a large move by itself.
 
-- **+5 percentage points** for pregame positive handicaps;
-- **+4 percentage points** for early-live handicaps;
-- **+3 percentage points** for mid/late-live handicaps.
+### NAVI vs SK G1 calibration
 
-If the edge cannot be explicitly supported, `PASS`/`HOLD`.
+SK ML @2.239 was confirmed as a separate 0.25u shadow bet and lost; final NAVI 27-12 at 30:14. The stated SK range of 47–50% had a lower-bound edge of only about +2.34pp over 44.66% break-even, which **fails v0.3.40**. The model overvalued Sylas ult access/return-engage and undervalued NAVI's repeatable Nocturne/Shen -> Orianna/MF initiation package.
 
-### Pregame positive handicaps are high-friction
+## v0.3.40 Early Total-Kills Calibration
 
-Draft resilience alone is insufficient. Require:
+For total-kills TAKEs:
 
-- projected final total-kill range;
-- low/central/high final kill-margin branches;
-- handicap-to-total scaling (`H/T`);
-- explicit probability edge;
-- cascade-tail assessment.
+- early live: lower end of selection probability range must clear break-even by **+4pp**;
+- mid/late live: lower end must clear by **+3pp**.
 
-A “large cushion” is never sufficient justification.
+High early fight-density is active with >=8 kills by 8:00, >=10 by 10:00, repeated early multi-player skirmishes, or multiple globals/engage chains coming online.
 
-### Cascade-tail penalty
+If high fight-density is active and at least three meaningful future fight windows remain, assign the high-kill branch at least **25–30% probability mass** absent strong suppression evidence.
 
-Layered engage, globals/semi-globals, point-and-click initiation, reset/chase, objective forcing, dive/follow-up and safe cleanup DPS widen the favorite’s high-margin tail. Three or more meaningful cascade factors require an explicit penalty against a positive-handicap TAKE unless strong counterevidence exists.
+If both drafts collectively contain four or more meaningful fight-creation channels, apply an additional volatility penalty against early Unders.
 
-### Return-kill evidence hierarchy
+NAVI vs SK G1: Under 32.5 @2.827 at 6:51 was unconfirmed and therefore NO BET / 0u; final total was 39. It is calibration evidence that the high branch was underweighted. Later Under 43.5 @2.480 and Over 29m @2.008 were also unconfirmed/NO BET despite favorable finals.
 
-Theoretical draft tools < lane-state survival < observed repeated return kills < objective contest/trade < repeated multi-cycle resistance. Pregame theory is supporting evidence only, never primary evidence for a positive-handicap TAKE.
+## v0.3.39 Phase-Aware Kill-Handicap Calibration retained
 
-### Calibration
+Kill handicaps must first be classified as pregame/0:00, early live, or mid/late live.
 
-BLG vs EDG Game 2: EDG +10.5 @1.810 lost 16-27. The process error was recommending a pregame positive handicap from qualitative return-kill tools without a sufficiently explicit margin distribution / probability edge, while BLG carried a strong layered cascade composition. Under v0.3.39 this is PASS/HOLD unless the post-penalty cover probability clears the 55.25% break-even rate by at least 5 percentage points.
+For any handicap TAKE calculate break-even and a reasonable `P_cover` range; require the **lower end** to clear break-even by:
+
+- +5pp for pregame positive handicaps;
+- +4pp for early-live handicaps;
+- +3pp for mid/late-live handicaps.
+
+Pregame positive handicaps are high-friction. Draft resilience alone is insufficient. Require projected total kills, final-margin branches, H/T scaling, explicit probability edge and cascade-tail assessment.
 
 ## Retained Objective-Control Handicap Veto
 
@@ -132,17 +139,15 @@ Without affirmative repeated contest/trade/return-kill evidence, `PASS` the posi
 
 ## Retained v0.3.38 Favorite Structural Margin-Expansion Ladder
 
-When a leader has aligned **gold + objective pressure + structural conversion/access**, scan smaller favorite negative kill handicaps **before** the next kill conversion.
-
-For each plausible line calculate current margin, required final margin, future net kills needed, next two contest sequences, cascade potential, trailer return-kill routes, low/central/high margin branches and fair execution threshold. Prefer the least aggressive qualifying line. After conversion, do not chase a materially larger handicap; `PASS — EDGE MOVED WITH STATE` is valid.
+When a leader has aligned **gold + objective pressure + structural conversion/access**, scan smaller favorite negative kill handicaps **before** the next kill conversion. Price each relevant line independently, prefer the least aggressive qualifying line, and do not chase after conversion.
 
 ## Total Kills and Duration remain separate
 
-Total Kills requires current kills, whole kills to line, unresolved fight inventory, objective-density reserve and low/central/high branches.
+Total Kills requires current kills, whole kills to line, unresolved fight inventory, objective-density reserve, low/central/high branches, and v0.3.40 probability/fight-density controls.
 
 Duration requires fast-close, central and extension branches plus structure/base route, stall evidence and terminal-access/methodical-control checks.
 
-Retained duration corrections remain mandatory: no Over before 10:00 without two genuine stall signals beyond towerlessness; >=6 kills by 8:00 widens fast-finish risk; >=14 kills by 16:00 prevents 0-0 towers from confirming an Over; around 20:00 a >=+5k gold and +2-tower leader invalidates short Overs absent exceptional counterevidence; comeback tools widen the distribution; Grubs alone do not prove completed acceleration; kill suppression does not equal time compression.
+Retained duration corrections remain mandatory: no Over before 10:00 without two genuine stall signals beyond towerlessness; >=6 kills by 8:00 widens fast-finish risk; >=14 kills by 16:00 prevents 0-0 towers from confirming an Over; around 20:00 a >=+5k gold and +2-tower leader invalidates short Overs absent exceptional counterevidence; comeback tools widen distribution; Grubs alone do not prove completed acceleration; kill suppression does not equal time compression.
 
 ## Settlement verification
 
