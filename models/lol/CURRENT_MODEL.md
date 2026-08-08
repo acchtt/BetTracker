@@ -2,9 +2,9 @@
 
 **Canonical namespace:** `models/lol/`
 
-- Active model: **LoL v0.3.40**
-- Active rules: `models/lol/rules/MODEL_RULES_LOL_V0.3.40.md`
-- Prior active deltas: v0.3.39 through v0.3.26 under `models/lol/rules/`
+- Active model: **LoL v0.3.41**
+- Active rules: `models/lol/rules/MODEL_RULES_LOL_V0.3.41.md`
+- Prior active deltas: v0.3.40 through v0.3.26 under `models/lol/rules/`
 - Portable baseline context: `models/lol/context/lol-v0.3.25/`
 - Mandatory live checklist: `models/lol/procedures/LOL_LIVE_VERDICT_EXECUTION_CHECKLIST_2026-08-08.md`
 - Item-verification suspension: `models/lol/procedures/LOL_ITEM_VERIFICATION_SUSPENSION_2026-08-05.md`
@@ -21,7 +21,7 @@
 Every new chat must load these before its first LoL analysis:
 
 1. `models/lol/CURRENT_MODEL.md`
-2. v0.3.40 through v0.3.26 rule deltas
+2. v0.3.41 through v0.3.26 rule deltas
 3. item-verification suspension
 4. v0.3.25 consolidated rules, probation status, calibration handbook
 5. mandatory live verdict execution checklist
@@ -34,7 +34,7 @@ Every new chat must load these before its first LoL analysis:
 12. shared stake policy
 13. latest handoff last
 
-Where conflicts exist, **v0.3.40 controls**.
+Where conflicts exist, **v0.3.41 controls**.
 
 ## Official probation
 
@@ -70,9 +70,9 @@ First visible line while official wagering remains paused:
 Before every live verdict internally verify:
 
 1. current-frame fingerprint;
-2. recorded-position state versus current thesis state;
+2. recorded-position state versus **position-blind current thesis state**;
 3. independent moneyline scan including v0.3.40 probability gate when pregame/0:00;
-4. phase-aware exact kill-handicap arithmetic + probability gate + cascade test + structural controls;
+4. phase-aware exact kill-handicap arithmetic + probability gate + cascade test + v0.3.41 mechanistic-resilience and Draft Cascade-Structure Veto + structural controls;
 5. independent total-kills low/central/high projection + v0.3.40 probability/fight-density reserve;
 6. independent duration fast/central/extension projection;
 7. line/price availability, minimum odds, correlation and chasing controls;
@@ -86,7 +86,41 @@ A `TAKE` remains **CONDITIONAL / UNRECORDED** until the user confirms the same q
 
 If the line locks, disappears, or deteriorates before confirmation, the recommendation becomes **NO BET / 0u** and is never graded later.
 
-## v0.3.40 Pregame ML Calibration
+## v0.3.41 Position-Blind Reassessment and Handicap Resilience
+
+Recorded positions and current thesis are separate objects. On every material state change, and whenever the user explicitly asks to reassess drafts/compositions, recompute the current thesis from scratch without anchoring to the entry recommendation, recorded position, sunk stake, prior wording, or sportsbook move.
+
+For the original recorded selection:
+
+- **ACTIVE:** current lower-bound probability still clears original entry break-even by the applicable phase buffer and no hard veto is active;
+- **DEGRADED:** lower bound is above break-even but no longer clears the required buffer;
+- **INVALIDATED:** lower bound is at/below break-even or a hard veto is active;
+- **CONFIRMED:** materially strengthened thesis only; settlement rules unchanged.
+
+Positive-handicap resilience must be mechanistic. Explicitly evaluate safe range, disengage/reset, waveclear/base defense, anti-dive/peel, objective-contest access, and return-kill reliability. Generic `scaling`, `late game`, `teamfight`, or `multiple carries` language is not resilience unless it translates into these mechanisms.
+
+### Draft Cascade-Structure Veto
+
+For a positive kill handicap, `PASS` unless strong counterevidence exists when the opponent has:
+
+- current gold lead;
+- current structural lead or demonstrated repeatable structure access;
+- a clear pick-to-kill-to-objective cascade with at least three meaningful components such as reliable engage, layered CC, ranged conversion, chase/global reinforcement, objective-zone denial, or dive continuation;
+- while the positive-handicap side lacks demonstrated level-3+ return-kill/contest evidence or at least three credible mechanistic resilience categories.
+
+Split neutral-objective control does **not** cancel this veto. Gold + structural initiative plus a demonstrated cascade architecture can be sufficient.
+
+When the favorite has a repeatable `first contact -> conversion -> numbers advantage -> objective/structure -> second pick` sequence, widen the high-margin branch because future fights are serially dependent rather than independent.
+
+### NAVI vs SK G2 calibration
+
+NAVI +5.5 kills @1.886 was recorded at 14:51 with SK 8-7, SK +1.9k gold, SK 1-0 towers, SK 2-1 Grubs and NAVI 1-0 dragons. Drafts: NAVI Ambessa/Lee Sin/Ryze/Viktor/Alistar; SK Gnar/Pantheon/Syndra/Varus/Leona. Final was SK 18-8 NAVI; position lost -0.25u shadow.
+
+The original 58-63% cover estimate was too high. The model overvalued NAVI's generic extended-fight scaling and underweighted NAVI's short range into Varus/Syndra, SK's Pantheon/Leona first-contact reliability, Gnar zone control, ranged conversion, and SK's existing gold + structural initiative. Under v0.3.41, the Draft Cascade-Structure Veto would have made NAVI +5.5 a `PASS` at entry absent stronger observed return-kill evidence.
+
+When the user explicitly requested a draft reassessment, the current thesis should have been recomputed position-blind and moved to DEGRADED/INVALIDATED rather than being defended for consistency. By 19:51, SK +3k and 3-1 towers with the same demonstrated cascade architecture required **INVALIDATED**, even with dragons tied.
+
+## v0.3.40 Pregame ML Calibration retained
 
 For any pregame / 0:00 moneyline TAKE:
 
@@ -100,11 +134,7 @@ For any pregame / 0:00 moneyline TAKE:
 
 Draft alone normally moves a map prior by **0–4pp**. A >4pp move requires at least three independent material matchup advantages. One attractive interaction cannot justify a large move by itself.
 
-### NAVI vs SK G1 calibration
-
-SK ML @2.239 was confirmed as a separate 0.25u shadow bet and lost; final NAVI 27-12 at 30:14. The stated SK range of 47–50% had a lower-bound edge of only about +2.34pp over 44.66% break-even, which **fails v0.3.40**. The model overvalued Sylas ult access/return-engage and undervalued NAVI's repeatable Nocturne/Shen -> Orianna/MF initiation package.
-
-## v0.3.40 Early Total-Kills Calibration
+## v0.3.40 Early Total-Kills Calibration retained
 
 For total-kills TAKEs:
 
@@ -116,8 +146,6 @@ High early fight-density is active with >=8 kills by 8:00, >=10 by 10:00, repeat
 If high fight-density is active and at least three meaningful future fight windows remain, assign the high-kill branch at least **25–30% probability mass** absent strong suppression evidence.
 
 If both drafts collectively contain four or more meaningful fight-creation channels, apply an additional volatility penalty against early Unders.
-
-NAVI vs SK G1: Under 32.5 @2.827 at 6:51 was unconfirmed and therefore NO BET / 0u; final total was 39. It is calibration evidence that the high branch was underweighted. Later Under 43.5 @2.480 and Over 29m @2.008 were also unconfirmed/NO BET despite favorable finals.
 
 ## v0.3.39 Phase-Aware Kill-Handicap Calibration retained
 
@@ -154,6 +182,18 @@ Retained duration corrections remain mandatory: no Over before 10:00 without two
 A screenshot marked `Live` or `Pending` is never final evidence by itself. However, the user has established a standing instruction: when they state **`Final`**, treat the attached/latest synchronized scoreboard as authoritative final-state evidence even if the UI still says `Live`.
 
 If `Final` is stated but the exact statistic required to grade the market is absent from all synchronized evidence, request only the missing grading statistic.
+
+## Post-breaker shadow sequence
+
+Recorded post-breaker positions now include:
+
+- DNS +1.5 maps @1.913 vs NS — WIN +0.22825u.
+- DNS G2 ML @1.979 vs NS — WIN +0.24475u.
+- EDG +10.5 kills @1.810 vs BLG G2 — LOSS -0.25u.
+- SK G1 ML @2.239 vs NAVI — LOSS -0.25u.
+- NAVI +5.5 kills @1.886 vs SK G2 — LOSS -0.25u.
+
+Current post-breaker shadow record: **2-3, -0.27700u**. Actual exposure remains 0u.
 
 ## Retained controls
 
