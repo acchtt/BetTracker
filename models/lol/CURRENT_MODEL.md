@@ -2,9 +2,9 @@
 
 **Canonical namespace:** `models/lol/`
 
-- Active model: **LoL v0.3.37**
-- Active rules: `models/lol/rules/MODEL_RULES_LOL_V0.3.37.md`
-- Prior active deltas: v0.3.36 through v0.3.26 under `models/lol/rules/`
+- Active model: **LoL v0.3.38**
+- Active rules: `models/lol/rules/MODEL_RULES_LOL_V0.3.38.md`
+- Prior active deltas: v0.3.37 through v0.3.26 under `models/lol/rules/`
 - Portable baseline context: `models/lol/context/lol-v0.3.25/`
 - Mandatory live checklist: `models/lol/procedures/LOL_LIVE_VERDICT_EXECUTION_CHECKLIST_2026-08-08.md`
 - Item-verification suspension: `models/lol/procedures/LOL_ITEM_VERIFICATION_SUSPENSION_2026-08-05.md`
@@ -21,7 +21,7 @@
 Every new chat must load these before its first LoL analysis:
 
 1. `models/lol/CURRENT_MODEL.md`
-2. v0.3.37 through v0.3.26 rule deltas
+2. v0.3.38 through v0.3.26 rule deltas
 3. item-verification suspension
 4. v0.3.25 consolidated rules, probation status, calibration handbook
 5. mandatory live verdict execution checklist
@@ -34,41 +34,40 @@ Every new chat must load these before its first LoL analysis:
 12. shared stake policy
 13. latest handoff last
 
-Where conflicts exist, **v0.3.37 controls**.
+Where conflicts exist, **v0.3.38 controls**.
 
 ## Official probation
 
 - 13/20 settled/completed
 - Record: 7-6
 - Net: -0.16425u / -164,250 VND
-- Next official wager after eventual restoration: 14
+- Next official wager after explicit restoration: 14
 - Standard/default stake after restoration: **0.25u**
 - No hard aggregate per-map exposure cap
 - Minimum odds: **1.60**
 - Duration markets official-ineligible through wager 20
-- Official betting remains paused until the 20-map circuit breaker is complete and the user explicitly restores it
+- Official betting remains **paused** until the user explicitly restores it
 
-## Twenty-map shadow circuit breaker — current chat state
+## Twenty-map shadow circuit breaker — completed
 
 User-confirmed recent sequence:
 
-- **CB-17:** TH +7.5 kills vs FNC — LOSS; this triggered the Objective-Control Handicap Veto patch.
-- **CB-18:** TH vs FNC Game 3 Under 26.5 thesis was directionally correct with 25 final kills, but the executable line deteriorated before placement. Correct status: **NO BET / 0u**, not a win.
-- The user explicitly stated **CB-19 was next** before the T1 vs HLE sequence.
-- **CB-19:** T1 vs HLE Game 2 is treated as the next complete reviewed map. Final: HLE won 12-9 kills at 33:59. No position was recorded. Under 23.5 @1.894 was recommended conditionally but not confirmed before the line moved; therefore **NO BET / 0u** and no graded market result.
-- **CB-20:** T1 vs HLE Game 3 is the active/next breaker map in the current chat unless the user supplies a newer correction.
+- **CB-17:** TH +7.5 kills vs FNC — LOSS; triggered Objective-Control Handicap Veto.
+- **CB-18:** TH vs FNC Game 3 Under 26.5 thesis finished with 25 final kills, but executable line deteriorated before placement => **NO BET / 0u**, not a win.
+- **CB-19:** T1 vs HLE Game 2 — HLE won 12-9 at 33:59. No recorded position. Conditional Under 23.5 @1.894 was never confirmed before line movement => **NO BET / 0u**.
+- **CB-20:** T1 vs HLE Game 3 — HLE won 28-13 at 34:49. No recorded position. Under 26.5 @1.60 was explicitly PASSed; HLE -10.5 and T1 +10.5 were also PASSes. Actual/shadow recorded exposure: 0u.
 
-Actual stake/exposure remains **0u** throughout the breaker. Shadow results do not change official probation. Official recommendations do not resume automatically after CB-20; explicit user restoration remains mandatory.
+The required **20/20 shadow maps are complete**. Completion does **not** automatically restore official wagering. Explicit user restoration is still required before any official LoL recommendation or real exposure may resume.
 
-Do not reconstruct cumulative shadow record/net from partial chat history. Run the connected-stack startup sync audit before asserting a cumulative CB total beyond the last fully synchronized record.
+Do not reconstruct cumulative simulated CB record/net from partial chat history. Run the connected-stack startup sync audit before asserting a cumulative CB total beyond the last fully synchronized record.
 
-## v0.3.37 mandatory execution discipline
+## v0.3.37 mandatory execution discipline retained
 
 ### Verdict format
 
 The first visible line must be one of:
 
-- `TAKE — [selection] @[odds] — shadow 0.25u; actual 0u.`
+- `TAKE — [selection] @[odds] — shadow 0.25u; actual 0u.` while official wagering remains paused;
 - `PASS — [market/selection] @[odds] — 0u.`
 - `HOLD — [market/selection] @[odds] — 0u.`
 
@@ -137,10 +136,27 @@ For active live maps:
 
 Logging/plugin work never delays the live verdict.
 
+## v0.3.38 Favorite Structural Margin-Expansion Ladder
+
+When a leader has aligned **gold + meaningful neutral-objective pressure + structural conversion/access**, do not wait automatically for the next kill conversion before assessing favorite kill handicaps.
+
+Mandatory behavior:
+
+- scan the currently displayed negative-handicap ladder before the next major contest;
+- price each line independently using current margin, required final margin, future net kills required, next two contest sequences, objective-to-structure/base cascade potential and trailer return-kill routes;
+- prefer the **least aggressive qualifying negative line**;
+- define line-specific price thresholds when enough state is available;
+- after the next conversion, do not chase a materially larger line merely because the thesis was confirmed;
+- if state confirmation moves the line beyond fair value, return `PASS — EDGE MOVED WITH STATE`.
+
+This is the favorite-side mirror of the Objective-Control Handicap Veto: structural control can invalidate a positive handicap while simultaneously creating a requirement to scan smaller favorite negative handicaps **before** the visible kill margin expands.
+
+T1 vs HLE Game 3 calibration: at 19:31 HLE led 7-4 with +3.3k gold, 3-0 towers, 3-0 dragons and 3 Grubs. T1 +10.5 was correctly vetoed; HLE -10.5 was still too demanding at +8 additional future net kills, but smaller HLE negative lines should have been actively scanned and pre-priced before the next conversion.
+
 ## Retained controls
 
 - 1u = 1,000,000 VND.
-- Default individual shadow size: 0.25u.
+- Default individual shadow size while official wagering is paused: 0.25u simulated.
 - No hard aggregate LoL per-map exposure cap.
 - No automatic stake escalation, martingale behavior, or loss chasing.
 - No correlated same-map add-ons.
