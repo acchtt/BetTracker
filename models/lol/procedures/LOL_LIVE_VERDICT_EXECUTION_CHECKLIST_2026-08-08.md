@@ -1,7 +1,7 @@
 # LoL Live Verdict Execution Checklist — 2026-08-08
 
 **Status:** Mandatory  
-**Authority:** LoL v0.3.40  
+**Authority:** LoL v0.3.41  
 **Purpose:** mechanical pre-verdict gate for every live League of Legends snapshot.
 
 This checklist must be completed internally before every live verdict. The user-facing reply remains brief.
@@ -31,7 +31,24 @@ Set exactly one:
 - `CONDITIONAL / UNRECORDED`
 - `RECORDED SHADOW POSITION`
 
-Separately set current thesis state when a position exists: active / degraded / invalidated / confirmed.
+Separately set current thesis state when a position exists: `ACTIVE / DEGRADED / INVALIDATED / CONFIRMED`.
+
+### B1. Position-blind reassessment
+
+On every material new snapshot, and whenever the user explicitly asks to reassess draft/compositions, recompute the current thesis from scratch.
+
+Do **not** use the recorded entry, prior recommendation, sunk stake, desire for consistency, or adverse sportsbook movement as supporting evidence.
+
+For the original selection:
+
+- ACTIVE: lower-bound probability still clears original entry break-even by the required phase buffer and no hard veto is active;
+- DEGRADED: lower bound is above break-even but no longer clears the phase buffer;
+- INVALIDATED: lower bound is at/below break-even or a hard veto is active;
+- CONFIRMED: materially strengthened thesis only.
+
+A position remains recorded even when thesis state is INVALIDATED.
+
+Mandatory reassessment triggers include: explicit user request; >=2k meaningful gold swing; tower differential change >=2; first Baron/Elder; inhibitor/base access; material dragon/soul alignment change; >=2 net-kill swing; repeated failure of a theoretical defensive mechanism; demonstrated pick-to-objective cascade.
 
 ## C. Moneyline gate
 
@@ -56,7 +73,7 @@ Before a pregame ML TAKE construct:
 
 The **lower end** of the final `P_win` range must clear break-even by at least **+3 percentage points**.
 
-Draft alone normally moves the baseline by **0–4pp**. A move >4pp requires at least three independent material matchup advantages. One attractive interaction (e.g. Sylas ult access) cannot by itself justify a large probability move.
+Draft alone normally moves the baseline by **0–4pp**. A move >4pp requires at least three independent material matchup advantages. One attractive interaction cannot by itself justify a large probability move.
 
 Failure => `PASS` or `HOLD`.
 
@@ -103,6 +120,8 @@ Draft resilience, scaling, engage/disengage/global tools, or a visually large cu
 
 Widen the favorite high-margin branch for layered engage, globals, point-and-click initiation, reset/chase, objective forcing, dive/follow-up and safe cleanup DPS. Three or more meaningful factors require an explicit penalty against a positive-handicap TAKE unless strong counterevidence exists.
 
+Do not model repeatable cascade fights as independent events. A successful `pick -> numbers advantage -> objective/structure -> vision denial -> second pick` sequence increases subsequent margin-expansion probability.
+
 ### D6. Return-kill evidence hierarchy
 
 1. theoretical draft tools;
@@ -113,9 +132,33 @@ Widen the favorite high-margin branch for layered engage, globals, point-and-cli
 
 Pregame level-1 evidence is supporting only. Mid/late positive handicaps generally require level 3+ when the opponent has aligned structural control.
 
+### D7. Mechanistic positive-handicap resilience
+
+Explicitly evaluate the positive-handicap composition for:
+
+1. safe range;
+2. disengage/reset;
+3. waveclear/base defense;
+4. anti-dive/peel;
+5. objective-contest access;
+6. return-kill reliability.
+
+`Scaling`, `late game`, `teamfight`, and `multiple carries` are not resilience unless they translate into these mechanisms. A short-range scaling draft may have strong win-condition scaling but poor kill-margin resilience.
+
 ### Objective-Control Handicap Veto
 
 If the opponent of the positive-handicap side has aligned gold + meaningful neutral-objective control, the cushion alone is not evidence. Without affirmative repeated contest/trade/return-kill evidence, `PASS`.
+
+### Draft Cascade-Structure Veto — v0.3.41
+
+For a positive handicap, `PASS` unless strong counterevidence exists when all are true:
+
+- opponent leads gold;
+- opponent leads structures or has demonstrated repeatable structure access;
+- opponent has at least three meaningful pick/cascade components: reliable engage, layered CC, ranged conversion/cleanup, chase/global reinforcement, objective-zone denial, dive continuation;
+- positive-handicap side lacks demonstrated level-3+ return-kill/contest evidence or at least three credible mechanistic resilience categories.
+
+Split neutral-objective control does **not** cancel this veto.
 
 ### Favorite Structural Margin-Expansion Ladder
 
@@ -197,6 +240,13 @@ A `TAKE` is `CONDITIONAL / UNRECORDED` until user confirms the same qualifying l
 
 If price/line locks, disappears, or deteriorates before confirmation => `PASS — NO BET / 0u`. Never grade later.
 
+If a recorded position becomes INVALIDATED:
+
+- do not add to it;
+- do not rescue with a wider same-side line;
+- do not automatically flip to the opposite handicap as repair/chasing;
+- continue scanning genuinely independent markets normally.
+
 ## H. Settlement gate
 
 - `Live` screenshot alone => do not settle;
@@ -213,6 +263,8 @@ First line must be one of:
 - `TAKE — [selection] @[odds] — shadow 0.25u; actual 0u.`
 - `PASS — [selection/market] @[odds] — 0u.`
 - `HOLD — [selection/market] @[odds] — 0u.`
+
+When a recorded position exists and a mandatory reassessment is triggered, include the current thesis label separately from the recorded-position status.
 
 Then keep support brief unless detail is requested.
 
