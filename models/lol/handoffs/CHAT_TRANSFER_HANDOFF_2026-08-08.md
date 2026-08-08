@@ -1,14 +1,14 @@
 # LoL Cross-Chat Transfer Handoff — 2026-08-08
 
 **Repository:** `acchtt/SlipTrace`  
-**Active model:** **LoL v0.3.37**  
-**Purpose:** enforce mandatory live-verdict compliance across future chats and preserve the current circuit-breaker/live state.
+**Active model:** **LoL v0.3.38**  
+**Purpose:** preserve mandatory live-verdict compliance, completed circuit-breaker state, and the favorite pre-conversion handicap-ladder correction.
 
 ## 1. Required load order
 
 1. `models/lol/CURRENT_MODEL.md`
-2. `models/lol/rules/MODEL_RULES_LOL_V0.3.37.md`
-3. retained deltas v0.3.36 through v0.3.26
+2. `models/lol/rules/MODEL_RULES_LOL_V0.3.38.md`
+3. retained deltas v0.3.37 through v0.3.26
 4. item-verification suspension
 5. v0.3.25 consolidated rules / probation / calibration handbook
 6. `models/lol/procedures/LOL_LIVE_VERDICT_EXECUTION_CHECKLIST_2026-08-08.md`
@@ -21,13 +21,13 @@
 13. shared stake policy
 14. this handoff last
 
-Where conflicts exist, **v0.3.37 controls**.
+Where conflicts exist, **v0.3.38 controls**.
 
 ## 2. Mandatory operating behavior
 
-Every live trigger must complete the v0.3.37 checklist before the verdict. Brevity is presentation-only.
+Every live trigger must complete the full checklist before the verdict. Brevity is presentation-only.
 
-First line must be one of:
+First line while official wagering remains paused:
 
 - `TAKE — [selection] @[odds] — shadow 0.25u; actual 0u.`
 - `PASS — [market/selection] @[odds] — 0u.`
@@ -40,7 +40,7 @@ Mandatory internal sequence:
 1. newest-frame fingerprint;
 2. recorded-position vs thesis state;
 3. ML gate;
-4. exact handicap arithmetic + cascade test + Objective-Control Handicap Veto;
+4. exact handicap arithmetic + cascade test + Objective-Control Handicap Veto + v0.3.38 favorite ladder scan;
 5. total-kills current/required/low-central-high projection;
 6. duration fast/central/extension projection;
 7. price availability, minimum odds, correlation/chasing checks;
@@ -50,7 +50,7 @@ Missing decision-critical data => `PASS` or `HOLD`; never infer.
 
 ## 3. Executable-line rule
 
-A `TAKE` is **CONDITIONAL / UNRECORDED** until the user confirms that the same qualifying line/price remained executable and was accepted for tracking.
+A `TAKE` is **CONDITIONAL / UNRECORDED** until the user confirms the same qualifying line/price remained executable and was accepted for tracking.
 
 If the line locks, disappears, or deteriorates before confirmation:
 
@@ -58,8 +58,6 @@ If the line locks, disappears, or deteriorates before confirmation:
 - do not record the position;
 - do not later grade it as a win/loss;
 - a correct thesis with an unavailable price is not a model win.
-
-CB-18 and T1-HLE Game 2 are explicit calibration examples of this rule.
 
 ## 4. Objective-Control Handicap Veto
 
@@ -69,88 +67,71 @@ Without affirmative repeated contest/trade/return-kill evidence from the positiv
 
 Never claim line widening/tightening without a verified prior same-map line.
 
-## 5. Circuit-breaker state
+## 5. v0.3.38 Favorite Structural Margin-Expansion Ladder
+
+When the leader has aligned **gold + objective pressure + structural conversion/access**, the model must scan smaller favorite negative kill handicaps **before** waiting for the next kill conversion.
+
+For every plausible favorite line:
+
+- calculate current margin, required final margin and exact future net kills needed;
+- project the next two contest/cascade sequences;
+- evaluate objective-to-structure/base conversion;
+- evaluate trailer return-kill routes;
+- build low/central/high future margin branches;
+- set line-specific fair price and minimum execution threshold;
+- prefer the least aggressive qualifying line.
+
+After a favorite conversion, do not chase a materially larger line merely because the thesis was confirmed. Reprice from scratch; `PASS — EDGE MOVED WITH STATE` is valid.
+
+## 6. Circuit-breaker state — complete
 
 Official probation remains unchanged:
 
 - 13/20 official wagers completed;
 - record 7-6;
 - net -0.16425u / -164,250 VND;
-- next official wager after eventual restoration: 14;
-- official betting paused through CB-20 and requires explicit restoration afterward.
+- next official wager after explicit restoration: 14.
 
-Recent breaker sequence supplied/confirmed in chat:
+Recent breaker sequence:
 
-- **CB-17:** TH +7.5 kills vs FNC — LOSS; triggered Objective-Control Handicap Veto correction.
-- **CB-18:** TH vs FNC Game 3 Under 26.5 thesis finished with 25 kills, but line deteriorated before placement => **NO BET / 0u**, not a win.
-- User then stated **CB-19 was next**.
-- **CB-19:** T1 vs HLE Game 2 — complete/reviewed, no recorded position. Final HLE 12-9 T1 at 33:59. Conditional Under 23.5 @1.894 was never confirmed before line movement => **NO BET / 0u**.
-- **CB-20:** T1 vs HLE Game 3 is active/next at handoff time.
+- **CB-17:** TH +7.5 kills vs FNC — LOSS; triggered Objective-Control Handicap Veto.
+- **CB-18:** TH/FNC Game 3 Under 26.5 thesis finished at 25 kills, but line deteriorated before placement => **NO BET / 0u**.
+- **CB-19:** T1/HLE Game 2 — HLE won 12-9 at 33:59. No recorded position. Conditional Under 23.5 @1.894 expired before confirmation => **NO BET / 0u**.
+- **CB-20:** T1/HLE Game 3 — HLE won 28-13 at 34:49. No recorded position. Under 26.5 @1.60 was PASS; HLE -10.5 and T1 +10.5 were PASSes.
 
-Do not assert a cumulative simulated CB record/net beyond the last fully synchronized connected-stack audit without syncing the tracker first.
+The required **20/20 breaker maps are complete**. Official betting remains **paused** and does not resume automatically. The user must explicitly restore official wagering.
 
-## 6. T1 vs HLE series context
+## 7. T1 vs HLE Game 3 calibration
 
-Game 1 live statistics were reported bugged; do not use that feed for model settlement or calibration.
+At 19:31 HLE led 7-4 with approximately +3.3k gold, 3-0 towers, 3-0 dragons and 3 Grubs.
 
-Game 2 verified final:
+Correct v0.3.38 interpretation:
 
-- HLE won at **33:59**;
-- kills HLE 12-9 T1;
-- towers HLE 7-3 T1;
-- dragons T1 4-2 HLE;
-- Barons 1-1;
-- inhibitors HLE 1-0 T1;
-- no recorded shadow position.
+- T1 +10.5: correctly PASS under Objective-Control Handicap Veto;
+- HLE -10.5: still not automatically a TAKE because +8 additional future net kills were required and no Baron/base access existed;
+- the model should nevertheless have scanned smaller HLE negative lines (-6.5/-7.5/-8.5 when available) and set executable thresholds before the next conversion;
+- waiting for another HLE conversion without a ladder risks becoming commercially late.
 
-## 7. Active T1 vs HLE Game 3 state at latest synchronized snapshot
-
-**Screenshot status:** `Live` — never settle this state.
-
-At **9:51**:
-
-- HLE 6-3 T1 kills;
-- HLE +1.5k gold;
-- towers 0-0;
-- HLE 1-0 dragons;
-- HLE 3 Void Grubs (user explicitly confirmed);
-- Baron 0-0;
-- inhibitors 0-0.
-
-Draft:
-
-- HLE: Cho'Gath / Nafiri / Ahri / Ezreal / Karma
-- T1: Rumble / Nocturne / Viktor / Varus / Bard
-
-Displayed markets near this snapshot:
-
-- HLE ML 1.255 / T1 ML 3.792
-- duration 31: Over 1.726 / Under 2.079
-- total kills 33.5: Over 1.822 / Under 1.956
-- HLE -10.5 kills 1.854 / T1 +10.5 kills 1.902
-
-Correct strict-model status at this snapshot: **PASS all markets; RECORDED POSITION: NONE.**
-
-Reasoning controls:
-
-- HLE ML below 1.60 minimum => automatic PASS.
-- HLE leads current kills by +3; HLE -10.5 requires +8 additional future net kills to cover, too demanding without stronger structural conversion.
-- T1 +10.5 cannot be promoted from cushion alone because HLE has aligned gold + dragon + 3-Grub control; Objective-Control Handicap Veto active absent affirmative T1 contest/trade evidence.
-- 9 kills at 9:51; total 33.5 requires +25 additional kills. Must run low/central/high fight-inventory branches before any future total verdict.
-- Duration 31 must remain separate. At 9:51 the pre-10:00 Over restriction applies; HLE Grubs/early kills widen fast-close risk while 0 towers means completed structural acceleration is not yet proven.
+Final 28-13 is calibration evidence only; no unavailable line receives retroactive win credit.
 
 ## 8. Settlement verification
 
-A screenshot marked `Live` or `Pending` is never final evidence by itself. Do not settle Game 3 until a verified final/result state or separate exact user confirmation is supplied under the evidence hierarchy.
+A screenshot marked `Live` or `Pending` is never final evidence by itself. Settle only from a verified final/result state or separate exact user confirmation sufficient under the evidence hierarchy.
 
 ## 9. Recorded-position discipline
 
 At handoff time:
 
-- T1-HLE Game 3 recorded position: **NONE**.
-- No prior unconfirmed/expired line may be resurrected.
-- Every new screenshot is a fresh synchronized state.
+- no T1-HLE Game 3 position was recorded;
+- no prior unconfirmed/expired line may be resurrected;
+- every new map resets current-map hard evidence.
 
-## 10. Future-chat instruction
+## 10. Next scheduled LCK series
 
-Start by loading `CURRENT_MODEL.md`, v0.3.37, the mandatory checklist, retained rules/procedures, and this handoff. Then use the newest user-supplied state. If repository/connected-stack state conflicts with an explicit newer user correction, the user correction controls and the discrepancy must be logged after the verdict.
+After T1 vs HLE on 2026-08-08, the next scheduled LCK series is **Nongshim RedForce vs DN SOOPers**, scheduled for 18:00 UTC+7 / 19:00 KST, BO3, Rise Group.
+
+Pre-series analysis must verify current starters/side information and use current prices before any actionable threshold is treated as executable.
+
+## 11. Future-chat instruction
+
+Start by loading `CURRENT_MODEL.md`, v0.3.38, the mandatory checklist, retained rules/procedures, and this handoff. Then use the newest user-supplied state. If repository/connected-stack state conflicts with an explicit newer user correction, the user correction controls and the discrepancy must be logged after the verdict.
