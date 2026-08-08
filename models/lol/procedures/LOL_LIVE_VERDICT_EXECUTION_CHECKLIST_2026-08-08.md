@@ -1,7 +1,7 @@
 # LoL Live Verdict Execution Checklist â€” 2026-08-08
 
 **Status:** Mandatory  
-**Authority:** LoL v0.3.37  
+**Authority:** LoL v0.3.39  
 **Purpose:** mechanical pre-verdict gate for every live League of Legends snapshot.
 
 This checklist must be completed internally before every live verdict. The user-facing reply remains brief.
@@ -49,19 +49,88 @@ Failure => `PASS`.
 
 ## D. Kill-handicap gate
 
+### D1. Phase classification
+
+Set exactly one:
+
+- `PREGAME / 0:00`
+- `EARLY LIVE`
+- `MID/LATE LIVE`
+
+Do not use one phase's evidentiary standard for another.
+
+### D2. Exact arithmetic and distribution
+
 Calculate:
 
 1. current kill margin;
 2. exact final margin required;
 3. exact future net-kill swing required;
-4. next-fight cascade risk;
-5. gold / tower / neutral-objective alignment;
-6. repeated contest/trade and return-kill routes;
-7. line-chasing / repair / dominance state.
+4. projected final total-kill low / central / high range;
+5. low / central / high final kill-margin branches;
+6. handicap magnitude `H`, central projected total kills `T`, and `H/T`;
+7. next two likely forced-fight / objective sequences;
+8. gold / tower / neutral-objective alignment;
+9. return-kill evidence level;
+10. line-chasing / repair / dominance state.
+
+### D3. Break-even / cover-probability gate
+
+For any handicap TAKE:
+
+- calculate `P_break_even = 1 / decimal_odds`;
+- estimate a reasonable `P_cover` range from the margin distribution;
+- the **lower end** of the reasonable `P_cover` range must clear break-even by:
+  - **+5 percentage points** for pregame positive handicaps;
+  - **+4 percentage points** for early-live handicaps;
+  - **+3 percentage points** for mid/late-live handicaps.
+
+If the probability edge is not explicitly supportable => `PASS` or `HOLD`.
+
+### D4. Pregame positive-handicap high-friction rule
+
+At 0:00, draft resilience alone is insufficient. A positive handicap may not be promoted merely because:
+
+- the cushion looks large;
+- the underdog has scaling;
+- the underdog has engage/disengage/global tools;
+- the favorite is unlikely to win by an intuitive margin.
+
+Require projected total kills, final-margin distribution, probability edge and cascade-tail assessment.
+
+### D5. Cascade-tail penalty
+
+Widen the favorite's high-margin branch when it has several reinforcing factors such as:
+
+- layered engage;
+- globals / semi-globals;
+- point-and-click initiation;
+- reset / chase mechanics;
+- objective forcing;
+- dive + follow-up;
+- safe cleanup DPS.
+
+Three or more meaningful cascade factors require an explicit penalty against a positive-handicap TAKE unless strong counterevidence exists.
+
+### D6. Return-kill evidence hierarchy
+
+Classify evidence:
+
+1. theoretical draft tools;
+2. lane-state survival / parity;
+3. observed repeated return kills;
+4. objective contest / cross-map trade;
+5. repeated multi-cycle resistance.
+
+Pregame level-1 evidence is supporting only, never primary justification. Mid/late positive handicaps generally require level 3+ when the opponent has aligned structural control.
 
 ### Objective-Control Handicap Veto
 
 If the opponent of the positive-handicap side has aligned gold + meaningful neutral-objective control, the cushion alone is not evidence. Without affirmative repeated contest/trade/return-kill evidence, `PASS` the positive handicap.
+
+### Favorite Structural Margin-Expansion Ladder
+
+When a leader has aligned gold + objective pressure + structural conversion/access, scan smaller favorite negative handicaps **before** the next kill conversion. Price each line independently, set thresholds when possible, prefer the least aggressive qualifying line, and do not chase after conversion.
 
 Never describe a line as widened/tightened unless the prior same-map line was verified.
 
@@ -115,9 +184,11 @@ If price/line locks, disappears, or deteriorates before confirmation => `PASS â€
 
 ## H. Settlement gate
 
-- `Live` screenshot => do not settle from screenshot;
-- `Pending` screenshot => do not settle from screenshot;
-- verified final/result state or separate explicit exact user confirmation required;
+- `Live` screenshot alone => do not settle from screenshot;
+- `Pending` screenshot alone => do not settle from screenshot;
+- verified final/result state or separate explicit user confirmation required;
+- **standing user instruction:** when the user states `Final`, treat the attached/latest synchronized scoreboard as authoritative final-state evidence even if the UI still says `Live`;
+- if `Final` is stated but the exact statistic required to grade the market is absent from all synchronized evidence, request only that missing statistic;
 - unavailable or unconfirmed recommendations remain NO BET even if final result would have won.
 
 ## I. Output gate
